@@ -1,6 +1,6 @@
 // scripts/fetch.js
 // Fetch and parse committee schedules from:
-// - House (Next.js print-weekly page; week param; 255 == Aug 10–16, 2025 from your snapshot)
+// - House (Next.js print-weekly page; week param; 255 == Aug 10–16, 2025 per your snapshot)
 // - Senate (static XHTML weekly schedule)
 // Outputs: output/house.json, output/senate.json
 
@@ -61,7 +61,7 @@ async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWai
       const state = await fs.readFile(storageFile, 'utf-8');
       contextOpts.storageState = JSON.parse(state);
     } catch {
-      // first run, no storage
+      // first run: no storage
     }
   }
 
@@ -81,7 +81,7 @@ async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWai
       found = true;
       break;
     } catch {
-      // keep trying
+      // try next selector
     }
   }
 
@@ -240,7 +240,7 @@ async function parseSenateSchedule(html) {
 }
 
 async function main() {
-  // Define outDir BEFORE any use
+  // IMPORTANT: define outDir first, before any references
   const outDir = path.join(__dirname, '..', 'output');
   await ensureDir(outDir);
 
@@ -260,7 +260,7 @@ async function main() {
       extraWaitMs: 3000,
     });
 
-    // Optional debugging:
+    // Optional debug: uncomment to inspect HTML the runner fetched
     // await fs.writeFile(path.join(outDir, 'house.html'), content || '', 'utf-8');
 
     if (found && content && content.includes('<html')) {
