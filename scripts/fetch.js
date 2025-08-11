@@ -1,8 +1,21 @@
 // scripts/fetch.js
-// Fetch and parse committee schedules from:
-// - House main page (https://www.congress.gov.ph/committees/committee-meetings/)
-// - Senate weekly page (https://web.senate.gov.ph/committee/schedwk.asp)
-// Outputs: output/house.json, output/senate.json, and debug output/house.html (for inspection)
+// Fetch committee schedules from:
+// - House main API (bypasses Turnstile by calling the JSON endpoint directly)
+// - Senate weekly XHTML page
+// Outputs: output/house.json, output/senate.json, plus optional debug JSON for House API
+//
+// Requirements (package.json):
+// {
+//   "type": "module",
+//   "scripts": { "fetch": "node scripts/fetch.js" },
+//   "dependencies": {
+//     "cheerio": "^1.0.0",
+//     "playwright": "^1.45.0"
+//   }
+// }
+//
+// In CI, ensure Chromium is installed:
+//   npx playwright install --with-deps chromium
 
 import fs from 'fs/promises';
 import path from 'path';
@@ -14,11 +27,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.join(__dirname, '..', 'output');
 
-// URLs
-const HOUSE_MEETINGS_URL = 'https://www.congress.gov.ph/committees/committee-meetings/';
+// Endpoints
+const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/weekly-schedule';
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
 
-// Utils
+// --------------- Utils ---------------
 function norm(s) {
   if (typeof s !== 'string') return '';
   return s.replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
@@ -28,6 +41,7 @@ function keyOf(r) {
 }
 function parseClock(s) {
   if (!s) return '';
+  // Normalize e.g., "10:00 a.m." -> "10:00 AM"
   return norm(s).replace(/\b(a\.m\.|p\.m\.)\b/gi, (m) => m.toUpperCase().replace(/\./g, ''));
 }
 function htmlToText(html) {
@@ -36,66 +50,33 @@ function htmlToText(html) {
   return norm($frag('div').text());
 }
 
-// Fetchers
-async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWaitMs = 0 } = {}) {
-
-const browser = await chromium.launch({
-headless: true,
-args: [
-'--no-sandbox',
-'--disable-dev-shm-usage',
-'--disable-gpu',
-'--disable-blink-features=AutomationControlled',
-'--disable-features=VizDisplayCompositor'
-]
-});
-  let contextOpts = {
-    userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    viewport: { width: 1920, height: 1080 },
-    extraHTTPHeaders: { 'Accept-Language': 'en-US,en;q=0.9' },
-    hasTouch: false,
-    isMobile: false,
-    javaScriptEnabled: true
-  };
-
-  if (storageFile) {
-    try {
-      const state = await fs.readFile(storageFile, 'utf-8');
-      contextOpts.storageState = JSON.parse(state);
-    } catch {
-      // first run: no storage
-    }
-  }
-
-  const context = await browser.newContext(contextOpts);
-  const page = await context.newPage();
-
+// --------------- Simple HTTP helpers via Playwright request ---------------
+async function postJson(url, payload = {}, headers = {}) {
+  const browser = await chromium.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-dev-shm-usage']
+  });
   try {
-    await fs.mkdir(OUTPUT_DIR, { recursive: true });
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
-    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
-    if (extraWaitMs > 0) await page.waitForTimeout(extraWaitMs);
-
-    let found = waitSelectors.length === 0;
-    for (const sel of waitSelectors) {
-      try {
-        await page.waitForSelector(sel, { timeout: 30000 });
-        found = true;
-        break;
-      } catch {
-        // try next selector
-      }
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    const resp = await page.request.post(url, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        ...headers
+      },
+      data: payload
+    });
+    const status = resp.status();
+    const text = await resp.text();
+    if (status < 200 || status >= 300) {
+      throw new Error(`HTTP ${status} ${text}`);
     }
-
-    const content = await page.content();
-
-    if (storageFile) {
-      const newState = await context.storageState();
-      await fs.writeFile(storageFile, JSON.stringify(newState), 'utf-8');
+    try {
+      return JSON.parse(text);
+    } catch {
+      throw new Error(`Non-JSON response: ${text.slice(0, 400)}`);
     }
-
-    return { content, found };
   } finally {
     await browser.close();
   }
@@ -121,85 +102,9 @@ async function fetchSenateHTML(url) {
   }
 }
 
-// Parsers
-async function parseHouseCommitteeMeetings(html) {
-  const $ = cheerio.load(html);
-  const out = [];
+// --------------- Parsers ---------------
 
-  // A day section usually has a header like "12-Aug-2025 • Tuesday" followed by meeting cards
-  const daySections = $('div.mb-5');
-
-  daySections.each((_, sec) => {
-    const $sec = $(sec);
-
-    // Day header
-    const dayLabel = norm($sec.find('div.p-2.text-lg.font-semibold').first().text());
-    if (!dayLabel) return;
-
-    // Meeting cards
-    const cards = $sec.find(
-      'div.grid.rounded.border.p-2.md\\:grid-cols-2.mb-2, div.hover\\:cursor-pointer'
-    );
-
-    cards.each((__, card) => {
-      const $card = $(card);
-
-      // Committee name
-      const committee = norm(
-        $card.find('div.px-2.py-3.font-bold.text-blue-600, div.font-bold.text-blue-600').first().text()
-      );
-
-      // Time (bold, usually looks like 01:30 PM)
-      const time = parseClock(
-        norm(
-          $card
-            .find('div.grid.gap-1.px-2.py-3.text-blue-500 > div.font-bold, div.font-bold')
-            .filter((i, el) => /^\d{1,2}:\d{2}/.test($(el).text()))
-            .first()
-            .text()
-        )
-      );
-
-      // Venue (look for Hall/Bldg/Room/Committee text)
-      const venue = norm(
-        $card
-          .find('div')
-          .filter((i, el) => {
-            const t = $(el).text();
-            return /Hall|Bldg|Building|Room|Committee/i.test(t);
-          })
-          .eq(0)
-          .text()
-      );
-
-      // Subject/Agenda
-      const subject = norm(
-        $card.find('div.whitespace-pre-wrap, div[class*="agenda"], div[class*="subject"]').first().text()
-      );
-
-      if (dayLabel && time && committee) {
-        out.push({
-          date: dayLabel,
-          time,
-          committee,
-          subject,
-          venue,
-          source: 'House Committee Meetings'
-        });
-      }
-    });
-  });
-
-  // Deduplicate
-  const seen = new Set();
-  return out.filter((r) => {
-    const k = keyOf(r);
-    if (seen.has(k)) return false;
-    seen.add(k);
-    return true;
-  });
-}
-
+// Senate XHTML weekly schedule parser
 async function parseSenateSchedule(html) {
   const $ = cheerio.load(html);
   const out = [];
@@ -222,11 +127,17 @@ async function parseSenateSchedule(html) {
       const timeVenueHtml = $(tds[1]).html() || '';
       const agendaHtml = $(tds[2]).html() || '';
 
-      const timeVenueParts = timeVenueHtml.split(/<br\s*\/?>/i).map((frag) => htmlToText(frag)).filter(Boolean);
+      const timeVenueParts = timeVenueHtml
+        .split(/<br\s*\/?>/i)
+        .map((frag) => htmlToText(frag))
+        .filter(Boolean);
       const time = timeVenueParts[0] ? parseClock(timeVenueParts[0]) : '';
       const venue = timeVenueParts.slice(1).join(' ').trim();
 
-      const agendaParts = agendaHtml.split(/<br\s*\/?>/i).map((frag) => htmlToText(frag)).filter(Boolean);
+      const agendaParts = agendaHtml
+        .split(/<br\s*\/?>/i)
+        .map((frag) => htmlToText(frag))
+        .filter(Boolean);
       const subject = agendaParts.join('; ');
 
       if (dayHeader && time && committeeCell) {
@@ -251,38 +162,62 @@ async function parseSenateSchedule(html) {
   });
 }
 
-// Main
+// --------------- Main ---------------
 async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-  // House
-  const houseStorage = path.join(OUTPUT_DIR, 'house-storage-state.json');
+  // -------- House via public API (no auth token needed per captured headers) --------
+  // From your DevTools capture, the POST succeeds with these headers and a tiny body.
+  // If you later observe a specific payload (e.g., { week: 255 } or date range),
+  // update "payload" accordingly and consider exposing WEEK via env var.
   let house = [];
   try {
-    const { content, found } = await fetchWithBrowser(HOUSE_MEETINGS_URL, {
-      storageFile: houseStorage,
-      waitSelectors: [
-        'div.p-2.text-lg.font-semibold',  // day header
-        'div.grid.rounded.border',         // meeting card container
-        'text=Committee Meetings - Weekly Schedule'
-      ],
-      extraWaitMs: 3000
-    });
+    const payload = {}; // adjust if API expects e.g., { week: 255 }
+    const headers = {
+      Referer: 'https://www.congress.gov.ph/',
+      Origin: 'https://www.congress.gov.ph',
+      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1'
+    };
 
-    // Save HTML for debugging/inspection
-    await fs.writeFile(path.join(OUTPUT_DIR, 'house.html'), content || '', 'utf-8');
+    const apiResp = await postJson(HOUSE_API, payload, headers);
 
-    if (found && content && content.includes('<html')) {
-      house = await parseHouseCommitteeMeetings(content);
-    } else {
-      console.error('House: schedule did not render or no meetings for current week.');
-    }
+    // Optional: save raw API response for inspection and field mapping
+    await fs.writeFile(
+      path.join(OUTPUT_DIR, 'house_api_debug.json'),
+      JSON.stringify(apiResp, null, 2),
+      'utf-8'
+    );
+
+    // Expected envelope: { status, success, data, message }
+    const rows = Array.isArray(apiResp?.data) ? apiResp.data : [];
+
+    // Map conservatively; adjust keys after inspecting house_api_debug.json
+    house = rows
+      .map((it) => {
+        const date = norm(it.date || it.day || it.scheduleDate || '');
+        const time = parseClock(norm(it.time || it.startTime || ''));
+        const committee = norm(it.committee || it.committeeName || '');
+        const subject = norm(it.agenda || it.subject || it.details || '');
+        const venue = norm(it.venue || it.location || '');
+        if (date && time && committee) {
+          return {
+            date,
+            time,
+            committee,
+            subject,
+            venue,
+            source: 'House API'
+          };
+        }
+        return null;
+      })
+      .filter(Boolean);
   } catch (e) {
-    console.error('House fetch failed:', e.message);
+    console.error('House API fetch failed:', e.message);
   }
   await fs.writeFile(path.join(OUTPUT_DIR, 'house.json'), JSON.stringify(house, null, 2));
 
-  // Senate
+  // -------- Senate (XHTML) --------
   let senate = [];
   try {
     const html = await fetchSenateHTML(SENATE_SCHED_URL);
