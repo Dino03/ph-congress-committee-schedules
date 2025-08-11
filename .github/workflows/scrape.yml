@@ -9,6 +9,10 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+        
       - name: Checkout
         uses: actions/checkout@v4
 
