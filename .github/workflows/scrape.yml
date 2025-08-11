@@ -1,53 +1,47 @@
 # .github/workflows/scrape.yml
-# ---------------------------------
-# Automates retrieval of Senate + House committee schedules,
-# commits the resulting JSON (and optional debug HTML) back to the repo.
-
 name: Scrape Committee Schedules
 
 on:
-  workflow_dispatch:        # manual trigger
+  workflow_dispatch:
   schedule:
-    - cron: '0 2 * * 1-5'   # 02:00 UTC, Mon–Fri
+    - cron: '0 2 * * 1-5'
 
-# GITHUB_TOKEN gets write access so the job can push its commit
 permissions:
   contents: write
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 20     # fail fast if something hangs
+    timeout-minutes: 20
 
     steps:
-      - name: 📥 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🟢 Set up Node
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: npm
+          # Remove cache: npm since there's no package-lock.json
 
-      - name: 📦 Install dependencies
-        run: npm ci
+      - name: Install dependencies
+        run: npm install  # Use npm install instead of npm ci
 
-      - name: 🎭 Install Playwright (Chromium only)
+      - name: Install Playwright (Chromium only)
         run: npx playwright install --with-deps chromium
 
-      - name: 📑 Run scraper
+      - name: Run scraper
         run: npm run fetch
 
-      - name: � git commit & push updated data
+      - name: Commit and push updated data
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Add all scraper outputs (JSON + optional debug HTML)
           git add output/*.json output/*.html 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: update committee schedules 🚀"
+            git commit -m "chore: update committee schedules"
             git push
           fi
         env:
