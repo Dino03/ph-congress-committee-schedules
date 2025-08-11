@@ -3,7 +3,7 @@ name: Scrape Committee Schedules
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * 1-5'  # hourly on weekdays
+    - cron: '0 * * * 1-5'  # hourly on weekdays; adjust as needed
 
 jobs:
   scrape:
@@ -23,8 +23,8 @@ jobs:
       - name: Run scraper (default week)
         run: npm run fetch
 
-      # If you know the current House week index, uncomment and set it:
-      # - name: Run scraper for specific week
+      # Optional: run with explicit week index (if you know current)
+      # - name: Run scraper for week=255
       #   run: WEEK=255 npm run fetch
 
       - name: Commit outputs
