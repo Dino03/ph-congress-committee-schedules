@@ -43,17 +43,18 @@ async function ensureDir(p) {
   await fs.mkdir(p, { recursive: true });
 }
 
+
 // Browser fetcher (for House)
 async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWaitMs = 0 } = {}) {
-  const browser = await chromium.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
-  });
-
+  // Fake more-human context settings
   let contextOpts = {
     userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
-    viewport: { width: 1366, height: 900 },
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    viewport: { width: 1920, height: 1080 },
+    extraHTTPHeaders: { 'Accept-Language': 'en-US,en;q=0.9' },
+    hasTouch: false,
+    isMobile: false,
+    javaScriptEnabled: true,
   };
 
   if (storageFile) {
