@@ -1,27 +1,8 @@
 // scripts/fetch.js
 // Fetch and parse committee schedules from:
-// - House of Representatives (print-weekly page; React/Next rendered, uses week param; 255 == Aug 10–16, 2025 in your snapshot)
-// - Senate of the Philippines (static XHTML weekly committee schedule)
-// Outputs:
-// - output/house.json
-// - output/senate.json
-//
-// package.json requirements:
-// {
-//   "name": "ph-committee-schedules",
-//   "version": "1.0.0",
-//   "type": "module",
-//   "scripts": {
-//     "fetch": "node scripts/fetch.js"
-//   },
-//   "dependencies": {
-//     "cheerio": "^1.0.0",
-//     "playwright": "^1.45.0"
-//   }
-// }
-//
-// If the runner lacks Chromium, install browsers first in your CI:
-//   npx playwright install --with-deps chromium
+// - House (Next.js print-weekly page; week param; 255 == Aug 10–16, 2025 from your snapshot)
+// - Senate (static XHTML weekly schedule)
+// Outputs: output/house.json, output/senate.json
 
 import fs from 'fs/promises';
 import path from 'path';
@@ -33,18 +14,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // CONFIG
-// For House, use the explicit week id you observed in the Select dropdown.
-// Example from your DOM: 255 => Aug 10–16, 2025.
-// You can override via env var WEEK in your workflow run form.
 const HOUSE_WEEK_DEFAULT = '255';
 const HOUSE_PRINT_URL = (week) =>
   `https://www.congress.gov.ph/committees/committee-meetings/print-weekly/?week=${encodeURIComponent(
     week || HOUSE_WEEK_DEFAULT
   )}`;
-
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
 
-// Utility helpers
+// Utils
 function norm(s) {
   return (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
 }
@@ -53,7 +30,6 @@ function keyOf(r) {
 }
 function parseClock(s) {
   if (!s) return '';
-  // Normalize common variants like "10:00 a.m.", "10:00 am", "10:00 AM"
   return norm(s).replace(/\b(a\.m\.|p\.m\.)\b/gi, (m) =>
     m.toUpperCase().replace(/\./g, '')
   );
@@ -67,7 +43,7 @@ async function ensureDir(p) {
   await fs.mkdir(p, { recursive: true });
 }
 
-// Generic headless browser fetch (used for House due to client-side rendering and Cloudflare)
+// Browser fetcher (for House)
 async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWaitMs = 0 } = {}) {
   const browser = await chromium.launch({
     headless: true,
@@ -85,7 +61,7 @@ async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWai
       const state = await fs.readFile(storageFile, 'utf-8');
       contextOpts.storageState = JSON.parse(state);
     } catch {
-      // ignore missing storage
+      // first run, no storage
     }
   }
 
@@ -93,13 +69,11 @@ async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWai
   const page = await context.newPage();
 
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
-  // Help pass interstitials and let scripts render
   await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
   if (extraWaitMs > 0) {
     await page.waitForTimeout(extraWaitMs);
   }
 
-  // Wait for any of the provided selectors to appear (if given)
   let found = waitSelectors.length === 0 ? true : false;
   for (const sel of waitSelectors) {
     try {
@@ -107,7 +81,7 @@ async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWai
       found = true;
       break;
     } catch {
-      // try next selector
+      // keep trying
     }
   }
 
@@ -122,7 +96,7 @@ async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWai
   return { content, found };
 }
 
-// Simple headless browser HTML fetch (Senate page is static XHTML, but this is robust)
+// Senate HTML fetcher
 async function fetchSenateHTML(url) {
   const browser = await chromium.launch({
     headless: true,
@@ -141,24 +115,17 @@ async function fetchSenateHTML(url) {
   return content;
 }
 
-// HOUSE parser for the React/Next structure detected in your DOM
-// Structure per day:
-// - div.p-2.text-lg.font-semibold => day label "12-Aug-2025 • Tuesday"
-// - One or more meeting cards: div.grid.rounded.border.p-2.md:grid-cols-2.mb-2
-//   Left column: div.px-2.py-3.font-bold.text-blue-600 => Committee
-//   Right column: grid with first child .font-bold => Time, next child => Venue
-//   Agenda row: div.md:col-span-2.rounded.bg-light.p-2 containing .whitespace-pre-wrap => Agenda text
+// House parser (React/Next structure per your DOM)
 async function parseHouseWeeklyReact(html) {
   const $ = cheerio.load(html);
   const out = [];
 
-  const daySections = $('div.mb-5'); // wrapper holding a day header and its cards
+  const daySections = $('div.mb-5');
   daySections.each((_, sec) => {
     const $sec = $(sec);
     const dayLabel = norm($sec.find('div.p-2.text-lg.font-semibold').first().text());
     if (!dayLabel) return;
 
-    // Find all meeting cards within this section
     const cards = $sec.find('div.grid.rounded.border.p-2.md\\:grid-cols-2.mb-2');
     cards.each((__, card) => {
       const $card = $(card);
@@ -192,7 +159,7 @@ async function parseHouseWeeklyReact(html) {
 
       if (dayLabel && time && committee) {
         out.push({
-          date: dayLabel, // e.g., "12-Aug-2025 • Tuesday"
+          date: dayLabel,
           time,
           committee,
           subject,
@@ -203,7 +170,6 @@ async function parseHouseWeeklyReact(html) {
     });
   });
 
-  // Deduplicate by date|time|committee
   const seen = new Set();
   return out.filter((r) => {
     const k = keyOf(r);
@@ -213,11 +179,7 @@ async function parseHouseWeeklyReact(html) {
   });
 }
 
-// SENATE parser for XHTML structure you provided
-// Each day is a table[width="98%"].grayborder within div[align="center"]
-// Row 0: "Tuesday, August 12"
-// Row 1: headers (Committee/Sub-Committee | Time & Venue | Agenda)
-// Rows 2+: data rows
+// Senate parser (XHTML)
 async function parseSenateSchedule(html) {
   const $ = cheerio.load(html);
   const out = [];
@@ -234,7 +196,7 @@ async function parseSenateSchedule(html) {
       const tds = $(trs[i]).find('td');
       if (tds.length < 3) continue;
 
-      const committeeCell = norm($(tds[0]).text());
+      const committeeCell = norm($(tds).text());
       if (/no committee hearing\/meeting/i.test(committeeCell)) continue;
 
       const timeVenueHtml = $(tds[1]).html() || '';
@@ -245,7 +207,7 @@ async function parseSenateSchedule(html) {
         .map((frag) => htmlToText(frag))
         .filter(Boolean);
 
-      const time = timeVenueParts[0] ? parseClock(timeVenueParts[0]) : '';
+      const time = timeVenueParts ? parseClock(timeVenueParts) : '';
       const venue = timeVenueParts.slice(1).join(' ').trim();
 
       const agendaParts = agendaHtml
@@ -278,6 +240,7 @@ async function parseSenateSchedule(html) {
 }
 
 async function main() {
+  // Define outDir BEFORE any use
   const outDir = path.join(__dirname, '..', 'output');
   await ensureDir(outDir);
 
@@ -291,13 +254,13 @@ async function main() {
     const { content, found } = await fetchWithBrowser(houseUrl, {
       storageFile: houseStorage,
       waitSelectors: [
-        'div.p-2.text-lg.font-semibold',                    // day header like "12-Aug-2025 • Tuesday"
-        'div.grid.rounded.border.p-2.md\\:grid-cols-2.mb-2' // meeting card container
+        'div.p-2.text-lg.font-semibold',
+        'div.grid.rounded.border.p-2.md\\:grid-cols-2.mb-2',
       ],
       extraWaitMs: 3000,
     });
 
-    // Optional: save raw HTML for debugging selector mismatches
+    // Optional debugging:
     // await fs.writeFile(path.join(outDir, 'house.html'), content || '', 'utf-8');
 
     if (found && content && content.includes('<html')) {
