@@ -1,0 +1,13 @@
+{
+"name": "ph-committee-schedules",
+"version": "1.0.0",
+"type": "module",
+"scripts": {
+"fetch": "node scripts/fetch.js"
+},
+"dependencies": {
+"cheerio": "^1.0.0",
+"pdf-parse": "^1.1.1",
+"playwright": "^1.45.0"
+}
+}
