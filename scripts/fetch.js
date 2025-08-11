@@ -160,7 +160,7 @@ async function parseSenateSchedule(html) {
           const tds = $(tr).find('td');
           if (tds.length >= 3) {
             const date = norm($(tds[0]).text());
-            const time = parseClock($(tds[1]).text()));
+            const time = parseClock($(tds[1]).text());
             const committee = norm($(tds[2]).text());
             const subject = tds[3] ? norm($(tds[3]).text()) : '';
             const venue = tds[4] ? norm($(tds[4]).text()) : '';
