@@ -261,7 +261,7 @@ async function main() {
     });
 
     // Optional debug: uncomment to inspect HTML the runner fetched
-    // await fs.writeFile(path.join(outDir, 'house.html'), content || '', 'utf-8');
+    await fs.writeFile(path.join(outDir, 'house.html'), content || '', 'utf-8');
 
     if (found && content && content.includes('<html')) {
       house = await parseHouseWeeklyReact(content);
