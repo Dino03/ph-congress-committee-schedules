@@ -38,17 +38,17 @@ function htmlToText(html) {
 
 // Fetchers
 async function fetchWithBrowser(url, { storageFile, waitSelectors = [], extraWaitMs = 0 } = {}) {
-  const browser = await chromium.launch({
-    headless: false, // try visible-like profile; adjust to true if needed
-    args: [
-      '--no-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--disable-blink-features=AutomationControlled',
-      '--disable-features=VizDisplayCompositor'
-    ]
-  });
 
+const browser = await chromium.launch({
+headless: true,
+args: [
+'--no-sandbox',
+'--disable-dev-shm-usage',
+'--disable-gpu',
+'--disable-blink-features=AutomationControlled',
+'--disable-features=VizDisplayCompositor'
+]
+});
   let contextOpts = {
     userAgent:
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
