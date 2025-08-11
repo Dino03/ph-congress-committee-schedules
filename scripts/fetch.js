@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import pdf from 'pdf-parse';
 import { chromium } from 'playwright';
 
