@@ -60,128 +60,130 @@ async function ensureDir(p) {
   await fs.mkdir(p, { recursive: true });
 }
 
-// Headless browser fetch (for House print-weekly which is behind Next.js/Cloudflare)
-async function fetchWithBrowser(url, { storageFile } = {}) {
+// HOUSE (Next.js client-rendered): fetch print-weekly and wait for rendered DOM
+let house = [];
+try {
+  // Use the week value you saw in the select: 255 = Aug 10–16, 2025
+  const WEEK = process.env.WEEK || '255';
+  const houseURL = `https://www.congress.gov.ph/committees/committee-meetings/print-weekly/?week=${encodeURIComponent(WEEK)}`;
+  const storageFile = path.join(outDir, 'house-storage-state.json');
+
   const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
   });
 
   let contextOpts = {
-    userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
     viewport: { width: 1366, height: 900 },
   };
-
-  // Load cookies/storage if provided
-  if (storageFile) {
-    try {
-      const state = await fs.readFile(storageFile, 'utf-8');
-      contextOpts.storageState = JSON.parse(state);
-    } catch {
-      // ignore missing
-    }
-  }
+  try {
+    const state = await fs.readFile(storageFile, 'utf-8');
+    contextOpts.storageState = JSON.parse(state);
+  } catch {}
 
   const context = await browser.newContext(contextOpts);
   const page = await context.newPage();
 
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
-  // Allow interstitials to clear, scripts to load
-  await page.waitForTimeout(6000);
+  await page.goto(houseURL, { waitUntil: 'domcontentloaded', timeout: 90000 });
+  // Let Cloudflare/Next settle and the app render
+  await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+  await page.waitForTimeout(4000);
 
-  // Wait for a schedule signal (table or known heading), but don't fail if not present
-  await page
-    .waitForSelector('table, text=Committee Meetings - Weekly Schedule', {
-      timeout: 20000,
-    })
-    .catch(() => {});
-
-  const content = await page.content();
-
-  // Persist cookies/storage state for subsequent runs
-  if (storageFile) {
-    const newState = await context.storageState();
-    await fs.writeFile(storageFile, JSON.stringify(newState), 'utf-8');
+  // Wait for the House-specific selectors that indicate the schedule rendered
+  const selCandidates = [
+    'div.p-2.text-lg.font-semibold',                           // day header like "12-Aug-2025 • Tuesday"
+    'div.grid.rounded.border.p-2.md\\:grid-cols-2.mb-2'        // meeting card container
+  ];
+  let found = false;
+  for (const sel of selCandidates) {
+    try {
+      await page.waitForSelector(sel, { timeout: 30000 });
+      found = true;
+      break;
+    } catch {}
   }
 
-  await browser.close();
-  return content;
-}
-
-// Direct HTTP via Playwright’s browser (Senate is static XHTML; headless browser fetch is robust enough)
-async function fetchSenateHTML(url) {
-  const browser = await chromium.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
-  });
-  const context = await browser.newContext({
-    userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
-    viewport: { width: 1280, height: 900 },
-  });
-  const page = await context.newPage();
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
-  // Give time for any CDN/banner content to load
-  await page.waitForTimeout(2000);
   const content = await page.content();
-  await browser.close();
-  return content;
-}
 
-// HOUSE: parse weekly print page (table with columns like Date | Time | Committee | Subject | Venue)
-async function parseHouseWeeklyPrint(html) {
+  // Save session for future runs
+  const storageState = await context.storageState();
+  await fs.writeFile(storageFile, JSON.stringify(storageState), 'utf-8');
+  await browser.close();
+
+  if (found && content && content.includes('<html')) {
+    house = await parseHouseWeeklyReact(content);
+  } else {
+    console.error('House: schedule did not render or no meetings for selected week.');
+  }
+} catch (e) {
+  console.error('House fetch failed:', e.message);
+}
+await fs.writeFile(path.join(outDir, 'house.json'), JSON.stringify(house, null, 2));
+
+
+// HOUSE parser for the React/Next structure you provided
+async function parseHouseWeeklyReact(html) {
   const $ = cheerio.load(html);
   const out = [];
 
-  // Parse any table that resembles a schedule table (has Date/Time/Committee columns or enough columns)
-  $('table').each((_, table) => {
-    const headers = $(table)
-      .find('th')
-      .map((__, th) => norm($(th).text()).toLowerCase())
-      .get();
-    const headerLine = headers.join('|');
-    const looksLikeSchedule =
-      headerLine.includes('date') &&
-      headerLine.includes('time') &&
-      headerLine.includes('committee');
+  // Each day has a header like "12-Aug-2025 • Tuesday"
+  const dayHeaders = $('div.p-2.text-lg.font-semibold');
 
-    if (looksLikeSchedule || headers.length === 0) {
-      $(table)
-        .find('tr')
-        .each((__, tr) => {
-          const tds = $(tr).find('td');
-          if (tds.length >= 3) {
-            const date = norm($(tds[0]).text());
-            const time = parseClock(norm($(tds[1]).text()));
-            const committee = norm($(tds[2]).text());
-            const subject = tds[3] ? norm($(tds[3]).text()) : '';
-            const venue = tds[4] ? norm($(tds[4]).text()) : '';
+  dayHeaders.each((_, el) => {
+    const dayLabel = norm($(el).text()); // e.g., "12-Aug-2025 • Tuesday"
 
-            if (date && time && committee) {
-              out.push({
-                date,
-                time,
-                committee,
-                subject,
-                venue,
-                source: 'House Weekly Print',
-              });
-            }
-          }
+    // The meeting cards follow within the same parent block until next day header
+    // We’ll traverse siblings until we hit another day header or a gap.
+    // Simpler approach: for each card under the same container with class grid rounded border...
+    const container = $(el).closest('.mb-5'); // day section wrapper (based on your snippet)
+    const cards = container.find('div.grid.rounded.border.p-2.md\\:grid-cols-2.mb-2');
+
+    cards.each((__, card) => {
+      const $card = $(card);
+
+      // Left column: committee name
+      const committee = norm(
+        $card.find('div.px-2.py-3.font-bold.text-blue-600').text()
+      );
+
+      // Right column: time (bold) and venue (next div)
+      const time = parseClock(
+        norm($card.find('div.grid.gap-1.px-2.py-3.text-blue-500 > div.font-bold').first().text())
+      );
+
+      const venue = norm(
+        $card.find('div.grid.gap-1.px-2.py-3.text-blue-500 > div').eq(1).text()
+      );
+
+      // Agenda: the full-width div after the two columns, with italic heading and text in a small paragraph
+      const subject = norm(
+        $card.find('div.md\\:col-span-2.rounded.bg-light.p-2 div.whitespace-pre-wrap').text()
+      );
+
+      if (dayLabel && time && committee) {
+        out.push({
+          date: dayLabel,     // keep the label as given; can be parsed to ISO if needed
+          time,               // normalized to "HH:MM AM/PM"
+          committee,
+          subject,
+          venue,
+          source: 'House Weekly Print'
         });
-    }
+      }
+    });
   });
 
-  // Deduplicate rows by date|time|committee
+  // Deduplicate by date|time|committee
   const seen = new Set();
-  return out.filter((r) => {
+  return out.filter(r => {
     const k = keyOf(r);
     if (seen.has(k)) return false;
     seen.add(k);
     return true;
   });
 }
+
 
 // SENATE: parse static XHTML weekly schedule
 // Structure: A header table with week/date and "AS OF", followed by per-day tables:
