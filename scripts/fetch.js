@@ -1,6 +1,6 @@
 // scripts/fetch.js
 // Fetch committee schedules from:
-// - House API (direct POST to list endpoint with captured headers/payload)
+// - House API (POST /hrep/api-v1/committee-schedule/list with captured headers/payload)
 // - Senate weekly XHTML page (static HTML)
 // Outputs: output/house.json, output/senate.json, plus output/house_api_debug.json (for inspection)
 //
@@ -29,7 +29,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.join(__dirname, '..', 'output');
 
-// Endpoints (House "list" endpoint confirmed working with POST and headers)
+// Endpoints
 const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list';
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
 
@@ -50,6 +50,8 @@ function htmlToText(html) {
 }
 
 // --------------- HTTP helpers (via Playwright request) ---------------
+// BUG FIX: When logging headers on error, Playwright returns a plain object from resp.headers()
+// so do NOT call .entries() on it.
 async function postJson(url, payload = {}, headers = {}) {
   const browser = await chromium.launch({
     headless: true,
@@ -71,8 +73,10 @@ async function postJson(url, payload = {}, headers = {}) {
     const status = resp.status();
     const text = await resp.text();
     if (status < 200 || status >= 300) {
-      const hdrs = Object.fromEntries(resp.headers().entries());
-      throw new Error(`HTTP ${status} headers=${JSON.stringify(hdrs)} body=${text.slice(0, 400)}`);
+      const hdrs = resp.headers(); // plain object
+      throw new Error(
+        `HTTP ${status} headers=${JSON.stringify(hdrs)} body=${text.slice(0, 400)}`
+      );
     }
     try {
       return JSON.parse(text);
@@ -170,9 +174,8 @@ async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
   // -------- House via public API (list endpoint) --------
-  // Confirmed headers and payload:
-  // Request payload: {"page":0,"limit":150,"congress":"19","filter":""}
-  // Headers include Referer, Origin, x-hrep-website-backend, UA, etc.
+  // Confirmed payload: {"page":0,"limit":150,"congress":"19","filter":""}
+  // Confirmed headers include Referer, Origin, x-hrep-website-backend, UA, etc.
   let house = [];
   try {
     const payload = {
@@ -182,6 +185,7 @@ async function main() {
       filter: ''
     };
 
+    // BUG AVOIDANCE: Use a realistic UA, include Referer/Origin/x-hrep header, and CORS/fetch hints.
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -216,7 +220,7 @@ async function main() {
       .map((it) => {
         // Fields from sample rows:
         // id, date (YYYY-MM-DD), time ("01:30 PM"), venue, agenda, comm_name (committee),
-        // datetime ("2025-08-12T13:30"), flags: published, cancelled, etc.
+        // datetime ("YYYY-MM-DDTHH:mm"), flags: published, cancelled, etc.
         const date = norm(it.date || '');
         const time = parseClock(norm(it.time || ''));
         const committee = norm(it.comm_name || '');
