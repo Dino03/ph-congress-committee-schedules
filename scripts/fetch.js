@@ -2,7 +2,11 @@
 // Fetch committee schedules from:
 // - House API (POST /hrep/api-v1/committee-schedule/list with captured headers/payload)
 // - Senate weekly XHTML page (static HTML)
-// Outputs: output/house.json, output/senate.json, plus output/house_api_debug.json (for inspection)
+// Outputs:
+//   - output/house.json
+//   - output/senate.json
+//   - output/house_api_debug.json (raw API envelope when available)
+//   - output/debug.log (diagnostics if a step fails or yields no rows)
 //
 // package.json (example):
 // {
@@ -28,12 +32,24 @@ import { chromium } from 'playwright';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.join(__dirname, '..', 'output');
+const DEBUG_LOG = path.join(OUTPUT_DIR, 'debug.log');
 
 // Endpoints
 const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list';
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
 
-// --------------- Utils ---------------
+// ---------------- Debug helpers ----------------
+async function appendDebug(line) {
+  try {
+    await fs.mkdir(OUTPUT_DIR, { recursive: true });
+    const stamp = new Date().toISOString();
+    await fs.appendFile(DEBUG_LOG, `[${stamp}] ${line}\n`, 'utf-8');
+  } catch {
+    // ignore debug write failures
+  }
+}
+
+// ---------------- Utils ----------------
 function norm(s) {
   if (typeof s !== 'string') return '';
   return s.replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
@@ -49,9 +65,8 @@ function htmlToText(html) {
   return norm($frag('div').text());
 }
 
-// --------------- HTTP helpers (via Playwright request) ---------------
-// BUG FIX: When logging headers on error, Playwright returns a plain object from resp.headers()
-// so do NOT call .entries() on it.
+// ---------------- HTTP helpers (Playwright request) ----------------
+// Note: resp.headers() returns an object (not a Headers instance). Do not call .entries().
 async function postJson(url, payload = {}, headers = {}) {
   const browser = await chromium.launch({
     headless: true,
@@ -61,6 +76,7 @@ async function postJson(url, payload = {}, headers = {}) {
     const context = await browser.newContext();
     const page = await context.newPage();
 
+    const startedAt = Date.now();
     const resp = await page.request.post(url, {
       headers: {
         Accept: 'application/json',
@@ -69,19 +85,33 @@ async function postJson(url, payload = {}, headers = {}) {
       },
       data: payload
     });
+    const ms = Date.now() - startedAt;
 
     const status = resp.status();
     const text = await resp.text();
+
     if (status < 200 || status >= 300) {
-      const hdrs = resp.headers(); // plain object
-      throw new Error(
-        `HTTP ${status} headers=${JSON.stringify(hdrs)} body=${text.slice(0, 400)}`
+      const hdrs = resp.headers();
+      await appendDebug(
+        `House API POST ${url} status=${status} durationMs=${ms} headers=${JSON.stringify(
+          hdrs
+        )} bodyHead=${text.slice(0, 400)}`
       );
+      throw new Error(`HTTP ${status}`);
     }
+
+    // Try parse JSON; if fails, log head
     try {
-      return JSON.parse(text);
+      const json = JSON.parse(text);
+      await appendDebug(
+        `House API POST ${url} status=${status} durationMs=${ms} keys=${Object.keys(json).join(',')}`
+      );
+      return json;
     } catch {
-      throw new Error(`Non-JSON response: ${text.slice(0, 400)}`);
+      await appendDebug(
+        `House API POST ${url} status=${status} durationMs=${ms} nonJSONHead=${text.slice(0, 400)}`
+      );
+      throw new Error('Non-JSON response');
     }
   } finally {
     await browser.close();
@@ -100,15 +130,19 @@ async function fetchSenateHTML(url) {
       viewport: { width: 1280, height: 900 }
     });
     const page = await context.newPage();
+    const startedAt = Date.now();
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
     await page.waitForTimeout(1500);
-    return await page.content();
+    const html = await page.content();
+    const ms = Date.now() - startedAt;
+    await appendDebug(`Senate GET ${url} loaded durationMs=${ms} htmlLen=${html?.length || 0}`);
+    return html;
   } finally {
     await browser.close();
   }
 }
 
-// --------------- Parsers ---------------
+// ---------------- Parsers ----------------
 
 // Senate XHTML weekly schedule parser
 async function parseSenateSchedule(html) {
@@ -169,9 +203,10 @@ async function parseSenateSchedule(html) {
   });
 }
 
-// --------------- Main ---------------
+// ---------------- Main ----------------
 async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
+  await fs.writeFile(DEBUG_LOG, '', 'utf-8'); // reset debug log each run
 
   // -------- House via public API (list endpoint) --------
   // Confirmed payload: {"page":0,"limit":150,"congress":"19","filter":""}
@@ -185,7 +220,6 @@ async function main() {
       filter: ''
     };
 
-    // BUG AVOIDANCE: Use a realistic UA, include Referer/Origin/x-hrep header, and CORS/fetch hints.
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -203,7 +237,7 @@ async function main() {
 
     const apiResp = await postJson(HOUSE_API, payload, headers);
 
-    // Save raw API response for inspection and field mapping
+    // Save raw API response envelope for inspection and field mapping
     await fs.writeFile(
       path.join(OUTPUT_DIR, 'house_api_debug.json'),
       JSON.stringify(apiResp, null, 2),
@@ -212,15 +246,15 @@ async function main() {
 
     // Envelope per sample: { status, success, data: { pageCount, count, rows: [...] } }
     const rows = Array.isArray(apiResp?.data?.rows) ? apiResp.data.rows : [];
+    await appendDebug(`House parsed rows=${rows.length}`);
 
-    // Optional HTML entity decode for common cases (e.g., &amp;)
+    // HTML entity decode for common cases (e.g., &amp;)
     const decode = (s) => norm(s).replaceAll('&amp;', '&');
 
-    const houseRows = rows
+    const mapped = rows
       .map((it) => {
         // Fields from sample rows:
-        // id, date (YYYY-MM-DD), time ("01:30 PM"), venue, agenda, comm_name (committee),
-        // datetime ("YYYY-MM-DDTHH:mm"), flags: published, cancelled, etc.
+        // date (YYYY-MM-DD), time ("01:30 PM"), venue, agenda, comm_name (committee)
         const date = norm(it.date || '');
         const time = parseClock(norm(it.time || ''));
         const committee = norm(it.comm_name || '');
@@ -246,16 +280,26 @@ async function main() {
 
     // De-duplicate by date|time|committee
     const seen = new Set();
-    house = houseRows.filter((r) => {
+    house = mapped.filter((r) => {
       const k = `${r.date}|${r.time}|${r.committee}`.toLowerCase();
       if (seen.has(k)) return false;
       seen.add(k);
       return true;
     });
+
+    if (house.length === 0) {
+      await appendDebug('House produced 0 rows after mapping/dedup.');
+    }
   } catch (e) {
-    console.error('House API fetch failed:', e.message);
+    await appendDebug(`House error: ${e?.message || e}`);
+    console.error('House API fetch failed:', e.message || e);
   }
-  await fs.writeFile(path.join(OUTPUT_DIR, 'house.json'), JSON.stringify(house, null, 2));
+
+  try {
+    await fs.writeFile(path.join(OUTPUT_DIR, 'house.json'), JSON.stringify(house, null, 2));
+  } catch (e) {
+    await appendDebug(`House write error: ${e?.message || e}`);
+  }
 
   // -------- Senate (XHTML) --------
   let senate = [];
@@ -263,16 +307,33 @@ async function main() {
     const html = await fetchSenateHTML(SENATE_SCHED_URL);
     if (html && html.includes('<html')) {
       senate = await parseSenateSchedule(html);
+      await appendDebug(`Senate parsed rows=${senate.length}`);
+      if (senate.length === 0) {
+        await appendDebug('Senate produced 0 rows after parsing.');
+      }
     } else {
+      await appendDebug('Senate: missing or invalid HTML.');
       console.error('Senate schedule: blocked or no HTML content.');
     }
   } catch (e) {
-    console.error('Senate fetch failed:', e.message);
+    await appendDebug(`Senate error: ${e?.message || e}`);
+    console.error('Senate fetch failed:', e.message || e);
   }
-  await fs.writeFile(path.join(OUTPUT_DIR, 'senate.json'), JSON.stringify(senate, null, 2));
+
+  try {
+    await fs.writeFile(path.join(OUTPUT_DIR, 'senate.json'), JSON.stringify(senate, null, 2));
+  } catch (e) {
+    await appendDebug(`Senate write error: ${e?.message || e}`);
+  }
+
+  // -------- Final sanity debug --------
+  if ((house?.length || 0) === 0 && (senate?.length || 0) === 0) {
+    await appendDebug('Both House and Senate yielded 0 rows. Check network, headers, or site availability.');
+  }
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
+  await appendDebug(`Fatal error: ${err?.message || err}`);
   console.error(err);
   process.exit(1);
 });
