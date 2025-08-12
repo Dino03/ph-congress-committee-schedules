@@ -208,98 +208,93 @@ async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(DEBUG_LOG, '', 'utf-8'); // reset debug log each run
 
-  // -------- House via public API (list endpoint) --------
-  // Confirmed payload: {"page":0,"limit":150,"congress":"19","filter":""}
-  // Confirmed headers include Referer, Origin, x-hrep-website-backend, UA, etc.
-  let house = [];
-  try {
-    const payload = {
-      page: 0,
-      limit: 150,
-      congress: '19',
-      filter: ''
-    };
+  // -------- House via public API (list endpoint) with retries --------
+let house = [];
+try {
+const payload = { page: 0, limit: 150, congress: '19', filter: '' };
+const headers = {
+Accept: 'application/json',
+'Content-Type': 'application/json',
+Referer: 'https://www.congress.gov.ph/',
+Origin: 'https://www.congress.gov.ph',
+'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
+'Accept-Language': 'en-US,en;q=0.9',
+'User-Agent':
+'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
+'X-Requested-With': 'XMLHttpRequest',
+'Sec-Fetch-Site': 'cross-site',
+'Sec-Fetch-Mode': 'cors',
+'Sec-Fetch-Dest': 'empty'
+};
 
-    const headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Referer: 'https://www.congress.gov.ph/',
-      Origin: 'https://www.congress.gov.ph',
-      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
-      'X-Requested-With': 'XMLHttpRequest',
-      'Sec-Fetch-Site': 'cross-site',
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Dest': 'empty'
-    };
+const delays = [500, 1500,];
+let apiResp = null;
+let lastErr = null;
 
-    const apiResp = await postJson(HOUSE_API, payload, headers);
+for (let i = 0; i < delays.length; i++) {
+try {
+apiResp = await postJson(HOUSE_API, payload, headers);
+break; // success
+} catch (e) {
+lastErr = e;
+await appendDebug(House attempt ${i + 1} failed: ${e?.message || e});
+if (i < delays.length - 1) {
+await appendDebug(House retrying after ${delays[i]}ms...);
+await new Promise((r) => setTimeout(r, delays[i]));
+}
+}
+}
 
-    // Save raw API response envelope for inspection and field mapping
-    await fs.writeFile(
-      path.join(OUTPUT_DIR, 'house_api_debug.json'),
-      JSON.stringify(apiResp, null, 2),
-      'utf-8'
-    );
+if (!apiResp) {
+throw lastErr || new Error('House API failed after retries');
+}
 
-    // Envelope per sample: { status, success, data: { pageCount, count, rows: [...] } }
-    const rows = Array.isArray(apiResp?.data?.rows) ? apiResp.data.rows : [];
-    await appendDebug(`House parsed rows=${rows.length}`);
+await fs.writeFile(
+path.join(OUTPUT_DIR, 'house_api_debug.json'),
+JSON.stringify(apiResp, null, 2),
+'utf-8'
+);
 
-    // HTML entity decode for common cases (e.g., &amp;)
-    const decode = (s) => norm(s).replaceAll('&amp;', '&');
+const rows = Array.isArray(apiResp?.data?.rows) ? apiResp.data.rows : [];
+await appendDebug(House parsed rows=${rows.length});
 
-    const mapped = rows
-      .map((it) => {
-        // Fields from sample rows:
-        // date (YYYY-MM-DD), time ("01:30 PM"), venue, agenda, comm_name (committee)
-        const date = norm(it.date || '');
-        const time = parseClock(norm(it.time || ''));
-        const committee = norm(it.comm_name || '');
-        const subject = decode(it.agenda || '');
-        const venue = decode(it.venue || '');
+const decode = (s) =>
+norm(s)
+.replaceAll('&', '&')
+.replaceAll('<', '<')
+.replaceAll('>', '>')
+.replaceAll('"', '"')
+.replaceAll(''', "'");
 
-        // Optional: skip cancelled items
-        // if (it.cancelled) return null;
+const mapped = rows
+.map((it) => {
+const date = norm(it.date || '');
+const time = parseClock(norm(it.time || ''));
+const committee = norm(it.comm_name || '');
+const subject = decode(it.agenda || '');
+const venue = decode(it.venue || '');
+if (date && time && committee) {
+return { date, time, committee, subject, venue, source: 'House API (list)' };
+}
+return null;
+})
+.filter(Boolean);
 
-        if (date && time && committee) {
-          return {
-            date,
-            time,
-            committee,
-            subject,
-            venue,
-            source: 'House API (list)'
-          };
-        }
-        return null;
-      })
-      .filter(Boolean);
+const seen = new Set();
+house = mapped.filter((r) => {
+const k = ${r.date}|${r.time}|${r.committee}.toLowerCase();
+if (seen.has(k)) return false;
+seen.add(k);
+return true;
+});
 
-    // De-duplicate by date|time|committee
-    const seen = new Set();
-    house = mapped.filter((r) => {
-      const k = `${r.date}|${r.time}|${r.committee}`.toLowerCase();
-      if (seen.has(k)) return false;
-      seen.add(k);
-      return true;
-    });
-
-    if (house.length === 0) {
-      await appendDebug('House produced 0 rows after mapping/dedup.');
-    }
-  } catch (e) {
-    await appendDebug(`House error: ${e?.message || e}`);
-    console.error('House API fetch failed:', e.message || e);
-  }
-
-  try {
-    await fs.writeFile(path.join(OUTPUT_DIR, 'house.json'), JSON.stringify(house, null, 2));
-  } catch (e) {
-    await appendDebug(`House write error: ${e?.message || e}`);
-  }
+if (house.length === 0) {
+await appendDebug('House produced 0 rows after mapping/dedup.');
+}
+} catch (e) {
+await appendDebug(House error: ${e?.message || e});
+console.error('House API fetch failed:', e.message || e);
+}
 
   // -------- Senate (XHTML) --------
   let senate = [];
