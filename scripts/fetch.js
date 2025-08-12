@@ -1,8 +1,8 @@
 // scripts/fetch.js
 // Fetch committee schedules from:
-// - House API (direct POST; avoids Turnstile by calling JSON endpoint)
+// - House API (direct POST to list endpoint with captured headers/payload)
 // - Senate weekly XHTML page (static HTML)
-// Outputs: output/house.json, output/senate.json, and output/house_api_debug.json (for inspection)
+// Outputs: output/house.json, output/senate.json, plus output/house_api_debug.json (for inspection)
 //
 // package.json (example):
 // {
@@ -29,17 +29,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.join(__dirname, '..', 'output');
 
-// Endpoints
-const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/weekly-schedule';
+// Endpoints (House "list" endpoint confirmed working with POST and headers)
+const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list';
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
 
 // --------------- Utils ---------------
 function norm(s) {
   if (typeof s !== 'string') return '';
   return s.replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
-}
-function keyOf(r) {
-  return `${r.date}|${r.time}|${r.committee}`.toLowerCase();
 }
 function parseClock(s) {
   if (!s) return '';
@@ -61,6 +58,7 @@ async function postJson(url, payload = {}, headers = {}) {
   try {
     const context = await browser.newContext();
     const page = await context.newPage();
+
     const resp = await page.request.post(url, {
       headers: {
         Accept: 'application/json',
@@ -69,10 +67,10 @@ async function postJson(url, payload = {}, headers = {}) {
       },
       data: payload
     });
+
     const status = resp.status();
     const text = await resp.text();
     if (status < 200 || status >= 300) {
-      // Surface response headers/body snippet for easier debugging in CI logs
       const hdrs = Object.fromEntries(resp.headers().entries());
       throw new Error(`HTTP ${status} headers=${JSON.stringify(hdrs)} body=${text.slice(0, 400)}`);
     }
@@ -157,9 +155,10 @@ async function parseSenateSchedule(html) {
     }
   });
 
+  // Deduplicate by date|time|committee
   const seen = new Set();
   return out.filter((r) => {
-    const k = keyOf(r);
+    const k = `${r.date}|${r.time}|${r.committee}`.toLowerCase();
     if (seen.has(k)) return false;
     seen.add(k);
     return true;
@@ -170,14 +169,19 @@ async function parseSenateSchedule(html) {
 async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-  // -------- House via public API (header-hardened) --------
+  // -------- House via public API (list endpoint) --------
+  // Confirmed headers and payload:
+  // Request payload: {"page":0,"limit":150,"congress":"19","filter":""}
+  // Headers include Referer, Origin, x-hrep-website-backend, UA, etc.
   let house = [];
   try {
-    // If the API later requires a specific payload (e.g., { week: 255 } or a date range),
-    // update this object and consider reading WEEK from process.env.
-    const payload = {};
+    const payload = {
+      page: 0,
+      limit: 150,
+      congress: '19',
+      filter: ''
+    };
 
-    // Headers observed to work from a browser; expanded with realistic UA and fetch hints.
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -186,7 +190,7 @@ async function main() {
       'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
       'Accept-Language': 'en-US,en;q=0.9',
       'User-Agent':
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
       'X-Requested-With': 'XMLHttpRequest',
       'Sec-Fetch-Site': 'cross-site',
       'Sec-Fetch-Mode': 'cors',
@@ -202,17 +206,26 @@ async function main() {
       'utf-8'
     );
 
-    // Expected envelope: { status, success, data, message }
-    const rows = Array.isArray(apiResp?.data) ? apiResp.data : [];
+    // Envelope per sample: { status, success, data: { pageCount, count, rows: [...] } }
+    const rows = Array.isArray(apiResp?.data?.rows) ? apiResp.data.rows : [];
 
-    // Map conservatively; adjust keys after inspecting house_api_debug.json
-    house = rows
+    // Optional HTML entity decode for common cases (e.g., &amp;)
+    const decode = (s) => norm(s).replaceAll('&amp;', '&');
+
+    const houseRows = rows
       .map((it) => {
-        const date = norm(it.date || it.day || it.scheduleDate || '');
-        const time = parseClock(norm(it.time || it.startTime || ''));
-        const committee = norm(it.committee || it.committeeName || '');
-        const subject = norm(it.agenda || it.subject || it.details || '');
-        const venue = norm(it.venue || it.location || '');
+        // Fields from sample rows:
+        // id, date (YYYY-MM-DD), time ("01:30 PM"), venue, agenda, comm_name (committee),
+        // datetime ("2025-08-12T13:30"), flags: published, cancelled, etc.
+        const date = norm(it.date || '');
+        const time = parseClock(norm(it.time || ''));
+        const committee = norm(it.comm_name || '');
+        const subject = decode(it.agenda || '');
+        const venue = decode(it.venue || '');
+
+        // Optional: skip cancelled items
+        // if (it.cancelled) return null;
+
         if (date && time && committee) {
           return {
             date,
@@ -220,12 +233,21 @@ async function main() {
             committee,
             subject,
             venue,
-            source: 'House API'
+            source: 'House API (list)'
           };
         }
         return null;
       })
       .filter(Boolean);
+
+    // De-duplicate by date|time|committee
+    const seen = new Set();
+    house = houseRows.filter((r) => {
+      const k = `${r.date}|${r.time}|${r.committee}`.toLowerCase();
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
   } catch (e) {
     console.error('House API fetch failed:', e.message);
   }
