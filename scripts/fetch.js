@@ -1,11 +1,13 @@
 // scripts/fetch.js
 // Fetch committee schedules from:
-// - House main API (bypasses Turnstile by calling the JSON endpoint directly)
-// - Senate weekly XHTML page
-// Outputs: output/house.json, output/senate.json, plus optional debug JSON for House API
+// - House API (direct POST; avoids Turnstile by calling JSON endpoint)
+// - Senate weekly XHTML page (static HTML)
+// Outputs: output/house.json, output/senate.json, and output/house_api_debug.json (for inspection)
 //
-// Requirements (package.json):
+// package.json (example):
 // {
+//   "name": "ph-committee-schedules",
+//   "version": "1.0.0",
 //   "type": "module",
 //   "scripts": { "fetch": "node scripts/fetch.js" },
 //   "dependencies": {
@@ -14,7 +16,7 @@
 //   }
 // }
 //
-// In CI, ensure Chromium is installed:
+// In CI, ensure Chromium is available:
 //   npx playwright install --with-deps chromium
 
 import fs from 'fs/promises';
@@ -50,7 +52,7 @@ function htmlToText(html) {
   return norm($frag('div').text());
 }
 
-// --------------- Simple HTTP helpers via Playwright request ---------------
+// --------------- HTTP helpers (via Playwright request) ---------------
 async function postJson(url, payload = {}, headers = {}) {
   const browser = await chromium.launch({
     headless: true,
@@ -70,7 +72,9 @@ async function postJson(url, payload = {}, headers = {}) {
     const status = resp.status();
     const text = await resp.text();
     if (status < 200 || status >= 300) {
-      throw new Error(`HTTP ${status} ${text}`);
+      // Surface response headers/body snippet for easier debugging in CI logs
+      const hdrs = Object.fromEntries(resp.headers().entries());
+      throw new Error(`HTTP ${status} headers=${JSON.stringify(hdrs)} body=${text.slice(0, 400)}`);
     }
     try {
       return JSON.parse(text);
@@ -166,22 +170,32 @@ async function parseSenateSchedule(html) {
 async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-  // -------- House via public API (no auth token needed per captured headers) --------
-  // From your DevTools capture, the POST succeeds with these headers and a tiny body.
-  // If you later observe a specific payload (e.g., { week: 255 } or date range),
-  // update "payload" accordingly and consider exposing WEEK via env var.
+  // -------- House via public API (header-hardened) --------
   let house = [];
   try {
-    const payload = {}; // adjust if API expects e.g., { week: 255 }
+    // If the API later requires a specific payload (e.g., { week: 255 } or a date range),
+    // update this object and consider reading WEEK from process.env.
+    const payload = {};
+
+    // Headers observed to work from a browser; expanded with realistic UA and fetch hints.
     const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       Referer: 'https://www.congress.gov.ph/',
       Origin: 'https://www.congress.gov.ph',
-      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1'
+      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Sec-Fetch-Site': 'cross-site',
+      'Sec-Fetch-Mode': 'cors',
+      'Sec-Fetch-Dest': 'empty'
     };
 
     const apiResp = await postJson(HOUSE_API, payload, headers);
 
-    // Optional: save raw API response for inspection and field mapping
+    // Save raw API response for inspection and field mapping
     await fs.writeFile(
       path.join(OUTPUT_DIR, 'house_api_debug.json'),
       JSON.stringify(apiResp, null, 2),
