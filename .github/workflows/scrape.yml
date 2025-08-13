@@ -27,8 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm install  # Use npm install instead of npm ci
 
-      - name: Install Playwright (Chromium only)
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright browsers
+        run: npx playwright-core install chromium
+
 
       - name: Run scraper
         run: npm run fetch
