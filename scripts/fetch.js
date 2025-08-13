@@ -1,6 +1,6 @@
 // scripts/fetch.js
 // Fetch committee schedules from:
-// - House API (POST /hrep/api-v1/committee-schedule/list with captured headers/payload)
+// - House API (POST /hrep/api-v1/committee-schedule/list with exact browser headers)
 // - Senate weekly XHTML page (static HTML)
 // Outputs:
 //   - output/house.json
@@ -69,7 +69,6 @@ async function postJson(url, payload = {}, headers = {}) {
     const startedAt = Date.now();
     const resp = await page.request.post(url, {
       headers: {
-        Accept: 'application/json',
         'Content-Type': 'application/json',
         ...headers
       },
@@ -194,26 +193,27 @@ async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(DEBUG_LOG, '', 'utf-8'); // reset debug log each run
 
-  // -------- House via public API (list endpoint) with retries --------
+  // -------- House via public API (exact browser headers) --------
   let house = [];
   try {
     // Captured working payload
     const payload = { page: 0, limit: 150, congress: '19', filter: '' };
 
-    // Captured working headers (+ realistic UA and fetch hints)
+    // Exact headers from successful browser request (August 13, 2025)
     const headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Referer: 'https://www.congress.gov.ph/',
+      Accept: '*/*',
+      'Accept-Language': 'en-US,en;q=0.5',
       Origin: 'https://www.congress.gov.ph',
-      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
-      'X-Requested-With': 'XMLHttpRequest',
+      'Sec-GPC': '1',
+      'Sec-Fetch-Dest': 'empty',
+      'Sec-Fetch-Mode': 'no-cors',
       'Sec-Fetch-Site': 'cross-site',
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Dest': 'empty'
+      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
+      Referer: 'https://www.congress.gov.ph/',
+      Priority: 'u=4',
+      Pragma: 'no-cache',
+      'Cache-Control': 'no-cache',
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0'
     };
 
     // Simple backoff retry for transient 502/5xx
