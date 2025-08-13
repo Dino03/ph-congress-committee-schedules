@@ -1,12 +1,12 @@
 // scripts/fetch.js
 // Fetch committee schedules from:
-// - House API (POST /hrep/api-v1/committee-schedule/list with exact browser headers)
+// - House API (POST /hrep/api-v1/committee-schedule/list with exact browser headers + debug)
 // - Senate weekly XHTML page (static HTML)
 // Outputs:
 //   - output/house.json
 //   - output/senate.json
 //   - output/house_api_debug.json (raw API envelope when available)
-//   - output/debug.log (diagnostics if a step fails or yields no rows)
+//   - output/debug.log (detailed diagnostics for debugging)
 //
 // In CI, ensure Chromium is available:
 //   npx playwright install --with-deps chromium
@@ -55,8 +55,7 @@ function htmlToText(html) {
   return norm($frag('div').text());
 }
 
-// ---------------- HTTP helpers (Playwright request) ----------------
-// Note: resp.headers() returns an object (not a Headers instance). Do not call .entries().
+// ---------------- HTTP helpers (Playwright request with enhanced debug) ----------------
 async function postJson(url, payload = {}, headers = {}) {
   const browser = await chromium.launch({
     headless: true,
@@ -67,6 +66,8 @@ async function postJson(url, payload = {}, headers = {}) {
     const page = await context.newPage();
 
     const startedAt = Date.now();
+    await appendDebug(`Sending POST to ${url}`);
+    
     const resp = await page.request.post(url, {
       headers: {
         'Content-Type': 'application/json',
@@ -78,9 +79,10 @@ async function postJson(url, payload = {}, headers = {}) {
 
     const status = resp.status();
     const text = await resp.text();
+    await appendDebug(`POST response: status=${status}, contentLength=${text.length}, duration=${ms}ms`);
 
     if (status < 200 || status >= 300) {
-      const hdrs = resp.headers(); // plain object of headers
+      const hdrs = resp.headers();
       await appendDebug(
         `House API POST ${url} status=${status} durationMs=${ms} headers=${JSON.stringify(
           hdrs
@@ -92,7 +94,7 @@ async function postJson(url, payload = {}, headers = {}) {
     try {
       const json = JSON.parse(text);
       await appendDebug(
-        `House API POST ${url} status=${status} durationMs=${ms} keys=${Object.keys(json).join(',')}`
+        `House API POST ${url} status=${status} durationMs=${ms} keys=${Object.keys(json).join(',')} dataType=${typeof json.data}`
       );
       return json;
     } catch {
@@ -193,13 +195,14 @@ async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(DEBUG_LOG, '', 'utf-8'); // reset debug log each run
 
-  // -------- House via public API (exact browser headers) --------
+  // -------- House via public API (exact browser headers with comprehensive debug) --------
   let house = [];
   try {
     // Captured working payload
     const payload = { page: 0, limit: 150, congress: '19', filter: '' };
+    await appendDebug(`House payload: ${JSON.stringify(payload)}`);
 
-    // Exact headers from successful browser request (August 13, 2025)
+    // Exact headers from successful browser request
     const headers = {
       Accept: '*/*',
       'Accept-Language': 'en-US,en;q=0.5',
@@ -215,14 +218,16 @@ async function main() {
       'Cache-Control': 'no-cache',
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0'
     };
+    await appendDebug(`House headers count: ${Object.keys(headers).length}`);
 
-    // Simple backoff retry for transient 502/5xx
+    // Simple backoff retry for transient errors
     const delays = [500, 1500, 3500];
     let apiResp = null;
     let lastErr = null;
 
     for (let i = 0; i < delays.length; i++) {
       try {
+        await appendDebug(`House attempt ${i + 1} starting...`);
         apiResp = await postJson(HOUSE_API, payload, headers);
         await appendDebug(`House attempt ${i + 1} succeeded`);
         break;
@@ -241,18 +246,32 @@ async function main() {
       throw lastErr || new Error('House API failed after retries');
     }
 
-    // Save raw API response envelope for inspection and field mapping
+    // Log response structure
+    await appendDebug(`House API response keys: ${Object.keys(apiResp).join(',')}`);
+    await appendDebug(`House API status: ${apiResp.status}, success: ${apiResp.success}`);
+    
+    if (apiResp.data) {
+      await appendDebug(`House API data keys: ${Object.keys(apiResp.data).join(',')}`);
+      await appendDebug(`House API pageCount: ${apiResp.data.pageCount}, count: ${apiResp.data.count}`);
+    }
+
+    // Save raw API response envelope for inspection
     await fs.writeFile(
       path.join(OUTPUT_DIR, 'house_api_debug.json'),
       JSON.stringify(apiResp, null, 2),
       'utf-8'
     );
 
-    // Envelope per sample: { status, success, data: { pageCount, count, rows: [...] } }
+    // Parse response
     const rows = Array.isArray(apiResp?.data?.rows) ? apiResp.data.rows : [];
-    await appendDebug(`House parsed rows=${rows.length}`);
+    await appendDebug(`House raw rows count: ${rows.length}`);
+    
+    if (rows.length > 0) {
+      await appendDebug(`House first row keys: ${Object.keys(rows[0]).join(',')}`);
+      await appendDebug(`House first row sample: date="${rows[0].date}", time="${rows[0].time}", comm_name="${rows[0].comm_name}", cancelled=${rows[0].cancelled}`);
+    }
 
-    // Expanded decode for common HTML entities
+    // Decode HTML entities
     const decode = (s) =>
       norm(s)
         .replaceAll('&amp;', '&')
@@ -261,37 +280,68 @@ async function main() {
         .replaceAll('&quot;', '"')
         .replaceAll('&#39;', "'");
 
-    const mapped = rows
-      .map((it) => {
-        // Fields from sample: date (YYYY-MM-DD), time ("01:30 PM"), venue, agenda, comm_name (committee)
-        const date = norm(it.date || '');
-        const time = parseClock(norm(it.time || ''));
-        const committee = norm(it.comm_name || '');
-        const subject = decode(it.agenda || '');
-        const venue = decode(it.venue || '');
+    // Map and filter with detailed logging
+    let validCount = 0;
+    let invalidCount = 0;
+    let cancelledCount = 0;
 
-        // Optional: skip cancelled items
-        // if (it.cancelled) return null;
+    const mapped = [];
+    for (let index = 0; index < rows.length; index++) {
+      const it = rows[index];
+      
+      // Log first few items for debugging
+      if (index < 3) {
+        await appendDebug(`House row ${index}: date="${it.date}", time="${it.time}", comm_name="${it.comm_name}", cancelled=${it.cancelled}`);
+      }
 
-        if (date && time && committee) {
-          return { date, time, committee, subject, venue, source: 'House API (list)' };
-        }
-        return null;
-      })
-      .filter(Boolean);
+      const date = norm(it.date || '');
+      const time = parseClock(norm(it.time || ''));
+      const committee = norm(it.comm_name || '');
+      const subject = decode(it.agenda || '');
+      const venue = decode(it.venue || '');
 
-    // De-duplicate by date|time|committee
+      // Count cancelled items
+      if (it.cancelled) {
+        cancelledCount++;
+      }
+
+      // Check validation
+      if (!date && index < 5) await appendDebug(`House row ${index}: missing date`);
+      if (!time && index < 5) await appendDebug(`House row ${index}: missing time`);  
+      if (!committee && index < 5) await appendDebug(`House row ${index}: missing committee`);
+
+      if (date && time && committee) {
+        validCount++;
+        mapped.push({ date, time, committee, subject, venue, source: 'House API (list)' });
+      } else {
+        invalidCount++;
+      }
+    }
+
+    await appendDebug(`House mapping: ${validCount} valid, ${invalidCount} invalid, ${cancelledCount} cancelled`);
+
+    // De-duplicate
     const seen = new Set();
+    let dupCount = 0;
     house = mapped.filter((r) => {
       const k = `${r.date}|${r.time}|${r.committee}`.toLowerCase();
-      if (seen.has(k)) return false;
+      if (seen.has(k)) {
+        dupCount++;
+        return false;
+      }
       seen.add(k);
       return true;
     });
 
-    if (house.length === 0) {
+    await appendDebug(`House deduplication: ${dupCount} duplicates removed, ${house.length} final count`);
+
+    if (house.length > 0) {
+      await appendDebug(`House final first item: ${JSON.stringify(house[0])}`);
+      await appendDebug(`House date range: ${house[0].date} to ${house[house.length-1].date}`);
+    } else {
       await appendDebug('House produced 0 rows after mapping/dedup.');
     }
+
   } catch (e) {
     await appendDebug(`House error: ${e?.message || e}`);
     console.error('House API fetch failed:', e.message || e);
@@ -299,6 +349,7 @@ async function main() {
 
   try {
     await fs.writeFile(path.join(OUTPUT_DIR, 'house.json'), JSON.stringify(house, null, 2));
+    await appendDebug(`House JSON written: ${house.length} items`);
   } catch (e) {
     await appendDebug(`House write error: ${e?.message || e}`);
   }
