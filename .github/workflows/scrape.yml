@@ -1,49 +1,75 @@
-# .github/workflows/scrape.yml
-name: Scrape Committee Schedules
+name: Fetch Committee Schedules
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 2 * * 1-5'
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  workflow_dispatch:     # Allow manual triggers
 
 permissions:
   contents: write
 
 jobs:
-  scrape:
+  fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          # Remove cache: npm since there's no package-lock.json
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install  # Use npm install instead of npm ci
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright-core install chromium
+    - name: Install Playwright browsers
+      run: npx playwright install chromium
 
+    - name: Run scraper
+      run: npm run fetch
 
-      - name: Run scraper
-        run: npm run fetch
+    - name: Verify output and commit
+      run: |
+        echo "=== Output files ==="
+        ls -la output/
+        echo ""
+        echo "=== House data sample ==="
+        head -5 output/house.json 2>/dev/null || echo "house.json missing"
+        echo ""
+        echo "=== Senate data ==="
+        cat output/senate.json 2>/dev/null || echo "senate.json missing"
+        echo ""
+        echo "=== Debug log tail ==="
+        tail -5 output/debug.log 2>/dev/null || echo "debug.log missing"
+        echo ""
+        
+        echo "=== Git status ==="
+        git status
+        echo ""
+        
+        echo "=== Configuring git ==="
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+        echo "=== Adding files ==="
+        git add output/ -v
+        
+        if git diff --staged --quiet; then
+          echo "✅ No changes to commit - data is already up to date"
+        else
+          echo "✅ Committing changes..."
+          git commit -m "Update committee schedules $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
+        fi
 
-      - name: Commit and push updated data
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/*.json output/*.html 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "chore: update committee schedules"
-            git push
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload artifacts (for debugging)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: scraper-output
+        path: output/
