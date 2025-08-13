@@ -1,6 +1,6 @@
 // scripts/fetch.js
 // Fetch committee schedules from:
-// - House API (POST /hrep/api-v1/committee-schedule/list with exact browser headers + debug)
+// - House API (POST /hrep/api-v1/committee-schedule/list with exact browser headers + comprehensive debug)
 // - Senate weekly XHTML page (static HTML)
 // Outputs:
 //   - output/house.json
@@ -19,10 +19,23 @@ import { fileURLToPath } from 'url';
 import * as cheerio from 'cheerio';
 import { chromium } from 'playwright';
 
+console.log('[start] fetch.js launched');
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.join(__dirname, '..', 'output');
 const DEBUG_LOG = path.join(OUTPUT_DIR, 'debug.log');
+
+console.log('[paths]', { OUTPUT_DIR, DEBUG_LOG });
+
+// Early initialization
+try {
+  await fs.mkdir(OUTPUT_DIR, { recursive: true });
+  await fs.writeFile(DEBUG_LOG, '[init]\n', 'utf-8');
+  console.log('[init] output dir ready');
+} catch (e) {
+  console.error('[init-fail] cannot create output dir/log', e?.stack || e);
+}
 
 // Endpoints
 const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list';
@@ -34,8 +47,8 @@ async function appendDebug(line) {
     await fs.mkdir(OUTPUT_DIR, { recursive: true });
     const stamp = new Date().toISOString();
     await fs.appendFile(DEBUG_LOG, `[${stamp}] ${line}\n`, 'utf-8');
-  } catch {
-    // ignore debug write failures
+  } catch (e) {
+    console.error('[appendDebug-fail]', e?.message || e);
   }
 }
 
@@ -55,18 +68,33 @@ function htmlToText(html) {
   return norm($frag('div').text());
 }
 
-// ---------------- HTTP helpers (Playwright request with enhanced debug) ----------------
+// ---------------- HTTP helpers (Playwright request with hardened debug) ----------------
 async function postJson(url, payload = {}, headers = {}) {
-  const browser = await chromium.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-dev-shm-usage']
-  });
+  console.log('[postJson] starting browser launch');
+  let browser;
+  try {
+    browser = await chromium.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-dev-shm-usage']
+    });
+    console.log('[postJson] browser launch successful');
+  } catch (e) {
+    console.error('[postJson] launch-failed', e?.stack || e);
+    try { 
+      await appendDebug(`[postJson] launch-failed: ${e?.message || e}`); 
+    } catch {}
+    throw e;
+  }
+
   try {
     const context = await browser.newContext();
     const page = await context.newPage();
 
     const startedAt = Date.now();
-    await appendDebug(`Sending POST to ${url}`);
+    console.log(`[postJson] sending POST to ${url}`);
+    try {
+      await appendDebug(`Sending POST to ${url}`);
+    } catch {}
     
     const resp = await page.request.post(url, {
       headers: {
@@ -79,28 +107,40 @@ async function postJson(url, payload = {}, headers = {}) {
 
     const status = resp.status();
     const text = await resp.text();
-    await appendDebug(`POST response: status=${status}, contentLength=${text.length}, duration=${ms}ms`);
+    console.log(`[postJson] response: status=${status}, contentLength=${text.length}, duration=${ms}ms`);
+    try {
+      await appendDebug(`POST response: status=${status}, contentLength=${text.length}, duration=${ms}ms`);
+    } catch {}
 
     if (status < 200 || status >= 300) {
       const hdrs = resp.headers();
-      await appendDebug(
-        `House API POST ${url} status=${status} durationMs=${ms} headers=${JSON.stringify(
-          hdrs
-        )} bodyHead=${text.slice(0, 400)}`
-      );
+      console.error(`[postJson] HTTP error ${status}`);
+      try {
+        await appendDebug(
+          `House API POST ${url} status=${status} durationMs=${ms} headers=${JSON.stringify(
+            hdrs
+          )} bodyHead=${text.slice(0, 400)}`
+        );
+      } catch {}
       throw new Error(`HTTP ${status}`);
     }
 
     try {
       const json = JSON.parse(text);
-      await appendDebug(
-        `House API POST ${url} status=${status} durationMs=${ms} keys=${Object.keys(json).join(',')} dataType=${typeof json.data}`
-      );
+      console.log(`[postJson] JSON parse successful, keys=${Object.keys(json).join(',')}`);
+      try {
+        await appendDebug(
+          `House API POST ${url} status=${status} durationMs=${ms} keys=${Object.keys(json).join(',')} dataType=${typeof json.data}`
+        );
+      } catch {}
       return json;
     } catch {
-      await appendDebug(
-        `House API POST ${url} status=${status} durationMs=${ms} nonJSONHead=${text.slice(0, 400)}`
-      );
+      console.error('[postJson] JSON parse failed');
+      try {
+        await appendDebug(
+          `House API POST ${url} status=${status} durationMs=${ms} nonJSONHead=${text.slice(0, 400)}`
+        );
+      } catch {}
       throw new Error('Non-JSON response');
     }
   } finally {
@@ -109,6 +149,7 @@ async function postJson(url, payload = {}, headers = {}) {
 }
 
 async function fetchSenateHTML(url) {
+  console.log('[fetchSenateHTML] starting browser launch');
   const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
@@ -121,11 +162,15 @@ async function fetchSenateHTML(url) {
     });
     const page = await context.newPage();
     const startedAt = Date.now();
+    console.log(`[fetchSenateHTML] navigating to ${url}`);
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
     await page.waitForTimeout(1500);
     const html = await page.content();
     const ms = Date.now() - startedAt;
-    await appendDebug(`Senate GET ${url} loaded durationMs=${ms} htmlLen=${html?.length || 0}`);
+    console.log(`[fetchSenateHTML] loaded, duration=${ms}ms, htmlLen=${html?.length || 0}`);
+    try {
+      await appendDebug(`Senate GET ${url} loaded durationMs=${ms} htmlLen=${html?.length || 0}`);
+    } catch {}
     return html;
   } finally {
     await browser.close();
@@ -134,10 +179,13 @@ async function fetchSenateHTML(url) {
 
 // ---------------- Parsers ----------------
 async function parseSenateSchedule(html) {
+  console.log('[parseSenateSchedule] starting');
   const $ = cheerio.load(html);
   const out = [];
 
   const dayTables = $('div[align="center"] > table[width="98%"].grayborder');
+  console.log(`[parseSenateSchedule] found ${dayTables.length} day tables`);
+
   dayTables.each((_, tbl) => {
     const $tbl = $(tbl);
     const trs = $tbl.find('tr');
@@ -182,25 +230,41 @@ async function parseSenateSchedule(html) {
   });
 
   const seen = new Set();
-  return out.filter((r) => {
+  const deduplicated = out.filter((r) => {
     const k = `${r.date}|${r.time}|${r.committee}`.toLowerCase();
     if (seen.has(k)) return false;
     seen.add(k);
     return true;
   });
+
+  console.log(`[parseSenateSchedule] parsed ${deduplicated.length} items`);
+  return deduplicated;
 }
 
 // ---------------- Main ----------------
 async function main() {
+  console.log('[main] starting');
+  try { 
+    await appendDebug('[main] entered'); 
+  } catch {}
+
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(DEBUG_LOG, '', 'utf-8'); // reset debug log each run
 
   // -------- House via public API (exact browser headers with comprehensive debug) --------
+  console.log('[house] request starting');
+  try {
+    await appendDebug('[house] request starting');
+  } catch {}
+
   let house = [];
   try {
     // Captured working payload
     const payload = { page: 0, limit: 150, congress: '19', filter: '' };
-    await appendDebug(`House payload: ${JSON.stringify(payload)}`);
+    console.log(`[house] payload: ${JSON.stringify(payload)}`);
+    try {
+      await appendDebug(`House payload: ${JSON.stringify(payload)}`);
+    } catch {}
 
     // Exact headers from successful browser request
     const headers = {
@@ -218,7 +282,10 @@ async function main() {
       'Cache-Control': 'no-cache',
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0'
     };
-    await appendDebug(`House headers count: ${Object.keys(headers).length}`);
+    console.log(`[house] headers count: ${Object.keys(headers).length}`);
+    try {
+      await appendDebug(`House headers count: ${Object.keys(headers).length}`);
+    } catch {}
 
     // Simple backoff retry for transient errors
     const delays = [500, 1500, 3500];
@@ -227,32 +294,55 @@ async function main() {
 
     for (let i = 0; i < delays.length; i++) {
       try {
-        await appendDebug(`House attempt ${i + 1} starting...`);
+        console.log(`[house] attempt ${i + 1} starting...`);
+        try {
+          await appendDebug(`House attempt ${i + 1} starting...`);
+        } catch {}
         apiResp = await postJson(HOUSE_API, payload, headers);
-        await appendDebug(`House attempt ${i + 1} succeeded`);
+        console.log(`[house] attempt ${i + 1} succeeded`);
+        try {
+          await appendDebug(`House attempt ${i + 1} succeeded`);
+        } catch {}
         break;
       } catch (e) {
         lastErr = e;
-        await appendDebug(`House attempt ${i + 1} failed: ${e?.message || e}`);
+        console.error(`[house] attempt ${i + 1} failed: ${e?.message || e}`);
+        try {
+          await appendDebug(`House attempt ${i + 1} failed: ${e?.message || e}`);
+        } catch {}
         if (i < delays.length - 1) {
-          await appendDebug(`House retrying after ${delays[i]}ms...`);
+          console.log(`[house] retrying after ${delays[i]}ms...`);
+          try {
+            await appendDebug(`House retrying after ${delays[i]}ms...`);
+          } catch {}
           await new Promise((r) => setTimeout(r, delays[i]));
         }
       }
     }
 
     if (!apiResp) {
-      await appendDebug('House API failed after all retries.');
+      console.error('[house] API failed after all retries');
+      try {
+        await appendDebug('House API failed after all retries.');
+      } catch {}
       throw lastErr || new Error('House API failed after retries');
     }
 
     // Log response structure
-    await appendDebug(`House API response keys: ${Object.keys(apiResp).join(',')}`);
-    await appendDebug(`House API status: ${apiResp.status}, success: ${apiResp.success}`);
+    console.log(`[house] API response keys: ${Object.keys(apiResp).join(',')}`);
+    console.log(`[house] API status: ${apiResp.status}, success: ${apiResp.success}`);
+    try {
+      await appendDebug(`House API response keys: ${Object.keys(apiResp).join(',')}`);
+      await appendDebug(`House API status: ${apiResp.status}, success: ${apiResp.success}`);
+    } catch {}
     
     if (apiResp.data) {
-      await appendDebug(`House API data keys: ${Object.keys(apiResp.data).join(',')}`);
-      await appendDebug(`House API pageCount: ${apiResp.data.pageCount}, count: ${apiResp.data.count}`);
+      console.log(`[house] API data keys: ${Object.keys(apiResp.data).join(',')}`);
+      console.log(`[house] API pageCount: ${apiResp.data.pageCount}, count: ${apiResp.data.count}`);
+      try {
+        await appendDebug(`House API data keys: ${Object.keys(apiResp.data).join(',')}`);
+        await appendDebug(`House API pageCount: ${apiResp.data.pageCount}, count: ${apiResp.data.count}`);
+      } catch {}
     }
 
     // Save raw API response envelope for inspection
@@ -264,11 +354,18 @@ async function main() {
 
     // Parse response
     const rows = Array.isArray(apiResp?.data?.rows) ? apiResp.data.rows : [];
-    await appendDebug(`House raw rows count: ${rows.length}`);
+    console.log(`[house] raw rows count: ${rows.length}`);
+    try {
+      await appendDebug(`House raw rows count: ${rows.length}`);
+    } catch {}
     
     if (rows.length > 0) {
-      await appendDebug(`House first row keys: ${Object.keys(rows[0]).join(',')}`);
-      await appendDebug(`House first row sample: date="${rows[0].date}", time="${rows[0].time}", comm_name="${rows[0].comm_name}", cancelled=${rows[0].cancelled}`);
+      console.log(`[house] first row keys: ${Object.keys(rows[0]).join(',')}`);
+      console.log(`[house] first row sample: date="${rows[0].date}", time="${rows[0].time}", comm_name="${rows[0].comm_name}", cancelled=${rows[0].cancelled}`);
+      try {
+        await appendDebug(`House first row keys: ${Object.keys(rows[0]).join(',')}`);
+        await appendDebug(`House first row sample: date="${rows[0].date}", time="${rows[0].time}", comm_name="${rows[0].comm_name}", cancelled=${rows[0].cancelled}`);
+      } catch {}
     }
 
     // Decode HTML entities
@@ -291,7 +388,10 @@ async function main() {
       
       // Log first few items for debugging
       if (index < 3) {
-        await appendDebug(`House row ${index}: date="${it.date}", time="${it.time}", comm_name="${it.comm_name}", cancelled=${it.cancelled}`);
+        console.log(`[house] row ${index}: date="${it.date}", time="${it.time}", comm_name="${it.comm_name}", cancelled=${it.cancelled}`);
+        try {
+          await appendDebug(`House row ${index}: date="${it.date}", time="${it.time}", comm_name="${it.comm_name}", cancelled=${it.cancelled}`);
+        } catch {}
       }
 
       const date = norm(it.date || '');
@@ -306,9 +406,18 @@ async function main() {
       }
 
       // Check validation
-      if (!date && index < 5) await appendDebug(`House row ${index}: missing date`);
-      if (!time && index < 5) await appendDebug(`House row ${index}: missing time`);  
-      if (!committee && index < 5) await appendDebug(`House row ${index}: missing committee`);
+      if (!date && index < 5) {
+        console.log(`[house] row ${index}: missing date`);
+        try { await appendDebug(`House row ${index}: missing date`); } catch {}
+      }
+      if (!time && index < 5) {
+        console.log(`[house] row ${index}: missing time`);
+        try { await appendDebug(`House row ${index}: missing time`); } catch {}
+      }
+      if (!committee && index < 5) {
+        console.log(`[house] row ${index}: missing committee`);
+        try { await appendDebug(`House row ${index}: missing committee`); } catch {}
+      }
 
       if (date && time && committee) {
         validCount++;
@@ -318,7 +427,10 @@ async function main() {
       }
     }
 
-    await appendDebug(`House mapping: ${validCount} valid, ${invalidCount} invalid, ${cancelledCount} cancelled`);
+    console.log(`[house] mapping: ${validCount} valid, ${invalidCount} invalid, ${cancelledCount} cancelled`);
+    try {
+      await appendDebug(`House mapping: ${validCount} valid, ${invalidCount} invalid, ${cancelledCount} cancelled`);
+    } catch {}
 
     // De-duplicate
     const seen = new Set();
@@ -333,58 +445,103 @@ async function main() {
       return true;
     });
 
-    await appendDebug(`House deduplication: ${dupCount} duplicates removed, ${house.length} final count`);
+    console.log(`[house] deduplication: ${dupCount} duplicates removed, ${house.length} final count`);
+    try {
+      await appendDebug(`House deduplication: ${dupCount} duplicates removed, ${house.length} final count`);
+    } catch {}
 
     if (house.length > 0) {
-      await appendDebug(`House final first item: ${JSON.stringify(house[0])}`);
-      await appendDebug(`House date range: ${house[0].date} to ${house[house.length-1].date}`);
+      console.log(`[house] final first item: ${JSON.stringify(house[0])}`);
+      console.log(`[house] date range: ${house[0].date} to ${house[house.length-1].date}`);
+      try {
+        await appendDebug(`House final first item: ${JSON.stringify(house[0])}`);
+        await appendDebug(`House date range: ${house[0].date} to ${house[house.length-1].date}`);
+      } catch {}
     } else {
-      await appendDebug('House produced 0 rows after mapping/dedup.');
+      console.log('[house] produced 0 rows after mapping/dedup');
+      try {
+        await appendDebug('House produced 0 rows after mapping/dedup.');
+      } catch {}
     }
 
   } catch (e) {
-    await appendDebug(`House error: ${e?.message || e}`);
+    console.error(`[house] error: ${e?.message || e}`);
+    try {
+      await appendDebug(`House error: ${e?.message || e}`);
+    } catch {}
     console.error('House API fetch failed:', e.message || e);
   }
 
   try {
     await fs.writeFile(path.join(OUTPUT_DIR, 'house.json'), JSON.stringify(house, null, 2));
-    await appendDebug(`House JSON written: ${house.length} items`);
+    console.log(`[house] JSON written: ${house.length} items`);
+    try {
+      await appendDebug(`House JSON written: ${house.length} items`);
+    } catch {}
   } catch (e) {
-    await appendDebug(`House write error: ${e?.message || e}`);
+    console.error(`[house] write error: ${e?.message || e}`);
+    try {
+      await appendDebug(`House write error: ${e?.message || e}`);
+    } catch {}
   }
 
   // -------- Senate (XHTML) --------
+  console.log('[senate] request starting');
+  try {
+    await appendDebug('[senate] request starting');
+  } catch {}
+
   let senate = [];
   try {
     const html = await fetchSenateHTML(SENATE_SCHED_URL);
     if (html && html.includes('<html')) {
       senate = await parseSenateSchedule(html);
-      await appendDebug(`Senate parsed rows=${senate.length}`);
+      console.log(`[senate] parsed rows=${senate.length}`);
+      try {
+        await appendDebug(`Senate parsed rows=${senate.length}`);
+      } catch {}
       if (senate.length === 0) {
-        await appendDebug('Senate produced 0 rows after parsing.');
+        console.log('[senate] produced 0 rows after parsing');
+        try {
+          await appendDebug('Senate produced 0 rows after parsing.');
+        } catch {}
       }
     } else {
-      await appendDebug('Senate: missing or invalid HTML.');
+      console.error('[senate] missing or invalid HTML');
+      try {
+        await appendDebug('Senate: missing or invalid HTML.');
+      } catch {}
       console.error('Senate schedule: blocked or no HTML content.');
     }
   } catch (e) {
-    await appendDebug(`Senate error: ${e?.message || e}`);
+    console.error(`[senate] error: ${e?.message || e}`);
+    try {
+      await appendDebug(`Senate error: ${e?.message || e}`);
+    } catch {}
     console.error('Senate fetch failed:', e.message || e);
   }
 
   try {
     await fs.writeFile(path.join(OUTPUT_DIR, 'senate.json'), JSON.stringify(senate, null, 2));
+    console.log(`[senate] JSON written: ${senate.length} items`);
   } catch (e) {
-    await appendDebug(`Senate write error: ${e?.message || e}`);
+    console.error(`[senate] write error: ${e?.message || e}`);
+    try {
+      await appendDebug(`Senate write error: ${e?.message || e}`);
+    } catch {}
   }
 
   // Final breadcrumb
-  await appendDebug(`Done. House=${house.length} Senate=${senate.length}`);
+  console.log(`[done] House=${house.length} Senate=${senate.length}`);
+  try {
+    await appendDebug(`Done. House=${house.length} Senate=${senate.length}`);
+  } catch {}
 }
 
 main().catch(async (err) => {
-  await appendDebug(`Fatal error: ${err?.message || err}`);
-  console.error(err);
+  console.error('[fatal-main]', err?.stack || err);
+  try { 
+    await appendDebug(`Fatal error: ${err?.message || err}`); 
+  } catch {}
   process.exit(1);
 });
