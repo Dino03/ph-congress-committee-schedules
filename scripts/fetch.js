@@ -267,21 +267,22 @@ async function main() {
     } catch {}
 
     // Exact headers from successful browser request
-    const headers = {
-      Accept: '*/*',
-      'Accept-Language': 'en-US,en;q=0.5',
-      Origin: 'https://www.congress.gov.ph',
-      'Sec-GPC': '1',
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'no-cors',
-      'Sec-Fetch-Site': 'cross-site',
-      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
-      Referer: 'https://www.congress.gov.ph/',
-      Priority: 'u=4',
-      Pragma: 'no-cache',
-      'Cache-Control': 'no-cache',
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0'
-    };
+  const headers = {
+  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0",
+  Accept: "*/*",
+  "Accept-Language": "en-US,en;q=0.5",
+  "Accept-Encoding": "gzip, deflate, br, zstd",
+  Referer: "https://www.congress.gov.ph/",
+  "Content-Type": "application/json",
+  "x-hrep-website-backend": "cc8bd00d-9b88-4fee-aafe-311c574fcdc1",
+  Origin: "https://www.congress.gov.ph/",
+  "Sec-GPC": "1",
+  Connection: "keep-alive",
+  "Sec-Fetch-Dest": "empty",
+  "Sec-Fetch-Mode": "cors",
+  "Sec-Fetch-Site": "cross-site",
+  TE: "trailers"
+};
     console.log(`[house] headers count: ${Object.keys(headers).length}`);
     try {
       await appendDebug(`House headers count: ${Object.keys(headers).length}`);
