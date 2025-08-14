@@ -3,14 +3,14 @@
   "success": true,
   "data": {
     "pageCount": 27,
-    "count": 4003,
+    "count": 4004,
     "rows": [
       {
-        "id": 4004,
-        "date": "2025-08-13",
-        "time": "01:00 PM",
-        "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-        "agenda": "Briefing by the Department of Public Works and Highways (DPWH) on all infrastructure projects in the country, including flood control and drainage projects and those implemented through the Unified Project Management Office-Flood Control Cluster",
+        "id": 4006,
+        "date": "2025-08-18",
+        "time": "10:00 AM",
+        "venue": "Conf. Rms. 1&2 RVM Bldg. (To be livestreamed on the official Facebook pages of the HRep and Pasig City Rep. Roman Romulo)",
+        "agenda": "Organizational meeting – Approval of the Committee Rules of Procedure\n\nBriefing by the Department of Education (DepEd) on the following:\na) Mandate and legal basis;\nb) Plans, programs, deliverables, and other relevant statistical data for School Year 2025 – 2026;\nc) Report of accomplishments and challenges; and\nd) Legislative agenda/priorities for the 20th Congress",
         "committee": null,
         "onwards": false,
         "published": true,
@@ -20,8 +20,8 @@
         "resched": null,
         "old_time": null,
         "remarks": null,
-        "comm_name": "PUBLIC ACCOUNTS",
-        "datetime": "2025-08-13T13:00",
+        "comm_name": "BASIC EDUCATION AND CULTURE",
+        "datetime": "2025-08-18T10:00",
         "venue_id": 0
       },
       {
@@ -41,6 +41,25 @@
         "remarks": null,
         "comm_name": "DANGEROUS DRUGS",
         "datetime": "2025-08-13T10:00",
+        "venue_id": 0
+      },
+      {
+        "id": 4004,
+        "date": "2025-08-13",
+        "time": "01:00 PM",
+        "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+        "agenda": "Briefing by the Department of Public Works and Highways (DPWH) on all infrastructure projects in the country, including flood control and drainage projects and those implemented through the Unified Project Management Office-Flood Control Cluster",
+        "committee": null,
+        "onwards": false,
+        "published": true,
+        "twg": false,
+        "external": false,
+        "cancelled": false,
+        "resched": null,
+        "old_time": null,
+        "remarks": null,
+        "comm_name": "PUBLIC ACCOUNTS",
+        "datetime": "2025-08-13T13:00",
         "venue_id": 0
       },
       {
@@ -2834,25 +2853,6 @@
         "remarks": null,
         "comm_name": "JOINT COMMITTEE ON DANGEROUS DRUGS, PUBLIC ORDER AND SAFETY, HUMAN RIGHTS, and PUBLIC ACCOUNTS\n(Public hearing)",
         "datetime": "2024-12-12T09:30",
-        "venue_id": 0
-      },
-      {
-        "id": 3850,
-        "date": "2024-12-11",
-        "time": "10:00 AM",
-        "venue": "Conf. Rms. 7&8 RVM Bldg.",
-        "agenda": "HRs 2005 & 2069 – Inquiry into the status of implementation of RA 8371, otherwise known as the Indigenous Peoples´ Rights Act in the Bangsamoro Autonomous Region in Muslim Mindanao (BARMM) on matters relating to the ancestral domain claims of non-Moro indigenous peoples and other rights related to their economic, social, and cultural wellbeing (Reps. Allen Jesse Mangaoang and Rufus Rodriguez)",
-        "committee": null,
-        "onwards": false,
-        "published": true,
-        "twg": false,
-        "external": false,
-        "cancelled": false,
-        "resched": null,
-        "old_time": null,
-        "remarks": null,
-        "comm_name": "INDIGENOUS CULTURAL COMMUNITIES AND INDIGENOUS PEOPLES",
-        "datetime": "2024-12-11T10:00",
         "venue_id": 0
       }
     ]
