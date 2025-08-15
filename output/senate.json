@@ -1,10 +1,82 @@
 [
   {
-    "date": "Thursday, August 14",
+    "date": "Tuesday, August 19",
     "time": "10:00 A.M.",
-    "committee": "Games and Amusement joint with Banks, Financial Institutions and Currencies; Youth; Economic Affairs; and Ways and Means (Presiding: Sen. E. Tulfo)",
-    "subject": "Organizational Meeting; S. Nos. 30, 47 and 142 - Anti-Online Gambling Act (By: Sens. P. Cayetano, A. Cayetano, Villanueva and Zubiri); S. No. 57 - Online Gambling Regulatory Act (By: Sen. Gatchalian); P.S. Res. No. 12 - Proliferation of Online Gambling and Lending in the Philippines (By: Sen. Ejercito); P.S. Res. No. 19 - Engagement of Learners in Online Gambling (By: Sen. Gatchalian); P.S. Res. No. 26 - Online Gambling Operations (By: Sen. C. Villar); Privilege Speech of Sen. Juan Miguel “Migz” Zubiri on Online Gambling, delivered on July 30, 2025; S. No. 387 - Kontra E-Sugal Act (By: Sen. Hontiveros)",
+    "committee": "Blue Ribbon (Presiding: Sen. Marcoleta)",
+    "subject": "Organizational Meeting; Motu proprio inquiry in aid of legislation on the “Philippines Under Water”",
+    "venue": "Session Hall 2/F Left Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, August 19",
+    "time": "10:00 A.M.",
+    "committee": "Electoral Reforms and People’s Participation joint with Constitutional Amendments and Revision of Codes (Presiding: Sen. Lacson)",
+    "subject": "Organizational Meeting; S. Nos. 18, 35 and 285 – The Anti-Political Dynasty Law (By: Sens. Padilla, Lacson, E. Tulfo, and Pangilinan)",
     "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, August 19",
+    "time": "1:00 P.M.",
+    "committee": "Cooperatives joint with Constitutional Amendments and Revision of Codes; Ways and Means; and Finance (Presiding: Sen. Marcos)",
+    "subject": "Organizational Meeting; S. No. 116 – Revised Cooperative Code of the Philippines (By: Sen. Marcos)",
+    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 20",
+    "time": "9:00 A.M.",
+    "committee": "Agriculture, Food and Agrarian Reform (Presiding: Sen. Pangilinan)",
+    "subject": "Organizational Meeting; P.S. Res. No. 5 – High Prices of Food and Other Basic Agricultural Commodities (By: Sen. Pangilinan); Short briefing by the Department of Agriculture on the current state of Philippine agriculture",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 20",
+    "time": "10:00 A.M.",
+    "committee": "Health and Demography joint with Finance (Presiding: Sen. Go)",
+    "subject": "Organizational Meeting; S. No. 260 – Combatting Systemic Lupus Erythematosus (SLE) Disease (By: Sen. M. Villar); P.S. Res. No. 25 – Alarming Rise of Leptospirosis Cases in the Philippines (By: Sen. C. Villar); Briefing on:; PhilHealth Programs and Benefits; Implementation of the Philippine Health Facility Development Plan 2020-2040; Implementation of the Malasakit Centers Act; Payment of the Health Emergency Allowance",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 20",
+    "time": "10:00 A.M.",
+    "committee": "Social Justice, Welfare and Rural Development joint with Health and Demography; and Finance (Presiding: Sen. E. Tulfo)",
+    "subject": "Organizational Meeting; S. Nos. 71, 95, 215 and 269 – Senior Citizens Act (By: Sens. Estrada, M. Villar, Hontiveros and Aquino); S. No. 164 – Providing Monthly Maintenance Medication Support for Senior Citizens (By: Sen. Legarda); S. No. 155 – Simplified Government Aid Access (By: Sen. E. Tulfo); S. No. 254 – Anti-Discrimination in the Delivery of Social Protection Programs (By: Sen. E. Tulfo)",
+    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 20",
+    "time": "10:00 A.M.",
+    "committee": "Public Services joint with National Defense and Security, Peace, Unification and Reconciliation; Civil Service, Government Reorganization and Professional Regulation; Ways and Means; and Finance (Presiding: Sen. R. Tulfo)",
+    "subject": "Organizational Meeting; S. Nos. 147, 359 and 438 – Bills on the Revised Philippine Coast Guard Law (By: Sens. Zubiri, Dela Rosa and R. Tulfo); S. Nos. 84 and 93 – Bills on the Magna Carta of Commuters (By: Sens. R. Tulfo and M. Villar)",
+    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 20",
+    "time": "10:00 A.M.",
+    "committee": "Tourism (Presiding: Sen. Ejercito)",
+    "subject": "Organizational Meeting; Briefing by the Department of Tourism and other attached agencies",
+    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 20",
+    "time": "1:00 P.M.",
+    "committee": "Cultural Communities and Muslim Affairs joint with Finance (Presiding: Sen. Padilla)",
+    "subject": "Organizational Meeting; S. No. 17 – Muslim Prayer Room Act of the Philippines (By: Sen. Padilla)",
+    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 20",
+    "time": "1:30 P.M.",
+    "committee": "Sustainable Development Goals, Innovation and Futures Thinking (Presiding: Sen. P. Cayetano)",
+    "subject": "Organizational Meeting; P.S. Res. No. 65 – Philippines Progress in Achieving the Sustainable Development Goals by 2030 (By: Sen. P. Cayetano)",
+    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]
