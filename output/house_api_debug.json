@@ -3,7 +3,7 @@
   "success": true,
   "data": {
     "pageCount": 27,
-    "count": 4012,
+    "count": 4013,
     "rows": [
       {
         "id": 4009,
@@ -29,7 +29,7 @@
         "date": "2025-08-20",
         "time": "09:00 AM",
         "venue": "Conf. Rm. 5, RVM Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-        "agenda": "• Organizational meeting – Approval of the Committee Internal Rules of Procedure\n\n• Deliberation on the following measures:\n\nHBs 715, 769, 1743 & 2122 – Establishing an on-site, in-city, near-city, or off-city local government resettlement program for informal settler families in accordance with a people's plan and mandating the implementing local government unit (LGU),  jointly with the Department of Human Settlements and Urban Development, in cases of near-city or off-city resettlement, to provide other basic services and livelihood components in favor of the recipient LGU, amending for the purpose RA 7279, otherwise known as the Urban Development and Housing Act of 1992, as amended (Reps. Javier Miguel Lopez Benitez, Ma. Victoria Co-Pilar, Brian Poe, and Elisa ‘Olga’ Kho)\n\nHBs 419, 712, 991 & 1375 – Providing for the development of sustainable cities and communities in the country (Reps. Lani Mercado-Revilla, Javier Miguel Lopez Benitez, Ivan Howard Guintu, and Ziaur-Rahman ‘Zia’ Alonto Adiong)\n\nHBs 255, 645, 770, 1814, 1989 & 2272 – Establishing a Rental Housing Subsidy Program for informal settler families and appropriating funds therefor (Reps. Lani Mercado-Revilla, Tobias ‘Toby’ Tiangco, Ma. Victoria Co-Pilar, Ivan Howard Guintu, Miguel Luis Villafuerte, and Patrick Michael Vargas)\n\nHB 2291 – Mandating the allocation of an area for information and communications technology infrastructure and facilities in subdivisions and housing development projects (Rep. Ma. Victoria Co-Pilar)\n\nHB 1268 – Amending Section 18 of RA 7279, as amended by RA 10884, otherwise known as the Balanced Housing Development Program Amendments, by strengthening the socialized housing projects of the LGUs (Rep. Roy Loyola)\n\nHB 1642 – Exempting the underprivileged and homeless from the required payment of supersedeas bond to perfect an appeal in relation to ejectment cases filed against them, amending for the purpose RA 7279 (Rep. Paolo Henry Marcoleta)\n\nHBs 2278 & 2333 – Improving the delivery of socialized housing programs, amending for the purpose Sections 10, 18, and 20 of RA 7279, as amended by RA 10884 (Reps. Ma. Victoria Co-Pilar and Lani Mercado-Revilla)\n\nHB 484 – Expanding the restructuring and condonation program for socialized and low-cost housing loans, amending for the purpose Sections 3, 4, and 5 of RA 9507, otherwise known as the Socialized and Low-Cost Housing Loan Restructuring and Condonation Act of 2008 (Rep. Roman Romulo)\n\nHBs 1170 & 2111 – Establishing a socialized and low-cost housing loan restructuring and condonation program (Reps. Arturo Robes and Ivan Howard Guintu)",
+        "agenda": "• Organizational meeting – Approval of the Committee Internal Rules of Procedure\n\n• Deliberation on the following measures:\n\nHBs 715, 769, 1743 & 2122 – Establishing an on-site, in-city, near-city, or off-city local government resettlement program for informal settler families in accordance with a people's plan and mandating the implementing local government unit (LGU),  jointly with the Department of Human Settlements and Urban Development, in cases of near-city or off-city resettlement, to provide other basic services and livelihood components in favor of the recipient LGU, amending for the purpose RA 7279, otherwise known as the Urban Development and Housing Act of 1992, as amended (Reps. Javier Miguel Lopez Benitez, Ma. Victoria Co-Pilar, Brian Poe, and Elisa ‘Olga’ Kho)\n\nHBs 419, 712, 991 & 1375 – Providing for the development of sustainable cities and communities in the country (Reps. Lani Mercado-Revilla, Javier Miguel Lopez Benitez, Ivan Howard Guintu, and Ziaur-Rahman ‘Zia’ Alonto Adiong)\n\nHBs 255, 645, 770, 1814, 1989 & 2272 – Establishing a Rental Housing Subsidy Program for informal settler families and appropriating funds therefor (Reps. Lani Mercado-Revilla, Tobias ‘Toby’ Tiangco, Ma. Victoria Co-Pilar, Ivan Howard Guintu, Miguel Luis Villafuerte, and Patrick Michael Vargas)\n\nHB 2291 – Mandating the allocation of an area for information and communications technology infrastructure and facilities in subdivisions and housing development projects (Rep. Ma. Victoria Co-Pilar)\n\nHB 1268 – Amending Section 18 of RA 7279, as amended by RA 10884, otherwise known as the Balanced Housing Development Program Amendments, by strengthening the socialized housing projects of the LGUs (Rep. Roy Loyola)\n\nHBs 2278 & 2333 – Improving the delivery of socialized housing programs, amending for the purpose Sections 10, 18, and 20 of RA 7279, as amended by RA 10884 (Reps. Ma. Victoria Co-Pilar and Lani Mercado-Revilla)\n\nHB 484 – Expanding the restructuring and condonation program for socialized and low-cost housing loans, amending for the purpose Sections 3, 4, and 5 of RA 9507, otherwise known as the Socialized and Low-Cost Housing Loan Restructuring and Condonation Act of 2008 (Rep. Roman Romulo)\n\nHBs 1170 & 2111 – Establishing a socialized and low-cost housing loan restructuring and condonation program (Reps. Arturo Robes and Ivan Howard Guintu)",
         "committee": null,
         "onwards": false,
         "published": true,
@@ -78,6 +78,25 @@
         "old_time": null,
         "remarks": null,
         "comm_name": "ENERGY",
+        "datetime": "2025-08-20T09:00",
+        "venue_id": 0
+      },
+      {
+        "id": 4015,
+        "date": "2025-08-20",
+        "time": "09:00 AM",
+        "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+        "agenda": "Briefings/hearings on the proposed FY 2026 budget of the following departments/agencies:\n\n• 9:00 AM\n- Philippine Amusement and Gaming Corporation (PAGCOR)\n\n• 1:30 PM\n- Philippine Charity Sweepstakes Office (PCSO)",
+        "committee": null,
+        "onwards": false,
+        "published": true,
+        "twg": false,
+        "external": false,
+        "cancelled": false,
+        "resched": null,
+        "old_time": null,
+        "remarks": null,
+        "comm_name": "APPROPRIATIONS",
         "datetime": "2025-08-20T09:00",
         "venue_id": 0
       },
@@ -2834,25 +2853,6 @@
         "remarks": null,
         "comm_name": "PUBLIC ACCOUNTS",
         "datetime": "2024-12-18T09:30",
-        "venue_id": 0
-      },
-      {
-        "id": 3859,
-        "date": "2024-12-18",
-        "time": "01:30 PM",
-        "venue": "Spkr. Villar Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-        "agenda": "Privilege Speech delivered on the floor on September 9, 2024 – On the alleged irregularities in the procurement process of infrastructure and other projects by the local government unit of Silay City, Negros Occidental (Rep. Joseph Stephen ‘Caraps’ Paduano)",
-        "committee": null,
-        "onwards": false,
-        "published": true,
-        "twg": false,
-        "external": false,
-        "cancelled": false,
-        "resched": null,
-        "old_time": null,
-        "remarks": null,
-        "comm_name": "PUBLIC ACCOUNTS",
-        "datetime": "2024-12-18T13:30",
         "venue_id": 0
       }
     ]
