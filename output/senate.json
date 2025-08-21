@@ -1,50 +1,90 @@
 [
   {
-    "date": "Wednesday, August 20",
+    "date": "Tuesday, August 26",
     "time": "9:00 A.M.",
-    "committee": "Agriculture, Food and Agrarian Reform (Presiding: Sen. Pangilinan)",
-    "subject": "Organizational Meeting; P.S. Res. No. 5 – High Prices of Food and Other Basic Agricultural Commodities (By: Sen. Pangilinan); Short briefing by the Department of Agriculture on the current state of Philippine agriculture; Privilege Speech of Senator Francis \"Kiko\" N. Pangilinan, delivered on August 18, 2025, on the Agricultural and Food Crises",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Wednesday, August 20",
-    "time": "10:00 A.M.",
-    "committee": "Health and Demography joint with Finance (Presiding: Sen. Go)",
-    "subject": "Organizational Meeting; S. No. 260 – Combatting Systemic Lupus Erythematosus (SLE) Disease (By: Sen. M. Villar); S. No. 170 – Philhealth Card Act (By: Sen. M. Villar); P.S. Res. No. 25 – Alarming Rise of Leptospirosis Cases in the Philippines (By: Sen. C. Villar); P.S. Res. No. 75– Inquiry into the Surge of Leptospirosis Cases in Flood-Prone Areas (By: Sen. R. Tulfo); Briefing on:; PhilHealth Programs and Benefits; Implementation of the Philippine Health Facility Development Plan 2020-2040; Implementation of the Malasakit Centers Act; Payment of the Health Emergency Allowance",
-    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Wednesday, August 20",
-    "time": "10:00 A.M.",
-    "committee": "Social Justice, Welfare and Rural Development joint with Health and Demography; and Finance (Presiding: Sen. E. Tulfo)",
-    "subject": "Organizational Meeting; S. Nos. 71, 95, 215 and 269 – Senior Citizens Act (By: Sens. Estrada, M. Villar, Hontiveros and Aquino); S. No. 164 – Providing Monthly Maintenance Medication Support for Senior Citizens (By: Sen. Legarda); S. No. 155 – Simplified Government Aid Access (By: Sen. E. Tulfo); S. No. 254 – Anti-Discrimination in the Delivery of Social Protection Programs (By: Sen. E. Tulfo)",
-    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Wednesday, August 20",
-    "time": "10:00 A.M.",
-    "committee": "Tourism (Presiding: Sen. Ejercito)",
-    "subject": "Organizational Meeting; Briefing by the Department of Tourism and other attached agencies",
-    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Wednesday, August 20",
-    "time": "1:00 P.M.",
-    "committee": "Cultural Communities and Muslim Affairs joint with Finance (Presiding: Sen. Padilla)",
-    "subject": "Organizational Meeting; S. No. 17 – Muslim Prayer Room Act of the Philippines (By: Sen. Padilla)",
+    "committee": "Science and Technology (Presiding: Sen. Aquino)",
+    "subject": "Organizational Meeting; Inquiry, in aid of legislation, on the Privilege Speech of Sen. Bam Aquino, delivered on 18 August 2025, entitled, “Internet Koneksyon para sa Edukasyon”",
     "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
   {
-    "date": "Wednesday, August 20",
-    "time": "1:30 P.M.",
-    "committee": "Sustainable Development Goals, Innovation and Futures Thinking (Presiding: Sen. P. Cayetano)",
-    "subject": "Organizational Meeting; P.S. Res. No. 65 – Philippines Progress in Achieving the Sustainable Development Goals by 2030 (By: Sen. P. Cayetano)",
+    "date": "Tuesday, August 26",
+    "time": "10:00 A.M.",
+    "committee": "Local Government joint with Civil Service, Government Reorganization and Professional Regulation; Ways and Means; and Finance (Presiding: Sen. Ejercito)",
+    "subject": "Organizational Meeting; Briefing by the Department of the Interior and Local Government and other government agencies; S. Nos. 149, 178, 272 and 332 – Magna Carta for Barangays Act (By: Sens. Zubiri, Go, Aquino and Ejercito)",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, August 26",
+    "time": "1:00 P.M.",
+    "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. Marcos)",
+    "subject": "S. Nos. 111 and 373 - National Minimum Wage (By: Sens. Marcos and Padilla); S. Nos. 6, 12, 141, 175, 209, 273 and 458 - Minimum Wage Increases (By: Sens. Ejercito, Padilla, Zubiri, Go, Hontiveros, Aquino and Estrada); S. Nos. 44 and 163 - Establishing the Standards for a Living Wage (By: Sens. Villanueva and Legarda)",
+    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, August 26",
+    "time": "1:00 P.M.",
+    "committee": "Environment, Natural Resources and Climate Change (Presiding: Sen. C. Villar)",
+    "subject": "Organizational Meeting; Briefing by the Department of Environment and Natural Resources on the country’s current environmental state; Updates regarding the implementation of environmental laws",
+    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, August 26",
+    "time": "1:00 P.M.",
+    "committee": "Women, Children, Family Relations and Gender Equality joint with on Justice and Human Rights (Presiding: Sen. Hontiveros)",
+    "subject": "S. No. 565 - Amending R.A. No. 11313 (Safe Spaces Act) (By: Sen. Hontiveros); P.S. Res. No. 67 – Use of Artificial Intelligence Technology to Proliferate Deepfake Pornography (By: Sen. Hontiveros)",
     "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 27",
+    "time": "9:00 A.M.",
+    "committee": "Agriculture, Food and Agrarian Reform joint with Ways and Means; and Finance (Presiding: Sen. Pangilinan)",
+    "subject": "S. No. 284 – Rice Industry and Consumer Empowerment (RICE) Act (By: Sens. Escudero and Villanueva); P.S. Jt. Res. No. 2 – Terminating the Delegated Authority of the President to Adjust Tariff Rates on Rice (By: Sens. Hontiveros and Pangilinan); P.S. Res. No. 3 – Functions and Mandate of the National Food Authority (By: Sen. E. Tulfo); P.S. Res. No. 10 – Regulatory and Market Intervention Powers of the NFA (By: Sen. Pangilinan)",
+    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 27",
+    "time": "10:00 A.M.",
+    "committee": "National Defense and Security, Peace, Unification and Reconciliation (Presiding: Sen. Estrada)",
+    "subject": "Organizational Meeting; S. Nos. 33, 73, 553 and 663 - New Anti-Espionage Act (By: Sens. Lacson, Estrada, Villanueva and Zubiri)",
+    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 27",
+    "time": "12:00 NN",
+    "committee": "Higher, Technical and Vocational Education (Presiding: Sen. A. Cayetano)",
+    "subject": "Organizational Meeting; Briefing on key programs and projects of the Commission on Higher Education (CHED); Discussion of priority legislative agenda of CHED; Creation of technical working groups on the following legislative measures:; S. No. 102 – Scholarship and Financial Assistance (By: Sen. A. Cayetano); S. No. 103 – Creation of EDCOM III (By: Sen. A. Cayetano, P. Cayetano, Escudero and Villanueva); S. Nos. 26, 130, 169, 503 and 514 – Amendment of the Universal Access to Quality Tertiary Education Act (R.A. 10931) (By: Sens. P. Cayetano, Aquino, Go, Escudero and Legarda); S. Nos. 504 and 623 – Local Universities and Colleges Governance Framework (By: Sens. Escudero and Gatchalian)",
+    "venue": "Sen. L.M. Tañada Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, August 27",
+    "time": "1:00 P.M.",
+    "committee": "Foreign Relations (Presiding: Sen. Marcos)",
+    "subject": "Organizational Meeting; Briefing by the Department of Foreign Affairs; Agreement Between the Government of the Republic of the Philippines and the Board of the Fund for Responding to Loss and Damage on the Privileges and Immunities of the Board of the Fund for Responding to Loss and Damage",
+    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, August 28",
+    "time": "10:00 A.M.",
+    "committee": "Economic Affairs joint with Foreign Relations; and Ways and Means (Presiding: Sen. Zubiri)",
+    "subject": "Organizational Meeting; P.S. Res. No. 40 - Trade Deal Between the Philippines and the United States of America (By: Sen. Marcos); P.S. Res. No. 62 - Economic Impact of the Imposition of 19% Tariff on Philippine Exports to the USA (By: Sen. Zubiri)",
+    "venue": "Sen. J. P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, August 28",
+    "time": "10:00 A.M.",
+    "committee": "Basic Education joint with Local Government and Finance (TWG)",
+    "subject": "S. No. 121 - Classroom-Building Acceleration Program (CAP) Act (By: Sens. Aquino and Marcos)",
+    "venue": "Sen. G.T. Pecson Room 2/Fl Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]
