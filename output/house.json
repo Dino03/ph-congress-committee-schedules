@@ -17,6 +17,14 @@
   },
   {
     "date": "2025-08-27",
+    "time": "09:00 AM",
+    "committee": "APPROPRIATIONS",
+    "subject": "Briefings/hearings on the proposed FY 2026 budget of the following departments/agencies: • 9:00 AM - Department of Trade and Industry (DTI) • 1:30 PM - Department of Science and Technology (DOST)",
+    "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-08-27",
     "time": "01:30 PM",
     "committee": "ENERGY",
     "subject": "Briefing by the National Power Corporation (NPC), Philippine National Oil Company (PNOC), Power Sector Assets and Liabilities Management (PSALM) Corporation, and Philippine IPP Association (PIPPA) on the electric power generation and energy resource development",
@@ -1189,14 +1197,6 @@
     "committee": "PUBLIC ACCOUNTS",
     "subject": "HR 2087 – Investigation into the alleged financial and procurement anomalies committed by the local government officials and employees of Impasug-Ong, Bukidnon (Rep. Felimon Espares)",
     "venue": "Spkr. De Venecia Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-01-15",
-    "time": "10:00 AM",
-    "committee": "MUSLIM AFFAIRS",
-    "subject": "• Approval of Committee Report on HB 10902 – Declaring the 7th day of November of every year a special national working holiday in commemoration of the establishment of the first Philippine Mosque and the introduction of Islam in the Philippines (Rep. Bai Dimple Mastura) • Update by the National Commission on Muslim Filipinos (NCMF) on its preparations for the 2025 Hajj Pilgrimage",
-    "venue": "Conf. Rms. 3&4, RVM Bldg.",
     "source": "House API (list)"
   }
 ]

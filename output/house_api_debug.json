@@ -3,7 +3,7 @@
   "success": true,
   "data": {
     "pageCount": 27,
-    "count": 4024,
+    "count": 4025,
     "rows": [
       {
         "id": 4017,
@@ -41,6 +41,25 @@
         "remarks": null,
         "comm_name": "LABOR AND EMPLOYMENT",
         "datetime": "2025-08-27T10:00",
+        "venue_id": 0
+      },
+      {
+        "id": 4027,
+        "date": "2025-08-27",
+        "time": "09:00 AM",
+        "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+        "agenda": "Briefings/hearings on the proposed FY 2026 budget of the following departments/agencies:\n\n• 9:00 AM\n- Department of Trade and Industry (DTI)\n\n• 1:30 PM\n- Department of Science and Technology (DOST)",
+        "committee": null,
+        "onwards": true,
+        "published": true,
+        "twg": false,
+        "external": false,
+        "cancelled": false,
+        "resched": null,
+        "old_time": null,
+        "remarks": null,
+        "comm_name": "APPROPRIATIONS",
+        "datetime": "2025-08-27T09:00",
         "venue_id": 0
       },
       {
@@ -2834,25 +2853,6 @@
         "remarks": null,
         "comm_name": "PUBLIC ACCOUNTS",
         "datetime": "2025-01-15T13:30",
-        "venue_id": 0
-      },
-      {
-        "id": 3869,
-        "date": "2025-01-15",
-        "time": "10:00 AM",
-        "venue": "Conf. Rms. 3&4, RVM Bldg.",
-        "agenda": "• Approval of Committee Report on HB 10902 – Declaring the 7th day of November of every year a special national working holiday in commemoration of the establishment of the first Philippine Mosque and the introduction of Islam in the Philippines (Rep. Bai Dimple Mastura)\n\n• Update by the National Commission on Muslim Filipinos (NCMF) on its preparations for the 2025 Hajj Pilgrimage",
-        "committee": null,
-        "onwards": false,
-        "published": true,
-        "twg": false,
-        "external": false,
-        "cancelled": false,
-        "resched": null,
-        "old_time": null,
-        "remarks": null,
-        "comm_name": "MUSLIM AFFAIRS",
-        "datetime": "2025-01-15T10:00",
         "venue_id": 0
       }
     ]
