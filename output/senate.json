@@ -1,29 +1,5 @@
 [
   {
-    "date": "Monday, September 1",
-    "time": "8:30 A.M.",
-    "committee": "Agriculture, Food and Agrarian Reform joint with Ways and Means; and Finance (Presiding: Sen. Pangilinan)",
-    "subject": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 04, 2025, on “The RTL: Implementation Failure or Policy Issue”; Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, on “Agricultural and Food Crises”",
-    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, September 1",
-    "time": "9:00 A.M.",
-    "committee": "Blue Ribbon (Presiding: Sen. Marcoleta)",
-    "subject": "Motu proprio inquiry in aid of legislation on the “Philippines Under Water”",
-    "venue": "Session Hall 2/F Left Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, September 1",
-    "time": "10:00 A.M.",
-    "committee": "Finance (Presiding: Sen. Gatchalian)",
-    "subject": "Organizational Meeting; Briefing by the Development Budget Coordination Committee (DBCC) on the Proposed Fiscal Year 2026 National Expenditure Program",
-    "venue": "Sen. J. P. Laurel Room Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Tuesday, September 2",
     "time": "10:00 A.M.",
     "committee": "Finance (Presiding: Sen. Gatchalian)",
@@ -44,7 +20,31 @@
     "time": "10:00 A.M.",
     "committee": "Civil Service, Government Reorganization and Professional Regulation joint with Migrant Workers (Presiding: Sen. Dela Rosa)",
     "subject": "Organizational Meeting; S. No. 316 – Exempting Qualified OFWs From R.A. No. 10912 (Continuing Professional Development Act) (By: Sen. Lapid); S. No. 351 – Repealing R.A. No. 10912 (Continuing Professional Development Act) (By: Sen. Dela Rosa)",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, September 4",
+    "time": "9:00 A.M.",
+    "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. Marcos)",
+    "subject": "Organizational Meeting; S. Nos. 111 and 373 - National Minimum Wage (By: Sens. Marcos and Padilla); S. Nos. 6, 12, 141, 175, 209, 273 and 458 - Minimum Wage Increases (By: Sens. Ejercito, Padilla, Zubiri, Go, Hontiveros, Aquino and Estrada); S. Nos. 44 and 163 - Establishing the Standards for a Living Wage (By: Sens. Villanueva and Legarda)",
+    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, September 4",
+    "time": "1:00 P.M.",
+    "committee": "Women, Children, Family Relations and Gender Equality joint with Justice and Human Rights (Presiding: Sen. Hontiveros)",
+    "subject": "S. Nos. 565 and 845 - Amending R.A. No. 11313 (Safe Spaces Act) (By: Sens. Hontiveros and Estrada); P.S. Res. No. 67 - Use of Artificial Intelligence Technology to Proliferate Deepfake Pornography (By: Sen. Hontiveros)",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, September 4",
+    "time": "1:30 P.M.",
+    "committee": "Sustainable Development Goals, Innovation and Futures Thinking joint with Public Works; Ways and Means; and Finance (Presiding: Sen. P. Cayetano)",
+    "subject": "P.S. Res. No. 65 - Philippines’ Progress in Achieving the Sustainable Development Goals by 2030 (By: Sen. P. Cayetano); S. Nos. 24, 528 and 883 - Walkable and Bikeable Communities Act (By: Sens. P. Cayetano, Legarda and Estrada)",
+    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]
