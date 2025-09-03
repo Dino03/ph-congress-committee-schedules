@@ -1,13 +1,5 @@
 [
   {
-    "date": "Tuesday, September 2",
-    "time": "10:00 A.M.",
-    "committee": "Finance (Presiding: Sen. Gatchalian)",
-    "subject": "Briefing by the Development Budget Coordination Committee (DBCC) on the Proposed Fiscal Year 2026 National Expenditure Program",
-    "venue": "Sen. J. P. Laurel Room Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Wednesday, September 3",
     "time": "9:00 A.M.",
     "committee": "Culture and the Arts joint with Tourism; Sports; Basic Education; Ways and Means; and Finance (Presiding: Sen. Legarda)",
@@ -34,6 +26,14 @@
   {
     "date": "Thursday, September 4",
     "time": "1:00 P.M.",
+    "committee": "Sustainable Development Goals, Innovation and Futures Thinking joint with Public Works; Ways and Means; and Finance (Presiding: Sen. P. Cayetano)",
+    "subject": "P.S. Res. No. 65 - Philippines’ Progress in Achieving the Sustainable Development Goals by 2030 (By: Sen. P. Cayetano); S. Nos. 24, 528 and 883 - Walkable and Bikeable Communities Act (By: Sens. P. Cayetano, Legarda and Estrada)",
+    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, September 4",
+    "time": "1:00 P.M.",
     "committee": "Women, Children, Family Relations and Gender Equality joint with Justice and Human Rights (Presiding: Sen. Hontiveros)",
     "subject": "S. Nos. 565 and 845 - Amending R.A. No. 11313 (Safe Spaces Act) (By: Sens. Hontiveros and Estrada); P.S. Res. No. 67 - Use of Artificial Intelligence Technology to Proliferate Deepfake Pornography (By: Sen. Hontiveros)",
     "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
@@ -41,10 +41,10 @@
   },
   {
     "date": "Thursday, September 4",
-    "time": "1:30 P.M.",
-    "committee": "Sustainable Development Goals, Innovation and Futures Thinking joint with Public Works; Ways and Means; and Finance (Presiding: Sen. P. Cayetano)",
-    "subject": "P.S. Res. No. 65 - Philippines’ Progress in Achieving the Sustainable Development Goals by 2030 (By: Sen. P. Cayetano); S. Nos. 24, 528 and 883 - Walkable and Bikeable Communities Act (By: Sens. P. Cayetano, Legarda and Estrada)",
-    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "time": "1:00 P.M.",
+    "committee": "Higher, Technical and Vocational Education joint with Basic Education and Finance (TWG)",
+    "subject": "S. Nos. 26, 130, 169, 503 and 514 - Amendment of the Universal Access to Quality Tertiary Education Act (R.A. 10931) (By: Sens. P. Cayetano, Aquino, Go, Escudero and Legarda); S. No. 102 - Scholarship and Financial Assistance (By: Sen. A. Cayetano)",
+    "venue": "Sen. L.M. Tañada Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]

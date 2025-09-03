@@ -1,5 +1,37 @@
 [
   {
+    "date": "2025-09-05",
+    "time": "09:00 AM",
+    "committee": "APPROPRIATIONS",
+    "subject": "Briefing/hearing on the proposed FY 2026 budget: • 9:00 AM - Department of Public Works and Highways (DPWH)",
+    "venue": "HRep Session Hall (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-09-05",
+    "time": "10:00 AM",
+    "committee": "APPROPRIATIONS",
+    "subject": "Briefing/hearing on the proposed FY 2026 budget: • 10:00 AM - Department of Labor and Employment (DOLE)",
+    "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-09-04",
+    "time": "10:00 AM",
+    "committee": "APPROPRIATIONS",
+    "subject": "Briefing/hearing on the proposed FY 2026 budget: • 10:00 AM - Department of Transportation (DOTr)",
+    "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-09-04",
+    "time": "09:00 AM",
+    "committee": "APPROPRIATIONS",
+    "subject": "Briefing/hearing on the proposed FY 2026 budget: • 9:00 AM - Department of Health (DOH)",
+    "venue": "HRep Session Hall (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
     "date": "2025-09-03",
     "time": "09:30 AM",
     "committee": "WAYS AND MEANS",
@@ -169,6 +201,14 @@
   },
   {
     "date": "2025-08-27",
+    "time": "09:00 AM",
+    "committee": "APPROPRIATIONS",
+    "subject": "Briefings/hearings on the proposed FY 2026 budget of the following departments/agencies: • 9:00 AM - Department of Trade and Industry (DTI) • 1:30 PM - Department of Science and Technology (DOST)",
+    "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-08-27",
     "time": "10:00 AM",
     "committee": "PUBLIC ORDER AND SAFETY",
     "subject": "• Organizational meeting – Approval of the Committee Internal Rules of Procedure • Briefing by the National Police Commission (NAPOLCOM), Philippine National Police (PNP), Bureau of Fire Protection (BFP), and Bureau of Jail Management and Penology (BJMP) on their respective mandates, plans, programs, and legislative priorities",
@@ -189,14 +229,6 @@
     "committee": "ENERGY",
     "subject": "Briefing by the National Power Corporation (NPC), Philippine National Oil Company (PNOC), Power Sector Assets and Liabilities Management (PSALM) Corporation, and Philippine IPP Association (PIPPA) on the electric power generation and energy resource development",
     "venue": "Conf. Rms. 7&8 RVM Bldg.",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-08-27",
-    "time": "09:00 AM",
-    "committee": "APPROPRIATIONS",
-    "subject": "Briefings/hearings on the proposed FY 2026 budget of the following departments/agencies: • 9:00 AM - Department of Trade and Industry (DTI) • 1:30 PM - Department of Science and Technology (DOST)",
-    "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
     "source": "House API (list)"
   },
   {
@@ -233,14 +265,6 @@
   },
   {
     "date": "2025-08-26",
-    "time": "10:00 AM",
-    "committee": "TRANSPORTATION",
-    "subject": "Organizational meeting – Approval of the Committee Internal Rules of Procedure and presentation of its organizational structure",
-    "venue": "R.R. Andaya Hall 2/F Main Bldg.",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-08-26",
     "time": "09:00 AM",
     "committee": "APPROPRIATIONS",
     "subject": "Briefings/hearings on the proposed FY 2026 budget of the following departments/agencies: • 9:00 AM - Civil Service Commission (CSC) • 11:00 AM - Commission on Human Rights (CHR) • 2:00 PM - Presidential Communications Office (PCO)",
@@ -252,6 +276,22 @@
     "time": "08:00 AM",
     "committee": "POVERTY ALLEVIATION",
     "subject": "HB 23 – Strengthening beneficiary identification and targeting mechanisms, inclusion of a food and nutrition grant, amending for this purpose RA 11310, otherwise known as the Pantawid Pamilyang Pilipino Program (4Ps) Act (Rep. Niko Raul Daza) HB 42 – Providing for the increase of the minimum amounts of the components of 4Ps grants (Rep. Ernesto Dionisio Jr.) HB 104 – Enhancing the 4Ps, amending for the purpose Sections 7,10 and 22 of RA 11310 and appropriating funds therefor (Rep. JC Abalos) HB 120 – Increasing the conditional cash grants of 4Ps beneficiaries and mandating the annual review thereof, amending for the purpose RA 11310 (Rep. JC Abalos) HB 604 – Enhancing the livelihood support in the 4Ps, amending for the purpose RA 11310 (Rep. Edwin Ongchuan) HB 1913 – Expanding the 4Ps, amending for the purpose RA 11310 (Rep. Franz Pumaren) HB 2313 – Strengthening the health and nutrition of Filipino mothers and their children, amending for the purpose RA 11310 (Rep. Marie Bernadette Escudero)",
+    "venue": "Conf. Rms. 1&2 RVM Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-08-26",
+    "time": "10:00 AM",
+    "committee": "TRANSPORTATION",
+    "subject": "Organizational meeting – Approval of the Committee Internal Rules of Procedure and presentation of its organizational structure",
+    "venue": "R.R. Andaya Hall 2/F Main Bldg.",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-08-20",
+    "time": "12:00 PM",
+    "committee": "PUBLIC WORKS AND HIGHWAYS",
+    "subject": "Part I: • Briefing by the Department of Public Works and Highways (DPWH) on the requirements for road conversion and creation and classification of district engineering offices, and revised guidelines on the naming and renaming of streets, public schools, plazas, buildings, bridges, and other public infrastructures; • Briefing by the National Historical Commission of the Philippines (NHCP) on its revised guidelines on the naming and renaming of streets, public schools, plazas, buildings, bridges, and other public infrastructures Part II: Organizational meeting – Approval of the Committee Rules of Procedure for the 20th Congress and presentation of the Committee’s mandate and membership",
     "venue": "Conf. Rms. 1&2 RVM Bldg. (To be livestreamed on the official Facebook page of the HRep)",
     "source": "House API (list)"
   },
@@ -269,14 +309,6 @@
     "committee": "APPROPRIATIONS",
     "subject": "Briefings/hearings on the proposed FY 2026 budget of the following departments/agencies: • 9:00 AM - Philippine Amusement and Gaming Corporation (PAGCOR) • 1:30 PM - Philippine Charity Sweepstakes Office (PCSO)",
     "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-08-20",
-    "time": "12:00 PM",
-    "committee": "PUBLIC WORKS AND HIGHWAYS",
-    "subject": "Part I: • Briefing by the Department of Public Works and Highways (DPWH) on the requirements for road conversion and creation and classification of district engineering offices, and revised guidelines on the naming and renaming of streets, public schools, plazas, buildings, bridges, and other public infrastructures; • Briefing by the National Historical Commission of the Philippines (NHCP) on its revised guidelines on the naming and renaming of streets, public schools, plazas, buildings, bridges, and other public infrastructures Part II: Organizational meeting – Approval of the Committee Rules of Procedure for the 20th Congress and presentation of the Committee’s mandate and membership",
-    "venue": "Conf. Rms. 1&2 RVM Bldg. (To be livestreamed on the official Facebook page of the HRep)",
     "source": "House API (list)"
   },
   {
@@ -329,18 +361,18 @@
   },
   {
     "date": "2025-08-18",
-    "time": "10:00 AM",
-    "committee": "BASIC EDUCATION AND CULTURE",
-    "subject": "Organizational meeting – Approval of the Committee Rules of Procedure Briefing by the Department of Education (DepEd) on the following: a) Mandate and legal basis; b) Plans, programs, deliverables, and other relevant statistical data for School Year 2025 – 2026; c) Report of accomplishments and challenges; and d) Legislative agenda/priorities for the 20th Congress",
-    "venue": "Conf. Rms. 1&2 RVM Bldg. (To be livestreamed on the official Facebook pages of the HRep and Pasig City Rep. Roman Romulo)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-08-18",
     "time": "01:00 PM",
     "committee": "WAYS AND MEANS",
     "subject": "Organizational meeting – Approval of the Committee Internal Rules of Procedure",
     "venue": "Spkr. De Venecia Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-08-18",
+    "time": "10:00 AM",
+    "committee": "BASIC EDUCATION AND CULTURE",
+    "subject": "Organizational meeting – Approval of the Committee Rules of Procedure Briefing by the Department of Education (DepEd) on the following: a) Mandate and legal basis; b) Plans, programs, deliverables, and other relevant statistical data for School Year 2025 – 2026; c) Report of accomplishments and challenges; and d) Legislative agenda/priorities for the 20th Congress",
+    "venue": "Conf. Rms. 1&2 RVM Bldg. (To be livestreamed on the official Facebook pages of the HRep and Pasig City Rep. Roman Romulo)",
     "source": "House API (list)"
   },
   {
@@ -529,18 +561,18 @@
   },
   {
     "date": "2025-06-04",
-    "time": "01:00 PM",
-    "committee": "HOUSING AND URBAN DEVELOPMENT",
-    "subject": "Briefing on the Department of Human Settlements and Urban Development Circular No. 2024-018, entitled \"The 2024 Revised Implementing Rules and Regulations of Republic Act No. 9904, Otherwise Known as the Magna Carta for Homeowners and Homeowners’ Association\"",
-    "venue": "Conf. Rms. 7&8, RVM Bldg.",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-06-04",
     "time": "10:00 AM",
     "committee": "CREATIVE INDUSTRIES (This regular meeting of the Committee will follow immediately after the technical working group meeting)",
     "subject": "Substitute Bill to HBs 936, 2164, 4787 & 9036 – Creating the National Film Archive of the Philippines to be managed by the Film Development Council and appropriating funds therefor (Reps. Richard Gomez, DPA, Luis Raymund ‘LRay’ Villafuerte Jr., Gus Tambunting, and Patrick Michael Vargas)",
     "venue": "Conf. Rms. 1&2 RVM Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-06-04",
+    "time": "01:00 PM",
+    "committee": "HOUSING AND URBAN DEVELOPMENT",
+    "subject": "Briefing on the Department of Human Settlements and Urban Development Circular No. 2024-018, entitled \"The 2024 Revised Implementing Rules and Regulations of Republic Act No. 9904, Otherwise Known as the Magna Carta for Homeowners and Homeowners’ Association\"",
+    "venue": "Conf. Rms. 7&8, RVM Bldg.",
     "source": "House API (list)"
   },
   {
@@ -841,14 +873,6 @@
   },
   {
     "date": "2025-02-04",
-    "time": "01:30 PM",
-    "committee": "HOUSING AND URBAN DEVELOPMENT",
-    "subject": "• Deliberation on the following: HBs 1325, 11067 & 11091 – Ordaining a national policy of free housing through usufruct, providing funds therefor (Rep. Ivan Howard Guintu, Gerville ‘Jinky Bitrics’ Luistro, and Deputy Speaker Camille Villar) HB 1883 – Establishing a Pag-IBIG Fund Field Office in Tanauan City, Province of Batangas and appropriating funds therefor (Rep. Ma. Theresa Collantes) • Briefing on the delay of the completion of housing units and delivery of titles",
-    "venue": "Spkr. Villar Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-02-04",
     "time": "11:00 AM",
     "committee": "OVERSEAS WORKERS AFFAIRS",
     "subject": "HR 499 – Inquiry into the reported fraudulent activities and scams of fake or unscrupulous international freight forwarders and their local counterparts victimizing overseas Filipino workers and overseas Filipinos in the shipment and delivery of balikbayan boxes with the aim of curbing and preventing such unlawful activities (Rep. Marissa ‘Del Mar’ Magsino)",
@@ -857,26 +881,10 @@
   },
   {
     "date": "2025-02-04",
-    "time": "09:00 AM",
-    "committee": "MINDANAO AFFAIRS",
-    "subject": "Briefing by the Mindanao Development Authority (MinDA) on the following: • Mindanao Development Agenda 2023 – 2028; • Status of major infrastructure projects; • Update on Board Resolutions issued; and • Mindanao budget advocacy",
+    "time": "01:30 PM",
+    "committee": "HOUSING AND URBAN DEVELOPMENT",
+    "subject": "• Deliberation on the following: HBs 1325, 11067 & 11091 – Ordaining a national policy of free housing through usufruct, providing funds therefor (Rep. Ivan Howard Guintu, Gerville ‘Jinky Bitrics’ Luistro, and Deputy Speaker Camille Villar) HB 1883 – Establishing a Pag-IBIG Fund Field Office in Tanauan City, Province of Batangas and appropriating funds therefor (Rep. Ma. Theresa Collantes) • Briefing on the delay of the completion of housing units and delivery of titles",
     "venue": "Spkr. Villar Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-02-04",
-    "time": "12:00 PM",
-    "committee": "HOUSE COMMITTEE ON INFORMATION AND COMMUNICATIONS TECHNOLOGY AND SENATE COMMITTEE ON SCIENCE AND TECHNOLOGY (Conference Committee)",
-    "subject": "Conference Committee meeting on the disagreeing provisions of HB 7327 – Institutionalizing the transition of the government to E-Governance in the digital age, creating for the purpose the Philippine Infostructure Management Corporation and appropriating funds therefor (Speaker Ferdinand Martin Romualdez); and SBN 2781 – Institutionalizing the transition of the government to E-Governance, establishing for the purpose the E-Governance Academy, and appropriating funds therefor (Sen. Alan Peter Cayetano)",
-    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate of the Philippines",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-02-04",
-    "time": "10:00 AM",
-    "committee": "HOUSE COMMITTEE ON SUFFRAGE AND ELECTORAL REFORMS AND SENATE COMMITTEE ON LOCAL GOVERNMENT (Conference Committee)",
-    "subject": "Conference Committee meeting on the disagreeing provisions of HB 11144 & SBN 2942 – Resetting the first regular elections in the Bangsamoro Region in Muslim Mindanao, amending for the purpose Section 13, Article XVI of RA 11054, otherwise known as the Organic Law for the Bangsamoro Autonomous Region in Muslim Mindanao, as amended (Rep. Sittie Aminah Dimaporo and Sen. Francis ‘Chiz’ Escudero)",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate of the Philippines",
     "source": "House API (list)"
   },
   {
@@ -885,6 +893,14 @@
     "committee": "PERSONS WITH DISABILITIES (This meeting will follow immediately after the meeting of Persons with Disabilities jt. w/ Health)",
     "subject": "Report of the Technical Working Group on the Substitute Bill to HBs 2901, 3739, 4623, 5194, 5497, 6555, 7319, 8440, 8593, 9467 & 10973 – Prescribing for the validity periods of identification cards issued to persons with disabilities (PWDs), and prescribing penalties therefor, further amending for the purpose RA 7277, otherwise known as the Magna Carta for PWDs, as amended (Reps. Marvin Rillo, Lani Mercado-Revilla, Gus Tambunting, Patrick Michael Vargas, Bernadette 'BH' Herrera, Adrian Michael Amatong, Ivan Howard Guintu, Lordan Suan, JC Abalos, Ralph Wendel Tulfo, and Pablo John Garcia) HB 3163 – Institutionalizing a national rehabilitation and physiotherapy centers for PWDs through the establishment of accessible PWD rehabilitation centers in every province, city, and other strategic areas throughout the country (Rep. Josephine Veronique ‘Jaye’ Lacson-Noel) HB 4446 – Exempting PWDs from the payment of parking fees in all commercial establishments and government buildings that charge parking fees, thereby amending Section 32 of RA 7277, as amended by RA 10754 (Rep. Edwin Olivarez) HB 7635 – Exempting PWDs and senior citizens from the payment of parking fees in all commercial establishments and government buildings that charge parking fees, thereby amending Section 32 of RA 7277, as amended by RA 10754 and Section 4 of RA 9257, as amended by RA 9994, otherwise known as the Expanded Senior Citizens Act of 2010 (Rep. Angelo Marcos Barba) HB 9847 – Exempting PWDs from parking fees in all commercial establishments and government buildings, and providing exemption from the number coding scheme, thereby amending Section 32 of RA 7277, as amended (Rep. Lordan Suan)",
     "venue": "Conf. Rms. 3&4, RVM Bldg.",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-02-04",
+    "time": "09:00 AM",
+    "committee": "MINDANAO AFFAIRS",
+    "subject": "Briefing by the Mindanao Development Authority (MinDA) on the following: • Mindanao Development Agenda 2023 – 2028; • Status of major infrastructure projects; • Update on Board Resolutions issued; and • Mindanao budget advocacy",
+    "venue": "Spkr. Villar Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
     "source": "House API (list)"
   },
   {
@@ -920,11 +936,19 @@
     "source": "House API (list)"
   },
   {
-    "date": "2025-02-03",
-    "time": "09:00 AM",
-    "committee": "HOUSE COMMITTEE ON BASIC EDUCATION AND CULTURE AND SENATE COMMITTEE ON BASIC EDUCATION (Conference Committee)",
-    "subject": "• 9:00 am Conference Committee meeting on the disagreeing provisions of HB 10142 – Strengthening the Early Childhood Care and Development System, and appropriating funds therefor (Rep. Roman Romulo); and SBN 2575 – Strengthening the Early Childhood Care and Development System, repealing for the purpose RA 10410, otherwise known as the Early Years Act of 2013, and appropriating funds therefor (Former Sen. Sonny Angara) • 10:30 am Conference Committee meeting on the disagreeing provisions of HB 4896 – Declaring the Sixteenth Day of May of every year a special working holiday to be known as the National Education Support Personnel Day (Rep. France Castro); and SBN 2872 – Declaring the Sixteenth Day of May of every year a special working holiday to be known as the National Education Support Personnel Day, mandating the Department of Education and the Commission on Higher Education to lead in its observance, and appropriating funds therefor (Sen. Ramon Bong Revilla Jr.)",
-    "venue": "TURF Room, Manila Polo Club, Makati City",
+    "date": "2025-02-04",
+    "time": "12:00 PM",
+    "committee": "HOUSE COMMITTEE ON INFORMATION AND COMMUNICATIONS TECHNOLOGY AND SENATE COMMITTEE ON SCIENCE AND TECHNOLOGY (Conference Committee)",
+    "subject": "Conference Committee meeting on the disagreeing provisions of HB 7327 – Institutionalizing the transition of the government to E-Governance in the digital age, creating for the purpose the Philippine Infostructure Management Corporation and appropriating funds therefor (Speaker Ferdinand Martin Romualdez); and SBN 2781 – Institutionalizing the transition of the government to E-Governance, establishing for the purpose the E-Governance Academy, and appropriating funds therefor (Sen. Alan Peter Cayetano)",
+    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate of the Philippines",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-02-04",
+    "time": "10:00 AM",
+    "committee": "HOUSE COMMITTEE ON SUFFRAGE AND ELECTORAL REFORMS AND SENATE COMMITTEE ON LOCAL GOVERNMENT (Conference Committee)",
+    "subject": "Conference Committee meeting on the disagreeing provisions of HB 11144 & SBN 2942 – Resetting the first regular elections in the Bangsamoro Region in Muslim Mindanao, amending for the purpose Section 13, Article XVI of RA 11054, otherwise known as the Organic Law for the Bangsamoro Autonomous Region in Muslim Mindanao, as amended (Rep. Sittie Aminah Dimaporo and Sen. Francis ‘Chiz’ Escudero)",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate of the Philippines",
     "source": "House API (list)"
   },
   {
@@ -961,10 +985,10 @@
   },
   {
     "date": "2025-02-03",
-    "time": "01:30 PM",
-    "committee": "APPROPRIATIONS",
-    "subject": "Substitute Bill to HBs 5010, 5090, 5250, 5272, 5581, 6011 & 6545 – Institutionalizing active transport by establishing a safe pathways network of bicycle lanes, walkways and slow streets (Reps. Gus Tambunting, Eduardo ‘Bro. Eddie’ Villanueva, Julienne ‘Jam’ Baronda, Juan Carlos ‘Arjo’ Atayde, Charisse Anne Hernandez, Wilbert Lee, and Speaker Ferdinand Martin Romualdez) Substitute Bill to HBs 635, 722, 1258, 1900, 5617 & 9780 – Establishing the National Measurement Institute of the Philippines, and appropriating funds therefor (Reps. Joey Sarte Salceda, Ron Salo, Divina Grace Yu, Jeyzel Victoria Yu, Carlito Marquez, and Rufus Rodriguez) HB 11117 – Providing for the administrative cancellation of birth certificates registered through fraudulent means by foreign nationals, creating a Special Committee on Cancellation of Birth Certificates and appropriating funds therefor (Senior Deputy Speaker Aurelio 'Dong' Gonzales, Jr.)",
-    "venue": "R.R. Andaya Hall 2/F Main Bldg.",
+    "time": "09:00 AM",
+    "committee": "HOUSE COMMITTEE ON BASIC EDUCATION AND CULTURE AND SENATE COMMITTEE ON BASIC EDUCATION (Conference Committee)",
+    "subject": "• 9:00 am Conference Committee meeting on the disagreeing provisions of HB 10142 – Strengthening the Early Childhood Care and Development System, and appropriating funds therefor (Rep. Roman Romulo); and SBN 2575 – Strengthening the Early Childhood Care and Development System, repealing for the purpose RA 10410, otherwise known as the Early Years Act of 2013, and appropriating funds therefor (Former Sen. Sonny Angara) • 10:30 am Conference Committee meeting on the disagreeing provisions of HB 4896 – Declaring the Sixteenth Day of May of every year a special working holiday to be known as the National Education Support Personnel Day (Rep. France Castro); and SBN 2872 – Declaring the Sixteenth Day of May of every year a special working holiday to be known as the National Education Support Personnel Day, mandating the Department of Education and the Commission on Higher Education to lead in its observance, and appropriating funds therefor (Sen. Ramon Bong Revilla Jr.)",
+    "venue": "TURF Room, Manila Polo Club, Makati City",
     "source": "House API (list)"
   },
   {
@@ -989,6 +1013,14 @@
     "committee": "NATURAL RESOURCES",
     "subject": "Committee Report on HB 9761 – Declaring a parcel of land of the public domain located in Barangays Berong, Aramaywan, Isugod, Tabon, Malatgao, Quinlogan, and Calumpang in the Municipality of Quezon, Province of Palawan, as agricultural land open to disposition for agricultural, commercial, residential, industrial, and other productive purposes (Rep. Jose Alvarez) Committee Report on HB 9762 – Declaring a parcel of land of the public domain located in Barangays Bunog, Iraan, Punta Baja, Campong Ulay, and Ransang in the Municipality of Jose P. Rizal, Province of Palawan, as agricultural land open to disposition for agricultural, commercial, residential, industrial, and other productive purposes (Rep. Jose Alvarez) HB 6577 – Expanding the boundaries of Las Piñas Parañaque Wetland Park and its vicinities as protected area (Deputy Speaker Camille Villar) HR 778 – Inquiry into the gaps and inconsistencies of land use and environmental management laws and subsequent misuse and abuse, leading to gross soil, water, and air pollution in forestlands, watershed, and buffer zones in the Municipality of Palompon, Province of Leyte (Rep. Richard Gomez, DPA)",
     "venue": "Spkr. Nograles Hall 1/F SWA Bldg.",
+    "source": "House API (list)"
+  },
+  {
+    "date": "2025-02-03",
+    "time": "01:30 PM",
+    "committee": "APPROPRIATIONS",
+    "subject": "Substitute Bill to HBs 5010, 5090, 5250, 5272, 5581, 6011 & 6545 – Institutionalizing active transport by establishing a safe pathways network of bicycle lanes, walkways and slow streets (Reps. Gus Tambunting, Eduardo ‘Bro. Eddie’ Villanueva, Julienne ‘Jam’ Baronda, Juan Carlos ‘Arjo’ Atayde, Charisse Anne Hernandez, Wilbert Lee, and Speaker Ferdinand Martin Romualdez) Substitute Bill to HBs 635, 722, 1258, 1900, 5617 & 9780 – Establishing the National Measurement Institute of the Philippines, and appropriating funds therefor (Reps. Joey Sarte Salceda, Ron Salo, Divina Grace Yu, Jeyzel Victoria Yu, Carlito Marquez, and Rufus Rodriguez) HB 11117 – Providing for the administrative cancellation of birth certificates registered through fraudulent means by foreign nationals, creating a Special Committee on Cancellation of Birth Certificates and appropriating funds therefor (Senior Deputy Speaker Aurelio 'Dong' Gonzales, Jr.)",
+    "venue": "R.R. Andaya Hall 2/F Main Bldg.",
     "source": "House API (list)"
   },
   {
@@ -1165,38 +1197,6 @@
     "committee": "JUSTICE",
     "subject": "HB 10986 – Classifying and penalizing extrajudicial killing as a heinous crime, providing reparation for the victims, and strengthening the mechanism for its prevention (Senior Deputy Speaker Aurelio 'Dong' Gonzales Jr.)",
     "venue": "Spkr. Nograles Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-01-22",
-    "time": "10:00 AM",
-    "committee": "ECONOMIC AFFAIRS",
-    "subject": "Substitute Bill to HBs 8791 & 9791 – Providing for a framework for circular economy to promote sustainable production and consumption, and national economic security (Rep. Antonio Legarda Jr. and Former Rep. Francisco `Kiko´ Benitez)",
-    "venue": "R.R. Andaya Hall 2/F Main Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-01-22",
-    "time": "10:00 AM",
-    "committee": "GOOD GOVERNMENT AND PUBLIC ACCOUNTABILITY",
-    "subject": "Briefing on the Philippine Health Insurance Corporation's zero subsidy in the 2025 national budget",
-    "venue": "2/F People’s Center Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-01-22",
-    "time": "10:00 AM",
-    "committee": "PUBLIC ORDER AND SAFETY (Technical Working Group)",
-    "subject": "Technical working group meeting on the following: HB 893 – Amending RA 10591, otherwise known as the Comprehensive Firearms and Ammunition Regulation Act, to promote a higher standard of protection, increasing its penalties and sanctions (Rep. Michael Romero, Ph.D.) HB 9718 – Amending Section 9, paragraph 5 of RA 10592, limiting the number of registered firearms and ammunitions, and providing penalties for violations thereof (Rep. Eduardo 'Bro. Eddie' Villanueva) HB 11141 – Amending certain sections of RA 10591 (by rationalizing certain provisions of the law so that law-abiding individuals may not be duly deprived of the right to legally own firearms) (Rep. Dan Fernandez)",
-    "venue": "Conf. Rms. 3&4, RVM Bldg. (To be livestreamed on the official Facebook page of the HRep)",
-    "source": "House API (list)"
-  },
-  {
-    "date": "2025-01-22",
-    "time": "09:00 AM",
-    "committee": "JOINT COMMITTEE (Murang Pagkain Supercommittee) COMMITEES ON WAYS AND MEANS, TRADE AND INDUSTRY, AGRICULTURE AND FOOD, SOCIAL SERVICES, AND SPECIAL COMMITTEE ON FOOD SECURITY",
-    "subject": "HR 254 – Authorizing the Committees on Ways and Means, Trade and Industry, Agriculture and Food, Social Services, and the Special Committee on Food Security to conduct a joint inquiry, in aid of legislation, relative to house resolutions and privilege speeches referred to the mentioned committees including motu proprio investigations on the implementation of government programs to address smuggling and price manipulation of basic goods and essential commodities, mitigate hunger, and promote food and nutrition security (Speaker Ferdinand Martin Romualdez)",
-    "venue": "People’s Center Bldg. (To be livestreamed on the official Facebook page of the HRep)",
     "source": "House API (list)"
   }
 ]
