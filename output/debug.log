@@ -1,27 +1,27 @@
-[2025-09-05T02:58:05.446Z] [house] request starting
-[2025-09-05T02:58:05.447Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-09-05T02:58:05.447Z] House headers count: 14
-[2025-09-05T02:58:05.447Z] House attempt 1 starting...
-[2025-09-05T02:58:07.311Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-09-05T02:58:08.343Z] POST response: status=200, contentLength=146990, duration=1030ms
-[2025-09-05T02:58:08.343Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=1030 keys=status,success,data dataType=object
-[2025-09-05T02:58:08.375Z] House attempt 1 succeeded
-[2025-09-05T02:58:08.376Z] House API response keys: status,success,data
-[2025-09-05T02:58:08.377Z] House API status: 200, success: true
-[2025-09-05T02:58:08.377Z] House API data keys: pageCount,count,rows
-[2025-09-05T02:58:08.378Z] House API pageCount: 27, count: 4050
-[2025-09-05T02:58:08.380Z] House raw rows count: 150
-[2025-09-05T02:58:08.380Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
-[2025-09-05T02:58:08.381Z] House first row sample: date="2025-09-05", time="09:00 AM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-05T02:58:08.381Z] House row 0: date="2025-09-05", time="09:00 AM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-05T02:58:08.382Z] House row 1: date="2025-09-05", time="10:00 AM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-05T02:58:08.382Z] House row 2: date="2025-09-04", time="10:00 AM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-05T02:58:08.384Z] House mapping: 150 valid, 0 invalid, 12 cancelled
-[2025-09-05T02:58:08.385Z] House deduplication: 0 duplicates removed, 150 final count
-[2025-09-05T02:58:08.386Z] House final first item: {"date":"2025-09-05","time":"09:00 AM","committee":"APPROPRIATIONS","subject":"Briefing/hearing on the proposed FY 2026 budget: • 9:00 AM - Department of Public Works and Highways (DPWH)","venue":"HRep Session Hall (To be livestreamed on the official Facebook page of the HRep)","source":"House API (list)"}
-[2025-09-05T02:58:08.387Z] House date range: 2025-09-05 to 2025-01-22
-[2025-09-05T02:58:08.388Z] House JSON written: 150 items
-[2025-09-05T02:58:08.389Z] [senate] request starting
-[2025-09-05T02:58:10.987Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2523 htmlLen=22332
-[2025-09-05T02:58:11.056Z] Senate parsed rows=10
-[2025-09-05T02:58:11.057Z] Done. House=150 Senate=10
+[2025-09-06T02:53:00.937Z] [house] request starting
+[2025-09-06T02:53:00.937Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-09-06T02:53:00.937Z] House headers count: 14
+[2025-09-06T02:53:00.938Z] House attempt 1 starting...
+[2025-09-06T02:53:02.339Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-09-06T02:53:03.294Z] POST response: status=200, contentLength=149214, duration=955ms
+[2025-09-06T02:53:03.295Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=955 keys=status,success,data dataType=object
+[2025-09-06T02:53:03.325Z] House attempt 1 succeeded
+[2025-09-06T02:53:03.325Z] House API response keys: status,success,data
+[2025-09-06T02:53:03.326Z] House API status: 200, success: true
+[2025-09-06T02:53:03.326Z] House API data keys: pageCount,count,rows
+[2025-09-06T02:53:03.327Z] House API pageCount: 28, count: 4069
+[2025-09-06T02:53:03.329Z] House raw rows count: 150
+[2025-09-06T02:53:03.329Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
+[2025-09-06T02:53:03.330Z] House first row sample: date="2025-09-10", time="09:00 AM", comm_name="ENERGY", cancelled=false
+[2025-09-06T02:53:03.330Z] House row 0: date="2025-09-10", time="09:00 AM", comm_name="ENERGY", cancelled=false
+[2025-09-06T02:53:03.330Z] House row 1: date="2025-09-10", time="09:00 AM", comm_name="SUSTAINABLE DEVELOPMENT GOALS", cancelled=false
+[2025-09-06T02:53:03.331Z] House row 2: date="2025-09-10", time="10:00 AM", comm_name="MICRO, SMALL AND MEDIUM ENTERPRISE DEVELOPMENT", cancelled=false
+[2025-09-06T02:53:03.333Z] House mapping: 150 valid, 0 invalid, 12 cancelled
+[2025-09-06T02:53:03.334Z] House deduplication: 0 duplicates removed, 150 final count
+[2025-09-06T02:53:03.335Z] House final first item: {"date":"2025-09-10","time":"09:00 AM","committee":"ENERGY","subject":"Briefing on the Philippine power transmission and electricity market by the National Grid Corporation of the Philippines (NGCP), National Transmission Corporation (TransCo), Philippine Electricity Market Corporation (PEMC), and Independent Electricity Market Operator of the Philippines (IEMOP)","venue":"Minority Leader’s Conf. Rm. Basement, NW Bldg.","source":"House API (list)"}
+[2025-09-06T02:53:03.335Z] House date range: 2025-09-10 to 2025-01-30
+[2025-09-06T02:53:03.337Z] House JSON written: 150 items
+[2025-09-06T02:53:03.337Z] [senate] request starting
+[2025-09-06T02:53:06.513Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3098 htmlLen=21376
+[2025-09-06T02:53:06.588Z] Senate parsed rows=10
+[2025-09-06T02:53:06.589Z] Done. House=150 Senate=10
