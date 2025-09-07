@@ -1,27 +1,45 @@
-[2025-09-06T02:53:00.937Z] [house] request starting
-[2025-09-06T02:53:00.937Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-09-06T02:53:00.937Z] House headers count: 14
-[2025-09-06T02:53:00.938Z] House attempt 1 starting...
-[2025-09-06T02:53:02.339Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-09-06T02:53:03.294Z] POST response: status=200, contentLength=149214, duration=955ms
-[2025-09-06T02:53:03.295Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=955 keys=status,success,data dataType=object
-[2025-09-06T02:53:03.325Z] House attempt 1 succeeded
-[2025-09-06T02:53:03.325Z] House API response keys: status,success,data
-[2025-09-06T02:53:03.326Z] House API status: 200, success: true
-[2025-09-06T02:53:03.326Z] House API data keys: pageCount,count,rows
-[2025-09-06T02:53:03.327Z] House API pageCount: 28, count: 4069
-[2025-09-06T02:53:03.329Z] House raw rows count: 150
-[2025-09-06T02:53:03.329Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
-[2025-09-06T02:53:03.330Z] House first row sample: date="2025-09-10", time="09:00 AM", comm_name="ENERGY", cancelled=false
-[2025-09-06T02:53:03.330Z] House row 0: date="2025-09-10", time="09:00 AM", comm_name="ENERGY", cancelled=false
-[2025-09-06T02:53:03.330Z] House row 1: date="2025-09-10", time="09:00 AM", comm_name="SUSTAINABLE DEVELOPMENT GOALS", cancelled=false
-[2025-09-06T02:53:03.331Z] House row 2: date="2025-09-10", time="10:00 AM", comm_name="MICRO, SMALL AND MEDIUM ENTERPRISE DEVELOPMENT", cancelled=false
-[2025-09-06T02:53:03.333Z] House mapping: 150 valid, 0 invalid, 12 cancelled
-[2025-09-06T02:53:03.334Z] House deduplication: 0 duplicates removed, 150 final count
-[2025-09-06T02:53:03.335Z] House final first item: {"date":"2025-09-10","time":"09:00 AM","committee":"ENERGY","subject":"Briefing on the Philippine power transmission and electricity market by the National Grid Corporation of the Philippines (NGCP), National Transmission Corporation (TransCo), Philippine Electricity Market Corporation (PEMC), and Independent Electricity Market Operator of the Philippines (IEMOP)","venue":"Minority Leader’s Conf. Rm. Basement, NW Bldg.","source":"House API (list)"}
-[2025-09-06T02:53:03.335Z] House date range: 2025-09-10 to 2025-01-30
-[2025-09-06T02:53:03.337Z] House JSON written: 150 items
-[2025-09-06T02:53:03.337Z] [senate] request starting
-[2025-09-06T02:53:06.513Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3098 htmlLen=21376
-[2025-09-06T02:53:06.588Z] Senate parsed rows=10
-[2025-09-06T02:53:06.589Z] Done. House=150 Senate=10
+[2025-09-07T03:01:30.825Z] [house] request starting
+[2025-09-07T03:01:30.825Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-09-07T03:01:30.825Z] House headers count: 14
+[2025-09-07T03:01:30.826Z] House attempt 1 starting...
+[2025-09-07T03:01:33.883Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-09-07T03:01:34.597Z] POST response: status=403, contentLength=118, duration=712ms
+[2025-09-07T03:01:34.597Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=712 headers={"server":"awselb/2.0","date":"Sun, 07 Sep 2025 03:01:34 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=y1MpI8tFVmjpT17ROHFla9S7h7zMbCopa371zXDNLTyzyEyEaMh3uMTu/BMpuBDfdph/NmffBAlXevt4hnO3QXeOUxStc2O0bcYc84883PHJTx4mL0GXyE7nur+gUW+hbQFn9I1u5NfrNPKbwcp0VJAPYiUVSnaEe3Dj5Ju9Sn46OebQCcQ=; Expires=Sun, 14 Sep 2025 03:01:34 GMT; Path=/\nAWSALBTGCORS=y1MpI8tFVmjpT17ROHFla9S7h7zMbCopa371zXDNLTyzyEyEaMh3uMTu/BMpuBDfdph/NmffBAlXevt4hnO3QXeOUxStc2O0bcYc84883PHJTx4mL0GXyE7nur+gUW+hbQFn9I1u5NfrNPKbwcp0VJAPYiUVSnaEe3Dj5Ju9Sn46OebQCcQ=; Expires=Sun, 14 Sep 2025 03:01:34 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+[2025-09-07T03:01:34.639Z] House attempt 1 failed: HTTP 403
+[2025-09-07T03:01:34.640Z] House retrying after 500ms...
+[2025-09-07T03:01:35.141Z] House attempt 2 starting...
+[2025-09-07T03:01:35.224Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-09-07T03:01:35.429Z] POST response: status=403, contentLength=118, duration=204ms
+[2025-09-07T03:01:35.429Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=204 headers={"server":"awselb/2.0","date":"Sun, 07 Sep 2025 03:01:35 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=ZvtcHaVS4ZfOx5ZMot8/x+Xu0zhwOvfOjJkB1UVKG5cFB0UcTWf0Qi65ElSYatpP6b8rth+DGGCEO4p9Cxhg610bJ52ouIEDtZT2y749M0QwcZejRj6JdMiVVCIiZhKYdx7tLGnLFWXKcvQN+pzuczpNPJtBxGbJ+mSFwtHFdwPySGe1Ke4=; Expires=Sun, 14 Sep 2025 03:01:35 GMT; Path=/\nAWSALBTGCORS=ZvtcHaVS4ZfOx5ZMot8/x+Xu0zhwOvfOjJkB1UVKG5cFB0UcTWf0Qi65ElSYatpP6b8rth+DGGCEO4p9Cxhg610bJ52ouIEDtZT2y749M0QwcZejRj6JdMiVVCIiZhKYdx7tLGnLFWXKcvQN+pzuczpNPJtBxGbJ+mSFwtHFdwPySGe1Ke4=; Expires=Sun, 14 Sep 2025 03:01:35 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+[2025-09-07T03:01:35.449Z] House attempt 2 failed: HTTP 403
+[2025-09-07T03:01:35.449Z] House retrying after 1500ms...
+[2025-09-07T03:01:36.952Z] House attempt 3 starting...
+[2025-09-07T03:01:37.029Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-09-07T03:01:37.231Z] POST response: status=403, contentLength=118, duration=202ms
+[2025-09-07T03:01:37.231Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=202 headers={"server":"awselb/2.0","date":"Sun, 07 Sep 2025 03:01:37 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=4Rkaj5URtQdI30gBekhdJR4bSvylcTwMidaZ8rfj5qSZqFKCpFMX6Ea6Hr+woHrYA90dAWhwaTMOBCatdb7+6hF6tk2M84N9HZ2lAOHDkp17U/kKGLzgLXfR8V0p0n5rKNn2gjaePRiEcvHOuF3P0u8hHswAyMO/lStpu90gXqxK/3FNE4w=; Expires=Sun, 14 Sep 2025 03:01:37 GMT; Path=/\nAWSALBTGCORS=4Rkaj5URtQdI30gBekhdJR4bSvylcTwMidaZ8rfj5qSZqFKCpFMX6Ea6Hr+woHrYA90dAWhwaTMOBCatdb7+6hF6tk2M84N9HZ2lAOHDkp17U/kKGLzgLXfR8V0p0n5rKNn2gjaePRiEcvHOuF3P0u8hHswAyMO/lStpu90gXqxK/3FNE4w=; Expires=Sun, 14 Sep 2025 03:01:37 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+[2025-09-07T03:01:37.254Z] House attempt 3 failed: HTTP 403
+[2025-09-07T03:01:37.254Z] House API failed after all retries.
+[2025-09-07T03:01:37.255Z] House error: HTTP 403
+[2025-09-07T03:01:37.255Z] House JSON written: 0 items
+[2025-09-07T03:01:37.256Z] [senate] request starting
+[2025-09-07T03:01:40.673Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3345 htmlLen=21376
+[2025-09-07T03:01:40.742Z] Senate parsed rows=10
+[2025-09-07T03:01:40.743Z] Done. House=0 Senate=10
