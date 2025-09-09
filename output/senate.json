@@ -1,13 +1,5 @@
 [
   {
-    "date": "Monday, September 8",
-    "time": "9:00 A.M.",
-    "committee": "Blue Ribbon (Presiding: Sen. Marcoleta)",
-    "subject": "Motu proprio inquiry, in aid of legislation, on the “Philippines Under Water”; Privilege Speech of Sen. Panfilo M. Lacson, delivered on August 20, 2025, entitled, “Flooded Gates of Corruption”",
-    "venue": "Session Hall 2/F Left Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Tuesday, September 9",
     "time": "10:00 A.M.",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
@@ -17,10 +9,10 @@
   },
   {
     "date": "Tuesday, September 9",
-    "time": "11:00 A.M.",
-    "committee": "Trade, Commerce and Entrepreneurship (Presiding: Sen. Marcoleta)",
+    "time": "(11:00 A.M.",
+    "committee": "(Trade, Commerce and Entrepreneurship (Presiding: Sen. Marcoleta))(CANCELLED as of 9:01 a.m., Tues., Sept. 9, 2025, by Mr. Sherywnne Agub, Committee Secretary)",
     "subject": "Organizational Meeting; Briefing by the Department of Trade and Industry (DTI)",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate)",
     "source": "Senate Weekly Schedule"
   },
   {
@@ -33,9 +25,25 @@
   },
   {
     "date": "Tuesday, September 9",
-    "time": "1:00 P.M.",
-    "committee": "Government Corporations and Public Enterprises (Presiding: Sen. M. Villar)",
+    "time": "(1:00 P.M.",
+    "committee": "(Government Corporations and Public Enterprises (Presiding: Sen. M. Villar))(CANCELLED as of 6:59 p.m., Mon., Sept. 8, 2025, by Atty. Mervin Carlo H. Marcos, Committee Secretary)",
     "subject": "Organizational Meeting; Privilege Speech of Sen. Risa Hontiveros, delivered on August 5, 2025, in connection with the allegedly anomalous/unsound investments made by the Government Service Insurance System (GSIS); P.S. Res. No. 39 – Government Service and Insurance System (GSIS) Questionable Investments (By: Sen. Marcos); P.S. Res. No. 84 – Government Service and Insurance System (GSIS) Investment Practices in Relation to the Social Insurance Fund (By: Sen. Gatchalian)",
+    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate)",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, September 10",
+    "time": "9:00 A.M.",
+    "committee": "Environment, Natural Resources and Climate Change (Presiding: Sen. C. Villar)",
+    "subject": "Organizational Meeting; Briefing by the Department of Environment and Natural Resources on the country’s current environmental state; Updates regarding the implementation of environmental laws",
+    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, September 10",
+    "time": "9:00 A.M.",
+    "committee": "Culture and the Arts joint with Finance (TWG)",
+    "subject": "S. No. 521 - Aklan Piña Museum and Cultural Center Act (Sen. Legarda); S. No. 820 - Linangan Ng Likhang-Bayan (Institute for Living Traditions) (Sen. Legarda)",
     "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
@@ -48,34 +56,34 @@
     "source": "Senate Weekly Schedule"
   },
   {
-    "date": "Wednesday, September 10",
-    "time": "10:00 A.M.",
-    "committee": "Environment, Natural Resources and Climate Change (Presiding: Sen. C. Villar)",
-    "subject": "Organizational Meeting; Briefing by the Department of Environment and Natural Resources on the country’s current environmental state; Updates regarding the implementation of environmental laws",
-    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Thursday, September 11",
     "time": "9:00 A.M.",
     "committee": "Basic Education joint with Local Government; Agriculture, Food and Agrarian Reform; and Finance (Presiding: Sen. Aquino)",
     "subject": "S. No. 121 - Classroom-Building Acceleration Program (CAP) Act (By: Sens. Aquino and Marcos); S. No. 87 – Expanded School-Based Feeding Program Act (By: Sen. R. T. Tulfo); S. No. 219 – Free Breakfast Program and Sustainable Agriculture Act (By: Sen. Pangilinan); S. Nos. 431 and 902 – Masustansiyang Pagkain Para sa Batang Pilipino Act (By: Sens. Marcos and Estrada)",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, September 11",
+    "time": "(10:00 A.M.",
+    "committee": "(Games and Amusement joint with Banks, Financial Institutions and Currencies; Youth; Economic Affairs; Public Information and Mass Media; and Ways and Means (Presiding: Sen. E. Tulfo))(CANCELLED as of 6:38 p.m., Mon., Sept. 8, 2025, by Ms. Realyn Cervantes-Garces, Committee Secretary)",
+    "subject": "S. Nos. 30, 47, 57, 142, 387, 508, 686 and 708 - Anti-Online Gambling Act (By: Sens. P. Cayetano, A. Cayetano, Villanueva, Gatchalian, Zubiri, Hontiveros, Legarda, Go and R. Tulfo); P.S. Res. No. 12 - Proliferation of Online Gambling and Lending in the Philippines (By: Sen. Ejercito); P.S. Res. No. 19 - Engagement of Learners in Online Gambling (By: Sen. Gatchalian); P.S. Res. No. 26 - Online Gambling Operations (By: Sen. C. Villar); Privilege Speech of Sen. Juan Miguel “Migz” Zubiri on Online Gambling, delivered on July 30, 2025",
+    "venue": "Session Hall 2/F Left Wing, Senate)",
     "source": "Senate Weekly Schedule"
   },
   {
     "date": "Thursday, September 11",
     "time": "10:00 A.M.",
-    "committee": "Games and Amusement joint with Banks, Financial Institutions and Currencies; Youth; Economic Affairs; Public Information and Mass Media; and Ways and Means (Presiding: Sen. E. Tulfo)",
-    "subject": "S. Nos. 30, 47, 57, 142, 387, 508, 686 and 708 - Anti-Online Gambling Act (By: Sens. P. Cayetano, A. Cayetano, Villanueva, Gatchalian, Zubiri, Hontiveros, Legarda, Go and R. Tulfo); P.S. Res. No. 12 - Proliferation of Online Gambling and Lending in the Philippines (By: Sen. Ejercito); P.S. Res. No. 19 - Engagement of Learners in Online Gambling (By: Sen. Gatchalian); P.S. Res. No. 26 - Online Gambling Operations (By: Sen. C. Villar); Privilege Speech of Sen. Juan Miguel “Migz” Zubiri on Online Gambling, delivered on July 30, 2025",
-    "venue": "Session Hall 2/F Left Wing, Senate",
+    "committee": "Labor, Employment and Human Resources Development (TWG)",
+    "subject": "S. Nos. 111 and 373 - National Minimum Wage (By: Sens. Marcos and Padilla); S. Nos. 6, 12, 141, 175, 209, 273 and 458 - Minimum Wage Increases (By: Sens. Ejercito. Padilla, Zubiri, Go, Hontiveros, Aquino and Estrada); S. Nos. 44 and 163 - Establishing the Standards for a Living Wage (By: Sens. Villanueva and Legarda)",
+    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
   {
     "date": "Thursday, September 11",
     "time": "2:00 P.M.",
     "committee": "Foreign Relations (Presiding: Sen. Marcos)",
-    "subject": "Agreement under the United Nations Convention on the Law of the Sea on the Conservation and Sustainable Use of Marine Biological Diversity of Areas Beyond National Jurisdiction (BBNJ Agreement); Letter Agreement (LOA) on Narcotics and Law Enforcement between the Government of the Republic of the Philippines and the Government of the United States of America.",
+    "subject": "Agreement under the United Nations Convention on the Law of the Sea on the Conservation and Sustainable Use of Marine Biological Diversity of Areas Beyond National Jurisdiction (BBNJ Agreement); Letter of Agreement (LOA) on Narcotics and Law Enforcement Between the Government of the Republic of the Philippines and the Government of the United States of America",
     "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
