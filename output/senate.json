@@ -1,18 +1,82 @@
 [
   {
-    "date": "Thursday, September 11",
+    "date": "Monday, September 15",
+    "time": "9:00 A.M.",
+    "committee": "Agriculture, Food and Agrarian Reform (Presiding: Sen. Pangilinan)",
+    "subject": "Privilege Speech of Sen. Raffy T. Tulfo, entitled: “The RTL: Implementation Failure or Policy Issue”, delivered on August 04, 2025; Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, entitled: “Agricultural and Food Crises”, delivered on August 18, 2025",
+    "venue": "Session Hall 2/F Left Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, September 15",
     "time": "10:00 A.M.",
-    "committee": "Basic Education joint with Local Government; Agriculture, Food and Agrarian Reform; and Finance (Presiding: Sen. Aquino)",
-    "subject": "S. No. 121 - Classroom-Building Acceleration Program (CAP) Act (By: Sens. Aquino and Marcos); S. No. 87 – Expanded School-Based Feeding Program Act (By: Sen. R. T. Tulfo); S. No. 219 – Free Breakfast Program and Sustainable Agriculture Act (By: Sen. Pangilinan); S. Nos. 431, 902, 1145 and 1192 – Masustansiyang Pagkain Para sa Batang Pilipino Act (By: Sens. Marcos, Estrada, Villanueva and Lapid)",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the following:; Office of the Vice President; Anti-Red Tape Authority; Anti-Money Laundering Council; Governance Commission for Government-Owned or Controlled Corporations; Philippine Competition Commission",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, September 15",
+    "time": "10:00 A.M.",
+    "committee": "Science and Technology (Presiding: Sen. Aquino)",
+    "subject": "Organizational Meeting; Privilege Speech of Senator Bam Aquino, delivered on 18 August 2025, entitled: “Internet Koneksyon para sa Edukasyon”",
     "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
   {
-    "date": "Thursday, September 11",
-    "time": "2:00 P.M.",
-    "committee": "Foreign Relations (Presiding: Sen. Marcos)",
-    "subject": "Agreement under the United Nations Convention on the Law of the Sea on the Conservation and Sustainable Use of Marine Biological Diversity of Areas Beyond National Jurisdiction (BBNJ Agreement); Letter of Agreement (LOA) on Narcotics and Law Enforcement Between the Government of the Republic of the Philippines and the Government of the United States of America",
-    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "date": "Monday, September 15",
+    "time": "11:00 A.M.",
+    "committee": "Sports joint with Ways and Means; and Finance (Presiding: Sen. Go)",
+    "subject": "Organizational Meeting; S. Nos. 27, 407, 474 and 713 - National Athletes and Coaches Benefits and Incentives Act (By: Sens. P. Cayetano, Go, Estrada and R. Tulfo); S. Nos. 301 and 413 - Philippine National Games Act (By: Sens. Zubiri and Go)",
+    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, September 16",
+    "time": "10:00 A.M.",
+    "committee": "Games and Amusement joint with Banks, Financial Institutions and Currencies; Youth; Economic Affairs; Public Information and Mass Media; and Ways and Means (Presiding: Sen. E. Tulfo)",
+    "subject": "S. Nos. 30, 47, 57, 142, 387, 508, 686 and 708 - Anti-Online Gambling Act (By: Sens. P. Cayetano, A. Cayetano, Villanueva, Gatchalian, Zubiri, Hontiveros, Legarda, Go and R. Tulfo); P.S. Res. No. 12 - Proliferation of Online Gambling and Lending in the Philippines (By: Sen. Ejercito); P.S. Res. No. 19 - Engagement of Learners in Online Gambling (By: Sen. Gatchalian); P.S. Res. No. 26 - Online Gambling Operations (By: Sen. C. Villar); Privilege Speech of Sen. Juan Miguel “Migz” Zubiri on Online Gambling, delivered on July 30, 2025",
+    "venue": "Session Hall 2/F Left Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, September 16",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the Department of Education and attached agencies",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, September 16",
+    "time": "12:00 NN",
+    "committee": "Cultural Communities and Muslim Affairs joint with Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. Padilla)",
+    "subject": "S. No. 11 – Amending R.A. No. 8371 (Indigenous Peoples Rights Act) (By: Sen. Padilla); S. No. 16 – Philippine Unified Halal Certification Act (By: Sen. Padilla); S. No. 311 – Indigenous Community Conserved Territories and Areas Act (By: Sen. Legarda); S. No. 604 – Amending Art. 1 Sec 5 of R.A. No. 9997 (National Commission on Muslim Filipinos Act) (By: Sen. Padilla); P.S. Res. No. 6 – Protection of Indigenous and Ancestral Lands (By: Sen. E. Tulfo); P.S. Res. No. 69 – Alleged Scam Perpetrated by Travel Agencies Against Muslim Filipinos (By: Sen. E. Tulfo); Privilege Speech of Sen. Erwin Tulfo on the Illegal Structures on the Waterways in Palawan, delivered on August 4, 2025",
+    "venue": "Sen. V.I. Sotto Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, September 17",
+    "time": "9:00 A.M.",
+    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
+    "subject": "FY 2026 Proposed Budget of the Climate Change Commission",
+    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, September 17",
+    "time": "11:00 A.M.",
+    "committee": "Finance (Subcommittee L) (Presiding: Sen. C. Villar)",
+    "subject": "FY 2026 Proposed Budget of the following:; Philippine Space Agency; Department of Science and Technology and attached agencies",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Friday, September 19",
+    "time": "9:00 A.M.",
+    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
+    "subject": "FY 2026 Proposed Budget of the following:; National Archives of the Philippines; National Commission for Culture and the Arts; National Historical Commission of the Philippines; National Library of the Philippines; Commission on Filipino Language; Cultural Center of the Philippines",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]
