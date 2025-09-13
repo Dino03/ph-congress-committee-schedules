@@ -10,8 +10,16 @@
   {
     "date": "Monday, September 15",
     "time": "10:00 A.M.",
+    "committee": "Foreign Relations (TWG)",
+    "subject": "Agreement under the United Nations Convention on the Law of the Sea on the Conservation and Sustainable Use of Marine Biological Diversity of Areas Beyond National Jurisdiction (BBNJ Agreement)",
+    "venue": "via Zoom",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, September 15",
+    "time": "10:00 A.M.",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "subject": "FY 2026 Proposed Budget of the following:; Office of the Vice President; Anti-Red Tape Authority; Anti-Money Laundering Council; Governance Commission for Government-Owned or Controlled Corporations; Philippine Competition Commission",
+    "subject": "FY 2026 Proposed Budget of the following:; Office of the Vice President; Anti-Red Tape Authority; Anti-Money Laundering Council; Philippine Competition Commission",
     "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
@@ -65,10 +73,26 @@
   },
   {
     "date": "Wednesday, September 17",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee B) (Presiding: Sen. Estrada)",
+    "subject": "FY 2026 Proposed Budget of the Film Development Council of the Philippines",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, September 17",
     "time": "11:00 A.M.",
     "committee": "Finance (Subcommittee L) (Presiding: Sen. C. Villar)",
     "subject": "FY 2026 Proposed Budget of the following:; Philippine Space Agency; Department of Science and Technology and attached agencies",
     "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, September 17",
+    "time": "11:00 A.M.",
+    "committee": "Public Information and Mass Media joint with Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. Padilla)",
+    "subject": "Organizational Meeting; S. Nos. 49, 189, 720, 770 and 853 - People's Freedom of Information Act (By: Sens. Villanueva, Sotto, Pangilinan, Ejercito and Estrada)",
+    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
   {
