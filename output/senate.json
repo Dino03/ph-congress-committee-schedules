@@ -1,45 +1,5 @@
 [
   {
-    "date": "Monday, September 15",
-    "time": "9:00 A.M.",
-    "committee": "Agriculture, Food and Agrarian Reform (Presiding: Sen. Pangilinan)",
-    "subject": "Privilege Speech of Sen. Raffy T. Tulfo, entitled: “The RTL: Implementation Failure or Policy Issue”, delivered on August 04, 2025; Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, entitled: “Agricultural and Food Crises”, delivered on August 18, 2025",
-    "venue": "Session Hall 2/F Left Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, September 15",
-    "time": "10:00 A.M.",
-    "committee": "Foreign Relations (TWG)",
-    "subject": "Agreement under the United Nations Convention on the Law of the Sea on the Conservation and Sustainable Use of Marine Biological Diversity of Areas Beyond National Jurisdiction (BBNJ Agreement)",
-    "venue": "via Zoom",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, September 15",
-    "time": "10:00 A.M.",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "subject": "FY 2026 Proposed Budget of the following:; Anti-Red Tape Authority; Anti-Money Laundering Council; Governance Commission for Government-Owned or Controlled Corporations; Philippine Competition Commission",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, September 15",
-    "time": "10:00 A.M.",
-    "committee": "Science and Technology (Presiding: Sen. Aquino)",
-    "subject": "Organizational Meeting; Privilege Speech of Senator Bam Aquino, delivered on 18 August 2025, entitled: “Internet Koneksyon para sa Edukasyon”",
-    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, September 15",
-    "time": "11:00 A.M.",
-    "committee": "Sports joint with Ways and Means; and Finance (Presiding: Sen. Go)",
-    "subject": "Organizational Meeting; S. Nos. 27, 407, 474 and 713 - National Athletes and Coaches Benefits and Incentives Act (By: Sens. P. Cayetano, Go, Estrada and R. Tulfo); S. Nos. 301 and 413 - Philippine National Games Act (By: Sens. Zubiri and Go)",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Tuesday, September 16",
     "time": "10:00 A.M.",
     "committee": "Games and Amusement joint with Banks, Financial Institutions and Currencies; Youth; Economic Affairs; Public Information and Mass Media; and Ways and Means (Presiding: Sen. E. Tulfo)",
@@ -59,7 +19,7 @@
     "date": "Tuesday, September 16",
     "time": "12:00 NN",
     "committee": "Cultural Communities and Muslim Affairs joint with Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. Padilla)",
-    "subject": "S. No. 11 – Amending R.A. No. 8371 (Indigenous Peoples Rights Act) (By: Sen. Padilla); S. No. 16 – Philippine Unified Halal Certification Act (By: Sen. Padilla); S. No. 311 – Indigenous Community Conserved Territories and Areas Act (By: Sen. Legarda); S. No. 604 – Amending Art. 1 Sec 5 of R.A. No. 9997 (National Commission on Muslim Filipinos Act) (By: Sen. Padilla); P.S. Res. No. 6 – Protection of Indigenous and Ancestral Lands (By: Sen. E. Tulfo); P.S. Res. No. 69 – Alleged Scam Perpetrated by Travel Agencies Against Muslim Filipinos (By: Sen. E. Tulfo); Privilege Speech of Sen. Erwin Tulfo on the Illegal Structures on the Waterways in Palawan, delivered on August 4, 2025",
+    "subject": "S. Nos. 11 and 860 – Amending R.A. No. 8371 (Indigenous Peoples Rights Act) (By: Sens. Padilla and Estrada); S. No. 16 – Philippine Unified Halal Certification Act (By: Sen. Padilla); S. No. 311 – Indigenous Community Conserved Territories and Areas Act (By: Sen. Legarda); S. Nos. 604 and 599 – Amending Art. 1 Sec. 5 of R.A. No. 9997 (National Commission on Muslim Filipinos Act) (By: Sen. Padilla); P.S. Res. No. 6 – Protection of Indigenous and Ancestral Lands (By: Sen. E. Tulfo); P.S. Res. No. 69 – Alleged Scam Perpetrated by Travel Agencies Against Muslim Filipinos (By: Sen. E. Tulfo); Privilege Speech of Sen. Erwin Tulfo on the Illegal Structures on the Waterways in Palawan, delivered on August 4, 2025",
     "venue": "Sen. V.I. Sotto Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
@@ -98,9 +58,17 @@
   {
     "date": "Thursday, September 18",
     "time": "10:00 A.M.",
-    "committee": "Public Works (Presiding: M. villar)",
+    "committee": "Public Works (Presiding: Sen. M. villar)",
     "subject": "Organizational Meeting; Briefing by the Department of Public Works and Highways and other government agencies on their Priority Legislative Agenda, and the implementation status of recently completed infrastructure flagship programs and other relevant matters related to high impact infrastructure projects",
     "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, September 18",
+    "time": "1:00 P.M.",
+    "committee": "Public Services joint with National Defense and Security, Peace, Unification and Reconciliation; Civil Service, Government Reorganization and Professional Regulation; Ways and Means; and Finance (Presiding: Sen. R. Tulfo)",
+    "subject": "Organizational Meeting; S. Nos. 147, 359, 438, 910 and 1142 - Revised Philippine Coast Guard Law (By: Sens. Zubiri, Dela Rosa, R. Tulfo, Estrada and Ejercito); S. Nos. 84, 93, 1016 and 1154 - Magna Carta of Commuters (By: Sen. R. Tulfo, M. Villar, Estrada and Villanueva); Privilege Speech of Sen. Raffy T. Tulfo on the State of Philippine Seaports, delivered on September 2, 2025",
+    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
   {
