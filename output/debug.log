@@ -1,27 +1,27 @@
-[2025-09-26T02:58:34.632Z] [house] request starting
-[2025-09-26T02:58:34.632Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-09-26T02:58:34.633Z] House headers count: 14
-[2025-09-26T02:58:34.633Z] House attempt 1 starting...
-[2025-09-26T02:58:35.792Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-09-26T02:58:36.655Z] POST response: status=200, contentLength=163227, duration=863ms
-[2025-09-26T02:58:36.656Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=863 keys=status,success,data dataType=object
-[2025-09-26T02:58:36.688Z] House attempt 1 succeeded
-[2025-09-26T02:58:36.689Z] House API response keys: status,success,data
-[2025-09-26T02:58:36.689Z] House API status: 200, success: true
-[2025-09-26T02:58:36.690Z] House API data keys: pageCount,count,rows
-[2025-09-26T02:58:36.691Z] House API pageCount: 28, count: 4115
-[2025-09-26T02:58:36.693Z] House raw rows count: 150
-[2025-09-26T02:58:36.693Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
-[2025-09-26T02:58:36.693Z] House first row sample: date="2025-09-24", time="09:00 AM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-26T02:58:36.694Z] House row 0: date="2025-09-24", time="09:00 AM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-26T02:58:36.694Z] House row 1: date="2025-09-24", time="09:00 AM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-26T02:58:36.694Z] House row 2: date="2025-09-23", time="02:00 PM", comm_name="APPROPRIATIONS", cancelled=false
-[2025-09-26T02:58:36.697Z] House mapping: 150 valid, 0 invalid, 15 cancelled
-[2025-09-26T02:58:36.697Z] House deduplication: 3 duplicates removed, 147 final count
-[2025-09-26T02:58:36.698Z] House final first item: {"date":"2025-09-24","time":"09:00 AM","committee":"APPROPRIATIONS","subject":"Pre-plenary briefing/hearing on the proposed FY 2026 budget: - State Universities and Colleges (SUCs) - Luzon Region","venue":"Spkr. Nograles Hall 1/F SWA Bldg.","source":"House API (list)"}
-[2025-09-26T02:58:36.699Z] House date range: 2025-09-24 to 2025-05-26
-[2025-09-26T02:58:36.701Z] House JSON written: 147 items
-[2025-09-26T02:58:36.701Z] [senate] request starting
-[2025-09-26T02:58:39.129Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2351 htmlLen=25836
-[2025-09-26T02:58:39.206Z] Senate parsed rows=18
-[2025-09-26T02:58:39.207Z] Done. House=147 Senate=18
+[2025-09-27T02:53:33.420Z] [house] request starting
+[2025-09-27T02:53:33.421Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-09-27T02:53:33.421Z] House headers count: 14
+[2025-09-27T02:53:33.422Z] House attempt 1 starting...
+[2025-09-27T02:53:34.570Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-09-27T02:53:35.524Z] POST response: status=200, contentLength=169092, duration=952ms
+[2025-09-27T02:53:35.525Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=952 keys=status,success,data dataType=object
+[2025-09-27T02:53:35.559Z] House attempt 1 succeeded
+[2025-09-27T02:53:35.560Z] House API response keys: status,success,data
+[2025-09-27T02:53:35.561Z] House API status: 200, success: true
+[2025-09-27T02:53:35.561Z] House API data keys: pageCount,count,rows
+[2025-09-27T02:53:35.562Z] House API pageCount: 28, count: 4118
+[2025-09-27T02:53:35.565Z] House raw rows count: 150
+[2025-09-27T02:53:35.566Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
+[2025-09-27T02:53:35.566Z] House first row sample: date="2025-10-02", time="09:30 AM", comm_name="NUCLEAR ENERGY", cancelled=false
+[2025-09-27T02:53:35.566Z] House row 0: date="2025-10-02", time="09:30 AM", comm_name="NUCLEAR ENERGY", cancelled=false
+[2025-09-27T02:53:35.567Z] House row 1: date="2025-09-30", time="08:00 AM", comm_name="HEALTH", cancelled=false
+[2025-09-27T02:53:35.567Z] House row 2: date="2025-09-30", time="08:00 AM", comm_name="YOUTH AND SPORTS DEVELOPMENT", cancelled=false
+[2025-09-27T02:53:35.570Z] House mapping: 150 valid, 0 invalid, 15 cancelled
+[2025-09-27T02:53:35.570Z] House deduplication: 3 duplicates removed, 147 final count
+[2025-09-27T02:53:35.571Z] House final first item: {"date":"2025-10-02","time":"09:30 AM","committee":"NUCLEAR ENERGY","subject":"• Organizational meeting – Approval of the Committee Rules of Procedure; presentation of Committee profile and membership; presentation of accomplishments during the 19th Congress; and measures currently referred to the Committee • Briefing by the Department of Energy (DOE) on its nuclear energy program; outcome of survey on the acceptability of nuclear power in the country; and status of Renewable Energy Trust Fund • Deliberation on HB 375 – Governing civil liability and compensation claims for nuclear damage, repealing for the purpose certain sections of RA 5207, otherwise known as the Atomic Energy Regulatory and Liability Act of 1968, as amended (Rep. Mark Cojuangco)","venue":"In-person meeting at the Spkr. Villar Hall 1/F SWA Bldg. and virtual meeting via Zoom (To be livestreamed on the official Facebook page of the HRep)","source":"House API (list)"}
+[2025-09-27T02:53:35.572Z] House date range: 2025-10-02 to 2025-06-02
+[2025-09-27T02:53:35.574Z] House JSON written: 147 items
+[2025-09-27T02:53:35.574Z] [senate] request starting
+[2025-09-27T02:53:39.270Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3611 htmlLen=25564
+[2025-09-27T02:53:39.347Z] Senate parsed rows=18
+[2025-09-27T02:53:39.348Z] Done. House=147 Senate=18
