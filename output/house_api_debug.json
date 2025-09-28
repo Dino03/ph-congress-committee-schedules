@@ -3,7 +3,7 @@
   "success": true,
   "data": {
     "pageCount": 28,
-    "count": 4118,
+    "count": 4119,
     "rows": [
       {
         "id": 4120,
@@ -22,6 +22,25 @@
         "remarks": null,
         "comm_name": "NUCLEAR ENERGY",
         "datetime": "2025-10-02T09:30",
+        "venue_id": 0
+      },
+      {
+        "id": 4121,
+        "date": "2025-09-30",
+        "time": "08:00 AM",
+        "venue": "Minority Leader’s Conf. Rm. Basement, NW Bldg.",
+        "agenda": "Consideration and approval of the Committee Report on and Substitute Bill to HBs 23, 42, 104, 120, 604, 1913 & 2313 – Amending Sections 7, 10, 11, and 12 of RA 11310, otherwise known as the Pantawid Pamilyang Pilipino Program (4Ps) Act (Reps. Niko Raul Daza, Ernesto Dionisio Jr., JC Abalos, Edwin Ongchuan, Franz Pumaren, and Marie Bernadette Escudero)?",
+        "committee": null,
+        "onwards": false,
+        "published": true,
+        "twg": false,
+        "external": false,
+        "cancelled": false,
+        "resched": null,
+        "old_time": null,
+        "remarks": null,
+        "comm_name": "POVERTY ALLEVIATION",
+        "datetime": "2025-09-30T08:00",
         "venue_id": 0
       },
       {
@@ -2834,25 +2853,6 @@
         "remarks": null,
         "comm_name": "PUBLIC ACCOUNTS",
         "datetime": "2025-06-03T10:00",
-        "venue_id": 0
-      },
-      {
-        "id": 3974,
-        "date": "2025-06-02",
-        "time": "01:00 PM",
-        "venue": "Conf. Rms. 1&2 RVM Bldg.",
-        "agenda": "HR 2095 – Inquiry into the operations of the Land Bank of the Philippines and the Development Bank of the Philippines in granting loans to capital-intensive institutions (Rep. Jurdin Jesus Romualdo)",
-        "committee": null,
-        "onwards": false,
-        "published": true,
-        "twg": false,
-        "external": false,
-        "cancelled": false,
-        "resched": null,
-        "old_time": null,
-        "remarks": null,
-        "comm_name": "BANKS AND FINANCIAL INTERMEDIARIES",
-        "datetime": "2025-06-02T13:00",
         "venue_id": 0
       }
     ]

@@ -1,13 +1,5 @@
 [
   {
-    "date": "Saturday, September 27",
-    "time": "10:00 A.M.",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "subject": "FY 2026 Proposed Budget of the State Universities and Colleges",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Monday, September 29",
     "time": "9:00 A.M.",
     "committee": "Higher, Technical and Vocational Education joint with Basic Education, Local Government, Ways and Means and Finance (Presiding: Sen. Legarda)",
@@ -17,10 +9,10 @@
   },
   {
     "date": "Monday, September 29",
-    "time": "9:00 A.M.",
-    "committee": "Agriculture, Food and Agrarian Reform joint with Cooperatives; Ways and Means; and Finance (Presiding: Sen. Pangilinan)",
+    "time": "(9:00 A.M.",
+    "committee": "(Agriculture, Food and Agrarian Reform joint with Cooperatives; Ways and Means; and Finance (Presiding: Sen. Pangilinan))(CANCELLED as of 2:11 p.m., Sat., Sept. 27, 2025, by Atty. Philip M. Lina, MPA, Committee Secretary)",
     "subject": "S. Nos. 389 and 1183 - Agricultural Cooperatives (By: Sens. Hontiveros and Pangilinan); S. Nos. 1182 - National Agriculture and Fisheries Extension System (By: Sen. Pangilinan); S. Nos. 1199 and 1345 - Creation of a Congressional Commission on Agriculture, Fisheries and Food Security (By: Sens. Pangilinan and Marcos)",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate)",
     "source": "Senate Weekly Schedule"
   },
   {
