@@ -5,6 +5,7 @@
   "description": "Philippine Congress Committee Schedule Scraper",
   "scripts": {
     "fetch": "node scripts/fetch.js",
+    "build:data": "node scripts/build-static-data.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
