@@ -1,53 +1,5 @@
 [
   {
-    "date": "Tuesday, September 30",
-    "time": "9:00 A.M.",
-    "committee": "Finance (Subcommittee E) (Presiding: Sen. Dela Rosa)",
-    "subject": "FY 2026 Proposed Budget of the following:; National Intelligence Coordinating Agency; National Security Council; Dangerous Drugs Board; Philippine Drug Enforcement Agency",
-    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, September 30",
-    "time": "10:00 A.M.",
-    "committee": "Public Works (Presiding: Sen. M. Villar)",
-    "subject": "Organizational Meeting; Briefing by the Department of Public Works and Highways and other government agencies on their Priority Legislative Agenda, and the implementation status of recently completed infrastructure flagship programs and other relevant matters related to high impact infrastructure projects",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, September 30",
-    "time": "11:00 A.M.",
-    "committee": "Finance (Subcommittee B) (Presiding: Sen. Estrada)",
-    "subject": "FY 2026 Proposed Budget of the Movie and Television Review and Classification Board",
-    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, September 30",
-    "time": "1:00 P.M.",
-    "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
-    "subject": "Continuation of the FY 2026 Proposed Budget of the Department of Transportation and attached agencies and corporations",
-    "venue": "Sen. J.P. Laurel Room Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, September 30",
-    "time": "1:00 P.M.",
-    "committee": "Government Corporations and Public Enterprises (Presiding: Sen. M. Villar)",
-    "subject": "Organizational Meeting; P.S. Res. Nos. 39 and 84 – Government Service and Insurance System (GSIS) Questionable Investments (By: Sens. Marcos and Gatchalian); Privilege Speech of Sen. Risa Hontiveros, delivered on August 5, 2025, in connection with the allegedly anomalous/unsound investments made by the Government Service Insurance System (GSIS)",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, September 30",
-    "time": "1:30 P.M.",
-    "committee": "National Defense and Security, Peace, Unification and Reconciliation (Presiding: Sen. Legarda)",
-    "subject": "Organizational Meeting; Briefing by the officials of the following:; Department of National Defense; Armed Forces of the Philippines; Office of the Presidential Adviser on the Peace, Reconciliation and Unity",
-    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Wednesday, October 1",
     "time": "11:00 A.M.",
     "committee": "Finance (Subcommittee D) (Presiding: Sen. P. Cayetano)",
@@ -58,17 +10,25 @@
   {
     "date": "Thursday, October 2",
     "time": "10:00 A.M.",
-    "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
-    "subject": "FY 2026 Proposed Budget of the following:; Department of the Interior and Local Government and attached agencies; Metropolitan Baguio City, La Trinidad, Itogon, Sablan, Tuba, and Tublay Development Authority; Metropolitan Manila Development Authority",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "committee": "Science and Technology (Presiding: Sen. Aquino)",
+    "subject": "S. No. 1330 – Philippine National Budget Blockchain Act (By: Sen. Aquino)",
+    "venue": "Session Hall",
     "source": "Senate Weekly Schedule"
   },
   {
     "date": "Thursday, October 2",
     "time": "10:00 A.M.",
-    "committee": "Science and Technology (Presiding: Sen. Aquino)",
-    "subject": "S. No. 1330 – Philippine National Budget Blockchain Act (By: Sen. Aquino)",
-    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+    "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
+    "subject": "Continuation of the FY 2026 Proposed Budget of the Department of Transportation and attached agencies and corporations",
+    "venue": "Sen. J.P. Laurel Room Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, October 2",
+    "time": "(10:00 A.M.",
+    "committee": "(Finance (Subcommittee F) (Presiding: Sen. Ejercito))(MOVED to Thurs., Oct. 16, 2025, by Atty. Jovy Anne V. Querubin-Fernandez, Committee Secretary)",
+    "subject": "FY 2026 Proposed Budget of the following:; Department of the Interior and Local Government and attached agencies; Metropolitan Baguio City, La Trinidad, Itogon, Sablan, Tuba, and Tublay Development Authority; Metropolitan Manila Development Authority",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate)",
     "source": "Senate Weekly Schedule"
   },
   {
@@ -82,17 +42,25 @@
   {
     "date": "Thursday, October 2",
     "time": "1:00 P.M.",
-    "committee": "Health and Demography joint with Social Justice, Welfare and Rural Development; Ways and Means; and Finance (Presiding: Sen. Hontiveros)",
-    "subject": "S. Nos. 217 and 960 - Anti-Hospital Detention (By: Sens. Hontiveros and Estrada); S. Nos. 256, 319. 383, 411, 461, 511, 596, 1197, 1302 and 1320 - Philippine Geriatric Center (By: Sens. M. Villar, Lapid, Estrada, Go, Legarda, E. Tulfo, Zubiri, Hontiveros and R. Tulfo); S. No. 712 - Senior Health Aid (By: Sen. R. Tulfo)",
-    "venue": "Sen. GT. Pecson Room 2/F Right Wing, Senate",
+    "committee": "Cultural Communities and Muslim Affairs joint with the Finance (TWG)",
+    "subject": "S. Nos. 17 and 1208 – Muslim Prayer Room Act of the Philippines (By: Sens. Padilla and M. Villar)",
+    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
   {
     "date": "Thursday, October 2",
     "time": "1:00 P.M.",
-    "committee": "Cultural Communities and Muslim Affairs joint with the Finance (TWG)",
-    "subject": "S. Nos. 17 and 1208 – Muslim Prayer Room Act of the Philippines (By: Sens. Padilla and M. Villar)",
-    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
+    "committee": "Health and Demography joint with Social Justice, Welfare and Rural Development; Ways and Means; and Finance (Presiding: Sen. Hontiveros)",
+    "subject": "S. Nos. 217 and 960 - Anti-Hospital Detention (By: Sens. Hontiveros and Estrada); S. Nos. 256, 319. 383, 411, 461, 511, 596, 1197, 1302 and 1320 - Philippine Geriatric Center (By: Sens. M. Villar, Lapid, Estrada, Go, Legarda, E. Tulfo, Zubiri, Hontiveros and R. Tulfo); S. No. 712 - Senior Health Aid (By: Sen. R. Tulfo); S. No. 1417 - Establishing a National Health Service Outreach Program for Senior Citizens with Functional Disabilities (By: Sen. Hontiveros)",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, October 2",
+    "time": "(2:00 P.M.",
+    "committee": "(Finance (Subcommittee A) (Presiding: Sen. Gatchalian))(CANCELLED as of 12:56 p.m., Tues., Sept. 30, 2025, by Ms. Hazel Ross P. Villarba, Committee Secretary)",
+    "subject": "FY 2026 Proposed Budget of the Commission on Higher Education",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate)",
     "source": "Senate Weekly Schedule"
   },
   {

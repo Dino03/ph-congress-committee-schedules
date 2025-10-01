@@ -1,45 +1,45 @@
-[2025-09-30T02:57:11.154Z] [house] request starting
-[2025-09-30T02:57:11.155Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-09-30T02:57:11.155Z] House headers count: 14
-[2025-09-30T02:57:11.155Z] House attempt 1 starting...
-[2025-09-30T02:57:12.574Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-09-30T02:57:13.224Z] POST response: status=403, contentLength=118, duration=649ms
-[2025-09-30T02:57:13.225Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=649 headers={"server":"awselb/2.0","date":"Tue, 30 Sep 2025 02:57:13 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=F/53GremjIcMZcgpyTri35k/KBgRXLCo9CO78PziaYCrG2werMwwp16qnoGH7RFI70vm+iu0hREnH3kacpUk+TPseIrpm50UgQ6o9gZdKlivz+1BI1CKccqUX29EVPzfjBMwUbv6Arwh5yw21XobFPeLILBTKMJLYHw202WmNFXN+rvawo8=; Expires=Tue, 07 Oct 2025 02:57:13 GMT; Path=/\nAWSALBTGCORS=F/53GremjIcMZcgpyTri35k/KBgRXLCo9CO78PziaYCrG2werMwwp16qnoGH7RFI70vm+iu0hREnH3kacpUk+TPseIrpm50UgQ6o9gZdKlivz+1BI1CKccqUX29EVPzfjBMwUbv6Arwh5yw21XobFPeLILBTKMJLYHw202WmNFXN+rvawo8=; Expires=Tue, 07 Oct 2025 02:57:13 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+[2025-10-01T03:10:18.592Z] [house] request starting
+[2025-10-01T03:10:18.592Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-10-01T03:10:18.592Z] House headers count: 14
+[2025-10-01T03:10:18.593Z] House attempt 1 starting...
+[2025-10-01T03:10:19.221Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-01T03:10:19.986Z] POST response: status=403, contentLength=118, duration=764ms
+[2025-10-01T03:10:19.988Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=764 headers={"server":"awselb/2.0","date":"Wed, 01 Oct 2025 03:10:19 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=SL9KDQrLNEh38Pnpnbwa47Q8RB1pgad125LiyTnrF6b9imynxJW1efmej0VucYLqqQ49X5SSeuh1jHPh27URmQ+E+gQ5k+CG99fhJiLOJ/aLJGIl3KMoHhiNBtdEemYiGbB3FDuIFxQTB0kvPLsSQIazG8wJvL2hw9Ord0CqG8Xou8/5F7Y=; Expires=Wed, 08 Oct 2025 03:10:19 GMT; Path=/\nAWSALBTGCORS=SL9KDQrLNEh38Pnpnbwa47Q8RB1pgad125LiyTnrF6b9imynxJW1efmej0VucYLqqQ49X5SSeuh1jHPh27URmQ+E+gQ5k+CG99fhJiLOJ/aLJGIl3KMoHhiNBtdEemYiGbB3FDuIFxQTB0kvPLsSQIazG8wJvL2hw9Ord0CqG8Xou8/5F7Y=; Expires=Wed, 08 Oct 2025 03:10:19 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
 <head><title>403 Forbidden</title></head>
 <body>
 <center><h1>403 Forbidden</h1></center>
 </body>
 </html>
 
-[2025-09-30T02:57:13.254Z] House attempt 1 failed: HTTP 403
-[2025-09-30T02:57:13.255Z] House retrying after 500ms...
-[2025-09-30T02:57:13.756Z] House attempt 2 starting...
-[2025-09-30T02:57:13.838Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-09-30T02:57:14.028Z] POST response: status=403, contentLength=118, duration=191ms
-[2025-09-30T02:57:14.029Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=191 headers={"server":"awselb/2.0","date":"Tue, 30 Sep 2025 02:57:13 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=JPrQcmEl5+fguilxhdZt+gCLUSO9JUW5nKRBBIJUtWaUgkWrpXAptdpQIdml/BZGR5bQVmWXa1IE1dKfAxGvJjldl3UYjF9GXg8FWqGMiYCU1U+o/5I0gd4dL8Q6CNjPN4XMu9shHlfVm/PgA9mWtFgz64tKDFQxxr6YXmmU0ef9pAJdjcc=; Expires=Tue, 07 Oct 2025 02:57:13 GMT; Path=/\nAWSALBTGCORS=JPrQcmEl5+fguilxhdZt+gCLUSO9JUW5nKRBBIJUtWaUgkWrpXAptdpQIdml/BZGR5bQVmWXa1IE1dKfAxGvJjldl3UYjF9GXg8FWqGMiYCU1U+o/5I0gd4dL8Q6CNjPN4XMu9shHlfVm/PgA9mWtFgz64tKDFQxxr6YXmmU0ef9pAJdjcc=; Expires=Tue, 07 Oct 2025 02:57:13 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+[2025-10-01T03:10:20.015Z] House attempt 1 failed: HTTP 403
+[2025-10-01T03:10:20.016Z] House retrying after 500ms...
+[2025-10-01T03:10:20.517Z] House attempt 2 starting...
+[2025-10-01T03:10:20.591Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-01T03:10:20.823Z] POST response: status=403, contentLength=118, duration=232ms
+[2025-10-01T03:10:20.824Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=232 headers={"server":"awselb/2.0","date":"Wed, 01 Oct 2025 03:10:20 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=UgyEMwkByP7uGU2Nj3tzngOdgyg994qDL2WZ+jKUe0wJ4+vHr2ttZaanlGW18xoPp3WWjfDOf/cjIqkZMRq4VPBiq5mGszhJR+kffYe4rO0vibcom8PxKaEzrjjKBuujITDVf6n+aqoFbTtQ2qSm68BU0YelddHR5WDgaBU2LnmT+b1Uexg=; Expires=Wed, 08 Oct 2025 03:10:20 GMT; Path=/\nAWSALBTGCORS=UgyEMwkByP7uGU2Nj3tzngOdgyg994qDL2WZ+jKUe0wJ4+vHr2ttZaanlGW18xoPp3WWjfDOf/cjIqkZMRq4VPBiq5mGszhJR+kffYe4rO0vibcom8PxKaEzrjjKBuujITDVf6n+aqoFbTtQ2qSm68BU0YelddHR5WDgaBU2LnmT+b1Uexg=; Expires=Wed, 08 Oct 2025 03:10:20 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
 <head><title>403 Forbidden</title></head>
 <body>
 <center><h1>403 Forbidden</h1></center>
 </body>
 </html>
 
-[2025-09-30T02:57:14.047Z] House attempt 2 failed: HTTP 403
-[2025-09-30T02:57:14.047Z] House retrying after 1500ms...
-[2025-09-30T02:57:15.550Z] House attempt 3 starting...
-[2025-09-30T02:57:15.627Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-09-30T02:57:15.816Z] POST response: status=403, contentLength=118, duration=189ms
-[2025-09-30T02:57:15.816Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=189 headers={"server":"awselb/2.0","date":"Tue, 30 Sep 2025 02:57:15 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=qZHPtR0C+r6bjwXOpo/dxNY6a6H7QrvVzRMXLnoutHNTb0ysnK9l+24Pxm/u72Izc6TwMpL9wbY3wuVsPvkgjCkjNQ+7dgas0+TaqOJ/WxbjYgBtJMalRQeIUO/Q/ESf4wA4ezOR27tTkYZ9Nn02IfKJeW0jvVZvEl149PF6T1muC6TwrsA=; Expires=Tue, 07 Oct 2025 02:57:15 GMT; Path=/\nAWSALBTGCORS=qZHPtR0C+r6bjwXOpo/dxNY6a6H7QrvVzRMXLnoutHNTb0ysnK9l+24Pxm/u72Izc6TwMpL9wbY3wuVsPvkgjCkjNQ+7dgas0+TaqOJ/WxbjYgBtJMalRQeIUO/Q/ESf4wA4ezOR27tTkYZ9Nn02IfKJeW0jvVZvEl149PF6T1muC6TwrsA=; Expires=Tue, 07 Oct 2025 02:57:15 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+[2025-10-01T03:10:20.844Z] House attempt 2 failed: HTTP 403
+[2025-10-01T03:10:20.845Z] House retrying after 1500ms...
+[2025-10-01T03:10:22.347Z] House attempt 3 starting...
+[2025-10-01T03:10:22.420Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-01T03:10:22.650Z] POST response: status=403, contentLength=118, duration=230ms
+[2025-10-01T03:10:22.651Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=230 headers={"server":"awselb/2.0","date":"Wed, 01 Oct 2025 03:10:22 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=85KMnaGuVHLA7dntOg/DZ2dKmczgqZAflIx9zRrvkeUIwWKCvgLE9OJMFo4IrC2kcaT5r4gpFmX2xhzDbasZqmQlVEEMbVlGvaxnAuerDEIXt931dxKDZPQpiDbLBqHcsbtHKVx539mwJw6hnmSc37LlDV06tz8kodxQUawzayuWBC/hsDQ=; Expires=Wed, 08 Oct 2025 03:10:22 GMT; Path=/\nAWSALBTGCORS=85KMnaGuVHLA7dntOg/DZ2dKmczgqZAflIx9zRrvkeUIwWKCvgLE9OJMFo4IrC2kcaT5r4gpFmX2xhzDbasZqmQlVEEMbVlGvaxnAuerDEIXt931dxKDZPQpiDbLBqHcsbtHKVx539mwJw6hnmSc37LlDV06tz8kodxQUawzayuWBC/hsDQ=; Expires=Wed, 08 Oct 2025 03:10:22 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
 <head><title>403 Forbidden</title></head>
 <body>
 <center><h1>403 Forbidden</h1></center>
 </body>
 </html>
 
-[2025-09-30T02:57:15.836Z] House attempt 3 failed: HTTP 403
-[2025-09-30T02:57:15.837Z] House API failed after all retries.
-[2025-09-30T02:57:15.837Z] House error: HTTP 403
-[2025-09-30T02:57:15.838Z] House JSON written: 0 items
-[2025-09-30T02:57:15.839Z] [senate] request starting
-[2025-09-30T02:57:18.344Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2429 htmlLen=20944
-[2025-09-30T02:57:18.417Z] Senate parsed rows=13
-[2025-09-30T02:57:18.418Z] Done. House=0 Senate=13
+[2025-10-01T03:10:22.673Z] House attempt 3 failed: HTTP 403
+[2025-10-01T03:10:22.673Z] House API failed after all retries.
+[2025-10-01T03:10:22.674Z] House error: HTTP 403
+[2025-10-01T03:10:22.675Z] House JSON written: 0 items
+[2025-10-01T03:10:22.675Z] [senate] request starting
+[2025-10-01T03:10:25.204Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2456 htmlLen=17868
+[2025-10-01T03:10:25.268Z] Senate parsed rows=9
+[2025-10-01T03:10:25.269Z] Done. House=0 Senate=9
