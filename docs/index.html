@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Browse upcoming committee hearings from the Philippine House of Representatives and Senate."
+    />
+    <title>Philippine Congress Committee Schedules</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="app.js" defer></script>
+  </head>
+  <body>
+    <noscript>
+      <div class="noscript">
+        This website needs JavaScript to load the committee schedules.
+      </div>
+    </noscript>
+    <header class="hero">
+      <div class="hero__content">
+        <h1>Philippine Congress Committee Schedules</h1>
+        <p>
+          A lightweight viewer for upcoming committee hearings from the House of Representatives and the Senate.
+          Data comes from the latest repository scrape, making it easy to host on GitHub Pages without a server.
+        </p>
+        <div id="data-status" class="hero__status" aria-live="polite"></div>
+      </div>
+    </header>
+    <main class="layout" aria-busy="true">
+      <section class="filters" aria-label="Filters">
+        <div class="filters__row">
+          <label class="filter" for="search-input">
+            <span class="filter__label">Search</span>
+            <input
+              id="search-input"
+              class="filter__control"
+              type="search"
+              placeholder="Search committee, venue, or agenda"
+              autocomplete="off"
+            />
+          </label>
+          <div class="filter">
+            <span class="filter__label">Chamber</span>
+            <div class="filter__options" role="group" aria-label="Select chamber">
+              <label class="filter__checkbox">
+                <input type="checkbox" id="branch-house" value="House of Representatives" checked />
+                <span>House</span>
+              </label>
+              <label class="filter__checkbox">
+                <input type="checkbox" id="branch-senate" value="Senate" checked />
+                <span>Senate</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="filters__row">
+          <label class="filter" for="start-date">
+            <span class="filter__label">From</span>
+            <input id="start-date" class="filter__control" type="date" />
+          </label>
+          <label class="filter" for="end-date">
+            <span class="filter__label">Until</span>
+            <input id="end-date" class="filter__control" type="date" />
+          </label>
+          <label class="filter filter--toggle" for="show-past">
+            <input id="show-past" type="checkbox" />
+            <span class="filter__toggle">Show past hearings</span>
+          </label>
+          <button id="reset-filters" class="button" type="button">Reset filters</button>
+        </div>
+      </section>
+
+      <section class="stats" aria-live="polite">
+        <div class="stats__item">
+          <span class="stats__label">Upcoming hearings</span>
+          <span id="count-upcoming" class="stats__value">—</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__label">House</span>
+          <span id="count-house" class="stats__value">—</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__label">Senate</span>
+          <span id="count-senate" class="stats__value">—</span>
+        </div>
+      </section>
+
+      <section class="results" aria-live="polite" aria-label="Committee hearings">
+        <div id="results-count" class="results__count">Loading schedules…</div>
+        <div id="results-list" class="results__list"></div>
+        <div id="no-results" class="results__empty" hidden>
+          <p>No hearings match the selected filters. Try adjusting the date range or search keywords.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Built for static hosting. Update data by running
+        <code>npm run fetch</code> followed by <code>npm run build:data</code>, then deploy the <code>docs</code> folder to GitHub Pages.
+      </p>
+      <p>
+        Source on <a href="https://github.com/" rel="noopener">GitHub</a>. Data accuracy depends on the latest scrape from the official House and Senate websites.
+      </p>
+    </footer>
+  </body>
+</html>
