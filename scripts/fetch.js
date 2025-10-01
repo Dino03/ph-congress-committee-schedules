@@ -40,6 +40,8 @@ try {
 // Endpoints
 const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list';
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
+const HOUSE_WARMUP_URL = 'https://www.congress.gov.ph/committee/schedule';
+const HOUSE_STORAGE_STATE_FILE = path.join(OUTPUT_DIR, 'house-storage-state.json');
 
 // ---------------- Debug helpers ----------------
 async function appendDebug(line) {
@@ -69,34 +71,46 @@ function htmlToText(html) {
 }
 
 // ---------------- HTTP helpers (Playwright request with hardened debug) ----------------
-async function postJson(url, payload = {}, headers = {}) {
-  console.log('[postJson] starting browser launch');
-  let browser;
-  try {
-    browser = await chromium.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-dev-shm-usage']
-    });
-    console.log('[postJson] browser launch successful');
-  } catch (e) {
-    console.error('[postJson] launch-failed', e?.stack || e);
-    try { 
-      await appendDebug(`[postJson] launch-failed: ${e?.message || e}`); 
-    } catch {}
-    throw e;
+async function postJson(url, payload = {}, headers = {}, options = {}) {
+  const { browser: providedBrowser, context: providedContext } = options;
+  let browser = providedBrowser;
+  let context = providedContext;
+  let ownBrowser = false;
+  let ownContext = false;
+
+  if (!browser) {
+    console.log('[postJson] launching new browser instance');
+    try {
+      browser = await chromium.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-dev-shm-usage']
+      });
+      ownBrowser = true;
+      console.log('[postJson] browser launch successful');
+    } catch (e) {
+      console.error('[postJson] launch-failed', e?.stack || e);
+      try {
+        await appendDebug(`[postJson] launch-failed: ${e?.message || e}`);
+      } catch {}
+      throw e;
+    }
+  } else {
+    console.log('[postJson] reusing provided browser/context');
+  }
+
+  if (!context) {
+    context = await browser.newContext();
+    ownContext = true;
   }
 
   try {
-    const context = await browser.newContext();
-    const page = await context.newPage();
-
     const startedAt = Date.now();
     console.log(`[postJson] sending POST to ${url}`);
     try {
       await appendDebug(`Sending POST to ${url}`);
     } catch {}
-    
-    const resp = await page.request.post(url, {
+
+    const resp = await context.request.post(url, {
       headers: {
         'Content-Type': 'application/json',
         ...headers
@@ -144,7 +158,70 @@ async function postJson(url, payload = {}, headers = {}) {
       throw new Error('Non-JSON response');
     }
   } finally {
+    if (ownContext && context) {
+      await context.close();
+    }
+    if (ownBrowser && browser) {
+      await browser.close();
+    }
+  }
+}
+
+async function prepareHouseSession() {
+  console.log('[house] warmup: launching browser');
+  try {
+    await appendDebug('House warmup: launching browser');
+  } catch {}
+
+  const browser = await chromium.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-dev-shm-usage']
+  });
+
+  try {
+    let storageState;
+    try {
+      const raw = await fs.readFile(HOUSE_STORAGE_STATE_FILE, 'utf-8');
+      storageState = JSON.parse(raw);
+      console.log('[house] warmup: loaded storage state');
+      try {
+        await appendDebug('House warmup: loaded storage state from disk');
+      } catch {}
+    } catch (err) {
+      if (err?.code === 'ENOENT') {
+        console.log('[house] warmup: no existing storage state');
+        try {
+          await appendDebug('House warmup: storage state not found, starting fresh');
+        } catch {}
+      } else {
+        console.warn(`[house] warmup: storage state read failed: ${err?.message || err}`);
+        try {
+          await appendDebug(`House warmup: storage state read failed: ${err?.message || err}`);
+        } catch {}
+      }
+    }
+
+    const context = await browser.newContext(storageState ? { storageState } : {});
+    const page = await context.newPage();
+
+    console.log(`[house] warmup: navigating to ${HOUSE_WARMUP_URL}`);
+    try {
+      await appendDebug(`House warmup: navigating to ${HOUSE_WARMUP_URL}`);
+    } catch {}
+
+    await page.goto(HOUSE_WARMUP_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(2500);
+
+    console.log('[house] warmup: page loaded');
+    try {
+      await appendDebug('House warmup: DOM ready + delay complete');
+    } catch {}
+
+    await page.close();
+    return { browser, context };
+  } catch (err) {
     await browser.close();
+    throw err;
   }
 }
 
@@ -267,22 +344,23 @@ async function main() {
     } catch {}
 
     // Exact headers from successful browser request
-  const headers = {
-  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0",
-  Accept: "*/*",
-  "Accept-Language": "en-US,en;q=0.5",
-  "Accept-Encoding": "gzip, deflate, br, zstd",
-  Referer: "https://www.congress.gov.ph/",
-  "Content-Type": "application/json",
-  "x-hrep-website-backend": "cc8bd00d-9b88-4fee-aafe-311c574fcdc1",
-  Origin: "https://www.congress.gov.ph/",
-  "Sec-GPC": "1",
-  Connection: "keep-alive",
-  "Sec-Fetch-Dest": "empty",
-  "Sec-Fetch-Mode": "cors",
-  "Sec-Fetch-Site": "cross-site",
-  TE: "trailers"
-};
+    const headers = {
+      'User-Agent':
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
+      Accept: '*/*',
+      'Accept-Language': 'en-US,en;q=0.5',
+      'Accept-Encoding': 'gzip, deflate, br, zstd',
+      Referer: 'https://www.congress.gov.ph/',
+      'Content-Type': 'application/json',
+      'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
+      Origin: 'https://www.congress.gov.ph',
+      'Sec-GPC': '1',
+      Connection: 'keep-alive',
+      'Sec-Fetch-Dest': 'empty',
+      'Sec-Fetch-Mode': 'cors',
+      'Sec-Fetch-Site': 'cross-site',
+      TE: 'trailers'
+    };
     console.log(`[house] headers count: ${Object.keys(headers).length}`);
     try {
       await appendDebug(`House headers count: ${Object.keys(headers).length}`);
@@ -293,31 +371,56 @@ async function main() {
     let apiResp = null;
     let lastErr = null;
 
-    for (let i = 0; i < delays.length; i++) {
-      try {
-        console.log(`[house] attempt ${i + 1} starting...`);
+    let houseSession;
+    try {
+      houseSession = await prepareHouseSession();
+
+      for (let i = 0; i < delays.length; i++) {
         try {
-          await appendDebug(`House attempt ${i + 1} starting...`);
-        } catch {}
-        apiResp = await postJson(HOUSE_API, payload, headers);
-        console.log(`[house] attempt ${i + 1} succeeded`);
-        try {
-          await appendDebug(`House attempt ${i + 1} succeeded`);
-        } catch {}
-        break;
-      } catch (e) {
-        lastErr = e;
-        console.error(`[house] attempt ${i + 1} failed: ${e?.message || e}`);
-        try {
-          await appendDebug(`House attempt ${i + 1} failed: ${e?.message || e}`);
-        } catch {}
-        if (i < delays.length - 1) {
-          console.log(`[house] retrying after ${delays[i]}ms...`);
+          console.log(`[house] attempt ${i + 1} starting...`);
           try {
-            await appendDebug(`House retrying after ${delays[i]}ms...`);
+            await appendDebug(`House attempt ${i + 1} starting...`);
           } catch {}
-          await new Promise((r) => setTimeout(r, delays[i]));
+          apiResp = await postJson(HOUSE_API, payload, headers, {
+            browser: houseSession.browser,
+            context: houseSession.context
+          });
+          console.log(`[house] attempt ${i + 1} succeeded`);
+          try {
+            await appendDebug(`House attempt ${i + 1} succeeded`);
+          } catch {}
+
+          try {
+            await houseSession.context.storageState({ path: HOUSE_STORAGE_STATE_FILE });
+            try {
+              await appendDebug('House warmup: storage state saved to disk');
+            } catch {}
+          } catch (stateErr) {
+            console.warn(`[house] storage state save failed: ${stateErr?.message || stateErr}`);
+            try {
+              await appendDebug(`House storage state save failed: ${stateErr?.message || stateErr}`);
+            } catch {}
+          }
+
+          break;
+        } catch (e) {
+          lastErr = e;
+          console.error(`[house] attempt ${i + 1} failed: ${e?.message || e}`);
+          try {
+            await appendDebug(`House attempt ${i + 1} failed: ${e?.message || e}`);
+          } catch {}
+          if (i < delays.length - 1) {
+            console.log(`[house] retrying after ${delays[i]}ms...`);
+            try {
+              await appendDebug(`House retrying after ${delays[i]}ms...`);
+            } catch {}
+            await new Promise((r) => setTimeout(r, delays[i]));
+          }
         }
+      }
+    } finally {
+      if (houseSession?.browser) {
+        await houseSession.browser.close();
       }
     }
 
