@@ -2,20 +2,20 @@
   "cookies": [
     {
       "name": "AWSALBTG",
-      "value": "2KFJn97TkWRDvbltLY2jma4m4X/sydvDKqP0DK+ZewbVSwGTJtuuPwGwm6JCjcW/A9LGzYN5/XeaRz6R/5CVg/gQ5BCFiVXOp/mTf5L05gQCSaYlxMxWbVCy4jHXmCkSWxpWHzSEdthGLKzc3irflJi/pPrppxgTa8mhm8PeD/trw5zwipo=",
+      "value": "YDTywteVIlQq7BPRaSM60fTFkB8p8q5votJN6H/+QeSoDVW4Ab4DmqFY5ZR3HVNHhY0CSIzFZQVXS7Qn4GhoasETyJ/sarXvFM32P+7JACiM+AtVIBkjk/woAI5TOsZkWXJnWJobHDcJaVwuF/d7iRBh/0YG1heWDm/sZilQkXD60UZzZKA=",
       "domain": "api.v2.congress.hrep.online",
       "path": "/",
-      "expires": 1759942883,
+      "expires": 1759978585,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "AWSALBTGCORS",
-      "value": "2KFJn97TkWRDvbltLY2jma4m4X/sydvDKqP0DK+ZewbVSwGTJtuuPwGwm6JCjcW/A9LGzYN5/XeaRz6R/5CVg/gQ5BCFiVXOp/mTf5L05gQCSaYlxMxWbVCy4jHXmCkSWxpWHzSEdthGLKzc3irflJi/pPrppxgTa8mhm8PeD/trw5zwipo=",
+      "value": "YDTywteVIlQq7BPRaSM60fTFkB8p8q5votJN6H/+QeSoDVW4Ab4DmqFY5ZR3HVNHhY0CSIzFZQVXS7Qn4GhoasETyJ/sarXvFM32P+7JACiM+AtVIBkjk/woAI5TOsZkWXJnWJobHDcJaVwuF/d7iRBh/0YG1heWDm/sZilQkXD60UZzZKA=",
       "domain": "api.v2.congress.hrep.online",
       "path": "/",
-      "expires": 1759942883,
+      "expires": 1759978585,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"

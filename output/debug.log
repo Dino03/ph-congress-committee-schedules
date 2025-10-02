@@ -1,32 +1,32 @@
-[2025-10-01T17:01:20.121Z] [house] request starting
-[2025-10-01T17:01:20.121Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-10-01T17:01:20.122Z] House headers count: 14
-[2025-10-01T17:01:20.123Z] House warmup: launching browser
-[2025-10-01T17:01:20.414Z] House warmup: loaded storage state from disk
-[2025-10-01T17:01:20.494Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
-[2025-10-01T17:01:23.357Z] House warmup: DOM ready + delay complete
-[2025-10-01T17:01:23.365Z] House attempt 1 starting...
-[2025-10-01T17:01:23.366Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-10-01T17:01:24.177Z] POST response: status=200, contentLength=169051, duration=810ms
-[2025-10-01T17:01:24.178Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=810 keys=status,success,data dataType=object
-[2025-10-01T17:01:24.178Z] House attempt 1 succeeded
-[2025-10-01T17:01:24.243Z] House warmup: storage state saved to disk
-[2025-10-01T17:01:24.276Z] House API response keys: status,success,data
-[2025-10-01T17:01:24.276Z] House API status: 200, success: true
-[2025-10-01T17:01:24.276Z] House API data keys: pageCount,count,rows
-[2025-10-01T17:01:24.277Z] House API pageCount: 28, count: 4120
-[2025-10-01T17:01:24.279Z] House raw rows count: 150
-[2025-10-01T17:01:24.279Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
-[2025-10-01T17:01:24.279Z] House first row sample: date="2025-10-02", time="09:30 AM", comm_name="NUCLEAR ENERGY", cancelled=false
-[2025-10-01T17:01:24.280Z] House row 0: date="2025-10-02", time="09:30 AM", comm_name="NUCLEAR ENERGY", cancelled=false
-[2025-10-01T17:01:24.280Z] House row 1: date="2025-10-01", time="08:30 AM", comm_name="DANGEROUS DRUGS", cancelled=false
-[2025-10-01T17:01:24.281Z] House row 2: date="2025-09-30", time="08:00 AM", comm_name="POVERTY ALLEVIATION", cancelled=false
-[2025-10-01T17:01:24.284Z] House mapping: 150 valid, 0 invalid, 15 cancelled
-[2025-10-01T17:01:24.284Z] House deduplication: 3 duplicates removed, 147 final count
-[2025-10-01T17:01:24.285Z] House final first item: {"date":"2025-10-02","time":"09:30 AM","committee":"NUCLEAR ENERGY","subject":"• Organizational meeting – Approval of the Committee Rules of Procedure; presentation of Committee profile and membership; presentation of accomplishments during the 19th Congress; and measures currently referred to the Committee • Briefing by the Department of Energy (DOE) on its nuclear energy program; outcome of survey on the acceptability of nuclear power in the country; and status of Renewable Energy Trust Fund • Deliberation on HB 375 – Governing civil liability and compensation claims for nuclear damage, repealing for the purpose certain sections of RA 5207, otherwise known as the Atomic Energy Regulatory and Liability Act of 1968, as amended (Rep. Mark Cojuangco)","venue":"In-person meeting at the Spkr. Villar Hall 1/F SWA Bldg. and virtual meeting via Zoom (To be livestreamed on the official Facebook page of the HRep)","source":"House API (list)"}
-[2025-10-01T17:01:24.285Z] House date range: 2025-10-02 to 2025-06-03
-[2025-10-01T17:01:24.287Z] House JSON written: 147 items
-[2025-10-01T17:01:24.287Z] [senate] request starting
-[2025-10-01T17:01:26.776Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2416 htmlLen=15548
-[2025-10-01T17:01:26.833Z] Senate parsed rows=6
-[2025-10-01T17:01:26.834Z] Done. House=147 Senate=6
+[2025-10-02T02:56:20.626Z] [house] request starting
+[2025-10-02T02:56:20.626Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-10-02T02:56:20.627Z] House headers count: 14
+[2025-10-02T02:56:20.627Z] House warmup: launching browser
+[2025-10-02T02:56:22.121Z] House warmup: loaded storage state from disk
+[2025-10-02T02:56:22.198Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-02T02:56:25.115Z] House warmup: DOM ready + delay complete
+[2025-10-02T02:56:25.127Z] House attempt 1 starting...
+[2025-10-02T02:56:25.129Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-02T02:56:26.116Z] POST response: status=200, contentLength=169051, duration=986ms
+[2025-10-02T02:56:26.117Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=986 keys=status,success,data dataType=object
+[2025-10-02T02:56:26.117Z] House attempt 1 succeeded
+[2025-10-02T02:56:26.182Z] House warmup: storage state saved to disk
+[2025-10-02T02:56:26.216Z] House API response keys: status,success,data
+[2025-10-02T02:56:26.216Z] House API status: 200, success: true
+[2025-10-02T02:56:26.217Z] House API data keys: pageCount,count,rows
+[2025-10-02T02:56:26.217Z] House API pageCount: 28, count: 4120
+[2025-10-02T02:56:26.219Z] House raw rows count: 150
+[2025-10-02T02:56:26.219Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
+[2025-10-02T02:56:26.220Z] House first row sample: date="2025-10-02", time="09:30 AM", comm_name="NUCLEAR ENERGY", cancelled=false
+[2025-10-02T02:56:26.220Z] House row 0: date="2025-10-02", time="09:30 AM", comm_name="NUCLEAR ENERGY", cancelled=false
+[2025-10-02T02:56:26.221Z] House row 1: date="2025-10-01", time="08:30 AM", comm_name="DANGEROUS DRUGS", cancelled=false
+[2025-10-02T02:56:26.221Z] House row 2: date="2025-09-30", time="08:00 AM", comm_name="POVERTY ALLEVIATION", cancelled=false
+[2025-10-02T02:56:26.224Z] House mapping: 150 valid, 0 invalid, 15 cancelled
+[2025-10-02T02:56:26.225Z] House deduplication: 3 duplicates removed, 147 final count
+[2025-10-02T02:56:26.225Z] House final first item: {"date":"2025-10-02","time":"09:30 AM","committee":"NUCLEAR ENERGY","subject":"• Organizational meeting – Approval of the Committee Rules of Procedure; presentation of Committee profile and membership; presentation of accomplishments during the 19th Congress; and measures currently referred to the Committee • Briefing by the Department of Energy (DOE) on its nuclear energy program; outcome of survey on the acceptability of nuclear power in the country; and status of Renewable Energy Trust Fund • Deliberation on HB 375 – Governing civil liability and compensation claims for nuclear damage, repealing for the purpose certain sections of RA 5207, otherwise known as the Atomic Energy Regulatory and Liability Act of 1968, as amended (Rep. Mark Cojuangco)","venue":"In-person meeting at the Spkr. Villar Hall 1/F SWA Bldg. and virtual meeting via Zoom (To be livestreamed on the official Facebook page of the HRep)","source":"House API (list)"}
+[2025-10-02T02:56:26.226Z] House date range: 2025-10-02 to 2025-06-03
+[2025-10-02T02:56:26.228Z] House JSON written: 147 items
+[2025-10-02T02:56:26.228Z] [senate] request starting
+[2025-10-02T02:56:28.590Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2284 htmlLen=15548
+[2025-10-02T02:56:28.650Z] Senate parsed rows=6
+[2025-10-02T02:56:28.651Z] Done. House=147 Senate=6
