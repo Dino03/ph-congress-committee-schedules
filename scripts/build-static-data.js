@@ -63,6 +63,23 @@ function toIso(date, time) {
   return `${day}T${toTwoDigits(hour)}:${toTwoDigits(minutes)}:00`;
 }
 
+function monthDaySignature(value) {
+  const cleaned = norm(value);
+  if (!cleaned) return '';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(cleaned)) {
+    return cleaned.slice(5);
+  }
+
+  const match = cleaned.match(/([A-Za-z]+)\s+(\d{1,2})/);
+  if (!match) return '';
+
+  const [, monthName, day] = match;
+  const parsed = new Date(`${monthName} ${day}, 2000`);
+  if (Number.isNaN(parsed.getTime())) return '';
+
+  return `${toTwoDigits(parsed.getMonth() + 1)}-${toTwoDigits(parsed.getDate())}`;
+}
+
 async function readJson(filePath) {
   try {
     const raw = await fs.readFile(filePath, 'utf-8');
@@ -294,8 +311,37 @@ function mergeSenateHistory(current, previous = []) {
 
     const key = senateHistoryKey({ ...record, committee, time, isoDate: iso });
     if (!key) return;
-    const existing = map.get(key);
 
+    let keyToUse = key;
+    let existing = map.get(keyToUse);
+
+    if (!existing) {
+      const recordDateValue =
+        normalizedDate || norm(record.date || record.dateLabel || '');
+      const recordSignature = monthDaySignature(recordDateValue);
+
+      if (recordSignature) {
+        for (const [candidateKey, candidate] of map.entries()) {
+          if (norm(candidate.committee || '') !== committee) continue;
+          if (parseClock(candidate.time || '') !== time) continue;
+
+          const candidateDateValue = candidate.isoDate
+            ? candidate.isoDate.slice(0, 10)
+            : norm(candidate.date || candidate.dateLabel || '');
+          const candidateSignature = monthDaySignature(candidateDateValue);
+          if (!candidateSignature || candidateSignature !== recordSignature) continue;
+
+          const candidateAgenda = norm(candidate.agenda || '');
+          if (agenda && candidateAgenda && candidateAgenda !== agenda) continue;
+
+          keyToUse = candidateKey;
+          existing = candidate;
+          break;
+        }
+      }
+    }
+
+    const baseCapturedAt = record.capturedAt || (seenAt && seenAt !== now ? seenAt : '');
     const base = {
       ...record,
       committee,
@@ -308,15 +354,17 @@ function mergeSenateHistory(current, previous = []) {
       date: iso ? iso.slice(0, 10) : normalizedDate || norm(record.date || record.dateLabel || ''),
       dateLabel,
       source: record.source || SENATE_SOURCE,
-      capturedAt: record.capturedAt || seenAt || now
+      capturedAt: baseCapturedAt
     };
 
     const firstSeen = record.firstSeenAt || seenAt || now;
     const lastSeen = record.lastSeenAt || seenAt || now;
 
     if (!existing) {
-      map.set(key, {
+      map.set(keyToUse, {
         ...base,
+        id: base.id || `senate-${map.size + 1}`,
+        capturedAt: base.capturedAt || seenAt || now,
         firstSeenAt: firstSeen,
         lastSeenAt: lastSeen
       });
@@ -325,18 +373,26 @@ function mergeSenateHistory(current, previous = []) {
 
     const merged = {
       ...existing,
-      ...base,
+      id: existing.id || base.id || `senate-${map.size + 1}`,
+      committee: base.committee || existing.committee,
+      time: base.time || existing.time,
+      venue: base.venue || existing.venue,
       agenda: base.agenda || existing.agenda,
       notes: base.notes || existing.notes,
+      status: base.status || existing.status,
+      isoDate: base.isoDate || existing.isoDate,
+      date:
+        existing.date && /^\d{4}-\d{2}-\d{2}$/.test(existing.date)
+          ? existing.date
+          : base.date || existing.date,
       dateLabel: base.dateLabel || existing.dateLabel,
-      capturedAt: base.capturedAt || existing.capturedAt,
-      firstSeenAt:
-        existing.firstSeenAt && existing.firstSeenAt < firstSeen ? existing.firstSeenAt : firstSeen,
-      lastSeenAt:
-        existing.lastSeenAt && existing.lastSeenAt > lastSeen ? existing.lastSeenAt : lastSeen
+      source: base.source || existing.source,
+      capturedAt: existing.capturedAt || base.capturedAt || existing.firstSeenAt || firstSeen,
+      firstSeenAt: existing.firstSeenAt || firstSeen,
+      lastSeenAt: existing.lastSeenAt || lastSeen
     };
 
-    map.set(key, merged);
+    map.set(keyToUse, merged);
   };
 
   previous.forEach((record) => {
