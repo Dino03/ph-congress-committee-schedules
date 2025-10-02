@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-02T06:42:45.956Z",
+  "generatedAt": "2025-10-02T06:52:56.634Z",
   "counts": {
     "house": 147,
     "senate": 12,
@@ -13,7 +13,7 @@
     "senate": {
       "entries": 12,
       "firstSeenAt": "2025-10-02T02:02:12.708Z",
-      "lastSeenAt": "2025-10-02T06:42:45.938Z"
+      "lastSeenAt": "2025-10-02T06:52:56.606Z"
     }
   }
 }
