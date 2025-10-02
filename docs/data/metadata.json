@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-01T17:01:27.166Z",
+  "generatedAt": "2025-10-02T02:02:12.736Z",
   "counts": {
     "house": 147,
     "senate": 6,
@@ -8,5 +8,12 @@
   "sources": {
     "house": "House of Representatives (API)",
     "senate": "Senate Weekly Schedule"
+  },
+  "history": {
+    "senate": {
+      "entries": 6,
+      "firstSeenAt": "2025-10-02T02:02:12.708Z",
+      "lastSeenAt": "2025-10-02T02:02:12.708Z"
+    }
   }
 }

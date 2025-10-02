@@ -3,7 +3,8 @@ const state = {
   branches: new Set(['House of Representatives', 'Senate']),
   startDate: '',
   endDate: '',
-  showPast: false
+  showPast: false,
+  calendarMonth: null
 };
 
 const elements = {
@@ -21,7 +22,11 @@ const elements = {
   countSenate: document.getElementById('count-senate'),
   resultsCount: document.getElementById('results-count'),
   resultsList: document.getElementById('results-list'),
-  noResults: document.getElementById('no-results')
+  noResults: document.getElementById('no-results'),
+  calendarGrid: document.getElementById('calendar-grid'),
+  calendarMonth: document.getElementById('calendar-month'),
+  calendarPrev: document.getElementById('calendar-prev'),
+  calendarNext: document.getElementById('calendar-next')
 };
 
 let records = [];
@@ -32,6 +37,21 @@ const dateFormatter = new Intl.DateTimeFormat('en-PH', {
   month: 'long',
   day: 'numeric',
   year: 'numeric'
+});
+
+const calendarFormatter = new Intl.DateTimeFormat('en-PH', {
+  month: 'long',
+  year: 'numeric'
+});
+
+const dayFormatter = new Intl.DateTimeFormat('en-PH', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric'
+});
+
+const historyFormatter = new Intl.DateTimeFormat('en-PH', {
+  dateStyle: 'medium'
 });
 
 function toStartOfDay(date) {
@@ -59,6 +79,29 @@ function sanitizeAgenda(agenda) {
   return agenda.replace(/\s*\u2022\s*/g, ' • ').trim();
 }
 
+function formatHistoryTimestamp(value) {
+  if (!value) return '';
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return value;
+  return historyFormatter.format(parsed);
+}
+
+function getRecordDateKey(record) {
+  if (record.isoDate && /^\d{4}-\d{2}-\d{2}/.test(record.isoDate)) {
+    return record.isoDate.slice(0, 10);
+  }
+
+  if (record.date && /^\d{4}-\d{2}-\d{2}$/.test(record.date)) {
+    return record.date;
+  }
+
+  if (record.date && /^\d{4}-\d{2}-\d{2}T/.test(record.date)) {
+    return record.date.slice(0, 10);
+  }
+
+  return '';
+}
+
 function computeSearchText(record) {
   if (record.searchText) return record.searchText;
   return [
@@ -72,6 +115,31 @@ function computeSearchText(record) {
     .filter(Boolean)
     .join(' ')
     .toLowerCase();
+}
+
+function setCalendarMonthFromIso(iso) {
+  if (!iso) return;
+  const parsed = new Date(`${iso}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) return;
+  state.calendarMonth = new Date(parsed.getFullYear(), parsed.getMonth(), 1);
+}
+
+function initializeCalendarMonth(preferredIso = '') {
+  if (preferredIso) {
+    setCalendarMonthFromIso(preferredIso);
+    return;
+  }
+
+  if (state.calendarMonth) return;
+
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const orderedDates = records
+    .map((record) => getRecordDateKey(record))
+    .filter(Boolean)
+    .sort();
+
+  const targetIso = orderedDates.find((iso) => iso >= todayIso) || orderedDates[0] || todayIso;
+  setCalendarMonthFromIso(targetIso);
 }
 
 function applyFilters() {
@@ -106,6 +174,7 @@ function applyFilters() {
     return true;
   });
 
+  renderCalendar(filtered);
   renderResults(filtered);
 }
 
@@ -170,6 +239,19 @@ function renderResults(items) {
       parts.push(notes);
     }
 
+    if (record.firstSeenAt || record.lastSeenAt) {
+      const captured = document.createElement('p');
+      captured.className = 'result-card__notes';
+      const first = formatHistoryTimestamp(record.firstSeenAt);
+      const last = formatHistoryTimestamp(record.lastSeenAt);
+      if (first && last && first !== last) {
+        captured.textContent = `Captured ${first} • Last confirmed ${last}`;
+      } else {
+        captured.textContent = `Captured ${first || last}`;
+      }
+      parts.push(captured);
+    }
+
     if (record.source) {
       const source = document.createElement('p');
       source.className = 'result-card__notes';
@@ -182,6 +264,135 @@ function renderResults(items) {
   });
 
   elements.resultsList.appendChild(fragment);
+}
+
+function renderCalendar(items) {
+  if (!elements.calendarGrid || !elements.calendarMonth) return;
+
+  initializeCalendarMonth();
+
+  const activeMonth = state.calendarMonth
+    ? new Date(state.calendarMonth.getFullYear(), state.calendarMonth.getMonth(), 1)
+    : new Date();
+  activeMonth.setDate(1);
+
+  elements.calendarMonth.textContent = calendarFormatter.format(activeMonth);
+
+  const counts = new Map();
+  items.forEach((item) => {
+    const iso = getRecordDateKey(item);
+    if (!iso) return;
+    const entry = counts.get(iso) || { total: 0 };
+    entry.total += 1;
+    counts.set(iso, entry);
+  });
+
+  const year = activeMonth.getFullYear();
+  const monthIndex = activeMonth.getMonth();
+  const firstDayIndex = activeMonth.getDay();
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+  const fragment = document.createDocumentFragment();
+
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const selectedStart = state.startDate;
+  const selectedEnd = state.endDate || state.startDate;
+  const hasRange = Boolean(selectedStart && selectedEnd);
+
+  const createSpacer = () => {
+    const spacer = document.createElement('div');
+    spacer.className = 'calendar__day calendar__day--inactive';
+    spacer.setAttribute('aria-hidden', 'true');
+    fragment.appendChild(spacer);
+  };
+
+  for (let i = 0; i < firstDayIndex; i += 1) {
+    createSpacer();
+  }
+
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const iso = `${year}-${String(monthIndex + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    const dayInfo = counts.get(iso);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'calendar__day';
+    button.dataset.date = iso;
+
+    const eventLabel = dayInfo
+      ? `${dayInfo.total} hearing${dayInfo.total === 1 ? '' : 's'}`
+      : 'No hearings';
+    button.setAttribute('aria-label', `${dayFormatter.format(new Date(`${iso}T00:00:00`))} · ${eventLabel}`);
+
+    if (dayInfo) {
+      button.classList.add('calendar__day--has-events');
+    }
+
+    if (iso === todayIso) {
+      button.classList.add('calendar__day--today');
+    }
+
+    if (hasRange && iso >= selectedStart && iso <= selectedEnd) {
+      if (selectedStart === selectedEnd) {
+        button.classList.add('calendar__day--selected');
+      } else {
+        button.classList.add('calendar__day--in-range');
+      }
+      button.setAttribute('aria-pressed', 'true');
+    } else {
+      button.setAttribute('aria-pressed', 'false');
+    }
+
+    const dayNumber = document.createElement('span');
+    dayNumber.className = 'calendar__day-number';
+    dayNumber.textContent = String(day);
+
+    const countLabel = document.createElement('span');
+    countLabel.className = 'calendar__day-count';
+    countLabel.textContent = dayInfo ? `${dayInfo.total} hearing${dayInfo.total === 1 ? '' : 's'}` : '—';
+
+    button.append(dayNumber, countLabel);
+    button.addEventListener('click', () => handleCalendarDayClick(iso));
+
+    fragment.appendChild(button);
+  }
+
+  const totalCells = firstDayIndex + daysInMonth;
+  const trailing = (7 - (totalCells % 7)) % 7;
+  for (let i = 0; i < trailing; i += 1) {
+    createSpacer();
+  }
+
+  elements.calendarGrid.innerHTML = '';
+  elements.calendarGrid.appendChild(fragment);
+}
+
+function changeCalendarMonth(offset) {
+  if (!state.calendarMonth) {
+    state.calendarMonth = new Date();
+  }
+
+  const next = new Date(state.calendarMonth);
+  next.setMonth(state.calendarMonth.getMonth() + offset, 1);
+  state.calendarMonth = next;
+  applyFilters();
+}
+
+function handleCalendarDayClick(iso) {
+  if (!iso) return;
+
+  if (state.startDate === iso && state.endDate === iso) {
+    state.startDate = '';
+    state.endDate = '';
+    elements.startDate.value = '';
+    elements.endDate.value = '';
+  } else {
+    state.startDate = iso;
+    state.endDate = iso;
+    elements.startDate.value = iso;
+    elements.endDate.value = iso;
+  }
+
+  setCalendarMonthFromIso(iso);
+  applyFilters();
 }
 
 function updateStats() {
@@ -213,11 +424,29 @@ function renderStatusMessage() {
     ? metadata.generatedAt
     : `${time.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}`;
 
-  const senateNote = metadata.counts.senate
-    ? ''
-    : ' • Senate schedule could not be downloaded from the public website at this time.';
+  const messages = [];
 
-  elements.status.textContent = `Data refreshed ${formatted}.${senateNote}`;
+  if (!metadata.counts.senate) {
+    messages.push('Senate schedule could not be downloaded from the public website at this time.');
+  }
+
+  const senateHistory = metadata?.history?.senate;
+  if (senateHistory?.entries) {
+    const first = formatHistoryTimestamp(senateHistory.firstSeenAt);
+    const last = formatHistoryTimestamp(senateHistory.lastSeenAt);
+    if (first && last && first !== last) {
+      messages.push(`Senate archive covers ${senateHistory.entries.toLocaleString()} hearings captured between ${first} and ${last}.`);
+    } else if (last) {
+      messages.push(
+        `Senate archive tracks ${senateHistory.entries.toLocaleString()} hearings (last updated ${last}).`
+      );
+    } else {
+      messages.push(`Senate archive tracks ${senateHistory.entries.toLocaleString()} hearings.`);
+    }
+  }
+
+  const suffix = messages.length ? ` • ${messages.join(' • ')}` : '';
+  elements.status.textContent = `Data refreshed ${formatted}.${suffix}`;
 }
 
 function resetFilters() {
@@ -233,6 +462,7 @@ function resetFilters() {
   elements.startDate.value = '';
   elements.endDate.value = '';
   elements.showPast.checked = false;
+  state.calendarMonth = null;
 
   applyFilters();
 }
@@ -262,6 +492,9 @@ function attachEventListeners() {
 
   elements.startDate.addEventListener('change', (event) => {
     state.startDate = event.target.value;
+    if (state.startDate) {
+      setCalendarMonthFromIso(state.startDate);
+    }
     applyFilters();
   });
 
@@ -276,6 +509,14 @@ function attachEventListeners() {
   });
 
   elements.reset.addEventListener('click', resetFilters);
+
+  if (elements.calendarPrev) {
+    elements.calendarPrev.addEventListener('click', () => changeCalendarMonth(-1));
+  }
+
+  if (elements.calendarNext) {
+    elements.calendarNext.addEventListener('click', () => changeCalendarMonth(1));
+  }
 }
 
 async function loadData() {
@@ -301,6 +542,7 @@ async function loadData() {
       : [];
 
     elements.layout.setAttribute('aria-busy', 'false');
+    state.calendarMonth = null;
     renderStatusMessage();
     updateStats();
     applyFilters();

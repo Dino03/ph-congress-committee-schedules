@@ -42,6 +42,25 @@ const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-sch
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
 const HOUSE_WARMUP_URL = 'https://www.congress.gov.ph/committee/schedule';
 const HOUSE_STORAGE_STATE_FILE = path.join(OUTPUT_DIR, 'house-storage-state.json');
+const SENATE_ARCHIVE_DIR = path.join(OUTPUT_DIR, 'senate-archive');
+
+const SENATE_HTTP_HEADERS = {
+  accept:
+    'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+  'accept-language': 'en-US,en;q=0.9',
+  'cache-control': 'max-age=0',
+  priority: 'u=0, i',
+  'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+  'sec-ch-ua-mobile': '?0',
+  'sec-ch-ua-platform': '"macOS"',
+  'sec-fetch-dest': 'document',
+  'sec-fetch-mode': 'navigate',
+  'sec-fetch-site': 'cross-site',
+  'sec-fetch-user': '?1',
+  'upgrade-insecure-requests': '1',
+  'user-agent':
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36'
+};
 
 // ---------------- Debug helpers ----------------
 async function appendDebug(line) {
@@ -225,8 +244,41 @@ async function prepareHouseSession() {
   }
 }
 
-async function fetchSenateHTML(url) {
-  console.log('[fetchSenateHTML] starting browser launch');
+async function fetchSenateHTMLViaHttp(url) {
+  console.log(`[fetchSenateHTMLViaHttp] fetching ${url}`);
+  const startedAt = Date.now();
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: SENATE_HTTP_HEADERS,
+    redirect: 'follow',
+    credentials: 'include'
+  });
+
+  const ms = Date.now() - startedAt;
+  const status = response.status;
+  console.log(
+    `[fetchSenateHTMLViaHttp] response status=${status} duration=${ms}ms contentLength=${
+      response.headers.get('content-length') || 'unknown'
+    }`
+  );
+  try {
+    await appendDebug(
+      `Senate fetch via HTTP status=${status} durationMs=${ms} contentLength=${
+        response.headers.get('content-length') || 'unknown'
+      }`
+    );
+  } catch {}
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${status}`);
+  }
+
+  const html = await response.text();
+  return html;
+}
+
+async function fetchSenateHTMLWithBrowser(url) {
+  console.log('[fetchSenateHTMLWithBrowser] starting browser launch');
   const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
@@ -239,12 +291,12 @@ async function fetchSenateHTML(url) {
     });
     const page = await context.newPage();
     const startedAt = Date.now();
-    console.log(`[fetchSenateHTML] navigating to ${url}`);
+    console.log(`[fetchSenateHTMLWithBrowser] navigating to ${url}`);
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
     await page.waitForTimeout(1500);
     const html = await page.content();
     const ms = Date.now() - startedAt;
-    console.log(`[fetchSenateHTML] loaded, duration=${ms}ms, htmlLen=${html?.length || 0}`);
+    console.log(`[fetchSenateHTMLWithBrowser] loaded, duration=${ms}ms, htmlLen=${html?.length || 0}`);
     try {
       await appendDebug(`Senate GET ${url} loaded durationMs=${ms} htmlLen=${html?.length || 0}`);
     } catch {}
@@ -254,8 +306,59 @@ async function fetchSenateHTML(url) {
   }
 }
 
+async function fetchSenateHTML(url) {
+  try {
+    return await fetchSenateHTMLViaHttp(url);
+  } catch (err) {
+    console.warn(`[fetchSenateHTML] HTTP fetch failed: ${err?.message || err}`);
+    try {
+      await appendDebug(`Senate HTTP fetch failed: ${err?.message || err}`);
+    } catch {}
+  }
+
+  try {
+    return await fetchSenateHTMLWithBrowser(url);
+  } catch (err) {
+    console.error(`[fetchSenateHTML] browser fallback failed: ${err?.message || err}`);
+    try {
+      await appendDebug(`Senate browser fallback failed: ${err?.message || err}`);
+    } catch {}
+    throw err;
+  }
+}
+
 // ---------------- Parsers ----------------
-async function parseSenateSchedule(html) {
+function inferSenateIsoDate(headerText, capturedAt = new Date()) {
+  const normalized = norm(headerText);
+  if (!normalized) return '';
+
+  const monthMatch = normalized.match(/([A-Za-z]+)\s+(\d{1,2})(?:,\s*(\d{4}))?/);
+  if (!monthMatch) return '';
+  const [, monthName, dayStr, yearStr] = monthMatch;
+  const day = Number.parseInt(dayStr, 10);
+  if (!Number.isFinite(day)) return '';
+
+  const baseYear = yearStr ? Number.parseInt(yearStr, 10) : capturedAt.getFullYear();
+  if (!Number.isFinite(baseYear)) return '';
+
+  let candidate = new Date(`${monthName} ${day}, ${baseYear}`);
+  if (Number.isNaN(candidate.getTime())) {
+    return '';
+  }
+
+  if (!yearStr) {
+    const diffDays = Math.round((candidate - capturedAt) / (24 * 60 * 60 * 1000));
+    if (diffDays < -90) {
+      candidate = new Date(`${monthName} ${day}, ${baseYear + 1}`);
+    } else if (diffDays > 275) {
+      candidate = new Date(`${monthName} ${day}, ${baseYear - 1}`);
+    }
+  }
+
+  return candidate.toISOString().slice(0, 10);
+}
+
+async function parseSenateSchedule(html, capturedAt = new Date()) {
   console.log('[parseSenateSchedule] starting');
   const $ = cheerio.load(html);
   const out = [];
@@ -269,6 +372,7 @@ async function parseSenateSchedule(html) {
     if (trs.length < 3) return;
 
     const dayHeader = norm($(trs[0]).find('td').first().text());
+    const isoDate = inferSenateIsoDate(dayHeader, capturedAt);
 
     for (let i = 2; i < trs.length; i++) {
       const tds = $(trs[i]).find('td');
@@ -293,14 +397,16 @@ async function parseSenateSchedule(html) {
         .filter(Boolean);
       const subject = agendaParts.join('; ');
 
-      if (dayHeader && time && committeeCell) {
+      if (isoDate && time && committeeCell) {
         out.push({
-          date: dayHeader,
+          date: isoDate,
           time,
           committee: committeeCell,
           subject,
           venue,
-          source: 'Senate Weekly Schedule'
+          source: 'Senate Weekly Schedule',
+          dateLabel: dayHeader,
+          capturedAt: capturedAt.toISOString()
         });
       }
     }
@@ -597,9 +703,10 @@ async function main() {
 
   let senate = [];
   try {
+    const capturedAt = new Date();
     const html = await fetchSenateHTML(SENATE_SCHED_URL);
     if (html && html.includes('<html')) {
-      senate = await parseSenateSchedule(html);
+      senate = await parseSenateSchedule(html, capturedAt);
       console.log(`[senate] parsed rows=${senate.length}`);
       try {
         await appendDebug(`Senate parsed rows=${senate.length}`);
@@ -608,6 +715,23 @@ async function main() {
         console.log('[senate] produced 0 rows after parsing');
         try {
           await appendDebug('Senate produced 0 rows after parsing.');
+        } catch {}
+      }
+
+      try {
+        await fs.writeFile(path.join(OUTPUT_DIR, 'senate.html'), html, 'utf-8');
+        await fs.mkdir(SENATE_ARCHIVE_DIR, { recursive: true });
+        const stamp = capturedAt.toISOString().replace(/[:.]/g, '-');
+        await fs.writeFile(path.join(SENATE_ARCHIVE_DIR, `senate-${stamp}.html`), html, 'utf-8');
+        await fs.writeFile(
+          path.join(SENATE_ARCHIVE_DIR, `senate-${stamp}.json`),
+          JSON.stringify(senate, null, 2),
+          'utf-8'
+        );
+      } catch (archiveErr) {
+        console.warn(`[senate] archive write failed: ${archiveErr?.message || archiveErr}`);
+        try {
+          await appendDebug(`Senate archive write failed: ${archiveErr?.message || archiveErr}`);
         } catch {}
       }
     } else {

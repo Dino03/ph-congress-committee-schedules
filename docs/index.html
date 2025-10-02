@@ -99,6 +99,28 @@
         </div>
       </section>
 
+      <section class="calendar" aria-label="Calendar view">
+        <div class="calendar__header">
+          <button id="calendar-prev" class="calendar__nav" type="button" aria-label="Previous month">
+            ‹
+          </button>
+          <h2 id="calendar-month" class="calendar__month" aria-live="polite"></h2>
+          <button id="calendar-next" class="calendar__nav" type="button" aria-label="Next month">
+            ›
+          </button>
+        </div>
+        <div class="calendar__weekdays" aria-hidden="true">
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </div>
+        <div id="calendar-grid" class="calendar__grid" role="grid" aria-describedby="calendar-month"></div>
+      </section>
+
       <section class="results" aria-live="polite" aria-label="Committee hearings">
         <div id="results-count" class="results__count">Loading schedules…</div>
         <div id="results-list" class="results__list"></div>

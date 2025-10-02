@@ -9,6 +9,7 @@ const ROOT_DIR = path.join(__dirname, '..');
 const OUTPUT_DIR = path.join(ROOT_DIR, 'output');
 const DOCS_DIR = path.join(ROOT_DIR, 'docs');
 const DATA_DIR = path.join(DOCS_DIR, 'data');
+const SENATE_HISTORY_FILE = path.join(DATA_DIR, 'senate-history.json');
 
 const HOUSE_SOURCE = 'House of Representatives (API)';
 const SENATE_SOURCE = 'Senate Weekly Schedule';
@@ -116,6 +117,26 @@ function parseSenateDate(headerText) {
   return parsed.toISOString().slice(0, 10);
 }
 
+function normalizeSenateDate(record) {
+  const direct = norm(record.date || '');
+  if (direct && /^\d{4}-\d{2}-\d{2}$/.test(direct)) {
+    return direct;
+  }
+
+  const fromDirect = direct ? parseSenateDate(direct) : '';
+  if (fromDirect) return fromDirect;
+
+  const label = norm(record.dateLabel || record.displayDate || '');
+  if (label && /^\d{4}-\d{2}-\d{2}$/.test(label)) {
+    return label;
+  }
+
+  const fromLabel = label ? parseSenateDate(label) : '';
+  if (fromLabel) return fromLabel;
+
+  return direct;
+}
+
 function htmlToText(html) {
   const fragment = cheerio.load(`<div>${html}</div>`);
   return norm(fragment('div').text());
@@ -192,18 +213,113 @@ function deriveSenateRecords(data) {
         id: `senate-${item.id || index + 1}`,
         branch: 'Senate',
         committee: norm(item.committee || item.title || ''),
-        date: norm(item.date || ''),
+        date: normalizeSenateDate(item),
         time: parseClock(item.time || ''),
         venue: norm(item.venue || ''),
         agenda: norm(item.agenda || item.subject || ''),
         status: norm(item.status || 'Scheduled') || 'Scheduled',
         notes: norm(item.notes || ''),
-        isoDate: toIso(norm(item.date || ''), parseClock(item.time || '')),
-        source: SENATE_SOURCE
+        isoDate: toIso(normalizeSenateDate(item), parseClock(item.time || '')),
+        source: SENATE_SOURCE,
+        dateLabel: norm(item.dateLabel || item.displayDate || ''),
+        capturedAt: item.capturedAt || ''
       }))
       .filter((item) => item.date && item.time && item.committee);
   }
   return [];
+}
+
+function senateHistoryKey(record) {
+  const committee = norm(record.committee || '');
+  const time = parseClock(record.time || '');
+  const iso = record.isoDate || toIso(normalizeSenateDate(record), time);
+  if (!committee || !time) return '';
+  if (iso) {
+    return `${iso.slice(0, 10)}|${time}|${committee}`.toLowerCase();
+  }
+
+  const fallbackDate = norm(record.date || record.dateLabel || '');
+  if (!fallbackDate) return '';
+  return `${fallbackDate}|${time}|${committee}`.toLowerCase();
+}
+
+function mergeSenateHistory(current, previous = []) {
+  const now = new Date().toISOString();
+  const map = new Map();
+
+  const ingest = (record, seenAt) => {
+    const committee = norm(record.committee || '');
+    const time = parseClock(record.time || '');
+    const venue = norm(record.venue || '');
+    const agenda = norm(record.agenda || '');
+    const notes = norm(record.notes || '');
+    const status = norm(record.status || 'Scheduled') || 'Scheduled';
+    const dateLabel = norm(record.dateLabel || record.displayDate || '');
+    const normalizedDate = normalizeSenateDate(record);
+    const iso = record.isoDate || toIso(normalizedDate, time);
+    if (!committee || !time) return;
+
+    const key = senateHistoryKey({ ...record, committee, time, isoDate: iso });
+    if (!key) return;
+    const existing = map.get(key);
+
+    const base = {
+      ...record,
+      committee,
+      time,
+      venue,
+      agenda,
+      notes,
+      status,
+      isoDate: iso || '',
+      date: iso ? iso.slice(0, 10) : normalizedDate || norm(record.date || record.dateLabel || ''),
+      dateLabel,
+      source: record.source || SENATE_SOURCE,
+      capturedAt: record.capturedAt || seenAt || now
+    };
+
+    const firstSeen = record.firstSeenAt || seenAt || now;
+    const lastSeen = record.lastSeenAt || seenAt || now;
+
+    if (!existing) {
+      map.set(key, {
+        ...base,
+        firstSeenAt: firstSeen,
+        lastSeenAt: lastSeen
+      });
+      return;
+    }
+
+    const merged = {
+      ...existing,
+      ...base,
+      agenda: base.agenda || existing.agenda,
+      notes: base.notes || existing.notes,
+      dateLabel: base.dateLabel || existing.dateLabel,
+      capturedAt: base.capturedAt || existing.capturedAt,
+      firstSeenAt:
+        existing.firstSeenAt && existing.firstSeenAt < firstSeen ? existing.firstSeenAt : firstSeen,
+      lastSeenAt:
+        existing.lastSeenAt && existing.lastSeenAt > lastSeen ? existing.lastSeenAt : lastSeen
+    };
+
+    map.set(key, merged);
+  };
+
+  previous.forEach((record) => {
+    const seenAt = record.lastSeenAt || record.capturedAt || record.firstSeenAt || now;
+    ingest(record, seenAt);
+  });
+
+  current.forEach((record) => {
+    ingest(record, now);
+  });
+
+  return Array.from(map.values()).map((record) => ({
+    ...record,
+    firstSeenAt: record.firstSeenAt || now,
+    lastSeenAt: record.lastSeenAt || now
+  }));
 }
 
 async function loadHouseRecords() {
@@ -281,9 +397,29 @@ async function writeJson(filePath, data) {
 async function main() {
   await ensureDocsStructure();
 
-  const house = decorateRecords(await loadHouseRecords());
-  const senate = decorateRecords(await loadSenateRecords());
+  const houseRaw = await loadHouseRecords();
+  const senateCurrentRaw = await loadSenateRecords();
+  const existingSenateHistory = (await readJson(SENATE_HISTORY_FILE)) || [];
+  const senateHistoryRaw = mergeSenateHistory(
+    senateCurrentRaw,
+    Array.isArray(existingSenateHistory) ? existingSenateHistory : []
+  );
+
+  const house = sortRecords(decorateRecords(houseRaw));
+  const senate = sortRecords(decorateRecords(senateHistoryRaw));
   const combined = sortRecords([...house, ...senate]);
+
+  const senateFirstSeen = senate.reduce((min, record) => {
+    if (!record.firstSeenAt) return min;
+    if (!min) return record.firstSeenAt;
+    return record.firstSeenAt < min ? record.firstSeenAt : min;
+  }, '');
+
+  const senateLastSeen = senate.reduce((max, record) => {
+    if (!record.lastSeenAt) return max;
+    if (!max) return record.lastSeenAt;
+    return record.lastSeenAt > max ? record.lastSeenAt : max;
+  }, '');
 
   const metadata = {
     generatedAt: new Date().toISOString(),
@@ -295,12 +431,20 @@ async function main() {
     sources: {
       house: HOUSE_SOURCE,
       senate: SENATE_SOURCE
+    },
+    history: {
+      senate: {
+        entries: senate.length,
+        firstSeenAt: senateFirstSeen || null,
+        lastSeenAt: senateLastSeen || null
+      }
     }
   };
 
   await writeJson(path.join(DATA_DIR, 'house.json'), house);
   await writeJson(path.join(DATA_DIR, 'senate.json'), senate);
   await writeJson(path.join(DATA_DIR, 'all.json'), combined);
+  await writeJson(SENATE_HISTORY_FILE, senate);
   await writeJson(path.join(DATA_DIR, 'metadata.json'), metadata);
 
   console.log(`Static data generated. House=${house.length}, Senate=${senate.length}, Total=${combined.length}`);
