@@ -22,7 +22,14 @@ function norm(value) {
 function parseClock(value) {
   const normalized = norm(value);
   if (!normalized) return '';
-  return normalized.replace(/\b(a\.m\.|p\.m\.)\b/gi, (match) => match.toUpperCase().replace(/\./g, ''));
+
+  const cleaned = normalized
+    .replace(/[()\[\]]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/a\.m\.|p\.m\./gi, (match) => match.toUpperCase().replace(/\./g, ''));
+
+  return cleaned.replace(/\s+/g, ' ').trim();
 }
 
 function toTwoDigits(input) {
@@ -106,24 +113,50 @@ function deriveHouseRecords(rows) {
     .filter(Boolean);
 }
 
-function parseSenateDate(headerText) {
-  const cleaned = norm(headerText).replace(/\s*\([^)]*\)$/, '');
+function parseSenateDate(headerText, fallbackYear = '') {
+  const cleaned = norm(headerText)
+    .replace(/\s*\([^)]*\)$/, '')
+    .replace(/\bWeek of\b/i, '')
+    .replace(/\bWeek\s+\d+\b/i, '')
+    .trim();
+  if (!cleaned) return '';
+
   const dropWeekday = cleaned.replace(/^[A-Z]+,?\s+/i, '');
-  const match = dropWeekday.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/);
+  const match = dropWeekday.match(/([A-Za-z]+)\s+(\d{1,2})(?:,?\s*(\d{4}))?/);
   if (!match) return '';
-  const [, monthName, day, year] = match;
+  const [, monthName, day, yearRaw] = match;
+  const year = yearRaw || fallbackYear;
+  if (!year) return '';
   const parsed = new Date(`${monthName} ${day}, ${year}`);
   if (Number.isNaN(parsed.getTime())) return '';
   return parsed.toISOString().slice(0, 10);
 }
 
+function extractYearFromRecord(record) {
+  const candidates = [record.isoDate, record.capturedAt, record.firstSeenAt, record.lastSeenAt];
+  for (const candidate of candidates) {
+    if (!candidate || typeof candidate !== 'string') continue;
+    const trimmed = candidate.trim();
+    const isoMatch = trimmed.match(/^(\d{4})/);
+    if (isoMatch) {
+      return isoMatch[1];
+    }
+    const parsed = new Date(trimmed);
+    if (!Number.isNaN(parsed.getTime())) {
+      return String(parsed.getFullYear());
+    }
+  }
+  return '';
+}
+
 function normalizeSenateDate(record) {
+  const fallbackYear = extractYearFromRecord(record);
   const direct = norm(record.date || '');
   if (direct && /^\d{4}-\d{2}-\d{2}$/.test(direct)) {
     return direct;
   }
 
-  const fromDirect = direct ? parseSenateDate(direct) : '';
+  const fromDirect = direct ? parseSenateDate(direct, fallbackYear) : '';
   if (fromDirect) return fromDirect;
 
   const label = norm(record.dateLabel || record.displayDate || '');
@@ -131,7 +164,7 @@ function normalizeSenateDate(record) {
     return label;
   }
 
-  const fromLabel = label ? parseSenateDate(label) : '';
+  const fromLabel = label ? parseSenateDate(label, fallbackYear) : '';
   if (fromLabel) return fromLabel;
 
   return direct;
