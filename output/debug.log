@@ -1,49 +1,44 @@
-[2025-10-05T03:06:14.327Z] [house] request starting
-[2025-10-05T03:06:14.327Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-10-05T03:06:14.328Z] House headers count: 14
-[2025-10-05T03:06:14.328Z] House warmup: launching browser
-[2025-10-05T03:06:15.372Z] House warmup: loaded storage state from disk
-[2025-10-05T03:06:15.450Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
-[2025-10-05T03:06:18.745Z] House warmup: DOM ready + delay complete
-[2025-10-05T03:06:18.756Z] House attempt 1 starting...
-[2025-10-05T03:06:18.757Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-10-05T03:06:19.398Z] POST response: status=403, contentLength=118, duration=640ms
-[2025-10-05T03:06:19.398Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=640 headers={"server":"awselb/2.0","date":"Sun, 05 Oct 2025 03:06:19 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=ntlik85x/5ViEzGlGY/CMI1DJqu4XUAAlDkMyds00uJQxqFMfQvIf/Bp6InXZzrmfFyl9rUr1xIuB+aO4MKAlvnJDX9ZkbsGKU2pgcCuxPltCrvOXryeGwuuxe5LsKCMrwkxbKcue2gl0R7PVhu/Qf/SUupHJnBZYYneppm/F9enGLJ6TT0=; Expires=Sun, 12 Oct 2025 03:06:19 GMT; Path=/\nAWSALBTGCORS=ntlik85x/5ViEzGlGY/CMI1DJqu4XUAAlDkMyds00uJQxqFMfQvIf/Bp6InXZzrmfFyl9rUr1xIuB+aO4MKAlvnJDX9ZkbsGKU2pgcCuxPltCrvOXryeGwuuxe5LsKCMrwkxbKcue2gl0R7PVhu/Qf/SUupHJnBZYYneppm/F9enGLJ6TT0=; Expires=Sun, 12 Oct 2025 03:06:19 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
-<head><title>403 Forbidden</title></head>
-<body>
-<center><h1>403 Forbidden</h1></center>
-</body>
-</html>
-
-[2025-10-05T03:06:19.399Z] House attempt 1 failed: HTTP 403
-[2025-10-05T03:06:19.399Z] House retrying after 500ms...
-[2025-10-05T03:06:19.901Z] House attempt 2 starting...
-[2025-10-05T03:06:19.901Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-10-05T03:06:20.089Z] POST response: status=403, contentLength=118, duration=187ms
-[2025-10-05T03:06:20.090Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=187 headers={"server":"awselb/2.0","date":"Sun, 05 Oct 2025 03:06:19 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=j2hlrBiQLR6YUS/g4cpSVA1Qh0KYDWZSIrXnx9ODlQjpWIbcCcep25MLKI6+8hWejCoMv8+cyUC6RiFYQR5VEQf1gZdvX0vQriWkj/61mfW+wLsTgRe9W9nNKN4n/KQSQoCcjU97UROUuLmSlZudZIOvv3XMe3Z0Zan1Au793ldRa2MMglE=; Expires=Sun, 12 Oct 2025 03:06:19 GMT; Path=/\nAWSALBTGCORS=j2hlrBiQLR6YUS/g4cpSVA1Qh0KYDWZSIrXnx9ODlQjpWIbcCcep25MLKI6+8hWejCoMv8+cyUC6RiFYQR5VEQf1gZdvX0vQriWkj/61mfW+wLsTgRe9W9nNKN4n/KQSQoCcjU97UROUuLmSlZudZIOvv3XMe3Z0Zan1Au793ldRa2MMglE=; Expires=Sun, 12 Oct 2025 03:06:19 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
-<head><title>403 Forbidden</title></head>
-<body>
-<center><h1>403 Forbidden</h1></center>
-</body>
-</html>
-
-[2025-10-05T03:06:20.090Z] House attempt 2 failed: HTTP 403
-[2025-10-05T03:06:20.091Z] House retrying after 1500ms...
-[2025-10-05T03:06:21.593Z] House attempt 3 starting...
-[2025-10-05T03:06:21.593Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-10-05T03:06:21.781Z] POST response: status=403, contentLength=118, duration=187ms
-[2025-10-05T03:06:21.781Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=187 headers={"server":"awselb/2.0","date":"Sun, 05 Oct 2025 03:06:21 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=U96S/NoHAiXgicahEqkC/kYlHkGu+Z//+kIWI1j0b+q6Z8a4sJ5IMYIl0X9a903rYi59Tk35CYT2R75oGO8X+ndm3MVlwRpkoNh4nnRBRryNQtfX2BXYfgpCdRHYi4a88vXZ8qCOMQFewSHZ+OYQa4nmK3IJZ+Bi/z/e9goYv0IC7zROv/k=; Expires=Sun, 12 Oct 2025 03:06:21 GMT; Path=/\nAWSALBTGCORS=U96S/NoHAiXgicahEqkC/kYlHkGu+Z//+kIWI1j0b+q6Z8a4sJ5IMYIl0X9a903rYi59Tk35CYT2R75oGO8X+ndm3MVlwRpkoNh4nnRBRryNQtfX2BXYfgpCdRHYi4a88vXZ8qCOMQFewSHZ+OYQa4nmK3IJZ+Bi/z/e9goYv0IC7zROv/k=; Expires=Sun, 12 Oct 2025 03:06:21 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
-<head><title>403 Forbidden</title></head>
-<body>
-<center><h1>403 Forbidden</h1></center>
-</body>
-</html>
-
-[2025-10-05T03:06:21.782Z] House attempt 3 failed: HTTP 403
-[2025-10-05T03:06:21.813Z] House API failed after all retries.
-[2025-10-05T03:06:21.813Z] House error: HTTP 403
-[2025-10-05T03:06:21.814Z] House JSON written: 0 items
-[2025-10-05T03:06:21.814Z] [senate] request starting
-[2025-10-05T03:06:25.235Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3348 htmlLen=23269
-[2025-10-05T03:06:25.312Z] Senate parsed rows=16
-[2025-10-05T03:06:25.313Z] Done. House=0 Senate=16
+[2025-10-05T11:20:26.137Z] [house] request starting
+[2025-10-05T11:20:26.137Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-10-05T11:20:26.138Z] House headers count: 14
+[2025-10-05T11:20:26.138Z] House warmup: launching browser
+[2025-10-05T11:20:27.287Z] House warmup: loaded storage state from disk
+[2025-10-05T11:20:27.367Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-05T11:20:30.557Z] House warmup: DOM ready + delay complete
+[2025-10-05T11:21:00.563Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
+[2025-10-05T11:21:00.563Z] House warmup: Turnstile token missing after wait
+[2025-10-05T11:21:00.573Z] House warmup session ready (initial), tokenLen=0
+[2025-10-05T11:21:00.574Z] House warmup returned empty Turnstile token, retrying once
+[2025-10-05T11:21:00.621Z] House warmup: launching browser
+[2025-10-05T11:21:00.668Z] House warmup: loaded storage state from disk
+[2025-10-05T11:21:00.755Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-05T11:21:03.344Z] House warmup: DOM ready + delay complete
+[2025-10-05T11:21:33.347Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
+[2025-10-05T11:21:33.347Z] House warmup: Turnstile token missing after wait
+[2025-10-05T11:21:33.356Z] House warmup session ready (refresh), tokenLen=0
+[2025-10-05T11:21:33.356Z] House attempt 1 starting...
+[2025-10-05T11:21:33.357Z] House attempt 1: using Turnstile token length=0
+[2025-10-05T11:21:33.357Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-05T11:21:34.344Z] POST response: status=200, contentLength=172840, duration=986ms
+[2025-10-05T11:21:34.345Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=200 durationMs=986 keys=status,success,data dataType=object
+[2025-10-05T11:21:34.346Z] House attempt 1 succeeded
+[2025-10-05T11:21:34.414Z] House warmup: storage state saved to disk
+[2025-10-05T11:21:34.438Z] House API response keys: status,success,data
+[2025-10-05T11:21:34.438Z] House API status: 200, success: true
+[2025-10-05T11:21:34.439Z] House API data keys: pageCount,count,rows
+[2025-10-05T11:21:34.439Z] House API pageCount: 28, count: 4126
+[2025-10-05T11:21:34.442Z] House raw rows count: 150
+[2025-10-05T11:21:34.442Z] House first row keys: id,date,time,venue,agenda,committee,onwards,published,twg,external,cancelled,resched,old_time,remarks,comm_name,datetime,venue_id
+[2025-10-05T11:21:34.442Z] House first row sample: date="2025-10-09", time="08:00 AM", comm_name="ENERGY", cancelled=false
+[2025-10-05T11:21:34.443Z] House row 0: date="2025-10-09", time="08:00 AM", comm_name="ENERGY", cancelled=false
+[2025-10-05T11:21:34.443Z] House row 1: date="2025-10-08", time="01:00 PM", comm_name="REVISION OF LAWS", cancelled=false
+[2025-10-05T11:21:34.443Z] House row 2: date="2025-10-08", time="08:00 AM", comm_name="WOMEN AND GENDER EQUALITY", cancelled=false
+[2025-10-05T11:21:34.448Z] House mapping: 150 valid, 0 invalid, 15 cancelled
+[2025-10-05T11:21:34.448Z] House deduplication: 3 duplicates removed, 147 final count
+[2025-10-05T11:21:34.448Z] House final first item: {"date":"2025-10-09","time":"08:00 AM","committee":"ENERGY","subject":"HB 855 – Restructuring the Energy Regulatory Commission (ERC), amending for the purpose Sections 38-44 and 46 of RA 9136, otherwise known as the Electric Power Industry Reform Act of 2001 (Rep. Presley De Jesus) HB 1555 – Restructuring the ERC, amending Sections 38-41, 43, 44, and 46 and repealing Section 42 of RA 9136 (Rep. Miguel Luis Villafuerte) HB 2901 – Reforming and restructuring the ERC (Rep. Arnie Fuentebella) HB 4147 – Strengthening the ERC, amending for the purpose Sections 38-46 of RA 9136 (Deputy Speaker Kristine Singson-Meehan) HBs 314 & 865 – Establishing a national policy framework for the development, utilization, and commercialization of energy storage systems (Reps. Javier Miguel Lopez Benitez and Sergio Dagooc) HBs 867 & 3235 – Proclaiming the first Monday of August every year as Line Workers Appreciation Day (Reps. Sergio Dagooc and Miguel Luis Villafuerte) HBs 868 & 2399 - Providing for mandatory insurance coverage and benefits for all line workers (Reps. Sergio Dagooc and Miguel Luis Villafuerte) Privilege Speech delivered on the floor on August 4, 2025 – On honoring the unsung heroes of electrification and national progress, celebrating the National Line Workers Appreciation Day (Rep. Sergio Dagooc)","venue":"Conf. Rms. 3&4, RVM Bldg.","source":"House API (list)"}
+[2025-10-05T11:21:34.449Z] House date range: 2025-10-09 to 2025-06-04
+[2025-10-05T11:21:34.451Z] House JSON written: 147 items
+[2025-10-05T11:21:34.451Z] [senate] request starting
+[2025-10-05T11:21:37.941Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3411 htmlLen=23269
+[2025-10-05T11:21:38.020Z] Senate parsed rows=16
+[2025-10-05T11:21:38.021Z] Done. House=147 Senate=16
