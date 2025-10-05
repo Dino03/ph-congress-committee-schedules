@@ -1,0 +1,78 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Project Deadline",
+      "date": "2024-08-15",
+      "description": "Final submission for the Q3 project. All assets and documentation must be completed.",
+      "category": "work"
+    },
+    {
+      "id": "2",
+      "title": "Team Lunch",
+      "date": "2024-08-15",
+      "description": "Celebrate project completion at 'The Green Leaf' restaurant.",
+      "category": "social"
+    },
+    {
+      "id": "3",
+      "title": "Alice's Birthday",
+      "date": "2024-08-20",
+      "description": "Don't forget to wish Alice a happy birthday!",
+      "category": "birthday"
+    },
+    {
+      "id": "4",
+      "title": "Dentist Appointment",
+      "date": "2024-08-28",
+      "description": "Routine check-up and cleaning.",
+      "category": "personal"
+    },
+    {
+      "id": "6",
+      "title": "Design Review",
+      "date": "2024-09-10",
+      "description": "Review of the new homepage mockups.",
+      "category": "work"
+    },
+    {
+      "id": "7",
+      "title": "Weekend Getaway",
+      "date": "2024-09-20",
+      "description": "Trip to the mountains. Packing list: hiking boots, warm clothes, camera.",
+      "category": "personal"
+    },
+    {
+      "id": "house-4122",
+      "title": "DANGEROUS DRUGS",
+      "date": "2025-10-01",
+      "description": "Update on the status of cases filed against police personnel involved in the seizure of 990 kilograms of “shabu” in Tondo, Manila. Venue: Spkr. Villar Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+      "category": "house",
+      "branch": "House of Representatives"
+    },
+    {
+      "id": "house-4120",
+      "title": "NUCLEAR ENERGY",
+      "date": "2025-10-02",
+      "description": "• Organizational meeting – Approval of the Committee Rules of Procedure; presentation of Committee profile and membership; presentation of accomplishments during the 19th Congress; and measures currently referred to the Committee • Briefing by the Department of Energy (DOE) on its nuclear energy program; outcome of survey on the acceptability of nuclear power in the country; and status of Renewable Energy Trust Fund • Deliberation on HB 375 – Governing civil liability and compensation claims for nuclear damage, repealing for the purpose certain sections of RA 5207, otherwise known as the Atomic Energy Regulatory and Liability Act of 1968, as amended (Rep. Mark Cojuangco). Venue: In-person meeting at the Spkr. Villar Hall 1/F SWA Bldg. and virtual meeting via Zoom (To be livestreamed on the official Facebook page of the HRep)",
+      "category": "house",
+      "branch": "House of Representatives"
+    },
+    {
+      "id": "senate-5",
+      "title": "Agriculture, Food and Agrarian Reforms (Presiding: Sen. Pangilinan)",
+      "date": "2025-10-07",
+      "description": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; B. Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”. Venue: Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+      "category": "senate",
+      "branch": "Senate"
+    },
+    {
+      "id": "senate-4",
+      "title": "Banks, Financial Institutions and Currencies joint with Justice and Human Rights; Migrant Workers; and Ways and Means (Presiding: Sen. Villanueva)",
+      "date": "2025-10-06",
+      "description": "Organizational Meeting; S. Nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - Deposit Disclosure and Amendments to the Laws on Secrecy of Bank Deposits (By: Sens. Lacson, Zubiri, Escudero, Pangilinan, Estrada, E. Tulfo and Villanueva); S. Nos. 370 and 603 - Regulation of Debt Collection Practices (By: Sens. Gatchalian, Villanueva and Padilla); Taking into consideration:; P.S. Res. No. 21 – Regulation of Debt Collection Practices (By: Sen. Gatchalian); S. Nos. 181 and 1074 - Protecting the Remittances of Overseas Filipino Workers (OFWs) (By: Sens. C. Villar, Villanueva and Estrada). Venue: Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "category": "senate",
+      "branch": "Senate"
+    }
+  ]
+}

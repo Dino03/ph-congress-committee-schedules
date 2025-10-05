@@ -1,0 +1,60 @@
+{
+  "meetings": [
+    {
+      "id": "house-4122",
+      "branch": "House of Representatives",
+      "committee": "DANGEROUS DRUGS",
+      "date": "2025-10-01",
+      "time": "08:30 AM",
+      "venue": "Spkr. Villar Hall 1/F SWA Bldg. (To be livestreamed on the official Facebook page of the HRep)",
+      "agenda": "Update on the status of cases filed against police personnel involved in the seizure of 990 kilograms of “shabu” in Tondo, Manila",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-01T08:30:00",
+      "source": "House of Representatives (API)",
+      "searchText": "house of representatives dangerous drugs spkr. villar hall 1/f swa bldg. (to be livestreamed on the official facebook page of the hrep) update on the status of cases filed against police personnel involved in the seizure of 990 kilograms of “shabu” in tondo, manila scheduled"
+    },
+    {
+      "id": "house-4120",
+      "branch": "House of Representatives",
+      "committee": "NUCLEAR ENERGY",
+      "date": "2025-10-02",
+      "time": "09:30 AM",
+      "venue": "In-person meeting at the Spkr. Villar Hall 1/F SWA Bldg. and virtual meeting via Zoom (To be livestreamed on the official Facebook page of the HRep)",
+      "agenda": "• Organizational meeting – Approval of the Committee Rules of Procedure; presentation of Committee profile and membership; presentation of accomplishments during the 19th Congress; and measures currently referred to the Committee • Briefing by the Department of Energy (DOE) on its nuclear energy program; outcome of survey on the acceptability of nuclear power in the country; and status of Renewable Energy Trust Fund • Deliberation on HB 375 – Governing civil liability and compensation claims for nuclear damage, repealing for the purpose certain sections of RA 5207, otherwise known as the Atomic Energy Regulatory and Liability Act of 1968, as amended (Rep. Mark Cojuangco)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-02T09:30:00",
+      "source": "House of Representatives (API)",
+      "searchText": "house of representatives nuclear energy in-person meeting at the spkr. villar hall 1/f swa bldg. and virtual meeting via zoom (to be livestreamed on the official facebook page of the hrep) • organizational meeting – approval of the committee rules of procedure; presentation of committee profile and membership; presentation of accomplishments during the 19th congress; and measures currently referred to the committee • briefing by the department of energy (doe) on its nuclear energy program; outcome of survey on the acceptability of nuclear power in the country; and status of renewable energy trust fund • deliberation on hb 375 – governing civil liability and compensation claims for nuclear damage, repealing for the purpose certain sections of ra 5207, otherwise known as the atomic energy regulatory and liability act of 1968, as amended (rep. mark cojuangco) scheduled"
+    },
+    {
+      "id": "senate-5",
+      "branch": "Senate",
+      "committee": "Agriculture, Food and Agrarian Reforms (Presiding: Sen. Pangilinan)",
+      "date": "Tuesday, October 7, 2025",
+      "time": "9:00 A.M.",
+      "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+      "agenda": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; B. Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-07T09:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate agriculture, food and agrarian reforms (presiding: sen. pangilinan) sen. m.l. quezon room 2/f right wing, senate privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; b. privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
+    },
+    {
+      "id": "senate-4",
+      "branch": "Senate",
+      "committee": "Banks, Financial Institutions and Currencies joint with Justice and Human Rights; Migrant Workers; and Ways and Means (Presiding: Sen. Villanueva)",
+      "date": "Monday, October 6, 2025",
+      "time": "1:00 P.M.",
+      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "agenda": "Organizational Meeting; S. Nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - Deposit Disclosure and Amendments to the Laws on Secrecy of Bank Deposits (By: Sens. Lacson, Zubiri, Escudero, Pangilinan, Estrada, E. Tulfo and Villanueva); S. Nos. 370 and 603 - Regulation of Debt Collection Practices (By: Sens. Gatchalian, Villanueva and Padilla); Taking into consideration:; P.S. Res. No. 21 – Regulation of Debt Collection Practices (By: Sen. Gatchalian); S. Nos. 181 and 1074 - Protecting the Remittances of Overseas Filipino Workers (OFWs) (By: Sens. C. Villar, Villanueva and Estrada)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-06T13:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate banks, financial institutions and currencies joint with justice and human rights; migrant workers; and ways and means (presiding: sen. villanueva) sen. a.b. padilla room 2/f right wing, senate organizational meeting; s. nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - deposit disclosure and amendments to the laws on secrecy of bank deposits (by: sens. lacson, zubiri, escudero, pangilinan, estrada, e. tulfo and villanueva); s. nos. 370 and 603 - regulation of debt collection practices (by: sens. gatchalian, villanueva and padilla); taking into consideration:; p.s. res. no. 21 – regulation of debt collection practices (by: sen. gatchalian); s. nos. 181 and 1074 - protecting the remittances of overseas filipino workers (ofws) (by: sens. c. villar, villanueva and estrada) scheduled"
+    }
+  ]
+}
