@@ -1,3 +1,4 @@
+
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -29,7 +30,8 @@ async function cleanDocsDir() {
   const entries = await fs.readdir(DOCS_DIR, { withFileTypes: true });
   await Promise.all(
     entries.map(async (entry) => {
-      if (entry.name === 'data') return;
+      // Keep the .nojekyll file and the data directory
+      if (entry.name === 'data' || entry.name === '.nojekyll') return;
       await fs.rm(path.join(DOCS_DIR, entry.name), { recursive: true, force: true });
     })
   );
@@ -37,7 +39,7 @@ async function cleanDocsDir() {
 
 async function copyDirectory(source, destination) {
   await fs.mkdir(destination, { recursive: true });
-  const entries = await fs.readdir(source, { withFileTypes: true });
+const entries = await fs.readdir(source, { withFileTypes: true });
   for (const entry of entries) {
     const srcPath = path.join(source, entry.name);
     const destPath = path.join(destination, entry.name);
