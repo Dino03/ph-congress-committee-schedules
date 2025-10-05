@@ -10,6 +10,7 @@ import {
 import EventIcon from '@/components/icons/event-icon';
 import { format } from 'date-fns';
 import { Separator } from '../ui/separator';
+import { Badge } from '../ui/badge';
 
 interface EventDetailsProps {
   event: Event | null;
@@ -20,8 +21,22 @@ interface EventDetailsProps {
 export function EventDetails({ event, isOpen, onClose }: EventDetailsProps) {
   if (!event) return null;
 
-  // We add T00:00:00 to ensure the date is parsed in the local timezone
-  const eventDate = new Date(`${event.date}T00:00:00`);
+  const dateSource = event.isoDate ?? (event.date ? `${event.date}T00:00:00` : '');
+  const parsedDate = dateSource ? new Date(dateSource) : null;
+  const hasValidDate = parsedDate && !Number.isNaN(parsedDate.getTime());
+  const formattedDate = hasValidDate
+    ? format(parsedDate!, 'EEEE, MMMM d, yyyy')
+    : event.date || 'Date to be determined';
+
+  const timeLabel = event.time || (hasValidDate ? format(parsedDate!, 'h:mm aaa') : 'Time to be determined');
+  const venueLabel = event.venue || 'Venue to be determined';
+
+  const agendaItems = event.agenda
+    ? event.agenda
+        .split(/(?:•|;)/)
+        .map((item) => item.trim())
+        .filter(Boolean)
+    : [];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -29,17 +44,44 @@ export function EventDetails({ event, isOpen, onClose }: EventDetailsProps) {
         <DialogHeader>
           <div className="flex items-center gap-4">
             <div className="bg-accent/10 p-3 rounded-full">
-              <EventIcon category={event.category} className="h-6 w-6 text-accent" />
+              <EventIcon branch={event.branch} className="h-6 w-6 text-accent" />
             </div>
-            <DialogTitle className="text-2xl font-headline text-foreground">{event.title}</DialogTitle>
+            <div className="space-y-1">
+              <Badge variant="secondary" className="w-fit">
+                {event.branch}
+              </Badge>
+              <DialogTitle className="text-2xl font-headline text-foreground">
+                {event.committee}
+              </DialogTitle>
+            </div>
           </div>
         </DialogHeader>
         <Separator />
         <div className="space-y-4 py-4">
-            <p className="text-muted-foreground font-semibold">
-                {format(eventDate, 'EEEE, MMMM d, yyyy')}
-            </p>
-            <p className="text-foreground/90 leading-relaxed">{event.description}</p>
+          <div className="space-y-1">
+            <p className="text-muted-foreground font-semibold">{formattedDate}</p>
+            <p className="text-sm text-muted-foreground">{timeLabel}</p>
+            <p className="text-sm text-muted-foreground">{venueLabel}</p>
+          </div>
+
+          {agendaItems.length > 0 ? (
+            <div className="space-y-2">
+              <h3 className="text-sm font-semibold text-foreground">Agenda</h3>
+              <ul className="list-disc pl-4 space-y-1 text-sm text-foreground/90">
+                {agendaItems.map((item, index) => (
+                  <li key={`${event.id}-agenda-${index}`}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">Agenda to follow.</p>
+          )}
+
+          <div className="space-y-1 text-sm text-muted-foreground">
+            <p>Status: {event.status || 'Scheduled'}</p>
+            {event.notes && <p>Notes: {event.notes}</p>}
+            {event.source && <p>Source: {event.source}</p>}
+          </div>
         </div>
       </DialogContent>
     </Dialog>

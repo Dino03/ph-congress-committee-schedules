@@ -1,13 +1,12 @@
 import { CalendarView } from '@/components/calendar/calendar-view';
-import type { Event } from '@/lib/types';
-import eventData from '@/lib/events.json';
+import { loadEvents } from '@/lib/load-events';
 
-export default function HomePage() {
-  const allEvents: Event[] = eventData.events;
+export default async function HomePage() {
+  const events = await loadEvents();
 
   return (
     <div className="h-full">
-      <CalendarView events={allEvents} />
+      <CalendarView events={events} />
     </div>
   );
 }

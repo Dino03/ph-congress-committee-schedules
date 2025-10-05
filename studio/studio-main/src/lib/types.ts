@@ -1,17 +1,15 @@
-export type EventCategory =
-  | 'work'
-  | 'social'
-  | 'birthday'
-  | 'personal'
-  | 'health'
-  | 'senate'
-  | 'house';
+export type EventBranch = 'House of Representatives' | 'Senate';
 
 export interface Event {
   id: string;
-  title: string;
-  date: string; // YYYY-MM-DD or other valid date string
-  description: string;
-  category: EventCategory;
-  branch?: 'Senate' | 'House of Representatives';
+  branch: EventBranch;
+  committee: string;
+  date: string;
+  time: string;
+  venue: string;
+  agenda: string;
+  status: string;
+  notes: string;
+  isoDate: string;
+  source: string;
 }
