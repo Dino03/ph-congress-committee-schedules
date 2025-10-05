@@ -1,11 +1,8 @@
 import { MeetingCard } from '@/components/meetings/meeting-card';
-import type { Event } from '@/lib/types';
-import eventData from '@/lib/events.json';
+import { loadUpcomingEvents } from '@/lib/load-events';
 
-export default function MeetingsPage() {
-  const meetings: Event[] = eventData.events
-    .filter((e) => e.category === 'senate' || e.category === 'house')
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+export default async function MeetingsPage() {
+  const meetings = await loadUpcomingEvents();
 
   return (
     <div className="bg-background">
@@ -19,11 +16,15 @@ export default function MeetingsPage() {
           </p>
         </header>
 
-        <div className="space-y-6">
-          {meetings.map((meeting) => (
-            <MeetingCard key={meeting.id} meeting={meeting} />
-          ))}
-        </div>
+        {meetings.length > 0 ? (
+          <div className="space-y-6">
+            {meetings.map((meeting) => (
+              <MeetingCard key={meeting.id} meeting={meeting} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-muted-foreground">No upcoming meetings found in the generated data.</p>
+        )}
       </div>
     </div>
   );

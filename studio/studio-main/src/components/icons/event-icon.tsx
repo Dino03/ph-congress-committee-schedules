@@ -1,32 +1,19 @@
 import type { FC } from 'react';
-import {
-  Briefcase,
-  CakeSlice,
-  Users,
-  User,
-  HeartPulse,
-  Landmark,
-  Building,
-} from 'lucide-react';
-import type { EventCategory } from '@/lib/types';
+import { Landmark, Building, Calendar } from 'lucide-react';
+import type { EventBranch } from '@/lib/types';
 
 interface EventIconProps {
-  category: EventCategory;
+  branch: EventBranch;
   className?: string;
 }
 
-const iconMap: Record<EventCategory, React.ElementType> = {
-  work: Briefcase,
-  social: Users,
-  birthday: CakeSlice,
-  personal: User,
-  health: HeartPulse,
-  senate: Landmark,
-  house: Building,
+const iconMap: Record<EventBranch, React.ElementType> = {
+  Senate: Landmark,
+  'House of Representatives': Building,
 };
 
-const EventIcon: FC<EventIconProps> = ({ category, className }) => {
-  const IconComponent = iconMap[category] || Briefcase;
+const EventIcon: FC<EventIconProps> = ({ branch, className }) => {
+  const IconComponent = iconMap[branch] || Calendar;
   return <IconComponent className={className} />;
 };
 

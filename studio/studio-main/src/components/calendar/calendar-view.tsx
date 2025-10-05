@@ -42,21 +42,14 @@ export function CalendarView({ events }: CalendarViewProps) {
   const prevMonth = () => setCurrentDate(subMonths(currentDate, 1));
 
   const eventsByDate = useMemo(() => {
-    return events.reduce((acc: { [key: string]: Event[] }, event) => {
-      const parsedDate = parseISO(event.date);
-      if (!isValid(parsedDate)) {
-        // Handle cases where event.date is not a valid ISO string like '2024-08-15'
-        // For example, if it's "Tuesday, October 7, 2025", we need to parse it differently
-        // For now, we will skip invalid dates to prevent crashes
-        return acc;
-      }
+    return events.reduce((acc: Record<string, Event[]>, event) => {
+      if (!event.isoDate) return acc;
+      const parsedDate = parseISO(event.isoDate);
+      if (!isValid(parsedDate)) return acc;
       const dateKey = format(parsedDate, 'yyyy-MM-dd');
-      if (!acc[dateKey]) {
-        acc[dateKey] = [];
-      }
-      acc[dateKey].push(event);
+      acc[dateKey] = acc[dateKey] ? [...acc[dateKey], event] : [event];
       return acc;
-    }, {});
+    }, {} as Record<string, Event[]>);
   }, [events]);
 
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -106,17 +99,21 @@ export function CalendarView({ events }: CalendarViewProps) {
                     {format(day, 'd')}
                   </time>
                   <div className="mt-1 space-y-1">
-                    {dayEvents.slice(0, 2).map((event) => (
+                    {[...dayEvents]
+                      .sort((a, b) => (a.isoDate || '').localeCompare(b.isoDate || ''))
+                      .slice(0, 2)
+                      .map((event) => (
                       <button
                         key={event.id}
                         onClick={() => setSelectedEvent(event)}
-                        className="w-full text-left p-1.5 rounded-lg bg-primary/30 hover:bg-primary/50 transition-colors"
-                        aria-label={`View event: ${event.title}`}
+                        className="w-full text-left p-1.5 rounded-lg bg-primary/20 hover:bg-primary/40 transition-colors"
+                        aria-label={`View event: ${event.committee}`}
                       >
                         <div className="flex items-center gap-1.5">
-                          <EventIcon category={event.category} className="h-3 w-3 text-accent flex-shrink-0" />
-                          <span className="text-xs font-medium text-accent truncate">
-                            {event.title}
+                          <EventIcon branch={event.branch} className="h-3 w-3 text-accent flex-shrink-0" />
+                          <span className="text-[11px] font-medium text-accent truncate">
+                            {event.time ? `${event.time} · ` : ''}
+                            {event.committee}
                           </span>
                         </div>
                       </button>
