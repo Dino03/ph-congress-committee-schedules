@@ -105,15 +105,57 @@ function deriveHouseRecords(rows) {
     .filter(Boolean);
 }
 
+const MONTH_NAME_MAP = {
+  jan: 'January',
+  january: 'January',
+  feb: 'February',
+  february: 'February',
+  mar: 'March',
+  march: 'March',
+  apr: 'April',
+  april: 'April',
+  may: 'May',
+  jun: 'June',
+  june: 'June',
+  jul: 'July',
+  july: 'July',
+  aug: 'August',
+  august: 'August',
+  sep: 'September',
+  sept: 'September',
+  september: 'September',
+  oct: 'October',
+  october: 'October',
+  nov: 'November',
+  november: 'November',
+  dec: 'December',
+  december: 'December'
+};
+
 function parseSenateDate(headerText) {
-  const cleaned = norm(headerText).replace(/\s*\([^)]*\)$/, '');
+  const cleaned = norm(headerText)
+    .replace(/\s*\([^)]*\)$/, '')
+    .replace(/\b(\d{1,2})(st|nd|rd|th)\b/gi, '$1');
+  if (!cleaned) return '';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(cleaned)) return cleaned;
+
   const dropWeekday = cleaned.replace(/^[A-Z]+,?\s+/i, '');
-  const match = dropWeekday.match(/([A-Za-z]+)\s+(\d{1,2})(?:,?\s*(\d{4}))?/);
-  if (!match) return '';
-  let [, monthName, day, year] = match;
+  const match = dropWeekday.match(/([A-Za-z\.]+)\s+(\d{1,2})(?:,?\s*(\d{4}))?/);
+  if (!match) {
+    const fallback = new Date(cleaned);
+    if (Number.isNaN(fallback.getTime())) return '';
+    return fallback.toISOString().slice(0, 10);
+  }
+
+  let [, rawMonth, day, year] = match;
+  const monthKey = rawMonth.replace(/\.$/, '').toLowerCase();
+  const monthName = MONTH_NAME_MAP[monthKey];
+  if (!monthName) return '';
+
   if (!year) {
     year = new Date().getFullYear();
   }
+
   const parsed = new Date(`${monthName} ${day}, ${year}`);
   if (Number.isNaN(parsed.getTime())) return '';
   return parsed.toISOString().slice(0, 10);
@@ -191,19 +233,23 @@ function deriveSenateRecordsFromHtml(html) {
 function deriveSenateRecords(data) {
   if (Array.isArray(data) && data.length > 0) {
     return data
-      .map((item, index) => ({
-        id: `senate-${item.id || index + 1}`,
-        branch: 'Senate',
-        committee: norm(item.committee || item.title || ''),
-        date: norm(item.date || ''),
-        time: parseClock(item.time || ''),
-        venue: norm(item.venue || ''),
-        agenda: norm(item.agenda || item.subject || ''),
-        status: norm(item.status || 'Scheduled') || 'Scheduled',
-        notes: norm(item.notes || ''),
-        isoDate: toIso(norm(item.date || ''), parseClock(item.time || '')),
-        source: SENATE_SOURCE
-      }))
+      .map((item, index) => {
+        const normalizedDate = parseSenateDate(item.date || '') || norm(item.date || '');
+        const normalizedTime = parseClock(item.time || '');
+        return {
+          id: `senate-${item.id || index + 1}`,
+          branch: 'Senate',
+          committee: norm(item.committee || item.title || ''),
+          date: normalizedDate,
+          time: normalizedTime,
+          venue: norm(item.venue || ''),
+          agenda: norm(item.agenda || item.subject || ''),
+          status: norm(item.status || 'Scheduled') || 'Scheduled',
+          notes: norm(item.notes || ''),
+          isoDate: toIso(normalizedDate, normalizedTime),
+          source: SENATE_SOURCE
+        };
+      })
       .filter((item) => item.date && item.time && item.committee);
   }
   return [];
