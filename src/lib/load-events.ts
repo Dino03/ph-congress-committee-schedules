@@ -23,7 +23,7 @@ const DATA_FILE_PATH = path.join(process.cwd(), 'docs', 'data', 'all.json');
 function normalizeBranch(branch?: string): EventBranch | null {
   if (!branch) return null;
   const normalized = branch.trim().toLowerCase();
-  if (normalized === 'senate') return 'Senate';
+  if (normalized === 'senate' || normalized.startsWith('senate ')) return 'Senate';
   if (normalized.startsWith('house')) return 'House of Representatives';
   return null;
 }
