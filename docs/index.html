@@ -100,8 +100,29 @@
       </section>
 
       <section class="results" aria-live="polite" aria-label="Committee hearings">
-        <div id="results-count" class="results__count">Loading schedules…</div>
+        <div class="results__header">
+          <div id="results-count" class="results__count">Loading schedules…</div>
+          <div class="view-toggle" role="group" aria-label="Display options">
+            <button
+              type="button"
+              class="view-toggle__button view-toggle__button--active"
+              data-view="list"
+              aria-pressed="true"
+            >
+              List view
+            </button>
+            <button
+              type="button"
+              class="view-toggle__button"
+              data-view="calendar"
+              aria-pressed="false"
+            >
+              Month view
+            </button>
+          </div>
+        </div>
         <div id="results-list" class="results__list"></div>
+        <div id="results-calendar" class="results__calendar" hidden></div>
         <div id="no-results" class="results__empty" hidden>
           <p>No hearings match the selected filters. Try adjusting the date range or search keywords.</p>
         </div>
