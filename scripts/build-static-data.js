@@ -108,9 +108,12 @@ function deriveHouseRecords(rows) {
 function parseSenateDate(headerText) {
   const cleaned = norm(headerText).replace(/\s*\([^)]*\)$/, '');
   const dropWeekday = cleaned.replace(/^[A-Z]+,?\s+/i, '');
-  const match = dropWeekday.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/);
+  const match = dropWeekday.match(/([A-Za-z]+)\s+(\d{1,2})(?:,?\s*(\d{4}))?/);
   if (!match) return '';
-  const [, monthName, day, year] = match;
+  let [, monthName, day, year] = match;
+  if (!year) {
+    year = new Date().getFullYear();
+  }
   const parsed = new Date(`${monthName} ${day}, ${year}`);
   if (Number.isNaN(parsed.getTime())) return '';
   return parsed.toISOString().slice(0, 10);
