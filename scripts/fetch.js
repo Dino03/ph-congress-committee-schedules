@@ -217,8 +217,44 @@ async function prepareHouseSession() {
       await appendDebug('House warmup: DOM ready + delay complete');
     } catch {}
 
+    let turnstileToken = '';
+    try {
+      await page.waitForFunction(
+        () => {
+          const w = window;
+          const widget = w?.turnstile;
+          if (!widget || typeof widget.getResponse !== 'function') return false;
+          const resp = widget.getResponse();
+          return typeof resp === 'string' && resp.length > 0;
+        },
+        { timeout: 20000 }
+      );
+      turnstileToken = await page.evaluate(() => window?.turnstile?.getResponse?.() || '');
+    } catch (tokenErr) {
+      console.warn('[house] warmup: failed to obtain Turnstile token', tokenErr?.message || tokenErr);
+      try {
+        await appendDebug(
+          `House warmup: failed to obtain Turnstile token: ${tokenErr?.message || tokenErr}`
+        );
+      } catch {}
+    }
+
+    if (turnstileToken) {
+      console.log('[house] warmup: captured Turnstile token');
+      try {
+        await appendDebug(
+          `House warmup: captured Turnstile token length=${turnstileToken.length}`
+        );
+      } catch {}
+    } else {
+      console.warn('[house] warmup: Turnstile token missing after wait');
+      try {
+        await appendDebug('House warmup: Turnstile token missing after wait');
+      } catch {}
+    }
+
     await page.close();
-    return { browser, context };
+    return { browser, context, turnstileToken };
   } catch (err) {
     await browser.close();
     throw err;
@@ -372,8 +408,50 @@ async function main() {
     let lastErr = null;
 
     let houseSession;
+    let turnstileToken = '';
+
+    const closeHouseSession = async () => {
+      if (houseSession?.browser) {
+        try {
+          await houseSession.browser.close();
+        } catch {}
+      }
+      houseSession = null;
+    };
+
+    const initHouseSession = async (tag) => {
+      if (houseSession) {
+        await closeHouseSession();
+      }
+      try {
+        houseSession = await prepareHouseSession();
+        turnstileToken = houseSession?.turnstileToken || '';
+        console.log(`[house] warmup session ready (${tag}), tokenLen=${turnstileToken.length}`);
+        try {
+          await appendDebug(
+            `House warmup session ready (${tag}), tokenLen=${turnstileToken.length}`
+          );
+        } catch {}
+      } catch (prepErr) {
+        console.error(`[house] warmup session failed (${tag}): ${prepErr?.message || prepErr}`);
+        try {
+          await appendDebug(
+            `House warmup session failed (${tag}): ${prepErr?.message || prepErr}`
+          );
+        } catch {}
+        throw prepErr;
+      }
+    };
+
     try {
-      houseSession = await prepareHouseSession();
+      await initHouseSession('initial');
+      if (!turnstileToken) {
+        console.warn('[house] warmup returned empty Turnstile token, retrying once');
+        try {
+          await appendDebug('House warmup returned empty Turnstile token, retrying once');
+        } catch {}
+        await initHouseSession('refresh');
+      }
 
       for (let i = 0; i < delays.length; i++) {
         try {
@@ -381,7 +459,17 @@ async function main() {
           try {
             await appendDebug(`House attempt ${i + 1} starting...`);
           } catch {}
-          apiResp = await postJson(HOUSE_API, payload, headers, {
+          const attemptHeaders = { ...headers };
+          if (turnstileToken) {
+            attemptHeaders['cf-turnstile-response'] = turnstileToken;
+          }
+          try {
+            await appendDebug(
+              `House attempt ${i + 1}: using Turnstile token length=${turnstileToken.length}`
+            );
+          } catch {}
+
+          apiResp = await postJson(HOUSE_API, payload, attemptHeaders, {
             browser: houseSession.browser,
             context: houseSession.context
           });
@@ -410,6 +498,15 @@ async function main() {
             await appendDebug(`House attempt ${i + 1} failed: ${e?.message || e}`);
           } catch {}
           if (i < delays.length - 1) {
+            const errMsg = e?.message || '';
+            const shouldRefresh = /403/.test(errMsg) || !turnstileToken;
+            if (shouldRefresh) {
+              console.warn('[house] refreshing warmup session before retry');
+              try {
+                await appendDebug('House refreshing warmup session before retry');
+              } catch {}
+              await initHouseSession('retry');
+            }
             console.log(`[house] retrying after ${delays[i]}ms...`);
             try {
               await appendDebug(`House retrying after ${delays[i]}ms...`);
@@ -419,9 +516,7 @@ async function main() {
         }
       }
     } finally {
-      if (houseSession?.browser) {
-        await houseSession.browser.close();
-      }
+      await closeHouseSession();
     }
 
     if (!apiResp) {
