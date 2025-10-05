@@ -1,7 +1,15 @@
 import type {NextConfig} from 'next';
 
+const defaultRepoName = 'ph-congress-committee-schedules';
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')?.[1] || defaultRepoName;
+const repoBasePath = `/${repoName}`;
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   output: 'export',
+  basePath: isProd ? repoBasePath : undefined,
+  assetPrefix: isProd ? repoBasePath : undefined,
+  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },
