@@ -1,6 +1,8 @@
 import { MeetingCard } from '@/components/meetings/meeting-card';
 import { loadUpcomingEvents } from '@/lib/load-events';
 
+export const dynamic = 'force-static';
+
 export default async function MeetingsPage() {
   const meetings = await loadUpcomingEvents();
 

@@ -2,6 +2,8 @@ import { CalendarView } from '@/components/calendar/calendar-view';
 import { loadEvents } from '@/lib/load-events';
 import type { Event } from '@/lib/types';
 
+export const dynamic = 'force-static';
+
 function countUpcoming(events: Event[]) {
   const now = Date.now();
   return events.filter((event) => {
