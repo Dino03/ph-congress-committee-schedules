@@ -207,9 +207,222 @@ a:focus {
   font-weight: 700;
 }
 
+.results__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .results__count {
   font-weight: 600;
-  margin-bottom: 1rem;
+}
+
+.view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem;
+}
+
+.view-toggle__button {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.view-toggle__button:hover,
+.view-toggle__button:focus {
+  color: var(--accent);
+  outline: none;
+}
+
+.view-toggle__button--active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 16px -12px rgba(37, 99, 235, 0.9);
+}
+
+.results__calendar {
+  display: grid;
+  gap: 2rem;
+}
+
+.calendar-month {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.calendar-month__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.calendar-month__title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+}
+
+.calendar-month__count {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.calendar-month__grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(7, minmax(130px, 1fr));
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.calendar-month__grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.calendar-month__grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.calendar-month__grid::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.3);
+  border-radius: 999px;
+}
+
+.calendar-month__grid {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 99, 235, 0.3) transparent;
+}
+
+.calendar-month__weekday {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+  padding: 0.25rem 0;
+}
+
+.calendar-month__cell {
+  min-height: 8rem;
+  padding: 0.75rem;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: var(--accent-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calendar-month__cell--quiet {
+  background: transparent;
+  border-style: dashed;
+}
+
+.calendar-month__cell--inactive {
+  min-height: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.calendar-month__date {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.calendar-month__cell--quiet .calendar-month__date {
+  color: var(--muted);
+}
+
+.calendar-month__events {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.calendar-month__event {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.65rem 0.75rem;
+  display: grid;
+  gap: 0.4rem;
+  box-shadow: 0 12px 24px -22px rgba(37, 99, 235, 0.8);
+}
+
+.calendar-month__event-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.calendar-month__event-time {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.calendar-month__event-status {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.calendar-month__event-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.calendar-month__event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.calendar-month__event-agenda {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.calendar-month__event-notes {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.calendar-month__tbd-list {
+  display: grid;
+  gap: 1.15rem;
+}
+
+@media (max-width: 768px) {
+  .calendar-month__grid {
+    grid-template-columns: repeat(7, minmax(110px, 1fr));
+  }
 }
 
 .results__list {
@@ -337,5 +550,20 @@ a:focus {
   .result-card__meta {
     flex-direction: column;
     gap: 0.4rem;
+  }
+
+  .results__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .view-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .view-toggle__button {
+    flex: 1;
+    text-align: center;
   }
 }
