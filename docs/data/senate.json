@@ -142,33 +142,47 @@
   {
     "id": "senate-11",
     "branch": "Senate",
-    "committee": "Finance (Subcommittee G) (Presiding: Sen. Go)",
+    "committee": "Energy joint with Public Services; Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. P. Cayetano)",
     "date": "2025-10-08",
     "time": "11:00 A.M.",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the following:; Mindanao Development Authority; Philippine Racing Commission",
+    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
+    "agenda": "Organizational Meeting; Presentation and review of key directives from the State of the Nation Address (SONA); Legislative priorities of the Department of Energy; S. Nos. 346, 367 and 1164 - Energy Regulatory Commission Strengthening (By: Sens. P. Cayetano, Gatchalian and Estrada)",
     "status": "Scheduled",
     "notes": "",
     "isoDate": "2025-10-08T11:00:00",
     "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee g) (presiding: sen. go) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; mindanao development authority; philippine racing commission scheduled"
+    "searchText": "senate energy joint with public services; civil service, government reorganization and professional regulation; and finance (presiding: sen. p. cayetano) sen. v.y. sotto room 2/f right wing, senate organizational meeting; presentation and review of key directives from the state of the nation address (sona); legislative priorities of the department of energy; s. nos. 346, 367 and 1164 - energy regulatory commission strengthening (by: sens. p. cayetano, gatchalian and estrada) scheduled"
   },
   {
     "id": "senate-12",
     "branch": "Senate",
     "committee": "Finance (Subcommittee G) (Presiding: Sen. Go)",
     "date": "2025-10-08",
-    "time": "1:00 P.M.",
+    "time": "12:00 NN",
     "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the following:; Games and Amusement Board; Philippine Sports Commission",
+    "agenda": "FY 2026 Proposed Budget of the Mindanao Development Authority",
     "status": "Scheduled",
     "notes": "",
-    "isoDate": "2025-10-08T01:00:00",
+    "isoDate": "2025-10-08T12:00:00",
     "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee g) (presiding: sen. go) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; games and amusement board; philippine sports commission scheduled"
+    "searchText": "senate finance (subcommittee g) (presiding: sen. go) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the mindanao development authority scheduled"
   },
   {
     "id": "senate-13",
+    "branch": "Senate",
+    "committee": "Finance (Subcommittee G) (Presiding: Sen. Go)",
+    "date": "2025-10-08",
+    "time": "1:30 P.M.",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "agenda": "FY 2026 Proposed Budget of the following:; Games and Amusement Board; Philippine Sports Commission; Philippine Racing Commission",
+    "status": "Scheduled",
+    "notes": "",
+    "isoDate": "2025-10-08T01:30:00",
+    "source": "Senate Weekly Schedule",
+    "searchText": "senate finance (subcommittee g) (presiding: sen. go) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; games and amusement board; philippine sports commission; philippine racing commission scheduled"
+  },
+  {
+    "id": "senate-14",
     "branch": "Senate",
     "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
     "date": "2025-10-09",
@@ -182,7 +196,7 @@
     "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of environment and natural resources and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-14",
+    "id": "senate-15",
     "branch": "Senate",
     "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
     "date": "2025-10-09",
@@ -196,7 +210,7 @@
     "searchText": "senate finance (subcommittee f) (presiding: sen. ejercito) sen. g.t. pecson room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of transportation and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-15",
+    "id": "senate-16",
     "branch": "Senate",
     "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
     "date": "2025-10-10",
@@ -210,17 +224,17 @@
     "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the presidential communications office and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-16",
+    "id": "senate-17",
     "branch": "Senate",
     "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
     "date": "2025-10-10",
     "time": "9:00 A.M.",
-    "venue": "Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "venue": "Sen. J.P. Laurel Room Sen. G.T. Pecson Room 2/F Right Wing, Senate",
     "agenda": "Continuation of the FY 2026 Proposed Budget of the Department of Agriculture and attached agencies and corporations",
     "status": "Scheduled",
     "notes": "",
     "isoDate": "2025-10-10T09:00:00",
     "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. j.p. laurel room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of agriculture and attached agencies and corporations scheduled"
+    "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. j.p. laurel room sen. g.t. pecson room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of agriculture and attached agencies and corporations scheduled"
   }
 ]

@@ -1,0 +1,90 @@
+{
+  "generatedAt": "2025-10-06T14:32:34.004Z",
+  "source": "senate.json",
+  "attempts": [
+    {
+      "stage": "senate.json",
+      "status": "ok",
+      "rawCount": 17,
+      "parsedCount": 17,
+      "dropReasons": {
+        "missingDate": 0,
+        "missingCommittee": 0
+      }
+    }
+  ],
+  "warnings": [],
+  "parsedCount": 17,
+  "preview": [
+    {
+      "id": "senate-1",
+      "branch": "Senate",
+      "committee": "Finance (Subcommittee K) (Presiding: Sen. E. Tulfo)",
+      "date": "2025-10-06",
+      "time": "10:00 A.M.",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the following:; Department of Migrant Workers; Commission on Filipino Overseas",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-06T10:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate finance (subcommittee k) (presiding: sen. e. tulfo) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the following:; department of migrant workers; commission on filipino overseas scheduled"
+    },
+    {
+      "id": "senate-2",
+      "branch": "Senate",
+      "committee": "Women, Children, Family Relations and Gender Equality, joint with Justice and Human Rights (TWG)",
+      "date": "2025-10-06",
+      "time": "11:00 A.M.",
+      "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
+      "agenda": "S. Nos. 565 and 845 - Amending R.A. No. 11313 (Safe Spaces Act) (By: Sens. Hontiveros and Estrada)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-06T11:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate women, children, family relations and gender equality, joint with justice and human rights (twg) sen. v.y. sotto room 2/f right wing, senate s. nos. 565 and 845 - amending r.a. no. 11313 (safe spaces act) (by: sens. hontiveros and estrada) scheduled"
+    },
+    {
+      "id": "senate-3",
+      "branch": "Senate",
+      "committee": "Finance (Subcommittee C) (Presiding: Sen. M. Villar)",
+      "date": "2025-10-06",
+      "time": "1:00 P.M.",
+      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the following:; Bases Conversion Development Authority; Philippine Postal Corporation",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-06T01:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate finance (subcommittee c) (presiding: sen. m. villar) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; bases conversion development authority; philippine postal corporation scheduled"
+    },
+    {
+      "id": "senate-4",
+      "branch": "Senate",
+      "committee": "Banks, Financial Institutions and Currencies joint with Justice and Human Rights; Migrant Workers; and Ways and Means (Presiding: Sen. Villanueva)",
+      "date": "2025-10-06",
+      "time": "1:00 P.M.",
+      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "agenda": "Organizational Meeting; S. Nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - Deposit Disclosure and Amendments to the Laws on Secrecy of Bank Deposits (By: Sens. Lacson, Zubiri, Escudero, Pangilinan, Estrada, E. Tulfo and Villanueva); S. Nos. 370 and 603 - Regulation of Debt Collection Practices (By: Sens. Gatchalian, Villanueva and Padilla); Taking into consideration:; P.S. Res. No. 21 – Regulation of Debt Collection Practices (By: Sen. Gatchalian); S. Nos. 181 and 1074 - Protecting the Remittances of Overseas Filipino Workers (OFWs) (By: Sens. C. Villar, Villanueva and Estrada)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-06T01:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate banks, financial institutions and currencies joint with justice and human rights; migrant workers; and ways and means (presiding: sen. villanueva) sen. a.b. padilla room 2/f right wing, senate organizational meeting; s. nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - deposit disclosure and amendments to the laws on secrecy of bank deposits (by: sens. lacson, zubiri, escudero, pangilinan, estrada, e. tulfo and villanueva); s. nos. 370 and 603 - regulation of debt collection practices (by: sens. gatchalian, villanueva and padilla); taking into consideration:; p.s. res. no. 21 – regulation of debt collection practices (by: sen. gatchalian); s. nos. 181 and 1074 - protecting the remittances of overseas filipino workers (ofws) (by: sens. c. villar, villanueva and estrada) scheduled"
+    },
+    {
+      "id": "senate-5",
+      "branch": "Senate",
+      "committee": "Agriculture, Food and Agrarian Reforms (Presiding: Sen. Pangilinan)",
+      "date": "2025-10-07",
+      "time": "9:00 A.M.",
+      "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+      "agenda": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; B. Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-07T09:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate agriculture, food and agrarian reforms (presiding: sen. pangilinan) sen. m.l. quezon room 2/f right wing, senate privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; b. privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
+    }
+  ]
+}

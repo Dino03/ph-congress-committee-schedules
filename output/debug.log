@@ -1,79 +1,79 @@
-[2025-10-06T03:00:45.373Z] [house] request starting
-[2025-10-06T03:00:45.374Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-10-06T03:00:45.374Z] House headers count: 14
-[2025-10-06T03:00:45.375Z] House warmup: launching browser
-[2025-10-06T03:00:45.467Z] House warmup: loaded storage state from disk
-[2025-10-06T03:00:45.549Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
-[2025-10-06T03:00:48.688Z] House warmup: DOM ready + delay complete
-[2025-10-06T03:01:18.692Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
-[2025-10-06T03:01:18.693Z] House warmup: Turnstile token missing after wait
-[2025-10-06T03:01:18.705Z] House warmup session ready (initial), tokenLen=0
-[2025-10-06T03:01:18.706Z] House warmup returned empty Turnstile token, retrying once
-[2025-10-06T03:01:18.736Z] House warmup: launching browser
-[2025-10-06T03:01:18.783Z] House warmup: loaded storage state from disk
-[2025-10-06T03:01:18.853Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
-[2025-10-06T03:01:21.510Z] House warmup: DOM ready + delay complete
-[2025-10-06T03:01:51.512Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
-[2025-10-06T03:01:51.513Z] House warmup: Turnstile token missing after wait
-[2025-10-06T03:01:51.519Z] House warmup session ready (refresh), tokenLen=0
-[2025-10-06T03:01:51.520Z] House attempt 1 starting...
-[2025-10-06T03:01:51.521Z] House attempt 1: using Turnstile token length=0
-[2025-10-06T03:01:51.521Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-10-06T03:01:52.304Z] POST response: status=403, contentLength=118, duration=783ms
-[2025-10-06T03:01:52.305Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=783 headers={"server":"awselb/2.0","date":"Mon, 06 Oct 2025 03:01:52 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=JYcH4agfYlipc71nwQrekyKw1XYJNRZmwTG5/EhOmdq0KNpNS3/CAPQ52+Wy2nKZlOk65SEZaQTr5PqMew6Jcnt20cveetcktHQWfs+k5z89zsU0XZY49kKnpicUODgYkpnsFbODv4tK8madc51YelY1wN2LG/uT6yZIoYSOMvGtJh4y5dM=; Expires=Mon, 13 Oct 2025 03:01:52 GMT; Path=/\nAWSALBTGCORS=JYcH4agfYlipc71nwQrekyKw1XYJNRZmwTG5/EhOmdq0KNpNS3/CAPQ52+Wy2nKZlOk65SEZaQTr5PqMew6Jcnt20cveetcktHQWfs+k5z89zsU0XZY49kKnpicUODgYkpnsFbODv4tK8madc51YelY1wN2LG/uT6yZIoYSOMvGtJh4y5dM=; Expires=Mon, 13 Oct 2025 03:01:52 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+[2025-10-06T14:30:14.882Z] [house] request starting
+[2025-10-06T14:30:14.882Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-10-06T14:30:14.883Z] House headers count: 14
+[2025-10-06T14:30:14.884Z] House warmup: launching browser
+[2025-10-06T14:30:15.105Z] House warmup: loaded storage state from disk
+[2025-10-06T14:30:15.184Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-06T14:30:18.430Z] House warmup: DOM ready + delay complete
+[2025-10-06T14:30:48.435Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
+[2025-10-06T14:30:48.436Z] House warmup: Turnstile token missing after wait
+[2025-10-06T14:30:48.446Z] House warmup session ready (initial), tokenLen=0
+[2025-10-06T14:30:48.447Z] House warmup returned empty Turnstile token, retrying once
+[2025-10-06T14:30:48.474Z] House warmup: launching browser
+[2025-10-06T14:30:48.519Z] House warmup: loaded storage state from disk
+[2025-10-06T14:30:48.597Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-06T14:30:51.321Z] House warmup: DOM ready + delay complete
+[2025-10-06T14:31:21.324Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
+[2025-10-06T14:31:21.324Z] House warmup: Turnstile token missing after wait
+[2025-10-06T14:31:21.332Z] House warmup session ready (refresh), tokenLen=0
+[2025-10-06T14:31:21.333Z] House attempt 1 starting...
+[2025-10-06T14:31:21.334Z] House attempt 1: using Turnstile token length=0
+[2025-10-06T14:31:21.334Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-06T14:31:22.051Z] POST response: status=403, contentLength=118, duration=716ms
+[2025-10-06T14:31:22.051Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=716 headers={"server":"awselb/2.0","date":"Mon, 06 Oct 2025 14:31:21 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=2MpQVGRSN2GaM+0QcOa8+Q8H6dd/BkYQwhfjI5sRC1I4cuuDpgMN+xnQ1gKZgFjW939S1nepoCnbo862y1kvoJGUqSW/1fNI7eMhk/jVNISzRkpXp4vMMOeUmNWWVeolRf78K689BDU5yFrN/Uc6Upx8ANddbltDc9O+yOqvOamFjuspHDM=; Expires=Mon, 13 Oct 2025 14:31:21 GMT; Path=/\nAWSALBTGCORS=2MpQVGRSN2GaM+0QcOa8+Q8H6dd/BkYQwhfjI5sRC1I4cuuDpgMN+xnQ1gKZgFjW939S1nepoCnbo862y1kvoJGUqSW/1fNI7eMhk/jVNISzRkpXp4vMMOeUmNWWVeolRf78K689BDU5yFrN/Uc6Upx8ANddbltDc9O+yOqvOamFjuspHDM=; Expires=Mon, 13 Oct 2025 14:31:21 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
 <head><title>403 Forbidden</title></head>
 <body>
 <center><h1>403 Forbidden</h1></center>
 </body>
 </html>
 
-[2025-10-06T03:01:52.305Z] House attempt 1 failed: HTTP 403
-[2025-10-06T03:01:52.306Z] House refreshing warmup session before retry
-[2025-10-06T03:01:52.329Z] House warmup: launching browser
-[2025-10-06T03:01:52.372Z] House warmup: loaded storage state from disk
-[2025-10-06T03:01:52.442Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
-[2025-10-06T03:01:55.077Z] House warmup: DOM ready + delay complete
-[2025-10-06T03:02:25.079Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
-[2025-10-06T03:02:25.080Z] House warmup: Turnstile token missing after wait
-[2025-10-06T03:02:25.087Z] House warmup session ready (retry), tokenLen=0
-[2025-10-06T03:02:25.088Z] House retrying after 500ms...
-[2025-10-06T03:02:25.589Z] House attempt 2 starting...
-[2025-10-06T03:02:25.589Z] House attempt 2: using Turnstile token length=0
-[2025-10-06T03:02:25.590Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-10-06T03:02:25.824Z] POST response: status=403, contentLength=118, duration=234ms
-[2025-10-06T03:02:25.824Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=234 headers={"server":"awselb/2.0","date":"Mon, 06 Oct 2025 03:02:25 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=riRg6gwfAEE43ZmPCCMD0rJXqFUq7VXnB7cXIGWN6IACQy0iC2uityTuvtj0tf2bnFRLbw93egXERDlrDK6TvcXahTRhSfErbWeIN1Et1IZ/auWBKgzF110/nnzuA41zpRBMTgds6q6+wUQQAKECw+sIOC9cJqFQfjgObNyYpxWkXyfGAFg=; Expires=Mon, 13 Oct 2025 03:02:25 GMT; Path=/\nAWSALBTGCORS=riRg6gwfAEE43ZmPCCMD0rJXqFUq7VXnB7cXIGWN6IACQy0iC2uityTuvtj0tf2bnFRLbw93egXERDlrDK6TvcXahTRhSfErbWeIN1Et1IZ/auWBKgzF110/nnzuA41zpRBMTgds6q6+wUQQAKECw+sIOC9cJqFQfjgObNyYpxWkXyfGAFg=; Expires=Mon, 13 Oct 2025 03:02:25 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+[2025-10-06T14:31:22.052Z] House attempt 1 failed: HTTP 403
+[2025-10-06T14:31:22.052Z] House refreshing warmup session before retry
+[2025-10-06T14:31:22.075Z] House warmup: launching browser
+[2025-10-06T14:31:22.121Z] House warmup: loaded storage state from disk
+[2025-10-06T14:31:22.196Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-06T14:31:24.948Z] House warmup: DOM ready + delay complete
+[2025-10-06T14:31:54.949Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
+[2025-10-06T14:31:54.950Z] House warmup: Turnstile token missing after wait
+[2025-10-06T14:31:54.957Z] House warmup session ready (retry), tokenLen=0
+[2025-10-06T14:31:54.958Z] House retrying after 500ms...
+[2025-10-06T14:31:55.459Z] House attempt 2 starting...
+[2025-10-06T14:31:55.459Z] House attempt 2: using Turnstile token length=0
+[2025-10-06T14:31:55.460Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-06T14:31:55.669Z] POST response: status=403, contentLength=118, duration=208ms
+[2025-10-06T14:31:55.669Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=208 headers={"server":"awselb/2.0","date":"Mon, 06 Oct 2025 14:31:55 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=Pv5VFK7V4ByX6AfL7B0z9Cn35SOnLeMJjjcHPFVhHA9U0hEbXQrVY5ctaRIaPvIsNujQ4GFJpoKqwm7z+yh5wanAE4Gl0izN1v3Di4/IGTMoJ+F0oR+s8JHFtWCgE9wxvyhnLRYnS5U4fKTSwijf+EgHQmWFKUjUbpq3ZfAt1rnWA5G9D5A=; Expires=Mon, 13 Oct 2025 14:31:55 GMT; Path=/\nAWSALBTGCORS=Pv5VFK7V4ByX6AfL7B0z9Cn35SOnLeMJjjcHPFVhHA9U0hEbXQrVY5ctaRIaPvIsNujQ4GFJpoKqwm7z+yh5wanAE4Gl0izN1v3Di4/IGTMoJ+F0oR+s8JHFtWCgE9wxvyhnLRYnS5U4fKTSwijf+EgHQmWFKUjUbpq3ZfAt1rnWA5G9D5A=; Expires=Mon, 13 Oct 2025 14:31:55 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
 <head><title>403 Forbidden</title></head>
 <body>
 <center><h1>403 Forbidden</h1></center>
 </body>
 </html>
 
-[2025-10-06T03:02:25.825Z] House attempt 2 failed: HTTP 403
-[2025-10-06T03:02:25.825Z] House refreshing warmup session before retry
-[2025-10-06T03:02:25.850Z] House warmup: launching browser
-[2025-10-06T03:02:25.894Z] House warmup: loaded storage state from disk
-[2025-10-06T03:02:25.963Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
-[2025-10-06T03:02:28.611Z] House warmup: DOM ready + delay complete
-[2025-10-06T03:02:58.614Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
-[2025-10-06T03:02:58.614Z] House warmup: Turnstile token missing after wait
-[2025-10-06T03:02:58.620Z] House warmup session ready (retry), tokenLen=0
-[2025-10-06T03:02:58.621Z] House retrying after 1500ms...
-[2025-10-06T03:03:00.123Z] House attempt 3 starting...
-[2025-10-06T03:03:00.123Z] House attempt 3: using Turnstile token length=0
-[2025-10-06T03:03:00.123Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
-[2025-10-06T03:03:00.357Z] POST response: status=403, contentLength=118, duration=234ms
-[2025-10-06T03:03:00.357Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=234 headers={"server":"awselb/2.0","date":"Mon, 06 Oct 2025 03:03:00 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=ZhHLsFjNF9OnnLCoWBF+qMQ8Wu8kZRy3gYLSmL+HM2uuJelu0pKf6Pi3YpEG4nNovBUtCOi9xyU67MwPKmUN8D0YluIh3RJcQF5t74MTpbDwJ0vJf3tPnSgRFf8rt32BRrPQNkxCG1R96poOg00x7rNC1/SVxcUCY9TZ+7JVGa487OPJMHM=; Expires=Mon, 13 Oct 2025 03:03:00 GMT; Path=/\nAWSALBTGCORS=ZhHLsFjNF9OnnLCoWBF+qMQ8Wu8kZRy3gYLSmL+HM2uuJelu0pKf6Pi3YpEG4nNovBUtCOi9xyU67MwPKmUN8D0YluIh3RJcQF5t74MTpbDwJ0vJf3tPnSgRFf8rt32BRrPQNkxCG1R96poOg00x7rNC1/SVxcUCY9TZ+7JVGa487OPJMHM=; Expires=Mon, 13 Oct 2025 03:03:00 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
+[2025-10-06T14:31:55.669Z] House attempt 2 failed: HTTP 403
+[2025-10-06T14:31:55.670Z] House refreshing warmup session before retry
+[2025-10-06T14:31:55.694Z] House warmup: launching browser
+[2025-10-06T14:31:55.737Z] House warmup: loaded storage state from disk
+[2025-10-06T14:31:55.811Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-06T14:31:58.603Z] House warmup: DOM ready + delay complete
+[2025-10-06T14:32:28.605Z] House warmup: failed to obtain Turnstile token: page.waitForFunction: Timeout 30000ms exceeded.
+[2025-10-06T14:32:28.605Z] House warmup: Turnstile token missing after wait
+[2025-10-06T14:32:28.612Z] House warmup session ready (retry), tokenLen=0
+[2025-10-06T14:32:28.613Z] House retrying after 1500ms...
+[2025-10-06T14:32:30.115Z] House attempt 3 starting...
+[2025-10-06T14:32:30.116Z] House attempt 3: using Turnstile token length=0
+[2025-10-06T14:32:30.116Z] Sending POST to https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list
+[2025-10-06T14:32:30.322Z] POST response: status=403, contentLength=118, duration=206ms
+[2025-10-06T14:32:30.323Z] House API POST https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list status=403 durationMs=206 headers={"server":"awselb/2.0","date":"Mon, 06 Oct 2025 14:32:30 GMT","content-type":"text/html","content-length":"118","connection":"keep-alive","set-cookie":"AWSALBTG=YHSuPszlvv1vfRN0wTOmZrODWv6XcbUNN0eZ1PP2MlY/Lw19+gj3N2G9CEPziZRWpLmOtDxz6QegdKFzawjorGBcbvMWUpKM01rNlR+wusPhDHVjfs0sIi1eGDmShr3DCUhKS+etxB7Cw5QUYpc9uPSL645uWVQzvgZHmbKHuxBEk/ug63I=; Expires=Mon, 13 Oct 2025 14:32:30 GMT; Path=/\nAWSALBTGCORS=YHSuPszlvv1vfRN0wTOmZrODWv6XcbUNN0eZ1PP2MlY/Lw19+gj3N2G9CEPziZRWpLmOtDxz6QegdKFzawjorGBcbvMWUpKM01rNlR+wusPhDHVjfs0sIi1eGDmShr3DCUhKS+etxB7Cw5QUYpc9uPSL645uWVQzvgZHmbKHuxBEk/ug63I=; Expires=Mon, 13 Oct 2025 14:32:30 GMT; Path=/; SameSite=None; Secure"} bodyHead=<html>
 <head><title>403 Forbidden</title></head>
 <body>
 <center><h1>403 Forbidden</h1></center>
 </body>
 </html>
 
-[2025-10-06T03:03:00.358Z] House attempt 3 failed: HTTP 403
-[2025-10-06T03:03:00.382Z] House API failed after all retries.
-[2025-10-06T03:03:00.383Z] House error: HTTP 403
-[2025-10-06T03:03:00.383Z] House JSON written: 0 items
-[2025-10-06T03:03:00.384Z] [senate] request starting
-[2025-10-06T03:03:02.878Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2420 htmlLen=23269
-[2025-10-06T03:03:02.950Z] Senate parsed rows=16
-[2025-10-06T03:03:02.951Z] Done. House=0 Senate=16
+[2025-10-06T14:32:30.323Z] House attempt 3 failed: HTTP 403
+[2025-10-06T14:32:30.346Z] House API failed after all retries.
+[2025-10-06T14:32:30.347Z] House error: HTTP 403
+[2025-10-06T14:32:30.347Z] House JSON written: 0 items
+[2025-10-06T14:32:30.348Z] [senate] request starting
+[2025-10-06T14:32:33.617Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3193 htmlLen=23927
+[2025-10-06T14:32:33.695Z] Senate parsed rows=17
+[2025-10-06T14:32:33.695Z] Done. House=0 Senate=17
