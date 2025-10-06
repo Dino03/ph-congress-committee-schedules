@@ -1,4 +1,7 @@
 name: Fetch Committee Schedules
+# GitHub Pages also triggers its managed "pages build and deployment" workflow after this job
+# finishes. Seeing two entries in the Actions tab is expected; the second run publishes the
+# docs/ artifact to the live site.
 
 on:
   schedule:
