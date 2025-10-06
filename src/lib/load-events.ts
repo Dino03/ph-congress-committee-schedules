@@ -18,8 +18,23 @@ interface RawRecord {
   source?: string;
 }
 
-const DATA_FILE_PATH = path.join(process.cwd(), 'docs', 'data', 'all.json');
+type ChamberDefaults = {
+  branch: EventBranch;
+  source?: string;
+  idPrefix: string;
+};
+
+const DATA_DIR = path.join(process.cwd(), 'docs', 'data');
+const DATA_FILE_PATH = path.join(DATA_DIR, 'all.json');
+const HOUSE_FILE_PATH = path.join(DATA_DIR, 'house.json');
+const SENATE_FILE_PATH = path.join(DATA_DIR, 'senate.json');
 const UPCOMING_WINDOW_MS = 1000 * 60 * 60 * 24;
+
+function hasMeaningfulValue(value: unknown): boolean {
+  if (value === null || value === undefined) return false;
+  if (typeof value === 'string') return value.trim().length > 0;
+  return true;
+}
 
 function normalizeBranch(branch?: string): EventBranch | null {
   if (!branch) return null;
@@ -39,6 +54,74 @@ function coerceIsoDate(record: RawRecord): string | null {
 
 function normalizeText(value?: string): string {
   return value?.replace(/\s+/g, ' ').trim() ?? '';
+}
+
+function applyChamberDefaults(
+  records: RawRecord[],
+  { branch, idPrefix, source }: ChamberDefaults
+): RawRecord[] {
+  return records.map((record, index) => {
+    const result: RawRecord = { ...record };
+    if (!hasMeaningfulValue(result.branch)) {
+      result.branch = branch;
+    }
+    if (!hasMeaningfulValue(result.source) && source) {
+      result.source = source;
+    }
+    if (!hasMeaningfulValue(result.id)) {
+      result.id = `${idPrefix}-${index + 1}`;
+    }
+    return result;
+  });
+}
+
+function mergeRecord(primary: RawRecord, fallback: RawRecord): RawRecord {
+  const merged: RawRecord = { ...primary };
+  const keys = new Set<keyof RawRecord>(
+    [...Object.keys(fallback), ...Object.keys(primary)] as (keyof RawRecord)[]
+  );
+  for (const key of keys) {
+    const primaryValue = merged[key];
+    if (hasMeaningfulValue(primaryValue)) {
+      continue;
+    }
+    const fallbackValue = fallback[key];
+    if (hasMeaningfulValue(fallbackValue)) {
+      merged[key] = fallbackValue;
+    }
+  }
+  return merged;
+}
+
+function getRecordKey(record: RawRecord): string {
+  if (hasMeaningfulValue(record.id)) {
+    return (record.id as string).toLowerCase();
+  }
+
+  const branch = normalizeBranch(record.branch) ?? 'unknown-branch';
+  const committee = normalizeText(record.committee) || 'unknown-committee';
+  const date = normalizeText(record.date) || 'unknown-date';
+  return `${branch}:${committee}:${date}`.toLowerCase();
+}
+
+function mergeRecords(baseRecords: RawRecord[], fallbackRecords: RawRecord[]): RawRecord[] {
+  const merged = new Map<string, RawRecord>();
+
+  for (const record of baseRecords) {
+    merged.set(getRecordKey(record), { ...record });
+  }
+
+  for (const record of fallbackRecords) {
+    const key = getRecordKey(record);
+    const existing = merged.get(key);
+    if (existing) {
+      merged.set(key, mergeRecord(existing, record));
+    } else {
+      merged.set(key, { ...record });
+    }
+  }
+
+  return Array.from(merged.values());
 }
 
 function mapRecord(record: RawRecord): Event | null {
@@ -66,15 +149,54 @@ function mapRecord(record: RawRecord): Event | null {
   };
 }
 
-async function readRawEvents(): Promise<RawRecord[]> {
+async function readRecordsFromFile(filePath: string): Promise<RawRecord[]> {
   try {
-    const content = await fs.readFile(DATA_FILE_PATH, 'utf-8');
+    const content = await fs.readFile(filePath, 'utf-8');
     const parsed = JSON.parse(content) as RawRecord[];
     return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
-    console.error('[load-events] Failed to read data file', error);
+    console.error(`[load-events] Failed to read data file at ${filePath}`, error);
     return [];
   }
+}
+
+function containsBranch(records: RawRecord[], branch: EventBranch): boolean {
+  return records.some((record) => normalizeBranch(record.branch) === branch);
+}
+
+async function readRawEvents(): Promise<RawRecord[]> {
+  const [allRecords, houseRecordsRaw, senateRecordsRaw] = await Promise.all([
+    readRecordsFromFile(DATA_FILE_PATH),
+    readRecordsFromFile(HOUSE_FILE_PATH),
+    readRecordsFromFile(SENATE_FILE_PATH),
+  ]);
+
+  const houseRecords = applyChamberDefaults(houseRecordsRaw, {
+    branch: 'House of Representatives',
+    idPrefix: 'house',
+    source: 'House of Representatives',
+  });
+
+  const senateRecords = applyChamberDefaults(senateRecordsRaw, {
+    branch: 'Senate',
+    idPrefix: 'senate',
+    source: 'Senate Weekly Schedule',
+  });
+
+  const combined = mergeRecords(allRecords, [...houseRecords, ...senateRecords]);
+
+  if (
+    !containsBranch(combined, 'House of Representatives') ||
+    !containsBranch(combined, 'Senate')
+  ) {
+    console.warn('[load-events] Missing branch data after merge', {
+      houseCount: houseRecords.length,
+      senateCount: senateRecords.length,
+      mergedCount: combined.length,
+    });
+  }
+
+  return combined;
 }
 
 function sortEvents(events: Event[]): Event[] {
