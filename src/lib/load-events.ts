@@ -3,6 +3,7 @@ import path from 'path';
 import { cache } from 'react';
 
 import type { Event, EventBranch } from './types';
+import { fixedEvents } from './fixed-events';
 
 interface RawRecord {
   id?: string;
@@ -216,7 +217,7 @@ export const loadEvents = cache(async (): Promise<Event[]> => {
   const mapped = raw
     .map(mapRecord)
     .filter((event): event is Event => event !== null);
-  return sortEvents(mapped);
+  return sortEvents([...mapped, ...fixedEvents]);
 });
 
 export function isUpcomingEvent(event: Event, now: number = Date.now()): boolean {

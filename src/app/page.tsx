@@ -32,9 +32,8 @@ export default async function HomePage() {
               Philippine Congress Committee Calendar
             </h1>
             <p className="text-base text-muted-foreground">
-              Review upcoming committee hearings from the House of Representatives and the Senate in
-              a single calendar. Data comes from the open-source scraping toolkit in this repository
-              and is refreshed whenever new schedules are published.
+              View all upcoming committee hearings from the House of Representatives and the Senate in
+              one place. The calendar is automatically updated whenever new schedules are released.
             </p>
           </div>
           <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3">
