@@ -21,6 +21,7 @@ import type { Event } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { EventDetails } from './event-details';
 import EventIcon from '../icons/event-icon';
+import { DayEventsDialog } from './day-events-dialog';
 
 interface CalendarViewProps {
   events: Event[];
@@ -29,6 +30,7 @@ interface CalendarViewProps {
 export function CalendarView({ events }: CalendarViewProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [expandedDay, setExpandedDay] = useState<{ date: Date; events: Event[] } | null>(null);
 
   const firstDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
@@ -80,6 +82,9 @@ export function CalendarView({ events }: CalendarViewProps) {
 
             {daysInMonth.map((day) => {
               const dayEvents = eventsByDate[format(day, 'yyyy-MM-dd')] || [];
+              const sortedDayEvents = [...dayEvents].sort((a, b) =>
+                (a.isoDate || '').localeCompare(b.isoDate || '')
+              );
               return (
                 <div
                   key={day.toString()}
@@ -99,8 +104,7 @@ export function CalendarView({ events }: CalendarViewProps) {
                     {format(day, 'd')}
                   </time>
                   <div className="mt-1 space-y-1">
-                    {[...dayEvents]
-                      .sort((a, b) => (a.isoDate || '').localeCompare(b.isoDate || ''))
+                    {sortedDayEvents
                       .slice(0, 2)
                       .map((event) => (
                         <button
@@ -118,10 +122,15 @@ export function CalendarView({ events }: CalendarViewProps) {
                           </div>
                         </button>
                       ))}
-                    {dayEvents.length > 2 && (
-                      <div className="text-xs text-muted-foreground mt-1 pl-1.5">
-                        + {dayEvents.length - 2} more
-                      </div>
+                    {sortedDayEvents.length > 2 && (
+                      <button
+                        type="button"
+                        onClick={() => setExpandedDay({ date: day, events: sortedDayEvents })}
+                        className="mt-1 pl-1.5 text-xs text-muted-foreground underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+                        aria-label={`View ${sortedDayEvents.length - 2} more events on ${format(day, 'MMMM d, yyyy')}`}
+                      >
+                        + {sortedDayEvents.length - 2} more
+                      </button>
                     )}
                   </div>
                 </div>
@@ -134,6 +143,16 @@ export function CalendarView({ events }: CalendarViewProps) {
         event={selectedEvent}
         isOpen={!!selectedEvent}
         onClose={() => setSelectedEvent(null)}
+      />
+      <DayEventsDialog
+        date={expandedDay?.date ?? null}
+        events={expandedDay?.events ?? []}
+        isOpen={!!expandedDay}
+        onClose={() => setExpandedDay(null)}
+        onSelectEvent={(event) => {
+          setSelectedEvent(event);
+          setExpandedDay(null);
+        }}
       />
     </div>
   );
