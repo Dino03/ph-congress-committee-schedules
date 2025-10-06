@@ -19,6 +19,7 @@ interface RawRecord {
 }
 
 const DATA_FILE_PATH = path.join(process.cwd(), 'docs', 'data', 'all.json');
+const UPCOMING_WINDOW_MS = 1000 * 60 * 60 * 24;
 
 function normalizeBranch(branch?: string): EventBranch | null {
   if (!branch) return null;
@@ -96,12 +97,15 @@ export const loadEvents = cache(async (): Promise<Event[]> => {
   return sortEvents(mapped);
 });
 
+export function isUpcomingEvent(event: Event, now: number = Date.now()): boolean {
+  if (!event.isoDate) return false;
+  const timestamp = Date.parse(event.isoDate);
+  if (Number.isNaN(timestamp)) return false;
+  return timestamp >= now - UPCOMING_WINDOW_MS;
+}
+
 export const loadUpcomingEvents = cache(async (): Promise<Event[]> => {
   const events = await loadEvents();
   const now = Date.now();
-  return events.filter((event) => {
-    if (!event.isoDate) return false;
-    const timestamp = Date.parse(event.isoDate);
-    return Number.isNaN(timestamp) ? false : timestamp >= now - 1000 * 60 * 60 * 24;
-  });
+  return events.filter((event) => isUpcomingEvent(event, now));
 });

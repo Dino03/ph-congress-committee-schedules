@@ -13,8 +13,9 @@ export function MeetingCard({ meeting }: MeetingCardProps) {
   const dateSource = meeting.isoDate ?? (meeting.date ? `${meeting.date}T00:00:00` : '');
   const parsedDate = dateSource ? new Date(dateSource) : null;
   const hasValidDate = parsedDate && !Number.isNaN(parsedDate.getTime());
+  const includeTime = Boolean(meeting.time);
   const formattedDate = hasValidDate
-    ? format(parsedDate!, 'EEEE, MMMM d, yyyy • h:mm aaa')
+    ? format(parsedDate!, includeTime ? 'EEEE, MMMM d, yyyy • h:mm aaa' : 'EEEE, MMMM d, yyyy')
     : meeting.date || 'Date to be determined';
 
   const agendaItems = meeting.agenda
@@ -51,6 +52,9 @@ export function MeetingCard({ meeting }: MeetingCardProps) {
                 {meeting.branch}
               </p>
               <p className="text-muted-foreground">{formattedDate}</p>
+              <p className="text-muted-foreground">
+                {meeting.time ? `Time: ${meeting.time}` : 'Time to be determined'}
+              </p>
               <p className="text-muted-foreground">
                 {meeting.venue ? `Venue: ${meeting.venue}` : 'Venue to be determined'}
               </p>

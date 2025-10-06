@@ -7,10 +7,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy_pages.outputs.page_url }}
     
     steps:
     - name: Checkout repository
@@ -35,7 +40,10 @@ jobs:
     - name: Build published data
       run: npm run build:data
 
-    - name: Verify output and commit
+    - name: Build static site
+      run: npm run web:build
+
+    - name: Verify generated output
       run: |
         echo "=== Output files ==="
         ls -la output/
@@ -62,24 +70,51 @@ jobs:
         head -5 docs/data/senate.json 2>/dev/null || echo "docs/data/senate.json missing"
         echo ""
 
+        echo "=== Static site root ==="
+        ls -la docs/
+        echo ""
+
+        echo "=== Static index preview ==="
+        sed -n '1,20p' docs/index.html 2>/dev/null || echo "docs/index.html missing"
+        echo ""
+
         echo "=== Git status ==="
         git status
         echo ""
-        
+
+    - name: Commit scraped data
+      run: |
         echo "=== Configuring git ==="
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
-        echo "=== Adding files ==="
-        git add output/ docs/data/ -v
-        
-        if git diff --staged --quiet; then
-          echo "✅ No changes to commit - data is already up to date"
+        echo "=== Adding data files ==="
+        git add output/ -v
+        if [ -d docs/data ]; then
+          git add docs/data/ -v
         else
-          echo "✅ Committing changes..."
+          echo "docs/data directory not found; skipping staging for site data"
+        fi
+
+        if git diff --staged --quiet; then
+          echo "✅ No data changes to commit - data is already up to date"
+        else
+          echo "✅ Committing data updates..."
           git commit -m "Update committee schedules $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
         fi
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
+    - name: Upload static site artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: docs
+
+    - name: Deploy to GitHub Pages
+      id: deploy_pages
+      uses: actions/deploy-pages@v4
 
     - name: Upload artifacts (for debugging)
       if: always()
