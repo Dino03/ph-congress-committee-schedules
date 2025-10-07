@@ -21,8 +21,8 @@ interface MeetingsBrowserProps {
 }
 
 interface DateFilters {
-  from?: string;
-  to?: string;
+  from?: number;
+  to?: number;
 }
 
 function getUniqueValues(items: string[]): string[] {
@@ -54,12 +54,12 @@ function matchesSearch(meeting: Event, term: string): boolean {
 }
 
 function isWithinRange(meeting: Event, { from, to }: DateFilters): boolean {
-  if (!from && !to) return true;
+  if (from === undefined && to === undefined) return true;
   if (!meeting.isoDate) return false;
   const timestamp = Date.parse(meeting.isoDate);
   if (Number.isNaN(timestamp)) return false;
-  if (from && timestamp < from) return false;
-  if (to && timestamp > to) return false;
+  if (from !== undefined && timestamp < from) return false;
+  if (to !== undefined && timestamp > to) return false;
   return true;
 }
 
