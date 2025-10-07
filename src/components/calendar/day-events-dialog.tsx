@@ -21,7 +21,14 @@ export function DayEventsDialog({ date, events, isOpen, onClose, onSelectEvent }
   const formattedDate = format(date, 'EEEE, MMMM d, yyyy');
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => {
+        if (!open) {
+          onClose();
+        }
+      }}
+    >
       <DialogContent className="sm:max-w-[480px] bg-card rounded-xl">
         <DialogHeader className="space-y-2">
           <DialogTitle className="text-xl font-headline text-foreground">Meetings on {formattedDate}</DialogTitle>

@@ -64,18 +64,26 @@ function formatDateRange(start: Date, end: Date): string {
   const monthDayFormatter = new Intl.DateTimeFormat('en-US', {
     month: 'long',
     day: 'numeric',
+    timeZone: 'Asia/Manila',
   });
   const fullFormatter = new Intl.DateTimeFormat('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
+    timeZone: 'Asia/Manila',
+  });
+  const yearFormatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    timeZone: 'Asia/Manila',
   });
 
-  const sameYear = start.getFullYear() === end.getFullYear();
+  const startYear = yearFormatter.format(start);
+  const endYear = yearFormatter.format(end);
+  const sameYear = startYear === endYear;
   if (sameYear) {
     const startText = monthDayFormatter.format(start);
     const endText = monthDayFormatter.format(end);
-    return `${startText} – ${endText}, ${end.getFullYear()}`;
+    return `${startText} – ${endText}, ${endYear}`;
   }
 
   const startText = fullFormatter.format(start);
@@ -84,8 +92,8 @@ function formatDateRange(start: Date, end: Date): string {
 }
 
 function createLegislativeCalendarEvent(period: LegislativePeriod): Event {
-  const startDate = new Date(`${period.start}T00:00:00`);
-  const endDate = new Date(`${period.end}T00:00:00`);
+  const startDate = new Date(`${period.start}T00:00:00Z`);
+  const endDate = new Date(`${period.end}T00:00:00Z`);
 
   const rangeDisplay = formatDateRange(startDate, endDate);
   const notes = [`Session period: ${rangeDisplay}.`, 'Applies to both the House and the Senate.'];
@@ -103,7 +111,7 @@ function createLegislativeCalendarEvent(period: LegislativePeriod): Event {
     agenda: period.label,
     status: 'Scheduled',
     notes: notes.join(' '),
-    isoDate: `${period.start}T00:00:00`,
+    isoDate: `${period.start}T12:00:00Z`,
     source: 'Official Legislative Calendar',
   };
 }
