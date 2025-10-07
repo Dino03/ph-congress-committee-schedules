@@ -1,6 +1,7 @@
 'use client';
 
 import type { Event } from '@/lib/types';
+import { getEventColors, getEventCategoryLabel } from '@/lib/event-colors';
 import {
   Dialog,
   DialogContent,
@@ -9,6 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import EventIcon from '@/components/icons/event-icon';
 import { format } from 'date-fns';
+import { cn } from '@/lib/utils';
 import { Separator } from '../ui/separator';
 import { Badge } from '../ui/badge';
 
@@ -20,6 +22,9 @@ interface EventDetailsProps {
 
 export function EventDetails({ event, isOpen, onClose }: EventDetailsProps) {
   if (!event) return null;
+
+  const colors = getEventColors(event);
+  const label = getEventCategoryLabel(event);
 
   const dateSource = event.isoDate ?? (event.date ? `${event.date}T00:00:00` : '');
   const parsedDate = dateSource ? new Date(dateSource) : null;
@@ -43,12 +48,15 @@ export function EventDetails({ event, isOpen, onClose }: EventDetailsProps) {
       <DialogContent className="sm:max-w-[425px] bg-card rounded-xl">
         <DialogHeader>
           <div className="flex items-center gap-4">
-            <div className="bg-accent/10 p-3 rounded-full">
-              <EventIcon branch={event.branch} className="h-6 w-6 text-accent" />
+            <div className={cn(colors.detailIconBg, 'p-3 rounded-full')}>
+              <EventIcon branch={event.branch} className={cn('h-6 w-6', colors.detailIconText)} />
             </div>
             <div className="space-y-1">
-              <Badge variant="secondary" className="w-fit">
-                {event.branch}
+              <Badge
+                variant="secondary"
+                className={cn('w-fit', colors.badgeBg, colors.badgeText, colors.badgeBorder)}
+              >
+                {label}
               </Badge>
               <DialogTitle className="text-2xl font-headline text-foreground">
                 {event.committee}
