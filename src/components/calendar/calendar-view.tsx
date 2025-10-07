@@ -19,6 +19,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { Event } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { getEventColors } from '@/lib/event-colors';
 import { EventDetails } from './event-details';
 import EventIcon from '../icons/event-icon';
 import { DayEventsDialog } from './day-events-dialog';
@@ -106,22 +107,32 @@ export function CalendarView({ events }: CalendarViewProps) {
                   <div className="mt-1 space-y-1">
                     {sortedDayEvents
                       .slice(0, 2)
-                      .map((event) => (
-                        <button
-                          key={event.id}
-                          onClick={() => setSelectedEvent(event)}
-                          className="w-full text-left p-1.5 rounded-lg bg-primary/20 hover:bg-primary/40 transition-colors"
-                          aria-label={`View event: ${event.committee}`}
-                        >
-                          <div className="flex items-center gap-1.5">
-                            <EventIcon branch={event.branch} className="h-3 w-3 text-accent flex-shrink-0" />
-                            <span className="text-[11px] font-medium text-accent truncate">
-                              {event.time ? `${event.time} · ` : ''}
-                              {event.committee}
-                            </span>
-                          </div>
-                        </button>
-                      ))}
+                      .map((event) => {
+                        const colors = getEventColors(event);
+                        return (
+                          <button
+                            key={event.id}
+                            onClick={() => setSelectedEvent(event)}
+                            className={cn(
+                              'w-full text-left p-1.5 rounded-lg transition-colors',
+                              colors.itemBg,
+                              colors.itemHoverBg
+                            )}
+                            aria-label={`View event: ${event.committee}`}
+                          >
+                            <div className="flex items-center gap-1.5">
+                              <EventIcon
+                                branch={event.branch}
+                                className={cn('h-3 w-3 flex-shrink-0', colors.icon)}
+                              />
+                              <span className={cn('text-[11px] font-medium truncate', colors.itemText)}>
+                                {event.time ? `${event.time} · ` : ''}
+                                {event.committee}
+                              </span>
+                            </div>
+                          </button>
+                        );
+                      })}
                     {sortedDayEvents.length > 2 && (
                       <button
                         type="button"
