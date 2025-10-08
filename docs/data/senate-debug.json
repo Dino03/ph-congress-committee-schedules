@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-10-06T14:32:34.004Z",
+  "generatedAt": "2025-10-08T02:59:16.003Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 17,
-      "parsedCount": 17,
+      "rawCount": 10,
+      "parsedCount": 10,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,77 +14,77 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 17,
+  "parsedCount": 10,
   "preview": [
     {
       "id": "senate-1",
       "branch": "Senate",
-      "committee": "Finance (Subcommittee K) (Presiding: Sen. E. Tulfo)",
-      "date": "2025-10-06",
-      "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the following:; Department of Migrant Workers; Commission on Filipino Overseas",
+      "committee": "Higher, Technical and Vocational Education joint with Basic Education, Local Government, Ways and Means and Finance (Presiding: Sen. Legarda)",
+      "date": "2025-10-08",
+      "time": "9:00 A.M.",
+      "venue": "Session Hall 2/F Left Wing, Senate",
+      "agenda": "Organizational meeting; Briefing by the officials of the Commission on Higher Education (CHED) and the Technical Education and Skills Development Authority (TESDA) on their key programs; S. Nos. 529 and 1418 - Second Congressional Commission on Education (EDCOM II) Act (By: Sens. Legarda and Hontiveros); S. No. 103 – Third Commission on Education (EDCOM III) Act (By: Sens. A. Cayetano, P. Cayetano, Escudero and Villanueva); S. Nos. 26, 130, 169, 503, 514, 1042 and 1245 - Amendment of the Universal Access to Quality Tertiary Education Act (R.A. 10931) (By: Sens. P. Cayetano, Aquino, Go, Escudero, Legarda, Estrada and Hontiveros); S. Nos. 504, 623, 1402 and 1415 - Local Universities and Colleges Governance Act (By: Sens. Escudero and Gatchalian)",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-06T10:00:00",
+      "isoDate": "2025-10-08T09:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee k) (presiding: sen. e. tulfo) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the following:; department of migrant workers; commission on filipino overseas scheduled"
+      "searchText": "senate higher, technical and vocational education joint with basic education, local government, ways and means and finance (presiding: sen. legarda) session hall 2/f left wing, senate organizational meeting; briefing by the officials of the commission on higher education (ched) and the technical education and skills development authority (tesda) on their key programs; s. nos. 529 and 1418 - second congressional commission on education (edcom ii) act (by: sens. legarda and hontiveros); s. no. 103 – third commission on education (edcom iii) act (by: sens. a. cayetano, p. cayetano, escudero and villanueva); s. nos. 26, 130, 169, 503, 514, 1042 and 1245 - amendment of the universal access to quality tertiary education act (r.a. 10931) (by: sens. p. cayetano, aquino, go, escudero, legarda, estrada and hontiveros); s. nos. 504, 623, 1402 and 1415 - local universities and colleges governance act (by: sens. escudero and gatchalian) scheduled"
     },
     {
       "id": "senate-2",
       "branch": "Senate",
-      "committee": "Women, Children, Family Relations and Gender Equality, joint with Justice and Human Rights (TWG)",
-      "date": "2025-10-06",
-      "time": "11:00 A.M.",
-      "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
-      "agenda": "S. Nos. 565 and 845 - Amending R.A. No. 11313 (Safe Spaces Act) (By: Sens. Hontiveros and Estrada)",
+      "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
+      "date": "2025-10-08",
+      "time": "9:00 A.M.",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Department of Agriculture and attached agencies and corporations",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-06T11:00:00",
+      "isoDate": "2025-10-08T09:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate women, children, family relations and gender equality, joint with justice and human rights (twg) sen. v.y. sotto room 2/f right wing, senate s. nos. 565 and 845 - amending r.a. no. 11313 (safe spaces act) (by: sens. hontiveros and estrada) scheduled"
+      "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of agriculture and attached agencies and corporations scheduled"
     },
     {
       "id": "senate-3",
       "branch": "Senate",
-      "committee": "Finance (Subcommittee C) (Presiding: Sen. M. Villar)",
-      "date": "2025-10-06",
-      "time": "1:00 P.M.",
-      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the following:; Bases Conversion Development Authority; Philippine Postal Corporation",
+      "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo)",
+      "date": "2025-10-08",
+      "time": "10:00 A.M.",
+      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "agenda": "S. No. 81 - Wage Theft Prevention Act (By: Sen. R. Tulfo); S. No. 82 - Anti-Abuse of Pakyawan Workers Act (By: Sen. R. Tulfo); S. No. 520 - Calamity Work Compensation Act (By: Sen. Legarda); S. No. 542 – Hazard Pay for Workers in Critical Industries Act (By: Sen. Villanueva)",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-06T01:00:00",
+      "isoDate": "2025-10-08T10:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee c) (presiding: sen. m. villar) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; bases conversion development authority; philippine postal corporation scheduled"
+      "searchText": "senate labor, employment and human resources development (presiding: sen. r. tulfo) sen. a.b. padilla room 2/f right wing, senate s. no. 81 - wage theft prevention act (by: sen. r. tulfo); s. no. 82 - anti-abuse of pakyawan workers act (by: sen. r. tulfo); s. no. 520 - calamity work compensation act (by: sen. legarda); s. no. 542 – hazard pay for workers in critical industries act (by: sen. villanueva) scheduled"
     },
     {
       "id": "senate-4",
       "branch": "Senate",
-      "committee": "Banks, Financial Institutions and Currencies joint with Justice and Human Rights; Migrant Workers; and Ways and Means (Presiding: Sen. Villanueva)",
-      "date": "2025-10-06",
-      "time": "1:00 P.M.",
-      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-      "agenda": "Organizational Meeting; S. Nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - Deposit Disclosure and Amendments to the Laws on Secrecy of Bank Deposits (By: Sens. Lacson, Zubiri, Escudero, Pangilinan, Estrada, E. Tulfo and Villanueva); S. Nos. 370 and 603 - Regulation of Debt Collection Practices (By: Sens. Gatchalian, Villanueva and Padilla); Taking into consideration:; P.S. Res. No. 21 – Regulation of Debt Collection Practices (By: Sen. Gatchalian); S. Nos. 181 and 1074 - Protecting the Remittances of Overseas Filipino Workers (OFWs) (By: Sens. C. Villar, Villanueva and Estrada)",
+      "committee": "Energy joint with Public Services; Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. P. Cayetano)",
+      "date": "2025-10-08",
+      "time": "11:00 A.M.",
+      "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
+      "agenda": "Organizational Meeting; Presentation and review of key directives from the State of the Nation Address (SONA); Legislative priorities of the Department of Energy; S. Nos. 346, 367 and 1164 - Energy Regulatory Commission Strengthening (By: Sens. P. Cayetano, Gatchalian and Estrada)",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-06T01:00:00",
+      "isoDate": "2025-10-08T11:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate banks, financial institutions and currencies joint with justice and human rights; migrant workers; and ways and means (presiding: sen. villanueva) sen. a.b. padilla room 2/f right wing, senate organizational meeting; s. nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - deposit disclosure and amendments to the laws on secrecy of bank deposits (by: sens. lacson, zubiri, escudero, pangilinan, estrada, e. tulfo and villanueva); s. nos. 370 and 603 - regulation of debt collection practices (by: sens. gatchalian, villanueva and padilla); taking into consideration:; p.s. res. no. 21 – regulation of debt collection practices (by: sen. gatchalian); s. nos. 181 and 1074 - protecting the remittances of overseas filipino workers (ofws) (by: sens. c. villar, villanueva and estrada) scheduled"
+      "searchText": "senate energy joint with public services; civil service, government reorganization and professional regulation; and finance (presiding: sen. p. cayetano) sen. v.y. sotto room 2/f right wing, senate organizational meeting; presentation and review of key directives from the state of the nation address (sona); legislative priorities of the department of energy; s. nos. 346, 367 and 1164 - energy regulatory commission strengthening (by: sens. p. cayetano, gatchalian and estrada) scheduled"
     },
     {
       "id": "senate-5",
       "branch": "Senate",
-      "committee": "Agriculture, Food and Agrarian Reforms (Presiding: Sen. Pangilinan)",
-      "date": "2025-10-07",
-      "time": "9:00 A.M.",
-      "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
-      "agenda": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; B. Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”",
+      "committee": "Finance (Subcommittee G) (Presiding: Sen. Go)",
+      "date": "2025-10-08",
+      "time": "12:00 NN",
+      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Mindanao Development Authority",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-07T09:00:00",
+      "isoDate": "2025-10-08T12:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate agriculture, food and agrarian reforms (presiding: sen. pangilinan) sen. m.l. quezon room 2/f right wing, senate privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; b. privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
+      "searchText": "senate finance (subcommittee g) (presiding: sen. go) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the mindanao development authority scheduled"
     }
   ]
 }

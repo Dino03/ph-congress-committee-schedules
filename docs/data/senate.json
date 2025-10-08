@@ -2,104 +2,6 @@
   {
     "id": "senate-1",
     "branch": "Senate",
-    "committee": "Finance (Subcommittee K) (Presiding: Sen. E. Tulfo)",
-    "date": "2025-10-06",
-    "time": "10:00 A.M.",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the following:; Department of Migrant Workers; Commission on Filipino Overseas",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-06T10:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee k) (presiding: sen. e. tulfo) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the following:; department of migrant workers; commission on filipino overseas scheduled"
-  },
-  {
-    "id": "senate-2",
-    "branch": "Senate",
-    "committee": "Women, Children, Family Relations and Gender Equality, joint with Justice and Human Rights (TWG)",
-    "date": "2025-10-06",
-    "time": "11:00 A.M.",
-    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
-    "agenda": "S. Nos. 565 and 845 - Amending R.A. No. 11313 (Safe Spaces Act) (By: Sens. Hontiveros and Estrada)",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-06T11:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate women, children, family relations and gender equality, joint with justice and human rights (twg) sen. v.y. sotto room 2/f right wing, senate s. nos. 565 and 845 - amending r.a. no. 11313 (safe spaces act) (by: sens. hontiveros and estrada) scheduled"
-  },
-  {
-    "id": "senate-3",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee C) (Presiding: Sen. M. Villar)",
-    "date": "2025-10-06",
-    "time": "1:00 P.M.",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the following:; Bases Conversion Development Authority; Philippine Postal Corporation",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-06T01:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee c) (presiding: sen. m. villar) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; bases conversion development authority; philippine postal corporation scheduled"
-  },
-  {
-    "id": "senate-4",
-    "branch": "Senate",
-    "committee": "Banks, Financial Institutions and Currencies joint with Justice and Human Rights; Migrant Workers; and Ways and Means (Presiding: Sen. Villanueva)",
-    "date": "2025-10-06",
-    "time": "1:00 P.M.",
-    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "agenda": "Organizational Meeting; S. Nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - Deposit Disclosure and Amendments to the Laws on Secrecy of Bank Deposits (By: Sens. Lacson, Zubiri, Escudero, Pangilinan, Estrada, E. Tulfo and Villanueva); S. Nos. 370 and 603 - Regulation of Debt Collection Practices (By: Sens. Gatchalian, Villanueva and Padilla); Taking into consideration:; P.S. Res. No. 21 – Regulation of Debt Collection Practices (By: Sen. Gatchalian); S. Nos. 181 and 1074 - Protecting the Remittances of Overseas Filipino Workers (OFWs) (By: Sens. C. Villar, Villanueva and Estrada)",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-06T01:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate banks, financial institutions and currencies joint with justice and human rights; migrant workers; and ways and means (presiding: sen. villanueva) sen. a.b. padilla room 2/f right wing, senate organizational meeting; s. nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - deposit disclosure and amendments to the laws on secrecy of bank deposits (by: sens. lacson, zubiri, escudero, pangilinan, estrada, e. tulfo and villanueva); s. nos. 370 and 603 - regulation of debt collection practices (by: sens. gatchalian, villanueva and padilla); taking into consideration:; p.s. res. no. 21 – regulation of debt collection practices (by: sen. gatchalian); s. nos. 181 and 1074 - protecting the remittances of overseas filipino workers (ofws) (by: sens. c. villar, villanueva and estrada) scheduled"
-  },
-  {
-    "id": "senate-5",
-    "branch": "Senate",
-    "committee": "Agriculture, Food and Agrarian Reforms (Presiding: Sen. Pangilinan)",
-    "date": "2025-10-07",
-    "time": "9:00 A.M.",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
-    "agenda": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; B. Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-07T09:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate agriculture, food and agrarian reforms (presiding: sen. pangilinan) sen. m.l. quezon room 2/f right wing, senate privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; b. privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
-  },
-  {
-    "id": "senate-6",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee E) (Presiding: Sen. Dela Rosa)",
-    "date": "2025-10-07",
-    "time": "10:00 A.M.",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Department of National Defense and attached agencies, including the Revised AFP Modernization Program",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-07T10:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee e) (presiding: sen. dela rosa) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of national defense and attached agencies, including the revised afp modernization program scheduled"
-  },
-  {
-    "id": "senate-7",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "date": "2025-10-07",
-    "time": "1:00 P.M.",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Optical Media Board",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-07T01:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the optical media board scheduled"
-  },
-  {
-    "id": "senate-8",
-    "branch": "Senate",
     "committee": "Higher, Technical and Vocational Education joint with Basic Education, Local Government, Ways and Means and Finance (Presiding: Sen. Legarda)",
     "date": "2025-10-08",
     "time": "9:00 A.M.",
@@ -112,7 +14,7 @@
     "searchText": "senate higher, technical and vocational education joint with basic education, local government, ways and means and finance (presiding: sen. legarda) session hall 2/f left wing, senate organizational meeting; briefing by the officials of the commission on higher education (ched) and the technical education and skills development authority (tesda) on their key programs; s. nos. 529 and 1418 - second congressional commission on education (edcom ii) act (by: sens. legarda and hontiveros); s. no. 103 – third commission on education (edcom iii) act (by: sens. a. cayetano, p. cayetano, escudero and villanueva); s. nos. 26, 130, 169, 503, 514, 1042 and 1245 - amendment of the universal access to quality tertiary education act (r.a. 10931) (by: sens. p. cayetano, aquino, go, escudero, legarda, estrada and hontiveros); s. nos. 504, 623, 1402 and 1415 - local universities and colleges governance act (by: sens. escudero and gatchalian) scheduled"
   },
   {
-    "id": "senate-9",
+    "id": "senate-2",
     "branch": "Senate",
     "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
     "date": "2025-10-08",
@@ -126,21 +28,21 @@
     "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of agriculture and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-10",
+    "id": "senate-3",
     "branch": "Senate",
     "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo)",
     "date": "2025-10-08",
     "time": "10:00 A.M.",
     "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "agenda": "S. No. 81 - Wage Theft Prevention Act (By: Sen. R. Tulfo); S. No. 82 - Anti-Abuse of Pakyawan Workers Act (By: Sen. R. Tulfo)",
+    "agenda": "S. No. 81 - Wage Theft Prevention Act (By: Sen. R. Tulfo); S. No. 82 - Anti-Abuse of Pakyawan Workers Act (By: Sen. R. Tulfo); S. No. 520 - Calamity Work Compensation Act (By: Sen. Legarda); S. No. 542 – Hazard Pay for Workers in Critical Industries Act (By: Sen. Villanueva)",
     "status": "Scheduled",
     "notes": "",
     "isoDate": "2025-10-08T10:00:00",
     "source": "Senate Weekly Schedule",
-    "searchText": "senate labor, employment and human resources development (presiding: sen. r. tulfo) sen. a.b. padilla room 2/f right wing, senate s. no. 81 - wage theft prevention act (by: sen. r. tulfo); s. no. 82 - anti-abuse of pakyawan workers act (by: sen. r. tulfo) scheduled"
+    "searchText": "senate labor, employment and human resources development (presiding: sen. r. tulfo) sen. a.b. padilla room 2/f right wing, senate s. no. 81 - wage theft prevention act (by: sen. r. tulfo); s. no. 82 - anti-abuse of pakyawan workers act (by: sen. r. tulfo); s. no. 520 - calamity work compensation act (by: sen. legarda); s. no. 542 – hazard pay for workers in critical industries act (by: sen. villanueva) scheduled"
   },
   {
-    "id": "senate-11",
+    "id": "senate-4",
     "branch": "Senate",
     "committee": "Energy joint with Public Services; Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. P. Cayetano)",
     "date": "2025-10-08",
@@ -154,7 +56,7 @@
     "searchText": "senate energy joint with public services; civil service, government reorganization and professional regulation; and finance (presiding: sen. p. cayetano) sen. v.y. sotto room 2/f right wing, senate organizational meeting; presentation and review of key directives from the state of the nation address (sona); legislative priorities of the department of energy; s. nos. 346, 367 and 1164 - energy regulatory commission strengthening (by: sens. p. cayetano, gatchalian and estrada) scheduled"
   },
   {
-    "id": "senate-12",
+    "id": "senate-5",
     "branch": "Senate",
     "committee": "Finance (Subcommittee G) (Presiding: Sen. Go)",
     "date": "2025-10-08",
@@ -168,7 +70,7 @@
     "searchText": "senate finance (subcommittee g) (presiding: sen. go) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the mindanao development authority scheduled"
   },
   {
-    "id": "senate-13",
+    "id": "senate-6",
     "branch": "Senate",
     "committee": "Finance (Subcommittee G) (Presiding: Sen. Go)",
     "date": "2025-10-08",
@@ -182,7 +84,7 @@
     "searchText": "senate finance (subcommittee g) (presiding: sen. go) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; games and amusement board; philippine sports commission; philippine racing commission scheduled"
   },
   {
-    "id": "senate-14",
+    "id": "senate-7",
     "branch": "Senate",
     "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
     "date": "2025-10-09",
@@ -196,35 +98,21 @@
     "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of environment and natural resources and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-15",
+    "id": "senate-8",
     "branch": "Senate",
     "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
     "date": "2025-10-09",
-    "time": "2:00 P.M.",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "time": "1:00 P.M.",
+    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
     "agenda": "Continuation of the FY 2026 Proposed Budget of the Department of Transportation and attached agencies and corporations",
     "status": "Scheduled",
     "notes": "",
-    "isoDate": "2025-10-09T02:00:00",
+    "isoDate": "2025-10-09T01:00:00",
     "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee f) (presiding: sen. ejercito) sen. g.t. pecson room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of transportation and attached agencies and corporations scheduled"
+    "searchText": "senate finance (subcommittee f) (presiding: sen. ejercito) sen. a.b. padilla room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of transportation and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-16",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
-    "date": "2025-10-10",
-    "time": "9:00 A.M.",
-    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Presidential Communications Office and attached agencies and corporations",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-10T09:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the presidential communications office and attached agencies and corporations scheduled"
-  },
-  {
-    "id": "senate-17",
+    "id": "senate-9",
     "branch": "Senate",
     "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
     "date": "2025-10-10",
@@ -236,5 +124,19 @@
     "isoDate": "2025-10-10T09:00:00",
     "source": "Senate Weekly Schedule",
     "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. j.p. laurel room sen. g.t. pecson room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of agriculture and attached agencies and corporations scheduled"
+  },
+  {
+    "id": "senate-10",
+    "branch": "Senate",
+    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
+    "date": "2025-10-10",
+    "time": "12:00 NN",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
+    "agenda": "FY 2026 Proposed Budget of the Presidential Communications Office and attached agencies and corporations",
+    "status": "Scheduled",
+    "notes": "",
+    "isoDate": "2025-10-10T12:00:00",
+    "source": "Senate Weekly Schedule",
+    "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the presidential communications office and attached agencies and corporations scheduled"
   }
 ]

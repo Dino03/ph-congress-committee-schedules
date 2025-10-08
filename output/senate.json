@@ -1,61 +1,5 @@
 [
   {
-    "date": "Monday, October 6",
-    "time": "10:00 A.M.",
-    "committee": "Finance (Subcommittee K) (Presiding: Sen. E. Tulfo)",
-    "subject": "FY 2026 Proposed Budget of the following:; Department of Migrant Workers; Commission on Filipino Overseas",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, October 6",
-    "time": "11:00 A.M.",
-    "committee": "Women, Children, Family Relations and Gender Equality, joint with Justice and Human Rights (TWG)",
-    "subject": "S. Nos. 565 and 845 - Amending R.A. No. 11313 (Safe Spaces Act) (By: Sens. Hontiveros and Estrada)",
-    "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, October 6",
-    "time": "1:00 P.M.",
-    "committee": "Finance (Subcommittee C) (Presiding: Sen. M. Villar)",
-    "subject": "FY 2026 Proposed Budget of the following:; Bases Conversion Development Authority; Philippine Postal Corporation",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Monday, October 6",
-    "time": "1:00 P.M.",
-    "committee": "Banks, Financial Institutions and Currencies joint with Justice and Human Rights; Migrant Workers; and Ways and Means (Presiding: Sen. Villanueva)",
-    "subject": "Organizational Meeting; S. Nos. 38, 150, 232, 286, 397, 1047, 1364 and 1433 - Deposit Disclosure and Amendments to the Laws on Secrecy of Bank Deposits (By: Sens. Lacson, Zubiri, Escudero, Pangilinan, Estrada, E. Tulfo and Villanueva); S. Nos. 370 and 603 - Regulation of Debt Collection Practices (By: Sens. Gatchalian, Villanueva and Padilla); Taking into consideration:; P.S. Res. No. 21 – Regulation of Debt Collection Practices (By: Sen. Gatchalian); S. Nos. 181 and 1074 - Protecting the Remittances of Overseas Filipino Workers (OFWs) (By: Sens. C. Villar, Villanueva and Estrada)",
-    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, October 7",
-    "time": "9:00 A.M.",
-    "committee": "Agriculture, Food and Agrarian Reforms (Presiding: Sen. Pangilinan)",
-    "subject": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; B. Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”",
-    "venue": "Sen. M.L. Quezon Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, October 7",
-    "time": "10:00 A.M.",
-    "committee": "Finance (Subcommittee E) (Presiding: Sen. Dela Rosa)",
-    "subject": "FY 2026 Proposed Budget of the Department of National Defense and attached agencies, including the Revised AFP Modernization Program",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Tuesday, October 7",
-    "time": "1:00 P.M.",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "subject": "FY 2026 Proposed Budget of the Optical Media Board",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Wednesday, October 8",
     "time": "9:00 A.M.",
     "committee": "Higher, Technical and Vocational Education joint with Basic Education, Local Government, Ways and Means and Finance (Presiding: Sen. Legarda)",
@@ -75,7 +19,7 @@
     "date": "Wednesday, October 8",
     "time": "10:00 A.M.",
     "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo)",
-    "subject": "S. No. 81 - Wage Theft Prevention Act (By: Sen. R. Tulfo); S. No. 82 - Anti-Abuse of Pakyawan Workers Act (By: Sen. R. Tulfo)",
+    "subject": "S. No. 81 - Wage Theft Prevention Act (By: Sen. R. Tulfo); S. No. 82 - Anti-Abuse of Pakyawan Workers Act (By: Sen. R. Tulfo); S. No. 520 - Calamity Work Compensation Act (By: Sen. Legarda); S. No. 542 – Hazard Pay for Workers in Critical Industries Act (By: Sen. Villanueva)",
     "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
@@ -113,18 +57,10 @@
   },
   {
     "date": "Thursday, October 9",
-    "time": "2:00 P.M.",
+    "time": "1:00 P.M.",
     "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
     "subject": "Continuation of the FY 2026 Proposed Budget of the Department of Transportation and attached agencies and corporations",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Friday, October 10",
-    "time": "9:00 A.M.",
-    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
-    "subject": "FY 2026 Proposed Budget of the Presidential Communications Office and attached agencies and corporations",
-    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
+    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   },
   {
@@ -133,6 +69,14 @@
     "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
     "subject": "Continuation of the FY 2026 Proposed Budget of the Department of Agriculture and attached agencies and corporations",
     "venue": "Sen. J.P. Laurel Room Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Friday, October 10",
+    "time": "12:00 NN",
+    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
+    "subject": "FY 2026 Proposed Budget of the Presidential Communications Office and attached agencies and corporations",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]
