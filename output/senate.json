@@ -1,21 +1,5 @@
 [
   {
-    "date": "Thursday, October 9",
-    "time": "9:00 A.M.",
-    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
-    "subject": "FY 2026 Proposed Budget of the Department of Environment and Natural Resources and attached agencies and corporations",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Thursday, October 9",
-    "time": "1:00 P.M.",
-    "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
-    "subject": "Continuation of the FY 2026 Proposed Budget of the Department of Transportation and attached agencies and corporations",
-    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Friday, October 10",
     "time": "9:00 A.M.",
     "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
@@ -25,10 +9,90 @@
   },
   {
     "date": "Friday, October 10",
-    "time": "12:00 NN",
+    "time": "12:00 N.N.",
     "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
     "subject": "FY 2026 Proposed Budget of the Presidential Communications Office and attached agencies and corporations",
     "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, October 13",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the following:; Commission on Audit; Civil Service Commission and attached agency",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, October 13",
+    "time": "1:00 P.M.",
+    "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
+    "subject": "FY 2026 Proposed Budget of the following:; Department of Trade and Industry and attached agencies and corporations; Authority of the Freeport Area of Bataan; Cagayan Economic Zone Authority; Philippine Center for Economic Development; Subic Bay Metropolitan Authority; Zamboanga City Special Economic Zone Authority",
+    "venue": "Sen. J.P. Laurel Room Saen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, October 14",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the Department of Finance and attached agencies and corporation",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Tuesday, October 14",
+    "time": "1:00 P.M.",
+    "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
+    "subject": "FY 2026 Proposed Budget of the following:; Department of Foreign Affairs and attached agencies; Southern Philippines Development Authority",
+    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, October 15",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the Commission on Human Rights and attached agencies",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, October 15",
+    "time": "10:00 A.M.",
+    "committee": "Culture and the Arts joint with Sports; and Finance (TWG)",
+    "subject": "S. No. 820 – Amendment to the National Cultural Heritage Act (By: Sen. Legarda); S. Nos. 700, 800, 1028 and 1340 – Philippine Indigenous Games Preservation Act (By: Sens. Lapid, Legarda, Estrada and Marcos)",
+    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Wednesday, October 15",
+    "time": "2:00 P.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the Department of Human Settlements and Urban Development and attached agencies and corporations",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, October 16",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
+    "subject": "FY 2026 Proposed Budget of the following:; Department of the Interior and Local Government and attached agencies; Metropolitan Baguio City, La Trinidad, Itogon, Sablan, Tuba, and Tublay Development Authority; Metropolitan Manila Development Authority",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, October 16",
+    "time": "2:00 P.M.",
+    "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
+    "subject": "FY 2026 Proposed Budget of the National Irrigation Administration",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Friday, October 17",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the Commission on Higher Education",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]
