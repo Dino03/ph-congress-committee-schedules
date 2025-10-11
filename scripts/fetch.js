@@ -40,9 +40,152 @@ try {
 // Endpoints
 const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list';
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
-const HOUSE_WARMUP_URL = 'https://www.congress.gov.ph/committee/schedule';
+const HOUSE_WARMUP_URL = 'https://www.congress.gov.ph/committees/committee-meetings/';
 const HOUSE_STORAGE_STATE_FILE = path.join(OUTPUT_DIR, 'house-storage-state.json');
 const TURNSTILE_RESPONSE_SELECTOR = '[name="cf-turnstile-response"]';
+const CHROME_UA =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36';
+const FIREFOX_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0';
+const PROXY_SERVER =
+  process.env.HTTPS_PROXY || process.env.https_proxy || process.env.HTTP_PROXY || process.env.http_proxy || '';
+
+function launchOptionsWithProxy(options = {}) {
+  if (!PROXY_SERVER) {
+    return options;
+  }
+  return {
+    ...options,
+    proxy: {
+      server: PROXY_SERVER
+    }
+  };
+}
+
+function buildContextOptions(overrides = {}) {
+  const base = {
+    ignoreHTTPSErrors: true,
+    viewport: { width: 1280, height: 900 },
+    userAgent: CHROME_UA,
+    locale: 'en-US',
+    timezoneId: 'Asia/Manila',
+    extraHTTPHeaders: {
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Sec-CH-UA': '"Not)A;Brand";v="24", "Chromium";v="124", "Google Chrome";v="124"',
+      'Sec-CH-UA-Mobile': '?0',
+      'Sec-CH-UA-Platform': '"Windows"',
+      'Upgrade-Insecure-Requests': '1'
+    }
+  };
+
+  return {
+    ...base,
+    ...overrides,
+    extraHTTPHeaders: {
+      ...base.extraHTTPHeaders,
+      ...(overrides.extraHTTPHeaders || {})
+    }
+  };
+}
+
+async function applyStealthPatches(context) {
+  if (!context) return;
+  await context.addInitScript(() => {
+    try {
+      Object.defineProperty(navigator, 'webdriver', {
+        get: () => undefined
+      });
+    } catch {}
+    try {
+      window.chrome = window.chrome || {};
+      window.chrome.runtime = window.chrome.runtime || {};
+    } catch {}
+    try {
+      Object.defineProperty(navigator, 'languages', {
+        get: () => ['en-US', 'en']
+      });
+    } catch {}
+    try {
+      Object.defineProperty(navigator, 'plugins', {
+        get: () => [1, 2, 3]
+      });
+    } catch {}
+    try {
+      const originalQuery = window.navigator.permissions?.query;
+      if (originalQuery) {
+        window.navigator.permissions.query = (parameters) => {
+          if (parameters && parameters.name === 'notifications') {
+            return Promise.resolve({ state: Notification.permission });
+          }
+          return originalQuery.call(window.navigator.permissions, parameters);
+        };
+      }
+    } catch {}
+  });
+}
+
+async function waitForTurnstileBootstrap(page, label) {
+  if (!page) return '';
+  console.log(`[house] warmup: ensuring Turnstile bootstrap (${label})`);
+  try {
+    await appendDebug(`House warmup: ensuring Turnstile bootstrap (${label})`);
+  } catch {}
+  await Promise.all([
+    page.waitForLoadState('load').catch(() => {}),
+    page
+      .waitForFunction(
+        () => typeof window !== 'undefined' && typeof window.turnstile !== 'undefined',
+        { timeout: 60000 }
+      )
+      .catch(() => {})
+  ]);
+  await page.waitForTimeout(2500);
+  const currentTitle = await page.title();
+  console.log(`[house] warmup: page title="${currentTitle}" (${label})`);
+  try {
+    await appendDebug(`[house] warmup page title="${currentTitle}" (${label})`);
+  } catch {}
+  return currentTitle;
+}
+
+async function fetchHouseViaPage(page, payload) {
+  if (!page) return { ok: false };
+  try {
+    const result = await page.evaluate(
+      async ({ apiUrl, body, backendHeader }) => {
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort('timeout'), 30000);
+          try {
+            const response = await fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-hrep-website-backend': backendHeader
+              },
+              credentials: 'include',
+              body: JSON.stringify(body),
+              signal: controller.signal
+            });
+            const text = await response.text();
+            return { status: response.status, text };
+          } finally {
+            clearTimeout(timeout);
+          }
+        } catch (err) {
+          return { error: err?.message || String(err) };
+        }
+      },
+      { apiUrl: HOUSE_API, body: payload, backendHeader: 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1' }
+    );
+    if (result && typeof result === 'object' && 'error' in result) {
+      return { ok: false, error: result.error };
+    }
+    return { ok: true, result };
+  } catch (err) {
+    return { ok: false, error: err?.message || String(err) };
+  }
+}
 
 // ---------------- Debug helpers ----------------
 async function appendDebug(line) {
@@ -82,10 +225,16 @@ async function postJson(url, payload = {}, headers = {}, options = {}) {
   if (!browser) {
     console.log('[postJson] launching new browser instance');
     try {
-      browser = await chromium.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-dev-shm-usage']
-      });
+      browser = await chromium.launch(
+        launchOptionsWithProxy({
+          headless: true,
+          args: [
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-blink-features=AutomationControlled'
+          ]
+        })
+      );
       ownBrowser = true;
       console.log('[postJson] browser launch successful');
     } catch (e) {
@@ -100,7 +249,8 @@ async function postJson(url, payload = {}, headers = {}, options = {}) {
   }
 
   if (!context) {
-    context = await browser.newContext();
+    context = await browser.newContext(buildContextOptions());
+    await applyStealthPatches(context);
     ownContext = true;
   }
 
@@ -168,16 +318,22 @@ async function postJson(url, payload = {}, headers = {}, options = {}) {
   }
 }
 
-async function prepareHouseSession() {
+async function prepareHouseSession(payload) {
   console.log('[house] warmup: launching browser');
   try {
     await appendDebug('House warmup: launching browser');
   } catch {}
 
-  const browser = await chromium.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-dev-shm-usage']
-  });
+  const browser = await chromium.launch(
+    launchOptionsWithProxy({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-blink-features=AutomationControlled'
+      ]
+    })
+  );
 
   try {
     let storageState;
@@ -202,8 +358,47 @@ async function prepareHouseSession() {
       }
     }
 
-    const context = await browser.newContext(storageState ? { storageState } : {});
+    const contextOverrides = storageState ? { storageState } : {};
+    const contextOptions = buildContextOptions({ ...contextOverrides });
+    const context = await browser.newContext(contextOptions);
+    await applyStealthPatches(context);
     const page = await context.newPage();
+    page.on('request', (req) => {
+      const url = req.url();
+      if (url.includes('challenges.cloudflare.com')) {
+        console.log(`[house] warmup: cf request ${req.method()} ${url}`);
+      }
+    });
+    let pageFetchResult = null;
+    let flowToken = '';
+
+    page.on('response', async (resp) => {
+      const url = resp.url();
+      if (url.includes('challenges.cloudflare.com')) {
+        let bodyPreview = '';
+        try {
+          const text = await resp.text();
+          if (text) {
+            if (url.includes('/flow/') && !flowToken) {
+              flowToken = text.trim();
+              if (flowToken) {
+                console.log(
+                  `[house] warmup: captured flow token length=${flowToken.length}`
+                );
+                try {
+                  await appendDebug(
+                    `House warmup: captured flow token length=${flowToken.length}`
+                  );
+                } catch {}
+              }
+            }
+            bodyPreview = ` body=${text.slice(0, 120)}`;
+          }
+        } catch {}
+        console.log(`[house] warmup: cf response ${resp.status()} ${url}${bodyPreview}`);
+      }
+    });
+    let cookieHeader = '';
 
     try {
       console.log(`[house] warmup: navigating to ${HOUSE_WARMUP_URL}`);
@@ -212,7 +407,7 @@ async function prepareHouseSession() {
       } catch {}
 
       await page.goto(HOUSE_WARMUP_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
-      await page.waitForTimeout(2500);
+      await waitForTurnstileBootstrap(page, 'initial');
 
       console.log('[house] warmup: page loaded');
       try {
@@ -226,17 +421,37 @@ async function prepareHouseSession() {
         } catch {}
 
         try {
-          await page.waitForSelector(TURNSTILE_RESPONSE_SELECTOR, { timeout: 60000 });
+          const turnstileLocator = page.locator(TURNSTILE_RESPONSE_SELECTOR);
+          await turnstileLocator.waitFor({ state: 'attached', timeout: 60000 });
           try {
             await appendDebug(`House warmup: Turnstile selector observed (${label})`);
           } catch {}
 
+          const siteKey = await page.evaluate(() => {
+            const el = document.querySelector('[data-sitekey]');
+            return el?.getAttribute('data-sitekey') || '';
+          });
+          if (siteKey) {
+            console.log(`[house] warmup: detected Turnstile site key (${label}): ${siteKey}`);
+            try {
+              await appendDebug(`House warmup: detected Turnstile site key (${label}): ${siteKey}`);
+            } catch {}
+          }
+
           const deadline = Date.now() + 60000;
           while (Date.now() < deadline) {
             const tokenValue = await page.evaluate((selector) => {
-              const el = document.querySelector(selector);
-              if (!el || typeof el.value !== 'string') return '';
-              return el.value.trim();
+              const input = document.querySelector(selector);
+              if (input && typeof input.value === 'string' && input.value.trim()) {
+                return input.value.trim();
+              }
+              if (typeof window.turnstile !== 'undefined' && typeof window.turnstile.getResponse === 'function') {
+                const resp = window.turnstile.getResponse();
+                if (typeof resp === 'string' && resp.trim()) {
+                  return resp.trim();
+                }
+              }
+              return '';
             }, TURNSTILE_RESPONSE_SELECTOR);
             if (tokenValue) {
               return { token: tokenValue, sawSelector: true };
@@ -275,10 +490,23 @@ async function prepareHouseSession() {
           await appendDebug('House warmup: reloading page after missing selector');
         } catch {}
         await page.reload({ waitUntil: 'domcontentloaded', timeout: 60000 });
-        await page.waitForTimeout(2500);
+        await waitForTurnstileBootstrap(page, 'reload');
         captureResult = await captureToken('reload');
         turnstileToken = captureResult.token;
         sawSelector = sawSelector || captureResult.sawSelector;
+      }
+
+      if (!turnstileToken && flowToken) {
+        const trimmedFlow = flowToken.trim();
+        if (trimmedFlow) {
+          console.log('[scripts/fetch.js] warmup: falling back to flow token response');
+          try {
+            await appendDebug(
+              `[scripts/fetch.js] House warmup: falling back to flow token length=${trimmedFlow.length}`
+            );
+          } catch {}
+          turnstileToken = trimmedFlow;
+        }
       }
 
       if (turnstileToken) {
@@ -290,18 +518,51 @@ async function prepareHouseSession() {
         } catch {}
       } else {
         const selectorState = sawSelector ? 'seen' : 'missing';
-        console.error(
-          `[house] warmup: Turnstile token missing after attempts (selector ${selectorState}) - scripts/fetch.js`
+        console.warn(
+          `[house] warmup: Turnstile token missing (selector ${selectorState}), trying in-page fetch`
         );
         try {
           await appendDebug(
-            `House warmup: Turnstile token missing after attempts (selector ${selectorState})`
+            `House warmup: Turnstile token missing (selector ${selectorState}), trying in-page fetch`
           );
         } catch {}
-        throw new Error('Turnstile token unavailable');
+        if (payload) {
+          const fallback = await fetchHouseViaPage(page, payload);
+          if (fallback.ok && fallback.result) {
+            pageFetchResult = fallback.result;
+            console.log(
+              `[house] warmup: in-page fetch completed with status ${fallback.result.status}`
+            );
+            try {
+              await appendDebug(
+                `House warmup: in-page fetch status ${fallback.result.status}`
+              );
+            } catch {}
+          } else {
+            console.warn(
+              `[house] warmup: in-page fetch failed: ${fallback.error || 'unknown error'}`
+            );
+            try {
+              await appendDebug(
+                `House warmup: in-page fetch failed: ${fallback.error || 'unknown error'}`
+              );
+            } catch {}
+          }
+        }
+
+        if (!pageFetchResult) {
+          throw new Error('Turnstile token unavailable');
+        }
       }
 
-      return { browser, context, turnstileToken };
+      try {
+        const cookies = await context.cookies(HOUSE_API);
+        if (Array.isArray(cookies) && cookies.length > 0) {
+          cookieHeader = cookies.map((c) => `${c.name}=${c.value}`).join('; ');
+        }
+      } catch {}
+
+      return { browser, context, turnstileToken, pageFetchResult, cookieHeader };
     } finally {
       try {
         await page.close();
@@ -315,16 +576,20 @@ async function prepareHouseSession() {
 
 async function fetchSenateHTML(url) {
   console.log('[fetchSenateHTML] starting browser launch');
-  const browser = await chromium.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
-  });
+  const browser = await chromium.launch(
+    launchOptionsWithProxy({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--disable-blink-features=AutomationControlled'
+      ]
+    })
+  );
   try {
-    const context = await browser.newContext({
-      userAgent:
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
-      viewport: { width: 1280, height: 900 }
-    });
+    const context = await browser.newContext(buildContextOptions());
+    await applyStealthPatches(context);
     const page = await context.newPage();
     const startedAt = Date.now();
     console.log(`[fetchSenateHTML] navigating to ${url}`);
@@ -433,12 +698,11 @@ async function main() {
 
     // Exact headers from successful browser request
     const headers = {
-      'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
+      'User-Agent': FIREFOX_UA,
       Accept: '*/*',
       'Accept-Language': 'en-US,en;q=0.5',
       'Accept-Encoding': 'gzip, deflate, br, zstd',
-      Referer: 'https://www.congress.gov.ph/',
+      Referer: 'https://www.congress.gov.ph/committees/committee-meetings/',
       'Content-Type': 'application/json',
       'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
       Origin: 'https://www.congress.gov.ph',
@@ -461,6 +725,8 @@ async function main() {
 
     let houseSession;
     let turnstileToken = '';
+    let inPageApiResult = null;
+    let houseCookieHeader = '';
 
     const closeHouseSession = async () => {
       if (houseSession?.browser) {
@@ -476,8 +742,10 @@ async function main() {
         await closeHouseSession();
       }
       try {
-        houseSession = await prepareHouseSession();
+        houseSession = await prepareHouseSession(payload);
         turnstileToken = houseSession?.turnstileToken || '';
+        inPageApiResult = houseSession?.pageFetchResult || null;
+        houseCookieHeader = houseSession?.cookieHeader || '';
         console.log(`[house] warmup session ready (${tag}), tokenLen=${turnstileToken.length}`);
         try {
           await appendDebug(
@@ -497,7 +765,7 @@ async function main() {
 
     try {
       await initHouseSession('initial');
-      if (!turnstileToken) {
+      if (!turnstileToken && !inPageApiResult) {
         console.warn('[house] warmup returned empty Turnstile token, retrying once');
         try {
           await appendDebug('House warmup returned empty Turnstile token, retrying once');
@@ -505,7 +773,24 @@ async function main() {
         await initHouseSession('refresh');
       }
 
-      for (let i = 0; i < delays.length; i++) {
+      if (inPageApiResult && inPageApiResult.status === 200) {
+        try {
+          apiResp = JSON.parse(inPageApiResult.text || '');
+          console.log('[house] in-page fetch provided API response');
+          try {
+            await appendDebug('House in-page fetch provided API response.');
+          } catch {}
+        } catch (parseErr) {
+          console.warn('[house] in-page fetch JSON parse failed, falling back to direct API');
+          try {
+            await appendDebug('House in-page fetch JSON parse failed, falling back to direct API.');
+          } catch {}
+          apiResp = null;
+          inPageApiResult = null;
+        }
+      }
+
+      for (let i = 0; i < delays.length && !apiResp; i++) {
         try {
           console.log(`[house] attempt ${i + 1} starting...`);
           try {
@@ -514,6 +799,9 @@ async function main() {
           const attemptHeaders = { ...headers };
           if (turnstileToken) {
             attemptHeaders['cf-turnstile-response'] = turnstileToken;
+          }
+          if (houseCookieHeader) {
+            attemptHeaders.Cookie = houseCookieHeader;
           }
           try {
             await appendDebug(
