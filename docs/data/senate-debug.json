@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-10-10T03:02:30.705Z",
+  "generatedAt": "2025-10-11T02:55:12.229Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 12,
-      "parsedCount": 12,
+      "rawCount": 10,
+      "parsedCount": 10,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,38 +14,10 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 12,
+  "parsedCount": 10,
   "preview": [
     {
       "id": "senate-1",
-      "branch": "Senate",
-      "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
-      "date": "2025-10-10",
-      "time": "9:00 A.M.",
-      "venue": "Sen. J.P. Laurel Room Sen. C.M. Recto Room 2/F Right Wing, Senate",
-      "agenda": "Continuation of the FY 2026 Proposed Budget of the Department of Agriculture and attached agencies and corporations",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-10T09:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. j.p. laurel room sen. c.m. recto room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of agriculture and attached agencies and corporations scheduled"
-    },
-    {
-      "id": "senate-2",
-      "branch": "Senate",
-      "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
-      "date": "2025-10-10",
-      "time": "12:00 N.N.",
-      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the Presidential Communications Office and attached agencies and corporations",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-10T12:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. a.b. padilla room 2/f right wing, senate fy 2026 proposed budget of the presidential communications office and attached agencies and corporations scheduled"
-    },
-    {
-      "id": "senate-3",
       "branch": "Senate",
       "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
       "date": "2025-10-13",
@@ -59,7 +31,7 @@
       "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following:; commission on audit; civil service commission and attached agency scheduled"
     },
     {
-      "id": "senate-4",
+      "id": "senate-2",
       "branch": "Senate",
       "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
       "date": "2025-10-13",
@@ -73,7 +45,7 @@
       "searchText": "senate finance (subcommittee i) (presiding: sen. marcos) sen. j.p. laurel room saen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; department of trade and industry and attached agencies and corporations; authority of the freeport area of bataan; cagayan economic zone authority; philippine center for economic development; subic bay metropolitan authority; zamboanga city special economic zone authority scheduled"
     },
     {
-      "id": "senate-5",
+      "id": "senate-3",
       "branch": "Senate",
       "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
       "date": "2025-10-14",
@@ -85,6 +57,34 @@
       "isoDate": "2025-10-14T10:00:00",
       "source": "Senate Weekly Schedule",
       "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of finance and attached agencies and corporation scheduled"
+    },
+    {
+      "id": "senate-4",
+      "branch": "Senate",
+      "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
+      "date": "2025-10-14",
+      "time": "1:00 P.M.",
+      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the following:; Department of Foreign Affairs and attached agencies; Southern Philippines Development Authority",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-14T01:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate finance (subcommittee i) (presiding: sen. marcos) sen. a.b. padilla room 2/f right wing, senate fy 2026 proposed budget of the following:; department of foreign affairs and attached agencies; southern philippines development authority scheduled"
+    },
+    {
+      "id": "senate-5",
+      "branch": "Senate",
+      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+      "date": "2025-10-15",
+      "time": "10:00 A.M.",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Commission on Human Rights and attached agencies",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-15T10:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the commission on human rights and attached agencies scheduled"
     }
   ]
 }

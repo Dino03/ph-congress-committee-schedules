@@ -2100,35 +2100,7 @@
     "searchText": "house of representatives energy conf. rms. 3&4, rvm bldg. hb 855 – restructuring the energy regulatory commission (erc), amending for the purpose sections 38-44 and 46 of ra 9136, otherwise known as the electric power industry reform act of 2001 (rep. presley de jesus) hb 1555 – restructuring the erc, amending sections 38-41, 43, 44, and 46 and repealing section 42 of ra 9136 (rep. miguel luis villafuerte) hb 2901 – reforming and restructuring the erc (rep. arnie fuentebella) hb 4147 – strengthening the erc, amending for the purpose sections 38-46 of ra 9136 (deputy speaker kristine singson-meehan) hbs 314 & 865 – establishing a national policy framework for the development, utilization, and commercialization of energy storage systems (reps. javier miguel lopez benitez and sergio dagooc) hbs 867 & 3235 – proclaiming the first monday of august every year as line workers appreciation day (reps. sergio dagooc and miguel luis villafuerte) hbs 868 & 2399 - providing for mandatory insurance coverage and benefits for all line workers (reps. sergio dagooc and miguel luis villafuerte) privilege speech delivered on the floor on august 4, 2025 – on honoring the unsung heroes of electrification and national progress, celebrating the national line workers appreciation day (rep. sergio dagooc) scheduled"
   },
   {
-    "id": "senate-1",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
-    "date": "2025-10-10",
-    "time": "9:00 A.M.",
-    "venue": "Sen. J.P. Laurel Room Sen. C.M. Recto Room 2/F Right Wing, Senate",
-    "agenda": "Continuation of the FY 2026 Proposed Budget of the Department of Agriculture and attached agencies and corporations",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-10T09:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. j.p. laurel room sen. c.m. recto room 2/f right wing, senate continuation of the fy 2026 proposed budget of the department of agriculture and attached agencies and corporations scheduled"
-  },
-  {
     "id": "senate-2",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
-    "date": "2025-10-10",
-    "time": "12:00 N.N.",
-    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Presidential Communications Office and attached agencies and corporations",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-10T12:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. a.b. padilla room 2/f right wing, senate fy 2026 proposed budget of the presidential communications office and attached agencies and corporations scheduled"
-  },
-  {
-    "id": "senate-4",
     "branch": "Senate",
     "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
     "date": "2025-10-13",
@@ -2142,7 +2114,7 @@
     "searchText": "senate finance (subcommittee i) (presiding: sen. marcos) sen. j.p. laurel room saen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; department of trade and industry and attached agencies and corporations; authority of the freeport area of bataan; cagayan economic zone authority; philippine center for economic development; subic bay metropolitan authority; zamboanga city special economic zone authority scheduled"
   },
   {
-    "id": "senate-3",
+    "id": "senate-1",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-13",
@@ -2156,7 +2128,7 @@
     "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following:; commission on audit; civil service commission and attached agency scheduled"
   },
   {
-    "id": "senate-6",
+    "id": "senate-4",
     "branch": "Senate",
     "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
     "date": "2025-10-14",
@@ -2170,7 +2142,7 @@
     "searchText": "senate finance (subcommittee i) (presiding: sen. marcos) sen. a.b. padilla room 2/f right wing, senate fy 2026 proposed budget of the following:; department of foreign affairs and attached agencies; southern philippines development authority scheduled"
   },
   {
-    "id": "senate-5",
+    "id": "senate-3",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-14",
@@ -2184,7 +2156,7 @@
     "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of finance and attached agencies and corporation scheduled"
   },
   {
-    "id": "senate-9",
+    "id": "senate-7",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-15",
@@ -2198,7 +2170,7 @@
     "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of human settlements and urban development and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-8",
+    "id": "senate-6",
     "branch": "Senate",
     "committee": "Culture and the Arts joint with Sports; and Finance (TWG)",
     "date": "2025-10-15",
@@ -2212,7 +2184,7 @@
     "searchText": "senate culture and the arts joint with sports; and finance (twg) sen. a.m. tolentino room 2/f right wing, senate s. no. 820 – amendment to the national cultural heritage act (by: sen. legarda); s. nos. 700, 800, 1028 and 1340 – philippine indigenous games preservation act (by: sens. lapid, legarda, estrada and marcos) scheduled"
   },
   {
-    "id": "senate-7",
+    "id": "senate-5",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-15",
@@ -2226,7 +2198,7 @@
     "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the commission on human rights and attached agencies scheduled"
   },
   {
-    "id": "senate-11",
+    "id": "senate-9",
     "branch": "Senate",
     "committee": "Finance (Subcommittee J) (Presiding: Sen. Pangilinan)",
     "date": "2025-10-16",
@@ -2240,7 +2212,7 @@
     "searchText": "senate finance (subcommittee j) (presiding: sen. pangilinan) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the national irrigation administration scheduled"
   },
   {
-    "id": "senate-10",
+    "id": "senate-8",
     "branch": "Senate",
     "committee": "Finance (Subcommittee F) (Presiding: Sen. Ejercito)",
     "date": "2025-10-16",
@@ -2254,7 +2226,7 @@
     "searchText": "senate finance (subcommittee f) (presiding: sen. ejercito) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the following:; department of the interior and local government and attached agencies; metropolitan baguio city, la trinidad, itogon, sablan, tuba, and tublay development authority; metropolitan manila development authority scheduled"
   },
   {
-    "id": "senate-12",
+    "id": "senate-10",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-17",
