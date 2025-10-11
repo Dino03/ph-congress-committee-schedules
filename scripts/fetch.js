@@ -100,7 +100,7 @@ async function postJson(url, payload = {}, headers = {}, options = {}) {
   }
 
   if (!context) {
-    context = await browser.newContext();
+    context = await browser.newContext({ ignoreHTTPSErrors: true });
     ownContext = true;
   }
 
@@ -202,7 +202,10 @@ async function prepareHouseSession() {
       }
     }
 
-    const context = await browser.newContext(storageState ? { storageState } : {});
+    const context = await browser.newContext({
+      ignoreHTTPSErrors: true,
+      ...(storageState ? { storageState } : {})
+    });
     const page = await context.newPage();
 
     try {
@@ -226,12 +229,16 @@ async function prepareHouseSession() {
         } catch {}
 
         try {
-          await page.waitForSelector(TURNSTILE_RESPONSE_SELECTOR, { timeout: 60000 });
+          await page.waitForSelector(TURNSTILE_RESPONSE_SELECTOR, {
+            state: 'attached',
+            timeout: 60000
+          });
           try {
             await appendDebug(`House warmup: Turnstile selector observed (${label})`);
           } catch {}
 
           const deadline = Date.now() + 60000;
+          let reportedEmpty = false;
           while (Date.now() < deadline) {
             const tokenValue = await page.evaluate((selector) => {
               const el = document.querySelector(selector);
@@ -240,6 +247,15 @@ async function prepareHouseSession() {
             }, TURNSTILE_RESPONSE_SELECTOR);
             if (tokenValue) {
               return { token: tokenValue, sawSelector: true };
+            }
+            if (!reportedEmpty) {
+              reportedEmpty = true;
+              console.log('[house] warmup: Turnstile selector present but value empty, continuing to poll');
+              try {
+                await appendDebug(
+                  'House warmup: Turnstile selector present but value empty, continuing to poll'
+                );
+              } catch {}
             }
             await page.waitForTimeout(500);
           }
@@ -321,6 +337,7 @@ async function fetchSenateHTML(url) {
   });
   try {
     const context = await browser.newContext({
+      ignoreHTTPSErrors: true,
       userAgent:
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
       viewport: { width: 1280, height: 900 }
