@@ -440,19 +440,10 @@ async function prepareHouseSession(payload) {
 
           const deadline = Date.now() + 60000;
           while (Date.now() < deadline) {
-            const tokenValue = await page.evaluate((selector) => {
-              const input = document.querySelector(selector);
-              if (input && typeof input.value === 'string' && input.value.trim()) {
-                return input.value.trim();
-              }
-              if (typeof window.turnstile !== 'undefined' && typeof window.turnstile.getResponse === 'function') {
-                const resp = window.turnstile.getResponse();
-                if (typeof resp === 'string' && resp.trim()) {
-                  return resp.trim();
-                }
-              }
-              return '';
-            }, TURNSTILE_RESPONSE_SELECTOR);
+            const tokenValue = await turnstileLocator.evaluate((el) => {
+              if (!el || typeof el.value !== 'string') return '';
+              return el.value.trim();
+            });
             if (tokenValue) {
               return { token: tokenValue, sawSelector: true };
             }
