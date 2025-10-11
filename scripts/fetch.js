@@ -40,7 +40,7 @@ try {
 // Endpoints
 const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-schedule/list';
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
-const HOUSE_WARMUP_URL = 'https://www.congress.gov.ph/committee/schedule';
+const HOUSE_WARMUP_URL = 'https://www.congress.gov.ph/committees/committee-meetings/';
 const HOUSE_STORAGE_STATE_FILE = path.join(OUTPUT_DIR, 'house-storage-state.json');
 const TURNSTILE_RESPONSE_SELECTOR = '[name="cf-turnstile-response"]';
 
@@ -226,18 +226,18 @@ async function prepareHouseSession() {
         } catch {}
 
         try {
-          await page.waitForSelector(TURNSTILE_RESPONSE_SELECTOR, { timeout: 60000 });
+          const turnstileLocator = page.locator(TURNSTILE_RESPONSE_SELECTOR);
+          await turnstileLocator.waitFor({ state: 'attached', timeout: 60000 });
           try {
             await appendDebug(`House warmup: Turnstile selector observed (${label})`);
           } catch {}
 
           const deadline = Date.now() + 60000;
           while (Date.now() < deadline) {
-            const tokenValue = await page.evaluate((selector) => {
-              const el = document.querySelector(selector);
+            const tokenValue = await turnstileLocator.evaluate((el) => {
               if (!el || typeof el.value !== 'string') return '';
               return el.value.trim();
-            }, TURNSTILE_RESPONSE_SELECTOR);
+            });
             if (tokenValue) {
               return { token: tokenValue, sawSelector: true };
             }
@@ -438,7 +438,7 @@ async function main() {
       Accept: '*/*',
       'Accept-Language': 'en-US,en;q=0.5',
       'Accept-Encoding': 'gzip, deflate, br, zstd',
-      Referer: 'https://www.congress.gov.ph/',
+      Referer: 'https://www.congress.gov.ph/committees/committee-meetings/',
       'Content-Type': 'application/json',
       'x-hrep-website-backend': 'cc8bd00d-9b88-4fee-aafe-311c574fcdc1',
       Origin: 'https://www.congress.gov.ph',
