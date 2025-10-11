@@ -45,50 +45,52 @@ export function EventDetails({ event, isOpen, onClose }: EventDetailsProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] bg-card rounded-xl">
-        <DialogHeader>
-          <div className="flex items-center gap-4">
-            <div className={cn(colors.detailIconBg, 'p-3 rounded-full')}>
-              <EventIcon branch={event.branch} className={cn('h-6 w-6', colors.detailIconText)} />
+      <DialogContent className="sm:max-w-[425px] bg-card rounded-xl max-h-[calc(100vh-4rem)] overflow-hidden p-0">
+        <div className="flex max-h-[calc(100vh-4rem)] flex-col">
+          <DialogHeader className="px-6 pb-4 pt-6">
+            <div className="flex items-center gap-4">
+              <div className={cn(colors.detailIconBg, 'rounded-full p-3')}>
+                <EventIcon branch={event.branch} className={cn('h-6 w-6', colors.detailIconText)} />
+              </div>
+              <div className="space-y-1">
+                <Badge
+                  variant="secondary"
+                  className={cn('w-fit', colors.badgeBg, colors.badgeText, colors.badgeBorder)}
+                >
+                  {label}
+                </Badge>
+                <DialogTitle className="text-2xl font-headline text-foreground">
+                  {event.committee}
+                </DialogTitle>
+              </div>
             </div>
+          </DialogHeader>
+          <Separator className="flex-shrink-0" />
+          <div className="flex-1 space-y-4 overflow-y-auto px-6 py-4">
             <div className="space-y-1">
-              <Badge
-                variant="secondary"
-                className={cn('w-fit', colors.badgeBg, colors.badgeText, colors.badgeBorder)}
-              >
-                {label}
-              </Badge>
-              <DialogTitle className="text-2xl font-headline text-foreground">
-                {event.committee}
-              </DialogTitle>
+              <p className="text-muted-foreground font-semibold">{formattedDate}</p>
+              <p className="text-sm text-muted-foreground">{timeLabel}</p>
+              <p className="text-sm text-muted-foreground">{venueLabel}</p>
             </div>
-          </div>
-        </DialogHeader>
-        <Separator />
-        <div className="space-y-4 py-4">
-          <div className="space-y-1">
-            <p className="text-muted-foreground font-semibold">{formattedDate}</p>
-            <p className="text-sm text-muted-foreground">{timeLabel}</p>
-            <p className="text-sm text-muted-foreground">{venueLabel}</p>
-          </div>
 
-          {agendaItems.length > 0 ? (
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-foreground">Agenda</h3>
-              <ul className="list-disc pl-4 space-y-1 text-sm text-foreground/90">
-                {agendaItems.map((item, index) => (
-                  <li key={`${event.id}-agenda-${index}`}>{item}</li>
-                ))}
-              </ul>
+            {agendaItems.length > 0 ? (
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-foreground">Agenda</h3>
+                <ul className="list-disc space-y-1 pl-4 text-sm text-foreground/90">
+                  {agendaItems.map((item, index) => (
+                    <li key={`${event.id}-agenda-${index}`}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">Agenda to follow.</p>
+            )}
+
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <p>Status: {event.status || 'Scheduled'}</p>
+              {event.notes && <p>Notes: {event.notes}</p>}
+              {event.source && <p>Source: {event.source}</p>}
             </div>
-          ) : (
-            <p className="text-sm text-muted-foreground">Agenda to follow.</p>
-          )}
-
-          <div className="space-y-1 text-sm text-muted-foreground">
-            <p>Status: {event.status || 'Scheduled'}</p>
-            {event.notes && <p>Notes: {event.notes}</p>}
-            {event.source && <p>Source: {event.source}</p>}
           </div>
         </div>
       </DialogContent>
