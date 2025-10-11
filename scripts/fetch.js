@@ -42,6 +42,7 @@ const HOUSE_API = 'https://api.v2.congress.hrep.online/hrep/api-v1/committee-sch
 const SENATE_SCHED_URL = 'https://web.senate.gov.ph/committee/schedwk.asp';
 const HOUSE_WARMUP_URL = 'https://www.congress.gov.ph/committee/schedule';
 const HOUSE_STORAGE_STATE_FILE = path.join(OUTPUT_DIR, 'house-storage-state.json');
+const TURNSTILE_RESPONSE_SELECTOR = '[name="cf-turnstile-response"]';
 
 // ---------------- Debug helpers ----------------
 async function appendDebug(line) {
@@ -204,57 +205,108 @@ async function prepareHouseSession() {
     const context = await browser.newContext(storageState ? { storageState } : {});
     const page = await context.newPage();
 
-    console.log(`[house] warmup: navigating to ${HOUSE_WARMUP_URL}`);
     try {
-      await appendDebug(`House warmup: navigating to ${HOUSE_WARMUP_URL}`);
-    } catch {}
-
-    await page.goto(HOUSE_WARMUP_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
-    await page.waitForTimeout(2500);
-
-    console.log('[house] warmup: page loaded');
-    try {
-      await appendDebug('House warmup: DOM ready + delay complete');
-    } catch {}
-
-    let turnstileToken = '';
-    try {
-      await page.waitForFunction(
-        () => {
-          const w = window;
-          const widget = w?.turnstile;
-          if (!widget || typeof widget.getResponse !== 'function') return false;
-          const resp = widget.getResponse();
-          return typeof resp === 'string' && resp.length > 0;
-        },
-        { timeout: 20000 }
-      );
-      turnstileToken = await page.evaluate(() => window?.turnstile?.getResponse?.() || '');
-    } catch (tokenErr) {
-      console.warn('[house] warmup: failed to obtain Turnstile token', tokenErr?.message || tokenErr);
+      console.log(`[house] warmup: navigating to ${HOUSE_WARMUP_URL}`);
       try {
-        await appendDebug(
-          `House warmup: failed to obtain Turnstile token: ${tokenErr?.message || tokenErr}`
+        await appendDebug(`House warmup: navigating to ${HOUSE_WARMUP_URL}`);
+      } catch {}
+
+      await page.goto(HOUSE_WARMUP_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      await page.waitForTimeout(2500);
+
+      console.log('[house] warmup: page loaded');
+      try {
+        await appendDebug('House warmup: DOM ready + delay complete');
+      } catch {}
+
+      const captureToken = async (label) => {
+        console.log(`[house] warmup: waiting for Turnstile response (${label})`);
+        try {
+          await appendDebug(`House warmup: waiting for Turnstile response (${label})`);
+        } catch {}
+
+        try {
+          await page.waitForSelector(TURNSTILE_RESPONSE_SELECTOR, { timeout: 60000 });
+          try {
+            await appendDebug(`House warmup: Turnstile selector observed (${label})`);
+          } catch {}
+
+          const deadline = Date.now() + 60000;
+          while (Date.now() < deadline) {
+            const tokenValue = await page.evaluate((selector) => {
+              const el = document.querySelector(selector);
+              if (!el || typeof el.value !== 'string') return '';
+              return el.value.trim();
+            }, TURNSTILE_RESPONSE_SELECTOR);
+            if (tokenValue) {
+              return { token: tokenValue, sawSelector: true };
+            }
+            await page.waitForTimeout(500);
+          }
+
+          console.warn('[house] warmup: Turnstile selector seen but token empty');
+          try {
+            await appendDebug('House warmup: Turnstile selector seen but token empty');
+          } catch {}
+          return { token: '', sawSelector: true };
+        } catch (tokenErr) {
+          console.warn(
+            `[house] warmup: Turnstile selector missing (${label}): ${tokenErr?.message || tokenErr}`
+          );
+          try {
+            await appendDebug(
+              `House warmup: Turnstile selector missing (${label}): ${tokenErr?.message || tokenErr}`
+            );
+          } catch {}
+          return { token: '', sawSelector: false };
+        }
+      };
+
+      let turnstileToken = '';
+      let sawSelector = false;
+
+      let captureResult = await captureToken('initial');
+      turnstileToken = captureResult.token;
+      sawSelector = captureResult.sawSelector;
+
+      if (!captureResult.sawSelector) {
+        console.log('[house] warmup: reloading page after missing selector');
+        try {
+          await appendDebug('House warmup: reloading page after missing selector');
+        } catch {}
+        await page.reload({ waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForTimeout(2500);
+        captureResult = await captureToken('reload');
+        turnstileToken = captureResult.token;
+        sawSelector = sawSelector || captureResult.sawSelector;
+      }
+
+      if (turnstileToken) {
+        console.log('[house] warmup: captured Turnstile token');
+        try {
+          await appendDebug(
+            `House warmup: captured Turnstile token length=${turnstileToken.length}`
+          );
+        } catch {}
+      } else {
+        const selectorState = sawSelector ? 'seen' : 'missing';
+        console.error(
+          `[house] warmup: Turnstile token missing after attempts (selector ${selectorState}) - scripts/fetch.js`
         );
+        try {
+          await appendDebug(
+            `House warmup: Turnstile token missing after attempts (selector ${selectorState})`
+          );
+        } catch {}
+        throw new Error('Turnstile token unavailable');
+      }
+
+      return { browser, context, turnstileToken };
+    } finally {
+      try {
+        await page.close();
       } catch {}
     }
-
-    if (turnstileToken) {
-      console.log('[house] warmup: captured Turnstile token');
-      try {
-        await appendDebug(
-          `House warmup: captured Turnstile token length=${turnstileToken.length}`
-        );
-      } catch {}
-    } else {
-      console.warn('[house] warmup: Turnstile token missing after wait');
-      try {
-        await appendDebug('House warmup: Turnstile token missing after wait');
-      } catch {}
-    }
-
-    await page.close();
-    return { browser, context, turnstileToken };
   } catch (err) {
     await browser.close();
     throw err;
@@ -403,7 +455,7 @@ async function main() {
     } catch {}
 
     // Simple backoff retry for transient errors
-    const delays = [500, 1500, 3500];
+    const delays = [500, 1500, 3500, 7000];
     let apiResp = null;
     let lastErr = null;
 
