@@ -1,28 +1,28 @@
-[2025-10-11T12:14:13.733Z] [house] request starting
-[2025-10-11T12:14:13.734Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-10-11T12:14:13.734Z] House headers count: 14
-[2025-10-11T12:14:13.735Z] House warmup: launching browser
-[2025-10-11T12:14:14.912Z] House warmup: loaded storage state from disk
-[2025-10-11T12:14:14.994Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
-[2025-10-11T12:14:17.941Z] House warmup: DOM ready + delay complete
-[2025-10-11T12:14:17.942Z] House warmup: waiting for Turnstile response (initial)
-[2025-10-11T12:15:17.945Z] House warmup: Turnstile selector missing (initial): page.waitForSelector: Timeout 60000ms exceeded.
+[2025-10-11T12:22:06.768Z] [house] request starting
+[2025-10-11T12:22:06.769Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-10-11T12:22:06.769Z] House headers count: 14
+[2025-10-11T12:22:06.770Z] House warmup: launching browser
+[2025-10-11T12:22:08.115Z] House warmup: loaded storage state from disk
+[2025-10-11T12:22:08.191Z] House warmup: navigating to https://www.congress.gov.ph/committee/schedule
+[2025-10-11T12:22:11.362Z] House warmup: DOM ready + delay complete
+[2025-10-11T12:22:11.363Z] House warmup: waiting for Turnstile response (initial)
+[2025-10-11T12:23:11.367Z] House warmup: Turnstile selector missing (initial): page.waitForSelector: Timeout 60000ms exceeded.
 Call log:
   - waiting for locator('[name="cf-turnstile-response"]') to be visible
-    124 × locator resolved to hidden <input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-4wd54_response"/>
+    124 × locator resolved to hidden <input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-s9iwy_response"/>
 
-[2025-10-11T12:15:17.946Z] House warmup: reloading page after missing selector
-[2025-10-11T12:15:20.507Z] House warmup: waiting for Turnstile response (reload)
-[2025-10-11T12:16:20.510Z] House warmup: Turnstile selector missing (reload): page.waitForSelector: Timeout 60000ms exceeded.
+[2025-10-11T12:23:11.368Z] House warmup: reloading page after missing selector
+[2025-10-11T12:23:13.911Z] House warmup: waiting for Turnstile response (reload)
+[2025-10-11T12:24:13.915Z] House warmup: Turnstile selector missing (reload): page.waitForSelector: Timeout 60000ms exceeded.
 Call log:
   - waiting for locator('[name="cf-turnstile-response"]') to be visible
-    124 × locator resolved to hidden <input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-jeaez_response"/>
+    124 × locator resolved to hidden <input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-lsro1_response"/>
 
-[2025-10-11T12:16:20.511Z] House warmup: Turnstile token missing after attempts (selector missing)
-[2025-10-11T12:16:20.554Z] House warmup session failed (initial): Turnstile token unavailable
-[2025-10-11T12:16:20.555Z] House error: Turnstile token unavailable
-[2025-10-11T12:16:20.555Z] House JSON written: 0 items
-[2025-10-11T12:16:20.556Z] [senate] request starting
-[2025-10-11T12:16:24.039Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3408 htmlLen=19747
-[2025-10-11T12:16:24.104Z] Senate parsed rows=10
-[2025-10-11T12:16:24.105Z] Done. House=0 Senate=10
+[2025-10-11T12:24:13.915Z] House warmup: Turnstile token missing after attempts (selector missing)
+[2025-10-11T12:24:13.958Z] House warmup session failed (initial): Turnstile token unavailable
+[2025-10-11T12:24:13.959Z] House error: Turnstile token unavailable
+[2025-10-11T12:24:13.959Z] House JSON written: 0 items
+[2025-10-11T12:24:13.960Z] [senate] request starting
+[2025-10-11T12:24:17.526Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3493 htmlLen=19747
+[2025-10-11T12:24:17.595Z] Senate parsed rows=10
+[2025-10-11T12:24:17.595Z] Done. House=0 Senate=10
