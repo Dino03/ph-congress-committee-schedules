@@ -4,12 +4,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import EventIcon from '@/components/icons/event-icon';
+import { getEventColors, getEventCategoryLabel } from '@/lib/event-colors';
+import { cn } from '@/lib/utils';
 
 interface MeetingCardProps {
   meeting: Event;
 }
 
 export function MeetingCard({ meeting }: MeetingCardProps) {
+  const colors = getEventColors(meeting);
+  const label = getEventCategoryLabel(meeting);
   const dateSource = meeting.isoDate ?? (meeting.date ? `${meeting.date}T00:00:00` : '');
   const parsedDate = dateSource ? new Date(dateSource) : null;
   const hasValidDate = parsedDate && !Number.isNaN(parsedDate.getTime());
@@ -30,15 +34,18 @@ export function MeetingCard({ meeting }: MeetingCardProps) {
       <CardHeader className="bg-muted/30 border-b border-border p-4">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div className="space-y-2">
-            <Badge variant="secondary" className="w-fit">
-              {meeting.branch}
+            <Badge
+              variant="secondary"
+              className={cn('w-fit', colors.badgeBg, colors.badgeText, colors.badgeBorder)}
+            >
+              {label}
             </Badge>
             <CardTitle className="text-xl font-bold text-foreground leading-tight">
               {meeting.committee}
             </CardTitle>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <EventIcon branch={meeting.branch} className="h-5 w-5" />
+            <EventIcon branch={meeting.branch} className={cn('h-5 w-5', colors.icon)} />
             <span>{meeting.source}</span>
           </div>
         </div>
@@ -46,7 +53,9 @@ export function MeetingCard({ meeting }: MeetingCardProps) {
       <CardContent className="p-4 md:p-6 grid gap-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
           <div className="flex items-start gap-3">
-            <EventIcon branch={meeting.branch} className="h-5 w-5 mt-0.5 text-accent flex-shrink-0" />
+            <div className={cn('p-2 rounded-full flex items-center justify-center flex-shrink-0', colors.detailIconBg)}>
+              <EventIcon branch={meeting.branch} className={cn('h-5 w-5', colors.detailIconText)} />
+            </div>
             <div>
               <p className="font-semibold text-foreground">
                 {meeting.branch}
