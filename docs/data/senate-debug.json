@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-10-12T03:04:46.977Z",
+  "generatedAt": "2025-10-13T03:12:32.981Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 10,
-      "parsedCount": 10,
+      "rawCount": 13,
+      "parsedCount": 13,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,7 +14,7 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 10,
+  "parsedCount": 13,
   "preview": [
     {
       "id": "senate-1",
@@ -75,16 +75,16 @@
     {
       "id": "senate-5",
       "branch": "Senate",
-      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+      "committee": "Agriculture, Food and Agrarian Reform joint with Ways and Means; and Finance (Presiding: Sen. Pangilinan",
       "date": "2025-10-15",
-      "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the Commission on Human Rights and attached agencies",
+      "time": "9:00 A.M.",
+      "venue": "Session Hall 2/F Left Wing, Senate",
+      "agenda": "S. No. 284 - Rice Industry and Consumer Empowerment (RICE) Act (By: Sens. Escudero and Villanueva); P.S. Res. No. 3 - Functions and Mandate of the National Food Authority (By: Sen. E. Tulfo); P.S. Res. No. 10 - Regulatory and Market Intervention Powers of the NFA (By: Sen. Pangilinan); Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; B. Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-15T10:00:00",
+      "isoDate": "2025-10-15T09:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the commission on human rights and attached agencies scheduled"
+      "searchText": "senate agriculture, food and agrarian reform joint with ways and means; and finance (presiding: sen. pangilinan session hall 2/f left wing, senate s. no. 284 - rice industry and consumer empowerment (rice) act (by: sens. escudero and villanueva); p.s. res. no. 3 - functions and mandate of the national food authority (by: sen. e. tulfo); p.s. res. no. 10 - regulatory and market intervention powers of the nfa (by: sen. pangilinan); privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; b. privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
     }
   ]
 }

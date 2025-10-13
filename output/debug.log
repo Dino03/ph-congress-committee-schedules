@@ -1,31 +1,31 @@
-[2025-10-12T03:01:35.074Z] [house] request starting
-[2025-10-12T03:01:35.075Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2025-10-12T03:01:35.075Z] House headers count: 14
-[2025-10-12T03:01:35.076Z] House warmup: launching browser
-[2025-10-12T03:01:36.470Z] House warmup: loaded storage state from disk
-[2025-10-12T03:01:36.554Z] House warmup: navigating to https://www.congress.gov.ph/committees/committee-meetings/
-[2025-10-12T03:01:37.211Z] House warmup: ensuring Turnstile bootstrap (initial)
-[2025-10-12T03:02:09.721Z] [house] warmup page title="Just a moment..." (initial)
-[2025-10-12T03:02:09.721Z] House warmup: DOM ready + delay complete
-[2025-10-12T03:02:09.722Z] House warmup: waiting for Turnstile response (initial)
-[2025-10-12T03:03:09.725Z] House warmup: Turnstile selector missing (initial): locator.waitFor: Timeout 60000ms exceeded.
+[2025-10-13T03:09:18.682Z] [house] request starting
+[2025-10-13T03:09:18.682Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2025-10-13T03:09:18.683Z] House headers count: 14
+[2025-10-13T03:09:18.683Z] House warmup: launching browser
+[2025-10-13T03:09:21.772Z] House warmup: loaded storage state from disk
+[2025-10-13T03:09:21.851Z] House warmup: navigating to https://www.congress.gov.ph/committees/committee-meetings/
+[2025-10-13T03:09:22.652Z] House warmup: ensuring Turnstile bootstrap (initial)
+[2025-10-13T03:09:55.159Z] [house] warmup page title="Just a moment..." (initial)
+[2025-10-13T03:09:55.160Z] House warmup: DOM ready + delay complete
+[2025-10-13T03:09:55.160Z] House warmup: waiting for Turnstile response (initial)
+[2025-10-13T03:10:55.164Z] House warmup: Turnstile selector missing (initial): locator.waitFor: Timeout 60000ms exceeded.
 Call log:
   - waiting for locator('[name="cf-turnstile-response"]')
 
-[2025-10-12T03:03:09.725Z] House warmup: reloading page after missing selector
-[2025-10-12T03:03:09.758Z] House warmup: ensuring Turnstile bootstrap (reload)
-[2025-10-12T03:03:42.267Z] [house] warmup page title="Just a moment..." (reload)
-[2025-10-12T03:03:42.267Z] House warmup: waiting for Turnstile response (reload)
-[2025-10-12T03:04:42.268Z] House warmup: Turnstile selector missing (reload): locator.waitFor: Timeout 60000ms exceeded.
+[2025-10-13T03:10:55.164Z] House warmup: reloading page after missing selector
+[2025-10-13T03:10:55.206Z] House warmup: ensuring Turnstile bootstrap (reload)
+[2025-10-13T03:11:27.711Z] [house] warmup page title="Just a moment..." (reload)
+[2025-10-13T03:11:27.712Z] House warmup: waiting for Turnstile response (reload)
+[2025-10-13T03:12:27.714Z] House warmup: Turnstile selector missing (reload): locator.waitFor: Timeout 60000ms exceeded.
 Call log:
   - waiting for locator('[name="cf-turnstile-response"]')
 
-[2025-10-12T03:04:42.269Z] House warmup: Turnstile token missing (selector missing), trying in-page fetch
-[2025-10-12T03:04:42.975Z] House warmup: in-page fetch failed: Failed to fetch
-[2025-10-12T03:04:43.018Z] House warmup session failed (initial): Turnstile token unavailable
-[2025-10-12T03:04:43.019Z] House error: Turnstile token unavailable
-[2025-10-12T03:04:43.019Z] House JSON written: 0 items
-[2025-10-12T03:04:43.020Z] [senate] request starting
-[2025-10-12T03:04:46.586Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3484 htmlLen=19747
-[2025-10-12T03:04:46.655Z] Senate parsed rows=10
-[2025-10-12T03:04:46.655Z] Done. House=0 Senate=10
+[2025-10-13T03:12:27.714Z] House warmup: Turnstile token missing (selector missing), trying in-page fetch
+[2025-10-13T03:12:28.446Z] House warmup: in-page fetch failed: Failed to fetch
+[2025-10-13T03:12:28.479Z] House warmup session failed (initial): Turnstile token unavailable
+[2025-10-13T03:12:28.480Z] House error: Turnstile token unavailable
+[2025-10-13T03:12:28.481Z] House JSON written: 0 items
+[2025-10-13T03:12:28.481Z] [senate] request starting
+[2025-10-13T03:12:32.561Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=3995 htmlLen=21417
+[2025-10-13T03:12:32.643Z] Senate parsed rows=13
+[2025-10-13T03:12:32.650Z] Done. House=0 Senate=13
