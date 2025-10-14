@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-10-13T03:12:32.981Z",
+  "generatedAt": "2025-10-14T03:03:31.073Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 13,
-      "parsedCount": 13,
+      "rawCount": 11,
+      "parsedCount": 11,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,38 +14,10 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 13,
+  "parsedCount": 11,
   "preview": [
     {
       "id": "senate-1",
-      "branch": "Senate",
-      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-      "date": "2025-10-13",
-      "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the following:; Commission on Audit; Civil Service Commission and attached agency",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-13T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following:; commission on audit; civil service commission and attached agency scheduled"
-    },
-    {
-      "id": "senate-2",
-      "branch": "Senate",
-      "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
-      "date": "2025-10-13",
-      "time": "1:00 P.M.",
-      "venue": "Sen. J.P. Laurel Room Saen. G.T. Pecson Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the following:; Department of Trade and Industry and attached agencies and corporations; Authority of the Freeport Area of Bataan; Cagayan Economic Zone Authority; Philippine Center for Economic Development; Subic Bay Metropolitan Authority; Zamboanga City Special Economic Zone Authority",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-13T01:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee i) (presiding: sen. marcos) sen. j.p. laurel room saen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the following:; department of trade and industry and attached agencies and corporations; authority of the freeport area of bataan; cagayan economic zone authority; philippine center for economic development; subic bay metropolitan authority; zamboanga city special economic zone authority scheduled"
-    },
-    {
-      "id": "senate-3",
       "branch": "Senate",
       "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
       "date": "2025-10-14",
@@ -59,7 +31,7 @@
       "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of finance and attached agencies and corporation scheduled"
     },
     {
-      "id": "senate-4",
+      "id": "senate-2",
       "branch": "Senate",
       "committee": "Finance (Subcommittee I) (Presiding: Sen. Marcos)",
       "date": "2025-10-14",
@@ -73,7 +45,7 @@
       "searchText": "senate finance (subcommittee i) (presiding: sen. marcos) sen. a.b. padilla room 2/f right wing, senate fy 2026 proposed budget of the following:; department of foreign affairs and attached agencies; southern philippines development authority scheduled"
     },
     {
-      "id": "senate-5",
+      "id": "senate-3",
       "branch": "Senate",
       "committee": "Agriculture, Food and Agrarian Reform joint with Ways and Means; and Finance (Presiding: Sen. Pangilinan",
       "date": "2025-10-15",
@@ -85,6 +57,34 @@
       "isoDate": "2025-10-15T09:00:00",
       "source": "Senate Weekly Schedule",
       "searchText": "senate agriculture, food and agrarian reform joint with ways and means; and finance (presiding: sen. pangilinan session hall 2/f left wing, senate s. no. 284 - rice industry and consumer empowerment (rice) act (by: sens. escudero and villanueva); p.s. res. no. 3 - functions and mandate of the national food authority (by: sen. e. tulfo); p.s. res. no. 10 - regulatory and market intervention powers of the nfa (by: sen. pangilinan); privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; b. privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
+    },
+    {
+      "id": "senate-4",
+      "branch": "Senate",
+      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+      "date": "2025-10-15",
+      "time": "10:00 A.M.",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Commission on Human Rights and attached agencies",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-15T10:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the commission on human rights and attached agencies scheduled"
+    },
+    {
+      "id": "senate-5",
+      "branch": "Senate",
+      "committee": "Culture and the Arts joint with Sports; and Finance (TWG)",
+      "date": "2025-10-15",
+      "time": "10:00 A.M.",
+      "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+      "agenda": "S. No. 820 – Amendment to the National Cultural Heritage Act (By: Sen. Legarda); S. Nos. 700, 800, 1028 and 1340 – Philippine Indigenous Games Preservation Act (By: Sens. Lapid, Legarda, Estrada and Marcos)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-15T10:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate culture and the arts joint with sports; and finance (twg) sen. a.m. tolentino room 2/f right wing, senate s. no. 820 – amendment to the national cultural heritage act (by: sen. legarda); s. nos. 700, 800, 1028 and 1340 – philippine indigenous games preservation act (by: sens. lapid, legarda, estrada and marcos) scheduled"
     }
   ]
 }

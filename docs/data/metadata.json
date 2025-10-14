@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2025-10-13T03:12:32.991Z",
+  "generatedAt": "2025-10-14T03:03:31.083Z",
   "counts": {
     "house": 150,
-    "senate": 13,
-    "all": 163
+    "senate": 11,
+    "all": 161
   },
   "sources": {
     "house": "House of Representatives (API)",
