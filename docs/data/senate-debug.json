@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-10-17T03:04:09.429Z",
+  "generatedAt": "2025-10-18T02:57:33.380Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 16,
-      "parsedCount": 16,
+      "rawCount": 15,
+      "parsedCount": 15,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,24 +14,10 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 16,
+  "parsedCount": 15,
   "preview": [
     {
       "id": "senate-1",
-      "branch": "Senate",
-      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-      "date": "2025-10-17",
-      "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the Commission on Higher Education",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-17T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the commission on higher education scheduled"
-    },
-    {
-      "id": "senate-2",
       "branch": "Senate",
       "committee": "Health and Demography joint with Social Justice, Welfare and Rural Development; and Finance (TWG)",
       "date": "2025-10-20",
@@ -45,7 +31,7 @@
       "searchText": "senate health and demography joint with social justice, welfare and rural development; and finance (twg) via zoom sen. m.l. quezon room 2/f right wing, senate p.s. res. nos. 25 and 75 - leptospirosis cases in the philippines (by: sens. c. villar and r. tulfo); s. nos. 260 and 1281 - combatting systemic lupus erythematosus (sle) disease (by: sens. m. villar and c. villar); s. nos. 712 and 1417 - assistive devices/health outreach services (by: sens. r. tulfo and hontiveros) scheduled"
     },
     {
-      "id": "senate-3",
+      "id": "senate-2",
       "branch": "Senate",
       "committee": "Agriculture, Food and Agrarian Reform (Presiding: Sen. Pangilinan)",
       "date": "2025-10-20",
@@ -59,7 +45,7 @@
       "searchText": "senate agriculture, food and agrarian reform (presiding: sen. pangilinan) sen. a.b. padilla room 2/f right wing, senate privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
     },
     {
-      "id": "senate-4",
+      "id": "senate-3",
       "branch": "Senate",
       "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
       "date": "2025-10-20",
@@ -73,7 +59,7 @@
       "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of public works and highways scheduled"
     },
     {
-      "id": "senate-5",
+      "id": "senate-4",
       "branch": "Senate",
       "committee": "Higher, Technical and Vocational Education joint with Finance (TWG)",
       "date": "2025-10-20",
@@ -85,6 +71,20 @@
       "isoDate": "2025-10-20T10:00:00",
       "source": "Senate Weekly Schedule",
       "searchText": "senate higher, technical and vocational education joint with finance (twg) sen. a.m. tolentino room 2/f right wing, senate s. nos. 26, 130, 169, 503, 514, 1042 and 1245 - amendment of the universal access to quality tertiary education act (r.a. 10931) (by: sens. p. cayetano, aquino, go, escudero, legarda, estrada and hontiveros) scheduled"
+    },
+    {
+      "id": "senate-5",
+      "branch": "Senate",
+      "committee": "Health and Demography joint with Social Justice, Welfare and Rural Development; Ways and Means; and Finance (TWG)",
+      "date": "2025-10-21",
+      "time": "9:00 A.M.",
+      "venue": "via Zoom Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+      "agenda": "S. Nos. 689, 780, 962 and 1428 - Bed Capacity and Service Rationalization (By: Sens. Hontiveros, P. Cayetano, Estrada and Ejercito); S. Nos. 256, 319, 383, 411, 461, 511, 596, 1197, 1302 and 1320 - National Center for Geriatric Health (By: Sens. M. Villar, Lapid, Estrada, Go, Legarda, E. Tulfo, Zubiri, Hontiveros and R. Tulfo); S. Nos. 217 and 960 - Anti-Hospital Detention (By: Sens. Hontiveros and Estrada); S. Nos. 404 and 409 - Medical Assistance to Indigent and Financially Incapacitated Patients (MAIFIP) Program (By: Sens. Lacson and Go)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-21T09:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate health and demography joint with social justice, welfare and rural development; ways and means; and finance (twg) via zoom sen. m.l. quezon room 2/f right wing, senate s. nos. 689, 780, 962 and 1428 - bed capacity and service rationalization (by: sens. hontiveros, p. cayetano, estrada and ejercito); s. nos. 256, 319, 383, 411, 461, 511, 596, 1197, 1302 and 1320 - national center for geriatric health (by: sens. m. villar, lapid, estrada, go, legarda, e. tulfo, zubiri, hontiveros and r. tulfo); s. nos. 217 and 960 - anti-hospital detention (by: sens. hontiveros and estrada); s. nos. 404 and 409 - medical assistance to indigent and financially incapacitated patients (maifip) program (by: sens. lacson and go) scheduled"
     }
   ]
 }
