@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-10-20T03:18:07.473Z",
+  "generatedAt": "2025-10-21T03:08:26.285Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 15,
-      "parsedCount": 15,
+      "rawCount": 14,
+      "parsedCount": 14,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,66 +14,10 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 15,
+  "parsedCount": 14,
   "preview": [
     {
       "id": "senate-1",
-      "branch": "Senate",
-      "committee": "Health and Demography joint with Social Justice, Welfare and Rural Development; and Finance (TWG)",
-      "date": "2025-10-20",
-      "time": "9:00 A.M.",
-      "venue": "via Zoom Sen. M.L. Quezon Room 2/F Right Wing, Senate",
-      "agenda": "P.S. Res. Nos. 25 and 75 - Leptospirosis Cases in the Philippines (By: Sens. C. Villar and R. Tulfo); S. Nos. 260 and 1281 - Combatting Systemic Lupus Erythematosus (SLE) Disease (By: Sens. M. Villar and C. Villar); S. Nos. 712 and 1417 - Assistive Devices/Health Outreach Services (By: Sens. R. Tulfo and Hontiveros)",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-20T09:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate health and demography joint with social justice, welfare and rural development; and finance (twg) via zoom sen. m.l. quezon room 2/f right wing, senate p.s. res. nos. 25 and 75 - leptospirosis cases in the philippines (by: sens. c. villar and r. tulfo); s. nos. 260 and 1281 - combatting systemic lupus erythematosus (sle) disease (by: sens. m. villar and c. villar); s. nos. 712 and 1417 - assistive devices/health outreach services (by: sens. r. tulfo and hontiveros) scheduled"
-    },
-    {
-      "id": "senate-2",
-      "branch": "Senate",
-      "committee": "Agriculture, Food and Agrarian Reform (Presiding: Sen. Pangilinan)",
-      "date": "2025-10-20",
-      "time": "9:00 A.M.",
-      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-      "agenda": "Privilege Speech of Sen. Raffy T. Tulfo, delivered on August 4, 2025, entitled: “The RTL: Implementation Failure or Policy Issue”; Privilege Speech of Sen. Francis “Kiko” N. Pangilinan, delivered on August 18, 2025, entitled: “Agricultural and Food Crises”",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-20T09:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate agriculture, food and agrarian reform (presiding: sen. pangilinan) sen. a.b. padilla room 2/f right wing, senate privilege speech of sen. raffy t. tulfo, delivered on august 4, 2025, entitled: “the rtl: implementation failure or policy issue”; privilege speech of sen. francis “kiko” n. pangilinan, delivered on august 18, 2025, entitled: “agricultural and food crises” scheduled"
-    },
-    {
-      "id": "senate-3",
-      "branch": "Senate",
-      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-      "date": "2025-10-20",
-      "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the Department of Public Works and Highways",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-20T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of public works and highways scheduled"
-    },
-    {
-      "id": "senate-4",
-      "branch": "Senate",
-      "committee": "Higher, Technical and Vocational Education joint with Finance (TWG)",
-      "date": "2025-10-20",
-      "time": "10:00 A.M.",
-      "venue": "Sen. A.M. Tolentino Room 2/F Right wing, Senate",
-      "agenda": "S. Nos. 26, 130, 169, 503, 514, 1042 and 1245 - Amendment of the Universal Access to Quality Tertiary Education Act (R.A. 10931) (By: Sens. P. Cayetano, Aquino, Go, Escudero, Legarda, Estrada and Hontiveros)",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-10-20T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate higher, technical and vocational education joint with finance (twg) sen. a.m. tolentino room 2/f right wing, senate s. nos. 26, 130, 169, 503, 514, 1042 and 1245 - amendment of the universal access to quality tertiary education act (r.a. 10931) (by: sens. p. cayetano, aquino, go, escudero, legarda, estrada and hontiveros) scheduled"
-    },
-    {
-      "id": "senate-5",
       "branch": "Senate",
       "committee": "Health and Demography joint with Social Justice, Welfare and Rural Development; Ways and Means; and Finance (TWG)",
       "date": "2025-10-21",
@@ -85,6 +29,62 @@
       "isoDate": "2025-10-21T09:00:00",
       "source": "Senate Weekly Schedule",
       "searchText": "senate health and demography joint with social justice, welfare and rural development; ways and means; and finance (twg) via zoom sen. m.l. quezon room 2/f right wing, senate s. nos. 689, 780, 962 and 1428 - bed capacity and service rationalization (by: sens. hontiveros, p. cayetano, estrada and ejercito); s. nos. 256, 319, 383, 411, 461, 511, 596, 1197, 1302 and 1320 - national center for geriatric health (by: sens. m. villar, lapid, estrada, go, legarda, e. tulfo, zubiri, hontiveros and r. tulfo); s. nos. 217 and 960 - anti-hospital detention (by: sens. hontiveros and estrada); s. nos. 404 and 409 - medical assistance to indigent and financially incapacitated patients (maifip) program (by: sens. lacson and go) scheduled"
+    },
+    {
+      "id": "senate-2",
+      "branch": "Senate",
+      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+      "date": "2025-10-21",
+      "time": "10:00 A.M.",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Department of Justice and attached agencies",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-21T10:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of justice and attached agencies scheduled"
+    },
+    {
+      "id": "senate-3",
+      "branch": "Senate",
+      "committee": "Finance (Subcommittee H) (Presiding: Sen. Legarda)",
+      "date": "2025-10-21",
+      "time": "1:00 P.M.",
+      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Department of Environment and Natural Resources and attached agencies and corporations",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-21T01:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate finance (subcommittee h) (presiding: sen. legarda) sen. a.b. padilla room 2/f right wing, senate fy 2026 proposed budget of the department of environment and natural resources and attached agencies and corporations scheduled"
+    },
+    {
+      "id": "senate-4",
+      "branch": "Senate",
+      "committee": "Health and Demography joint with Social Justice, Welfare and Rural Development; and Finance (TWG)",
+      "date": "2025-10-22",
+      "time": "9:00 A.M.",
+      "venue": "via Zoom Sen. M.L. Quezon Room 2/F Right Wing, Senate",
+      "agenda": "S. Nos. 404 and 409 - Medical Assistance to Indigent and Financially Incapacitated Patients (MAIFIP) Program (By: Sens. Lacson and Go)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-22T09:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate health and demography joint with social justice, welfare and rural development; and finance (twg) via zoom sen. m.l. quezon room 2/f right wing, senate s. nos. 404 and 409 - medical assistance to indigent and financially incapacitated patients (maifip) program (by: sens. lacson and go) scheduled"
+    },
+    {
+      "id": "senate-5",
+      "branch": "Senate",
+      "committee": "Agriculture, Food and Agrarian Reform joint with Cooperatives; Ways and Means; and Finance (Presiding: Sen. Pangilinan)",
+      "date": "2025-10-22",
+      "time": "9:00 A.M.",
+      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "agenda": "S. Nos. 389 and 1183 – Agricultural Cooperatives (By: Sens. Hontiveros and Pangilinan); S. N. 1182 – National Agriculture and Fisheries Extension System (By: Sen. Pangilinan); S. Nos. 1199 and 1345 – Creation of a Congressional Commission on Agriculture, Fisheries and Food Security (By: Sens. Pangilinan and Marcos)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-10-22T09:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate agriculture, food and agrarian reform joint with cooperatives; ways and means; and finance (presiding: sen. pangilinan) sen. a.b. padilla room 2/f right wing, senate s. nos. 389 and 1183 – agricultural cooperatives (by: sens. hontiveros and pangilinan); s. n. 1182 – national agriculture and fisheries extension system (by: sen. pangilinan); s. nos. 1199 and 1345 – creation of a congressional commission on agriculture, fisheries and food security (by: sens. pangilinan and marcos) scheduled"
     }
   ]
 }
