@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-10-22T03:13:40.189Z",
+  "generatedAt": "2025-10-23T03:06:02.596Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 11,
-      "parsedCount": 11,
+      "rawCount": 5,
+      "parsedCount": 5,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,77 +14,77 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 11,
+  "parsedCount": 5,
   "preview": [
     {
       "id": "senate-1",
       "branch": "Senate",
-      "committee": "(Health and Demography joint with Social Justice, Welfare and Rural Development; and Finance (TWG))(CANCELLED as of 4:04 p.m., Oct. 21, 2025, Tues., by Horace R. Cruda, Committee Secretary)",
-      "date": "2025-10-22",
-      "time": "(9:00 A.M.",
-      "venue": "via Zoom Sen. M.L. Quezon Room 2/F Right Wing, Senate)",
-      "agenda": "S. Nos. 404 and 409 - Medical Assistance to Indigent and Financially Incapacitated Patients (MAIFIP) Program (By: Sens. Lacson and Go)",
+      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+      "date": "2025-10-23",
+      "time": "10:00 A.M.",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the following:; Department of Energy; Energy Regulatory Commission; National Electrification Administration; National Power Corporation; Philippine National Oil Company; Power Sector Assets and Liabilities Management Corporation",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-22T09:00:00",
+      "isoDate": "2025-10-23T10:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate (health and demography joint with social justice, welfare and rural development; and finance (twg))(cancelled as of 4:04 p.m., oct. 21, 2025, tues., by horace r. cruda, committee secretary) via zoom sen. m.l. quezon room 2/f right wing, senate) s. nos. 404 and 409 - medical assistance to indigent and financially incapacitated patients (maifip) program (by: sens. lacson and go) scheduled"
+      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the following:; department of energy; energy regulatory commission; national electrification administration; national power corporation; philippine national oil company; power sector assets and liabilities management corporation scheduled"
     },
     {
       "id": "senate-2",
       "branch": "Senate",
-      "committee": "Agriculture, Food and Agrarian Reform joint with Cooperatives; Ways and Means; and Finance (Presiding: Sen. Pangilinan)",
-      "date": "2025-10-22",
-      "time": "9:00 A.M.",
-      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-      "agenda": "S. Nos. 389 and 1183 – Agricultural Cooperatives (By: Sens. Hontiveros and Pangilinan); S. N. 1182 – National Agriculture and Fisheries Extension System (By: Sen. Pangilinan); S. Nos. 1199 and 1345 – Creation of a Congressional Commission on Agriculture, Fisheries and Food Security (By: Sens. Pangilinan and Marcos)",
+      "committee": "Labor, Employment and Human Resources Development (TWG)",
+      "date": "2025-10-23",
+      "time": "10:30 A.M.",
+      "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
+      "agenda": "S. No. 81 - Wage Theft Prevention Act (By: Sen. R. Tulfo); S. No. 82 - Anti-Abuse of Pakyawan Workers Act (By: Sen. R. Tulfo)",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-22T09:00:00",
+      "isoDate": "2025-10-23T10:30:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate agriculture, food and agrarian reform joint with cooperatives; ways and means; and finance (presiding: sen. pangilinan) sen. a.b. padilla room 2/f right wing, senate s. nos. 389 and 1183 – agricultural cooperatives (by: sens. hontiveros and pangilinan); s. n. 1182 – national agriculture and fisheries extension system (by: sen. pangilinan); s. nos. 1199 and 1345 – creation of a congressional commission on agriculture, fisheries and food security (by: sens. pangilinan and marcos) scheduled"
+      "searchText": "senate labor, employment and human resources development (twg) sen. a.m. tolentino room 2/f right wing, senate s. no. 81 - wage theft prevention act (by: sen. r. tulfo); s. no. 82 - anti-abuse of pakyawan workers act (by: sen. r. tulfo) scheduled"
     },
     {
       "id": "senate-3",
       "branch": "Senate",
-      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-      "date": "2025-10-22",
-      "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the Department of Labor and Employment and attached agencies",
+      "committee": "Science and Technology joint with Finance (TWG)",
+      "date": "2025-10-23",
+      "time": "11:00 A.M.",
+      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
+      "agenda": "S. No. 1330 - The Philippine National Budget Blockchain Act (By: Sen. Aquino)",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-22T10:00:00",
+      "isoDate": "2025-10-23T11:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of labor and employment and attached agencies scheduled"
+      "searchText": "senate science and technology joint with finance (twg) sen. a.b. padilla room 2/f right wing, senate s. no. 1330 - the philippine national budget blockchain act (by: sen. aquino) scheduled"
     },
     {
       "id": "senate-4",
       "branch": "Senate",
-      "committee": "Ways and Means (Presiding: Sen. P. Cayetano)(RESCHEDULED as of 5:56 p.m., by Atty. Rachel L. Yuawan, Committee Secretary, Director II, TPAB-STSRO)",
-      "date": "2025-10-22",
-      "time": "11:00 A.M.",
-      "venue": "Sen. V.Y. Sotto Room 2/F Right Wing, Senate",
-      "agenda": "Organizational Meeting; Briefing by the DOF, BIR, BOC, NTRC, FIRB and DOTr officials",
+      "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+      "date": "2025-10-24",
+      "time": "10:00 A.M.",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Office of the Ombudsman",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-22T11:00:00",
+      "isoDate": "2025-10-24T10:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate ways and means (presiding: sen. p. cayetano)(rescheduled as of 5:56 p.m., by atty. rachel l. yuawan, committee secretary, director ii, tpab-stsro) sen. v.y. sotto room 2/f right wing, senate organizational meeting; briefing by the dof, bir, boc, ntrc, firb and dotr officials scheduled"
+      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the office of the ombudsman scheduled"
     },
     {
       "id": "senate-5",
       "branch": "Senate",
       "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-      "date": "2025-10-22",
+      "date": "2025-10-24",
       "time": "2:00 P.M.",
-      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the Department of Information and Communications Technology and attached agencies",
+      "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+      "agenda": "FY 2026 Proposed Budget of the Department of Agrarian Reform",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-10-22T02:00:00",
+      "isoDate": "2025-10-24T02:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. g.t. pecson room 2/f right wing, senate fy 2026 proposed budget of the department of information and communications technology and attached agencies scheduled"
+      "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of agrarian reform scheduled"
     }
   ]
 }
