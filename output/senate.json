@@ -1,29 +1,5 @@
 [
   {
-    "date": "Thursday, October 23",
-    "time": "10:00 A.M.",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "subject": "FY 2026 Proposed Budget of the following:; Department of Energy; Energy Regulatory Commission; National Electrification Administration; National Power Corporation; Philippine National Oil Company; Power Sector Assets and Liabilities Management Corporation",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Thursday, October 23",
-    "time": "10:30 A.M.",
-    "committee": "Labor, Employment and Human Resources Development (TWG)",
-    "subject": "S. No. 81 - Wage Theft Prevention Act (By: Sen. R. Tulfo); S. No. 82 - Anti-Abuse of Pakyawan Workers Act (By: Sen. R. Tulfo)",
-    "venue": "Sen. A.M. Tolentino Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
-    "date": "Thursday, October 23",
-    "time": "11:00 A.M.",
-    "committee": "Science and Technology joint with Finance (TWG)",
-    "subject": "S. No. 1330 - The Philippine National Budget Blockchain Act (By: Sen. Aquino)",
-    "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Friday, October 24",
     "time": "10:00 A.M.",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
@@ -36,6 +12,30 @@
     "time": "2:00 P.M.",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "subject": "FY 2026 Proposed Budget of the Department of Agrarian Reform",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, October 27",
+    "time": "10:00 A.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "Continuation of the FY 2026 Proposed Budget of the Department of Public Works and Highways",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, October 27",
+    "time": "2:00 P.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the Public Attorney’s Office",
+    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Monday, October 27",
+    "time": "4:00 P.M.",
+    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
+    "subject": "FY 2026 Proposed Budget of the Institute for Labor Studies",
     "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
