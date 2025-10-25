@@ -2103,34 +2103,6 @@
     "id": "senate-2",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "date": "2025-10-24",
-    "time": "2:00 P.M.",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Department of Agrarian Reform",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-24T02:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the department of agrarian reform scheduled"
-  },
-  {
-    "id": "senate-1",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "date": "2025-10-24",
-    "time": "10:00 A.M.",
-    "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Office of the Ombudsman",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-24T10:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the office of the ombudsman scheduled"
-  },
-  {
-    "id": "senate-4",
-    "branch": "Senate",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-27",
     "time": "2:00 P.M.",
     "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
@@ -2142,7 +2114,7 @@
     "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the public attorney’s office scheduled"
   },
   {
-    "id": "senate-5",
+    "id": "senate-3",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-27",
@@ -2156,7 +2128,7 @@
     "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the institute for labor studies scheduled"
   },
   {
-    "id": "senate-3",
+    "id": "senate-1",
     "branch": "Senate",
     "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
     "date": "2025-10-27",
