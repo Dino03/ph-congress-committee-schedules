@@ -20,25 +20,25 @@
     "date": "2025-10-27",
     "time": "2:00 P.M.",
     "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Public Attorney’s Office",
+    "agenda": "FY 2026 Proposed Budget of the following:; Public Attorney’s Office; Institute for Labor Studies; Commission on Appointments; Senate of the Philippines",
     "status": "Scheduled",
     "notes": "",
     "isoDate": "2025-10-27T02:00:00",
     "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the public attorney’s office scheduled"
+    "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the following:; public attorney’s office; institute for labor studies; commission on appointments; senate of the philippines scheduled"
   },
   {
     "id": "senate-3",
     "branch": "Senate",
-    "committee": "Finance (Subcommittee A) (Presiding: Sen. Gatchalian)",
-    "date": "2025-10-27",
-    "time": "4:00 P.M.",
+    "committee": "Finance (Presiding: Sen. Gatchalian)",
+    "date": "2025-10-28",
+    "time": "10:00 A.M.",
     "venue": "Sen. C.M. Recto Room Sen. J.P. Laurel Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the Institute for Labor Studies",
+    "agenda": "Public hearing with Civil Society Organizations (CSOs) to discuss the following:; Transparency and accountability measures to strengthen the national budget process; Budgetary priorities for the FY 2026 General Appropriations Act.",
     "status": "Scheduled",
     "notes": "",
-    "isoDate": "2025-10-27T04:00:00",
+    "isoDate": "2025-10-28T10:00:00",
     "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (subcommittee a) (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate fy 2026 proposed budget of the institute for labor studies scheduled"
+    "searchText": "senate finance (presiding: sen. gatchalian) sen. c.m. recto room sen. j.p. laurel room 2/f right wing, senate public hearing with civil society organizations (csos) to discuss the following:; transparency and accountability measures to strengthen the national budget process; budgetary priorities for the fy 2026 general appropriations act. scheduled"
   }
 ]
