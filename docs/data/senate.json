@@ -3,20 +3,6 @@
     "id": "senate-1",
     "branch": "Senate",
     "committee": "Finance (TWG)",
-    "date": "2025-10-30",
-    "time": "10:00 A.M.",
-    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-    "agenda": "FY 2026 Proposed Budget of the following agencies:; Department of Education; State Universities and Colleges; Commission on Higher Education; Commission on Human Rights and attached agencies; Department of Human Settlements and Urban Development and attached agencies and corporations; Optical Media Board; Department of Justice and attached agencies; Department of Labor and Employment and attached agencies11",
-    "status": "Scheduled",
-    "notes": "",
-    "isoDate": "2025-10-30T10:00:00",
-    "source": "Senate Weekly Schedule",
-    "searchText": "senate finance (twg) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following agencies:; department of education; state universities and colleges; commission on higher education; commission on human rights and attached agencies; department of human settlements and urban development and attached agencies and corporations; optical media board; department of justice and attached agencies; department of labor and employment and attached agencies11 scheduled"
-  },
-  {
-    "id": "senate-2",
-    "branch": "Senate",
-    "committee": "Finance (TWG)",
     "date": "2025-11-03",
     "time": "10:00 A.M.",
     "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
@@ -28,7 +14,7 @@
     "searchText": "senate finance (twg) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following agencies:; bases conversion development authority; philippine postal corporation; mindanao development authority; philippine racing commission; games and amusement board; philippine sports commission; department of trade and industry and attached agencies and corporations; authority of the freeport area of bataan; cagayan economic zone authority; philippine center for economic development; subic bay metropolitan authority; zamboanga city special economic zone authority; southern philippines development authority; department of foreign affairs and attached agencies; department of migrant workers; commission on filipino overseas; film development council of the philippines; movie and television review and classification board; department of tourism and attached agencies and corporations; national archives of the philippines; national commission for culture and the arts; national historical commission of the philippines; national library of the philippines; commission on filipino language; cultural center of the philippines; department of environment and natural resources and attached agencies and corporations; climate change commission; presidential communications office and attached agencies and corporations scheduled"
   },
   {
-    "id": "senate-3",
+    "id": "senate-2",
     "branch": "Senate",
     "committee": "Finance (TWG)",
     "date": "2025-11-04",
@@ -42,7 +28,7 @@
     "searchText": "senate finance (twg) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following agencies:; department of health and attached agencies and corporations; department of social welfare and development and attached agencies; national commission on indigenous peoples; the judiciary; department of agriculture and attached agencies and corporations; national irrigation administration; department of national defense and attached agencies, including revised afp modernization program; national intelligence coordinating agency; national security council; dangerous drugs board; philippine drug enforcement agency; marawi compensation board; national amnesty commission; office of the presidential adviser on the peace, reconciliation and unity scheduled"
   },
   {
-    "id": "senate-4",
+    "id": "senate-3",
     "branch": "Senate",
     "committee": "Public Services joint with Local Government; Ways and Means; and Finance (Presiding: Sen. R. Tulfo)",
     "date": "2025-11-04",
@@ -56,7 +42,7 @@
     "searchText": "senate public services joint with local government; ways and means; and finance (presiding: sen. r. tulfo) sen. g.t. pecson room 2/f right wing, senate s. nos. 84, 93, 1016 and 1154 - magna carta of commuters act (sens. r. tulfo, m. villar, estrada and villanueva); s. no. 9 - filipino commuters’ rights and welfare (by: sen. ejercito); s. nos. 442 and 1112 - transportation network service act (by: sens. r. tulfo and gatchalian); s. no. 1110 - rights of passengers of taxis, tourist car transport services and other similar vehicles for hire (by: sen. gatchalian); s. nos. 10, 356, 443 and 751 - motorcycles-for-hire act (by: sens. ejercito, dela rosa, r. tulfo and marcos) scheduled"
   },
   {
-    "id": "senate-5",
+    "id": "senate-4",
     "branch": "Senate",
     "committee": "Science and Technology joint with Finance (Presiding: Sen. Aquino)",
     "date": "2025-11-04",
@@ -70,7 +56,7 @@
     "searchText": "senate science and technology joint with finance (presiding: sen. aquino) sen. a.b. padilla room 2/f right wing, senate s. no. 1330 - the philippine national budget blockchain act (by: sen. aquino) scheduled"
   },
   {
-    "id": "senate-6",
+    "id": "senate-5",
     "branch": "Senate",
     "committee": "Finance (TWG)",
     "date": "2025-11-05",
@@ -84,7 +70,7 @@
     "searchText": "senate finance (twg) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following agencies:; department of agrarian reform; department of science and technology and attached agencies; philippine space agency; department of the interior and local government and attached agencies; metropolitan baguio city, la trinidad, itogon, sablan, tuba, and tublay development authority; metropolitan manila development authority; department of transportation and attached agencies and corporations; department of public works and highways; department of information and communications technology and attached agencies; department of energy and attached corporations; energy regulatory commission scheduled"
   },
   {
-    "id": "senate-7",
+    "id": "senate-6",
     "branch": "Senate",
     "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo)",
     "date": "2025-11-06",
