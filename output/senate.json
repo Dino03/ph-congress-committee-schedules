@@ -1,13 +1,5 @@
 [
   {
-    "date": "Monday, November 3",
-    "time": "10:00 A.M.",
-    "committee": "Finance (TWG)",
-    "subject": "FY 2026 Proposed Budget of the following agencies:; Bases Conversion Development Authority; Philippine Postal Corporation; Mindanao Development Authority; Philippine Racing Commission; Games and Amusement Board; Philippine Sports Commission; Department of Trade and Industry and attached agencies and corporations; Authority of the Freeport Area of Bataan; Cagayan Economic Zone Authority; Philippine Center for Economic Development; Subic Bay Metropolitan Authority; Zamboanga City Special Economic Zone Authority; Southern Philippines Development Authority; Department of Foreign Affairs and attached agencies; Department of Migrant Workers; Commission on Filipino Overseas; Film Development Council of the Philippines; Movie and Television Review and Classification Board; Department of Tourism and attached agencies and corporations; National Archives of the Philippines; National Commission for Culture and the Arts; National Historical Commission of the Philippines; National Library of the Philippines; Commission on Filipino Language; Cultural Center of the Philippines; Department of Environment and Natural Resources and attached agencies and corporations; Climate Change Commission; Presidential Communications Office and attached agencies and corporations",
-    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-    "source": "Senate Weekly Schedule"
-  },
-  {
     "date": "Tuesday, November 4",
     "time": "10:00 A.M.",
     "committee": "Finance (TWG)",
@@ -17,10 +9,10 @@
   },
   {
     "date": "Tuesday, November 4",
-    "time": "10:00 A.M.",
-    "committee": "Public Services joint with Local Government; Ways and Means; and Finance (Presiding: Sen. R. Tulfo)",
+    "time": "(10:00 A.M.",
+    "committee": "(Public Services joint with Local Government; Ways and Means; and Finance (Presiding: Sen. R. Tulfo))(CANCELLED as of 7:27 a.m., Tues., Nov. 4, 2025, by Mr. David T. Alegre III, Committee Secretary)",
     "subject": "S. Nos. 84, 93, 1016 and 1154 - Magna Carta of Commuters Act (Sens. R. Tulfo, M. Villar, Estrada and Villanueva); S. No. 9 - Filipino Commuters’ Rights and Welfare (By: Sen. Ejercito); S. Nos. 442 and 1112 - Transportation Network Service Act (By: Sens. R. Tulfo and Gatchalian); S. No. 1110 - Rights of Passengers of Taxis, Tourist Car Transport Services and Other Similar Vehicles for Hire (By: Sen. Gatchalian); S. Nos. 10, 356, 443 and 751 - Motorcycles-for-Hire Act (By: Sens. Ejercito, Dela Rosa, R. Tulfo and Marcos)",
-    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate)",
     "source": "Senate Weekly Schedule"
   },
   {
@@ -45,6 +37,14 @@
     "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo)",
     "subject": "S. Nos. 7, 41 and 212 - Anti-Endo and Strengthening the Security of Tenure (By: Sens. Ejercito, Villanueva and Hontiveros); S. Nos. 693, 996 and 1401- BPO Workers Welfare and Protection Act (By: Sens. Lapid, Estrada and C. Villar); S. No. 975 - Strengthening the National Wages and Productivity Commission (By: Sen. Estrada)",
     "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+    "source": "Senate Weekly Schedule"
+  },
+  {
+    "date": "Thursday, November 6",
+    "time": "11:00 A.M.",
+    "committee": "Energy joint with Public Services; Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. P. Cayetano)",
+    "subject": "S. Nos. 346, 367 and 1164 ERC Strengthening (By: Sens. P. Cayetano, Gatchalian and Estrada); S. No. 1088 - Removal of Public Offering Requirement for Generation Companies (By: Sen. Gatchalian); S. No. 1091 - Prohibition of Cross-Ownership between Generation and Distribution Utilities (By: Sen. Gatchalian)",
+    "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
     "source": "Senate Weekly Schedule"
   }
 ]
