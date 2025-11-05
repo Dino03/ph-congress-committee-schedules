@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-11-04T03:12:55.199Z",
+  "generatedAt": "2025-11-05T03:13:56.128Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 6,
-      "parsedCount": 6,
+      "rawCount": 3,
+      "parsedCount": 3,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,52 +14,10 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 6,
+  "parsedCount": 3,
   "preview": [
     {
       "id": "senate-1",
-      "branch": "Senate",
-      "committee": "Finance (TWG)",
-      "date": "2025-11-04",
-      "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the following agencies:; Department of Health and attached agencies and corporations; Department of Social Welfare and Development and attached agencies; National Commission on Indigenous Peoples; Department of the Interior and Local Government and attached agencies; Metropolitan Baguio City, La Trinidad, Itogon, Sablan, Tuba, and Tublay Development Authority; Metropolitan Manila Development Authority; Department of Transportation and attached agencies and corporations; Department of National Defense and attached agencies, including Revised AFP Modernization Program; National Intelligence Coordinating Agency; National Security Council; Dangerous Drugs Board; Philippine Drug Enforcement Agency; Marawi Compensation Board; National Amnesty Commission; Office of the Presidential Adviser on the Peace, Reconciliation and Unity",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-11-04T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (twg) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following agencies:; department of health and attached agencies and corporations; department of social welfare and development and attached agencies; national commission on indigenous peoples; department of the interior and local government and attached agencies; metropolitan baguio city, la trinidad, itogon, sablan, tuba, and tublay development authority; metropolitan manila development authority; department of transportation and attached agencies and corporations; department of national defense and attached agencies, including revised afp modernization program; national intelligence coordinating agency; national security council; dangerous drugs board; philippine drug enforcement agency; marawi compensation board; national amnesty commission; office of the presidential adviser on the peace, reconciliation and unity scheduled"
-    },
-    {
-      "id": "senate-2",
-      "branch": "Senate",
-      "committee": "(Public Services joint with Local Government; Ways and Means; and Finance (Presiding: Sen. R. Tulfo))(CANCELLED as of 7:27 a.m., Tues., Nov. 4, 2025, by Mr. David T. Alegre III, Committee Secretary)",
-      "date": "2025-11-04",
-      "time": "(10:00 A.M.",
-      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate)",
-      "agenda": "S. Nos. 84, 93, 1016 and 1154 - Magna Carta of Commuters Act (Sens. R. Tulfo, M. Villar, Estrada and Villanueva); S. No. 9 - Filipino Commuters’ Rights and Welfare (By: Sen. Ejercito); S. Nos. 442 and 1112 - Transportation Network Service Act (By: Sens. R. Tulfo and Gatchalian); S. No. 1110 - Rights of Passengers of Taxis, Tourist Car Transport Services and Other Similar Vehicles for Hire (By: Sen. Gatchalian); S. Nos. 10, 356, 443 and 751 - Motorcycles-for-Hire Act (By: Sens. Ejercito, Dela Rosa, R. Tulfo and Marcos)",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-11-04T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate (public services joint with local government; ways and means; and finance (presiding: sen. r. tulfo))(cancelled as of 7:27 a.m., tues., nov. 4, 2025, by mr. david t. alegre iii, committee secretary) sen. g.t. pecson room 2/f right wing, senate) s. nos. 84, 93, 1016 and 1154 - magna carta of commuters act (sens. r. tulfo, m. villar, estrada and villanueva); s. no. 9 - filipino commuters’ rights and welfare (by: sen. ejercito); s. nos. 442 and 1112 - transportation network service act (by: sens. r. tulfo and gatchalian); s. no. 1110 - rights of passengers of taxis, tourist car transport services and other similar vehicles for hire (by: sen. gatchalian); s. nos. 10, 356, 443 and 751 - motorcycles-for-hire act (by: sens. ejercito, dela rosa, r. tulfo and marcos) scheduled"
-    },
-    {
-      "id": "senate-3",
-      "branch": "Senate",
-      "committee": "Science and Technology joint with Finance (Presiding: Sen. Aquino)",
-      "date": "2025-11-04",
-      "time": "10:00 A.M.",
-      "venue": "Sen. A.B. Padilla Room 2/F Right Wing, Senate",
-      "agenda": "S. No. 1330 - The Philippine National Budget Blockchain Act (By: Sen. Aquino)",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-11-04T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate science and technology joint with finance (presiding: sen. aquino) sen. a.b. padilla room 2/f right wing, senate s. no. 1330 - the philippine national budget blockchain act (by: sen. aquino) scheduled"
-    },
-    {
-      "id": "senate-4",
       "branch": "Senate",
       "committee": "Finance (TWG)",
       "date": "2025-11-05",
@@ -73,18 +31,32 @@
       "searchText": "senate finance (twg) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following agencies:; department of agrarian reform; department of science and technology and attached agencies; philippine space agency; department of agriculture and attached agencies and corporations; national irrigation administration; the judiciary; department of public works and highways; department of information and communications technology and attached agencies; department of energy and attached corporations; energy regulatory commission scheduled"
     },
     {
-      "id": "senate-5",
+      "id": "senate-2",
       "branch": "Senate",
-      "committee": "Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo)",
+      "committee": "(Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo))(CANCELLED as of 1:24 p.m., Tues., Nov. 4, 2025, by Ms. Emarie Josephine Del Rosario, Committee Secretary)",
       "date": "2025-11-06",
-      "time": "10:30 A.M.",
-      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate",
+      "time": "(10:30 A.M.",
+      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate)",
       "agenda": "S. Nos. 7, 41 and 212 - Anti-Endo and Strengthening the Security of Tenure (By: Sens. Ejercito, Villanueva and Hontiveros); S. Nos. 693, 996 and 1401- BPO Workers Welfare and Protection Act (By: Sens. Lapid, Estrada and C. Villar); S. No. 975 - Strengthening the National Wages and Productivity Commission (By: Sen. Estrada)",
       "status": "Scheduled",
       "notes": "",
       "isoDate": "2025-11-06T10:30:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate labor, employment and human resources development (presiding: sen. r. tulfo) sen. g.t. pecson room 2/f right wing, senate s. nos. 7, 41 and 212 - anti-endo and strengthening the security of tenure (by: sens. ejercito, villanueva and hontiveros); s. nos. 693, 996 and 1401- bpo workers welfare and protection act (by: sens. lapid, estrada and c. villar); s. no. 975 - strengthening the national wages and productivity commission (by: sen. estrada) scheduled"
+      "searchText": "senate (labor, employment and human resources development (presiding: sen. r. tulfo))(cancelled as of 1:24 p.m., tues., nov. 4, 2025, by ms. emarie josephine del rosario, committee secretary) sen. g.t. pecson room 2/f right wing, senate) s. nos. 7, 41 and 212 - anti-endo and strengthening the security of tenure (by: sens. ejercito, villanueva and hontiveros); s. nos. 693, 996 and 1401- bpo workers welfare and protection act (by: sens. lapid, estrada and c. villar); s. no. 975 - strengthening the national wages and productivity commission (by: sen. estrada) scheduled"
+    },
+    {
+      "id": "senate-3",
+      "branch": "Senate",
+      "committee": "Energy joint with Public Services; Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. P. Cayetano)",
+      "date": "2025-11-06",
+      "time": "11:00 A.M.",
+      "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
+      "agenda": "S. Nos. 346, 367 and 1164 ERC Strengthening (By: Sens. P. Cayetano, Gatchalian and Estrada); S. No. 1088 - Removal of Public Offering Requirement for Generation Companies (By: Sen. Gatchalian); S. No. 1091 - Prohibition of Cross-Ownership between Generation and Distribution Utilities (By: Sen. Gatchalian)",
+      "status": "Scheduled",
+      "notes": "",
+      "isoDate": "2025-11-06T11:00:00",
+      "source": "Senate Weekly Schedule",
+      "searchText": "senate energy joint with public services; civil service, government reorganization and professional regulation; and finance (presiding: sen. p. cayetano) sen. c.m. recto room 2/f right wing, senate s. nos. 346, 367 and 1164 erc strengthening (by: sens. p. cayetano, gatchalian and estrada); s. no. 1088 - removal of public offering requirement for generation companies (by: sen. gatchalian); s. no. 1091 - prohibition of cross-ownership between generation and distribution utilities (by: sen. gatchalian) scheduled"
     }
   ]
 }
