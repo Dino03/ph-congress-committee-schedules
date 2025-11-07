@@ -1,70 +1,34 @@
 {
-  "generatedAt": "2025-11-06T03:17:03.631Z",
-  "source": "docs/data/senate.json",
+  "generatedAt": "2025-11-07T03:13:17.409Z",
+  "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
-      "status": "empty",
-      "rawCount": 0,
-      "parsedCount": 0,
-      "dropReasons": {}
-    },
-    {
-      "stage": "senate.html",
-      "status": "missing"
-    },
-    {
-      "stage": "docs/data/senate.json",
       "status": "ok",
-      "parsedCount": 3
+      "rawCount": 1,
+      "parsedCount": 1,
+      "dropReasons": {
+        "missingDate": 0,
+        "missingCommittee": 0
+      }
     }
   ],
-  "warnings": [
-    "Using fallback data from docs/data/senate.json (3 records)"
-  ],
-  "parsedCount": 3,
+  "warnings": [],
+  "parsedCount": 1,
   "preview": [
     {
       "id": "senate-1",
       "branch": "Senate",
-      "committee": "Finance (TWG)",
-      "date": "2025-11-05",
+      "committee": "Justice and Human Rights joint with Civil Service, Government Reorganization, and Professional Regulation; and Finance (TWG)",
+      "date": "2025-11-10",
       "time": "10:00 A.M.",
-      "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-      "agenda": "FY 2026 Proposed Budget of the following agencies:; Department of Agrarian Reform; Department of Science and Technology and attached agencies; Philippine Space Agency; Department of Agriculture and attached agencies and corporations; National Irrigation Administration; The Judiciary; Department of Public Works and Highways; Department of Information and Communications Technology and attached agencies; Department of Energy and attached corporations; Energy Regulatory Commission",
+      "venue": "Sen. V. Y. Sotto Room 2/F Right Wing, Senate",
+      "agenda": "S. No. 1215 – Infrastructure Anomalies Investigation Act (By: Sens. Sotto, E. Tulfo, and Hontiveros)",
       "status": "Scheduled",
       "notes": "",
-      "isoDate": "2025-11-05T10:00:00",
+      "isoDate": "2025-11-10T10:00:00",
       "source": "Senate Weekly Schedule",
-      "searchText": "senate finance (twg) sen. c.m. recto room 2/f right wing, senate fy 2026 proposed budget of the following agencies:; department of agrarian reform; department of science and technology and attached agencies; philippine space agency; department of agriculture and attached agencies and corporations; national irrigation administration; the judiciary; department of public works and highways; department of information and communications technology and attached agencies; department of energy and attached corporations; energy regulatory commission scheduled"
-    },
-    {
-      "id": "senate-2",
-      "branch": "Senate",
-      "committee": "(Labor, Employment and Human Resources Development (Presiding: Sen. R. Tulfo))(CANCELLED as of 1:24 p.m., Tues., Nov. 4, 2025, by Ms. Emarie Josephine Del Rosario, Committee Secretary)",
-      "date": "2025-11-06",
-      "time": "(10:30 A.M.",
-      "venue": "Sen. G.T. Pecson Room 2/F Right Wing, Senate)",
-      "agenda": "S. Nos. 7, 41 and 212 - Anti-Endo and Strengthening the Security of Tenure (By: Sens. Ejercito, Villanueva and Hontiveros); S. Nos. 693, 996 and 1401- BPO Workers Welfare and Protection Act (By: Sens. Lapid, Estrada and C. Villar); S. No. 975 - Strengthening the National Wages and Productivity Commission (By: Sen. Estrada)",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-11-06T10:30:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate (labor, employment and human resources development (presiding: sen. r. tulfo))(cancelled as of 1:24 p.m., tues., nov. 4, 2025, by ms. emarie josephine del rosario, committee secretary) sen. g.t. pecson room 2/f right wing, senate) s. nos. 7, 41 and 212 - anti-endo and strengthening the security of tenure (by: sens. ejercito, villanueva and hontiveros); s. nos. 693, 996 and 1401- bpo workers welfare and protection act (by: sens. lapid, estrada and c. villar); s. no. 975 - strengthening the national wages and productivity commission (by: sen. estrada) scheduled"
-    },
-    {
-      "id": "senate-3",
-      "branch": "Senate",
-      "committee": "Energy joint with Public Services; Civil Service, Government Reorganization and Professional Regulation; and Finance (Presiding: Sen. P. Cayetano)",
-      "date": "2025-11-06",
-      "time": "11:00 A.M.",
-      "venue": "Sen. C.M. Recto Room 2/F Right Wing, Senate",
-      "agenda": "S. Nos. 346, 367 and 1164 ERC Strengthening (By: Sens. P. Cayetano, Gatchalian and Estrada); S. No. 1088 - Removal of Public Offering Requirement for Generation Companies (By: Sen. Gatchalian); S. No. 1091 - Prohibition of Cross-Ownership between Generation and Distribution Utilities (By: Sen. Gatchalian)",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-11-06T11:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate energy joint with public services; civil service, government reorganization and professional regulation; and finance (presiding: sen. p. cayetano) sen. c.m. recto room 2/f right wing, senate s. nos. 346, 367 and 1164 erc strengthening (by: sens. p. cayetano, gatchalian and estrada); s. no. 1088 - removal of public offering requirement for generation companies (by: sen. gatchalian); s. no. 1091 - prohibition of cross-ownership between generation and distribution utilities (by: sen. gatchalian) scheduled"
+      "searchText": "senate justice and human rights joint with civil service, government reorganization, and professional regulation; and finance (twg) sen. v. y. sotto room 2/f right wing, senate s. no. 1215 – infrastructure anomalies investigation act (by: sens. sotto, e. tulfo, and hontiveros) scheduled"
     }
   ]
 }
