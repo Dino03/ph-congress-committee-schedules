@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-11-10T03:22:10.394Z",
+  "generatedAt": "2025-11-11T03:16:18.196Z",
   "source": "senate.json",
   "attempts": [
     {
       "stage": "senate.json",
       "status": "ok",
-      "rawCount": 3,
-      "parsedCount": 3,
+      "rawCount": 2,
+      "parsedCount": 2,
       "dropReasons": {
         "missingDate": 0,
         "missingCommittee": 0
@@ -14,24 +14,10 @@
     }
   ],
   "warnings": [],
-  "parsedCount": 3,
+  "parsedCount": 2,
   "preview": [
     {
       "id": "senate-1",
-      "branch": "Senate",
-      "committee": "(Justice and Human Rights joint with Civil Service, Government Reorganization, and Professional Regulation; and Finance (TWG))(MOVED to November 11, 2025, by Atty. Andre Mortel, MPM, Committee Secretary)",
-      "date": "2025-11-10",
-      "time": "(10:00 A.M.",
-      "venue": "Sen. V. Y. Sotto Room 2/F Right Wing, Senate)",
-      "agenda": "S. No. 1215 – Infrastructure Anomalies Investigation Act (By: Sens. Sotto, E. Tulfo, and Hontiveros)",
-      "status": "Scheduled",
-      "notes": "",
-      "isoDate": "2025-11-10T10:00:00",
-      "source": "Senate Weekly Schedule",
-      "searchText": "senate (justice and human rights joint with civil service, government reorganization, and professional regulation; and finance (twg))(moved to november 11, 2025, by atty. andre mortel, mpm, committee secretary) sen. v. y. sotto room 2/f right wing, senate) s. no. 1215 – infrastructure anomalies investigation act (by: sens. sotto, e. tulfo, and hontiveros) scheduled"
-    },
-    {
-      "id": "senate-2",
       "branch": "Senate",
       "committee": "Justice and Human Rights joint with Civil Service, Government Reorganization, and Professional Regulation; and Finance (TWG)",
       "date": "2025-11-11",
@@ -45,7 +31,7 @@
       "searchText": "senate justice and human rights joint with civil service, government reorganization, and professional regulation; and finance (twg) sen. g.t. pecson room 2/f right wing, senate s. no. 1215 – infrastructure anomalies investigation act (by: sens. sotto, e. tulfo, and hontiveros) scheduled"
     },
     {
-      "id": "senate-3",
+      "id": "senate-2",
       "branch": "Senate",
       "committee": "Ways and Means (Presiding: Sen. P. Cayetano)",
       "date": "2025-11-12",
