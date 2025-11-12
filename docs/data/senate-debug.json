@@ -1,19 +1,27 @@
 {
-  "generatedAt": "2025-11-11T03:16:18.196Z",
-  "source": "senate.json",
+  "generatedAt": "2025-11-12T03:15:14.982Z",
+  "source": "docs/data/senate.json",
   "attempts": [
     {
       "stage": "senate.json",
+      "status": "empty",
+      "rawCount": 0,
+      "parsedCount": 0,
+      "dropReasons": {}
+    },
+    {
+      "stage": "senate.html",
+      "status": "missing"
+    },
+    {
+      "stage": "docs/data/senate.json",
       "status": "ok",
-      "rawCount": 2,
-      "parsedCount": 2,
-      "dropReasons": {
-        "missingDate": 0,
-        "missingCommittee": 0
-      }
+      "parsedCount": 2
     }
   ],
-  "warnings": [],
+  "warnings": [
+    "Using fallback data from docs/data/senate.json (2 records)"
+  ],
   "parsedCount": 2,
   "preview": [
     {
