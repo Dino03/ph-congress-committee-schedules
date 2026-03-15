@@ -1,32 +1,32 @@
-[2026-03-14T04:10:43.788Z] [house] request starting
-[2026-03-14T04:10:43.788Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2026-03-14T04:10:43.789Z] House headers count: 14
-[2026-03-14T04:10:43.790Z] House warmup: launching browser
-[2026-03-14T04:10:44.512Z] House warmup: loaded storage state from disk
-[2026-03-14T04:10:44.606Z] House warmup: navigating to https://www.congress.gov.ph/committees/committee-meetings/
-[2026-03-14T04:10:44.994Z] House warmup: ensuring Turnstile bootstrap (initial)
-[2026-03-14T04:11:17.504Z] [house] warmup page title="Just a moment..." (initial)
-[2026-03-14T04:11:17.504Z] House warmup: DOM ready + delay complete
-[2026-03-14T04:11:17.505Z] House warmup: waiting for Turnstile response (initial)
-[2026-03-14T04:12:17.508Z] House warmup: Turnstile selector missing (initial): locator.waitFor: Timeout 60000ms exceeded.
+[2026-03-15T04:32:04.076Z] [house] request starting
+[2026-03-15T04:32:04.076Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2026-03-15T04:32:04.077Z] House headers count: 14
+[2026-03-15T04:32:04.077Z] House warmup: launching browser
+[2026-03-15T04:32:05.030Z] House warmup: loaded storage state from disk
+[2026-03-15T04:32:05.116Z] House warmup: navigating to https://www.congress.gov.ph/committees/committee-meetings/
+[2026-03-15T04:32:05.603Z] House warmup: ensuring Turnstile bootstrap (initial)
+[2026-03-15T04:32:38.114Z] [house] warmup page title="Just a moment..." (initial)
+[2026-03-15T04:32:38.115Z] House warmup: DOM ready + delay complete
+[2026-03-15T04:32:38.115Z] House warmup: waiting for Turnstile response (initial)
+[2026-03-15T04:33:38.117Z] House warmup: Turnstile selector missing (initial): locator.waitFor: Timeout 60000ms exceeded.
 Call log:
   - waiting for locator('[name="cf-turnstile-response"]')
 
-[2026-03-14T04:12:17.508Z] House warmup: reloading page after missing selector
-[2026-03-14T04:12:17.548Z] House warmup: ensuring Turnstile bootstrap (reload)
-[2026-03-14T04:12:50.054Z] [house] warmup page title="Just a moment..." (reload)
-[2026-03-14T04:12:50.054Z] House warmup: waiting for Turnstile response (reload)
-[2026-03-14T04:13:50.056Z] House warmup: Turnstile selector missing (reload): locator.waitFor: Timeout 60000ms exceeded.
+[2026-03-15T04:33:38.118Z] House warmup: reloading page after missing selector
+[2026-03-15T04:33:38.207Z] House warmup: ensuring Turnstile bootstrap (reload)
+[2026-03-15T04:34:10.712Z] [house] warmup page title="Just a moment..." (reload)
+[2026-03-15T04:34:10.712Z] House warmup: waiting for Turnstile response (reload)
+[2026-03-15T04:35:10.714Z] House warmup: Turnstile selector missing (reload): locator.waitFor: Timeout 60000ms exceeded.
 Call log:
   - waiting for locator('[name="cf-turnstile-response"]')
 
-[2026-03-14T04:13:50.056Z] House warmup: Turnstile token missing (selector missing), trying in-page fetch
-[2026-03-14T04:13:50.609Z] House warmup: in-page fetch failed: Failed to fetch
-[2026-03-14T04:13:50.645Z] House warmup session failed (initial): Turnstile token unavailable
-[2026-03-14T04:13:50.646Z] House error: Turnstile token unavailable
-[2026-03-14T04:13:50.646Z] House JSON written: 0 items
-[2026-03-14T04:13:50.647Z] [senate] request starting
-[2026-03-14T04:13:55.499Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=4768 htmlLen=104883
-[2026-03-14T04:13:55.605Z] Senate parsed rows=0
-[2026-03-14T04:13:55.610Z] Senate produced 0 rows after parsing.
-[2026-03-14T04:13:55.611Z] Done. House=0 Senate=0
+[2026-03-15T04:35:10.714Z] House warmup: Turnstile token missing (selector missing), trying in-page fetch
+[2026-03-15T04:35:11.467Z] House warmup: in-page fetch failed: Failed to fetch
+[2026-03-15T04:35:11.503Z] House warmup session failed (initial): Turnstile token unavailable
+[2026-03-15T04:35:11.503Z] House error: Turnstile token unavailable
+[2026-03-15T04:35:11.504Z] House JSON written: 0 items
+[2026-03-15T04:35:11.505Z] [senate] request starting
+[2026-03-15T04:35:16.740Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=5136 htmlLen=104881
+[2026-03-15T04:35:16.839Z] Senate parsed rows=0
+[2026-03-15T04:35:16.842Z] Senate produced 0 rows after parsing.
+[2026-03-15T04:35:16.842Z] Done. House=0 Senate=0
