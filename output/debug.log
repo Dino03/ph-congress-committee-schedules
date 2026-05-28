@@ -1,34 +1,32 @@
-[2026-05-27T06:20:37.262Z] [house] request starting
-[2026-05-27T06:20:37.263Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
-[2026-05-27T06:20:37.263Z] House headers count: 14
-[2026-05-27T06:20:37.264Z] House warmup: launching browser
-[2026-05-27T06:20:37.650Z] House warmup: loaded storage state from disk
-[2026-05-27T06:20:37.741Z] House warmup: navigating to https://www.congress.gov.ph/committees/committee-meetings/
-[2026-05-27T06:20:38.336Z] House warmup: ensuring Turnstile bootstrap (initial)
-[2026-05-27T06:21:10.844Z] [house] warmup page title="Just a moment..." (initial)
-[2026-05-27T06:21:10.845Z] House warmup: DOM ready + delay complete
-[2026-05-27T06:21:10.845Z] House warmup: waiting for Turnstile response (initial)
-[2026-05-27T06:22:10.847Z] House warmup: Turnstile selector missing (initial): locator.waitFor: Timeout 60000ms exceeded.
-Call log:
-  - waiting for locator('[name="cf-turnstile-response"]')
-    - waiting for" https://www.congress.gov.ph/committees/committee-meetings/" navigation to finish...
-    - navigated to "https://www.congress.gov.ph/committees/committee-meetings/"
-
-[2026-05-27T06:22:10.848Z] House warmup: reloading page after missing selector
-[2026-05-27T06:22:10.879Z] House warmup: ensuring Turnstile bootstrap (reload)
-[2026-05-27T06:22:43.385Z] [house] warmup page title="Just a moment..." (reload)
-[2026-05-27T06:22:43.386Z] House warmup: waiting for Turnstile response (reload)
-[2026-05-27T06:23:43.387Z] House warmup: Turnstile selector missing (reload): locator.waitFor: Timeout 60000ms exceeded.
+[2026-05-28T06:10:52.392Z] [house] request starting
+[2026-05-28T06:10:52.392Z] House payload: {"page":0,"limit":150,"congress":"19","filter":""}
+[2026-05-28T06:10:52.393Z] House headers count: 14
+[2026-05-28T06:10:52.393Z] House warmup: launching browser
+[2026-05-28T06:10:52.651Z] House warmup: loaded storage state from disk
+[2026-05-28T06:10:52.737Z] House warmup: navigating to https://www.congress.gov.ph/committees/committee-meetings/
+[2026-05-28T06:10:53.062Z] House warmup: ensuring Turnstile bootstrap (initial)
+[2026-05-28T06:11:25.570Z] [house] warmup page title="Just a moment..." (initial)
+[2026-05-28T06:11:25.570Z] House warmup: DOM ready + delay complete
+[2026-05-28T06:11:25.571Z] House warmup: waiting for Turnstile response (initial)
+[2026-05-28T06:12:25.573Z] House warmup: Turnstile selector missing (initial): locator.waitFor: Timeout 60000ms exceeded.
 Call log:
   - waiting for locator('[name="cf-turnstile-response"]')
 
-[2026-05-27T06:23:43.388Z] House warmup: Turnstile token missing (selector missing), trying in-page fetch
-[2026-05-27T06:23:43.393Z] House warmup: in-page fetch failed: Failed to fetch
-[2026-05-27T06:23:43.424Z] House warmup session failed (initial): Turnstile token unavailable
-[2026-05-27T06:23:43.425Z] House error: Turnstile token unavailable
-[2026-05-27T06:23:43.425Z] House JSON written: 0 items
-[2026-05-27T06:23:43.426Z] [senate] request starting
-[2026-05-27T06:23:45.613Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=2100 htmlLen=33935
-[2026-05-27T06:23:45.666Z] Senate parsed rows=0
-[2026-05-27T06:23:45.666Z] Senate produced 0 rows after parsing.
-[2026-05-27T06:23:45.667Z] Done. House=0 Senate=0
+[2026-05-28T06:12:25.573Z] House warmup: reloading page after missing selector
+[2026-05-28T06:12:25.594Z] House warmup: ensuring Turnstile bootstrap (reload)
+[2026-05-28T06:12:58.100Z] [house] warmup page title="Just a moment..." (reload)
+[2026-05-28T06:12:58.100Z] House warmup: waiting for Turnstile response (reload)
+[2026-05-28T06:13:58.101Z] House warmup: Turnstile selector missing (reload): locator.waitFor: Timeout 60000ms exceeded.
+Call log:
+  - waiting for locator('[name="cf-turnstile-response"]')
+
+[2026-05-28T06:13:58.102Z] House warmup: Turnstile token missing (selector missing), trying in-page fetch
+[2026-05-28T06:13:58.107Z] House warmup: in-page fetch failed: Failed to fetch
+[2026-05-28T06:13:58.139Z] House warmup session failed (initial): Turnstile token unavailable
+[2026-05-28T06:13:58.140Z] House error: Turnstile token unavailable
+[2026-05-28T06:13:58.140Z] House JSON written: 0 items
+[2026-05-28T06:13:58.141Z] [senate] request starting
+[2026-05-28T06:14:03.643Z] Senate GET https://web.senate.gov.ph/committee/schedwk.asp loaded durationMs=5416 htmlLen=107098
+[2026-05-28T06:14:03.738Z] Senate parsed rows=0
+[2026-05-28T06:14:03.743Z] Senate produced 0 rows after parsing.
+[2026-05-28T06:14:03.744Z] Done. House=0 Senate=0
